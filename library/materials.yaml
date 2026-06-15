@@ -1,0 +1,38 @@
+# MFC boards (and HDF backs). Referenced by id from panel.material.
+# decor_code + texture identify the vendor decor; match edge bands to these.
+boards:
+  - id: w980-18
+    name: "Egger Biały W980 ST2"
+    vendor: Egger
+    decor_code: W980
+    texture: ST2
+    thickness: 18
+    grain_directional: false
+    color: "#F2F1ED"
+
+  - id: u727-18
+    name: "Egger Szary Pył U727 ST9"
+    vendor: Egger
+    decor_code: U727
+    texture: ST9
+    thickness: 18
+    grain_directional: false
+    color: "#9B9994"
+
+  - id: h1334-18
+    name: "Egger Dąb Sorano Naturalny H1334 ST9"
+    vendor: Egger
+    decor_code: H1334
+    texture: ST9
+    thickness: 18
+    grain_directional: true     # woodgrain — default grain runs along the panel height
+    color: "#C9A877"
+
+  - id: hdf-3
+    name: "HDF Biały 3mm (plecy)"
+    vendor: generic
+    decor_code: WHITE
+    texture: HDF
+    thickness: 3
+    grain_directional: false
+    color: "#FAFAF7"

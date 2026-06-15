@@ -1,0 +1,150 @@
+"""Fitting -> hole stamping.
+
+A fitting references the panels it joins. Applying it computes the drill holes from the hardware's
+drill pattern and writes them onto those panels, tagged with `src: <fitting id>`. Re-applying is safe:
+only holes whose `src` matches a (re)applied fitting are replaced; manual holes (no `src`) are untouched.
+
+v1 implements butt-joint hardware that has both a `face` and an `edge` drill pattern (confirmat, dowel).
+Cam/cup/slide hardware (minifix, hinge, slide) is recognised but stamping is deferred (warn + skip) —
+they come into play with drawers/fronts in a later iteration.
+"""
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Optional
+
+from ruamel.yaml import YAML
+
+_rt = YAML()                 # round-trip: preserves comments/formatting when we write back
+_rt.preserve_quotes = True
+_rt.width = 4096
+
+
+def _thickness(panel: dict, boards: dict) -> float:
+    if panel.get("thickness") is not None:
+        return panel["thickness"]
+    b = boards.get(panel.get("material"))
+    return (b.get("thickness") if b else None) or 18
+
+
+def _stamp_butt_joint(fitting: dict, panels_by_id: dict, hw: dict, boards: dict) -> dict:
+    """Butt joint: screw/dowel passes through `through` panel's face toward `into` panel's edge.
+
+    Stamps a face/surface hole on the through panel (if the hardware has a `face` pattern) and an edge
+    hole on the into panel (if it has an `edge` pattern). Confirmat = face only (its Ø5 edge pilot is
+    not orderable — see hardware.yaml). Dowel = face + edge (both Ø8).
+    """
+    fid = fitting["id"]
+    through = panels_by_id[fitting["through"]]
+    into = panels_by_id[fitting["into"]]
+    seam = fitting.get("seam", {})
+    te = int(seam["through_edge"])
+    ie = int(seam["into_edge"])
+    positions = fitting.get("at", [])
+    drill = hw.get("drill", {})
+
+    t_into = _thickness(into, boards)
+    W = through.get("width", 0)
+    H = through.get("height", 0)
+    face = fitting.get("through_face", "back")   # outer face by default
+
+    out: dict[str, list] = {}
+
+    if "face" in drill:
+        face_dia = drill["face"].get("dia")
+        face_depth = drill["face"].get("depth", "through")   # confirmat clearance = through-hole
+        holes = []
+        for a in positions:
+            # surface hole on the through panel, centered over the into panel's thickness
+            if te in (1, 3):                      # horizontal seam -> holes run along X
+                x, y = a, (t_into / 2 if te == 3 else H - t_into / 2)
+            else:                                 # vertical seam (2/4) -> holes run along Y
+                x, y = (t_into / 2 if te == 4 else W - t_into / 2), a
+            holes.append({"face": face, "x": round(x, 1), "y": round(y, 1),
+                          "dia": face_dia, "depth": face_depth, "type": "single", "src": fid})
+        out.setdefault(fitting["through"], []).extend(holes)
+
+    if "edge" in drill:
+        edge_dia = drill["edge"].get("dia")
+        edge_depth = drill["edge"].get("depth")
+        holes = [{"face": f"edge{ie}", "from": a, "dia": edge_dia,
+                  "depth": edge_depth, "type": "single", "src": fid} for a in positions]
+        out.setdefault(fitting["into"], []).extend(holes)
+
+    return out
+
+
+def apply_fittings(cabinet: dict, hardware_by_id: dict, boards_by_id: dict,
+                   only: Optional[set] = None) -> tuple[set, list[str], int]:
+    """Mutate `cabinet` (a dict) in place: stamp holes from its fittings onto its panels.
+
+    Returns (applied_fitting_ids, warnings, holes_added).
+    """
+    panels = cabinet.get("panels", []) or []
+    panels_by_id = {p["id"]: p for p in panels}
+    fittings = (cabinet.get("assembly") or {}).get("fittings", []) or []
+
+    applied: set = set()
+    warnings: list[str] = []
+    stamped: dict[str, list] = {}
+
+    for f in fittings:
+        fid = f.get("id")
+        if only is not None and fid not in only:
+            continue
+        hw = hardware_by_id.get(f.get("hardware"))
+        if hw is None:
+            warnings.append(f"fitting '{fid}': unknown hardware '{f.get('hardware')}' (skipped)")
+            continue
+        for ref in ("through", "into"):
+            if f.get(ref) and f[ref] not in panels_by_id:
+                warnings.append(f"fitting '{fid}': panel '{f[ref]}' not found (skipped)")
+                break
+        else:
+            drill = hw.get("drill", {})
+            if ("face" in drill or "edge" in drill) and f.get("through") and f.get("into"):
+                res = _stamp_butt_joint(f, panels_by_id, hw, boards_by_id)
+                for pid, holes in res.items():
+                    stamped.setdefault(pid, []).extend(holes)
+                applied.add(fid)
+            else:
+                warnings.append(
+                    f"fitting '{fid}': stamping for hardware type '{hw.get('type')}' not implemented "
+                    f"yet (skipped — comes with drawers/fronts)")
+
+    # merge: drop previously-stamped holes from these fittings, keep manual holes, add fresh stamps
+    added = 0
+    for p in panels:
+        holes = list(p.get("holes") or [])
+        holes = [h for h in holes if h.get("src") not in applied]
+        new = stamped.get(p["id"], [])
+        holes.extend(new)
+        added += len(new)
+        p["holes"] = holes
+
+    return applied, warnings, added
+
+
+def fit_cabinet_file(cabinet_path: Path, root: Path, only: Optional[set] = None) -> dict:
+    """Round-trip-load a cabinet YAML, stamp holes, write it back. Returns a summary dict."""
+    hardware_by_id, boards_by_id = _load_library_min(root)
+    with open(cabinet_path, "r", encoding="utf-8") as f:
+        cab = _rt.load(f)
+
+    applied, warnings, added = apply_fittings(cab, hardware_by_id, boards_by_id, only=only)
+
+    with open(cabinet_path, "w", encoding="utf-8") as f:
+        _rt.dump(cab, f)
+
+    return {"applied": sorted(applied), "warnings": warnings, "holes_added": added,
+            "path": str(cabinet_path)}
+
+
+def _load_library_min(root: Path) -> tuple[dict, dict]:
+    """Load just hardware + boards as plain dicts (id -> dict)."""
+    safe = YAML(typ="safe")
+    with open(root / "library" / "hardware.yaml", "r", encoding="utf-8") as f:
+        hardware = {h["id"]: h for h in (safe.load(f) or {}).get("hardware", [])}
+    with open(root / "library" / "materials.yaml", "r", encoding="utf-8") as f:
+        boards = {b["id"]: b for b in (safe.load(f) or {}).get("boards", [])}
+    return hardware, boards
