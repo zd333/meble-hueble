@@ -1,4 +1,4 @@
-# meble-bohaterow
+# meble-hueble 💪
 
 Workspace for designing flat-pack **MFC cabinet furniture** and ordering the cut panels online at
 [centrum.meble.pl](https://centrum.meble.pl).
