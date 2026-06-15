@@ -42,7 +42,7 @@ Guided authoring of cabinet YAML. **Panels are the single source of truth** — 
      fitting screws; do the same for manual holes. See CLAUDE.md → Conventions.
 5. **Validate**: `python -m meble validate --cabinet <id>` — fix any errors (bad refs, out-of-bounds
    holes, illegal Ø/depth).
-6. Hand off to `generate-order-csv` / `generate-panel-pdf` / `render-3d`.
+6. Hand off to `generate-order-csv` / `generate-panel-pdf` / `view-3d`.
 
 ## Notes
 - `element_type` stays `panel` (carcass). `front`/`countertop` are reserved for later iterations.

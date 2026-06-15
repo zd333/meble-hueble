@@ -5,7 +5,7 @@
   python -m meble fit           --cabinet C [--only f1,f2]
   python -m meble csv           (--set S | --cabinet C | --apartment A) [--out DIR]
   python -m meble pdf           (--set S | --cabinet C | --apartment A) [--out FILE]
-  python -m meble compile-scene (--set S | --cabinet C | --apartment A) [--out FILE]
+  python -m meble view          (--set S | --cabinet C | --apartment A) [--no-serve --port N --out FILE]
 """
 from __future__ import annotations
 
@@ -143,17 +143,25 @@ def cmd_pdf(args) -> int:
     return 0
 
 
-def cmd_compile_scene(args) -> int:
-    from .scene import write_scene
+def cmd_view(args) -> int:
+    from .scene import build_scene
+    from .viewer import build_viewer_html, serve_and_open
     proj = load_project()
     cabs = _resolve(proj, args)
     label = _scope_label(args)
-    out = Path(args.out) if args.out else proj.root / "out" / "scene.json"
-    write_scene(proj, cabs, out, name=label)
-    render = proj.root / "render" / "compile.py"
-    print(f"✓ {out}")
-    print(f"  render:  blender --background --python {render} -- {out} "
-          f"{proj.root / 'out' / (label + '.png')}")
+    scene = build_scene(proj, cabs, name=label)
+    if not scene["objects"]:
+        print("  (no panels in scope)")
+        return 1
+    out = Path(args.out) if args.out else proj.root / "out" / "viewer.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(build_viewer_html(scene, proj.root / "viewer" / "template.html"), encoding="utf-8")
+    print(f"✓ {out}  ({len(scene['objects'])} panels)")
+    if args.no_serve:
+        print("  ES-module pages don't load from file://; serve it, e.g.:")
+        print(f"    python -m http.server --directory {out.parent}   # then open {out.name}")
+        return 0
+    serve_and_open(out.parent, out.name, port=args.port)
     return 0
 
 
@@ -192,9 +200,11 @@ def main(argv=None) -> int:
     p.add_argument("--out", help="output file")
     p.set_defaults(func=cmd_pdf)
 
-    p = sub.add_parser("compile-scene", help="resolve a scope to scene.json for Blender"); _scope_args(p)
-    p.add_argument("--out", help="output file")
-    p.set_defaults(func=cmd_compile_scene)
+    p = sub.add_parser("view", help="build + open the interactive 3D viewer in the browser"); _scope_args(p)
+    p.add_argument("--out", help="output html file")
+    p.add_argument("--no-serve", action="store_true", help="just write the html; don't serve/open")
+    p.add_argument("--port", type=int, help="local server port (default: a free port)")
+    p.set_defaults(func=cmd_view)
 
     args = parser.parse_args(argv)
     try:

@@ -15,7 +15,6 @@ env:
 
 vars:
   PY: .venv/bin/python
-  BLENDER: blender
 
 tasks:
   default:
@@ -52,9 +51,7 @@ tasks:
       - '{{.PY}} -m meble pdf {{.CLI_ARGS | default "--set kitchen"}} --out out/panels.pdf'
       - "open out/panels.pdf"
 
-  render:
-    desc: "Build + render a 3D preview (Blender) and open it. Scope after --"
+  view:
+    desc: "Open the interactive 3D viewer in the browser (orbit/zoom/pan, presets, exploded, isolate). Scope after --"
     cmds:
-      - '{{.PY}} -m meble compile-scene {{.CLI_ARGS | default "--set kitchen"}} --out out/scene.json'
-      - "{{.BLENDER}} --background --python render/compile.py -- out/scene.json out/render.png"
-      - "open out/render.png"
+      - '{{.PY}} -m meble view {{.CLI_ARGS | default "--set kitchen"}}'

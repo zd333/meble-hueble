@@ -9,10 +9,6 @@ venv/
 *.egg-info/
 .pytest_cache/
 
-# Blender
-*.blend1
-*.blend2
-
 # OS / editor
 .DS_Store
 *.swp

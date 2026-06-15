@@ -13,13 +13,14 @@ stores state server-side, so banding/drilling/grooving are re-typed by hand each
 2. export the meble.pl **CSV** (panel dimensions — kills the most tedious typing),
 3. generate a per-panel **PDF spec sheet** (diagram + tables, in the editor's field order) for fast,
    low-error manual entry of banding/drilling,
-4. render **3D previews** (Blender), with first-class reuse of ready-made IKEA METOD/PAX units.
+4. open an interactive **3D viewer** (browser — orbit/zoom, exploded view, isolate panels), with reuse
+   of ready-made IKEA METOD/PAX units.
 
 Bias: **simple, cheap, popular** materials & methods — MFC, confirmat screws (default), minifix, rafix,
 euro hinges, drawer slides. Nothing exotic.
 
 Typical session: *"help me build a base cabinet / wardrobe for X"* → discuss → write/update the cabinet
-YAML → `validate` → `csv` + `pdf` (+ `render`) → user places the order.
+YAML → `validate` → `csv` + `pdf` (+ `view`) → user places the order.
 
 ## The data model (read this before editing designs)
 
@@ -86,7 +87,7 @@ Board 18 mm, back 3 mm HDF. Deep dive: **`docs/cabinet-construction.md`**. IKEA 
 ## Tools (run from repo root)
 
 Convenient entry point: **`task <name>`** (see `Taskfile.yml`; `task --list`). Most take a scope after
-`--`, e.g. `task pdf -- --cabinet d60-base`. User-facing tasks: `list`, `review`, `csv`, `pdf`, `render`,
+`--`, e.g. `task pdf -- --cabinet d60-base`. User-facing tasks: `list`, `review`, `csv`, `pdf`, `view`,
 `setup`. The design internals (`scaffold`, `fit`, `validate`) are `python -m meble …` commands the
 `design-cabinet` / `cabinet-review` skills run for you during a session — not surfaced as tasks. Full CLI: 
 
@@ -99,25 +100,27 @@ python -m meble scaffold base --width 600 --height 720 --depth 560   # seed a ne
 python -m meble fit  --cabinet d60-base                  # (re)stamp holes from fittings (safe/idempotent)
 python -m meble csv  --set kitchen                       # -> out/csv/<board>.csv   (import to meble.pl)
 python -m meble pdf  --set kitchen                        # -> out/pdf/<set>.pdf     (manual-entry sheets)
-python -m meble compile-scene --set kitchen              # -> out/scene.json
-# then: blender --background --python render/compile.py -- out/scene.json out/render.png
+python -m meble view --set kitchen                       # interactive 3D viewer (opens browser)
 ```
 `--cabinet <id>`, `--set <id>`, or `--apartment <id>` select scope for most commands.
 
 Skills wrap these: **design-cabinet** (author/edit + scaffold + fit), **generate-order-csv**,
-**generate-panel-pdf**, **render-3d**, **validate-design**, and **cabinet-review** (independent
+**generate-panel-pdf**, **view-3d**, **validate-design**, and **cabinet-review** (independent
 domain-expert review: runs `meble review` + a skeptical LLM pass against a growing pitfall checklist,
 report-only). Run `cabinet-review` before ordering. All real logic is in `tools/meble/`.
 
-## Render artifacts
+## Viewer artifacts
 
-Everything Blender is **generated on the fly into `out/` (git-ignored)** and rebuilt from YAML each run —
-nothing to keep in sync. There is **no hand-edited `.blend` of your designs**. The only committed
-Blender data is `library/units/models/*.glb` — curated 3rd-party reference models for reused IKEA units.
+The 3D viewer (`meble view`) writes a self-contained **`out/viewer.html`** (git-ignored), rebuilt from
+YAML each run — nothing to keep in sync. three.js loads from a **CDN** (needs internet at view time);
+ES-module pages can't load from `file://`, so `view` serves it on localhost and opens the browser for you.
+Reused IKEA units render as a labelled box; `library/units/models/*.glb` + `model_ref` are **reserved**
+for a later phase that loads real models via three.js `GLTFLoader`.
 
 ## Layout map
 
 - `apartments/<a>/sets/<s>/cabinets/*.yaml` — the designs (currently apartment `bohaterow`).
 - `library/` — boards, edge bands, hardware (with drill patterns), reusable parts & IKEA units.
 - `docs/` — knowledge base (schema, editor/CSV, cabinet construction, IKEA reference).
-- `tools/meble/` — Python package + CLI. `render/compile.py` — Blender side. `.claude/skills/` — workflows.
+- `tools/meble/` — Python package + CLI. `viewer/template.html` — the interactive 3D viewer.
+  `.claude/skills/` — workflows.
