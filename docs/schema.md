@@ -60,8 +60,8 @@ Carries the **drill pattern** that fittings stamp. Shape varies by `type`:
 
 ## Panel (`cabinet.panels[]`) — SOURCE OF TRUTH
 ```yaml
-- id: bok-l                # unique within the cabinet; referenced by fittings
-  name: "Bok lewy"
+- id: side-l               # unique within the cabinet; referenced by fittings
+  name: "Left side"
   element_type: panel      # panel (carcass, default) | front | countertop  (latter two added later)
   role: side               # optional label: side | top | bottom | shelf | back | divider | ...
   material: w980-18        # ref; defaults to cabinet.defaults.material
@@ -86,12 +86,14 @@ Carries the **drill pattern** that fittings stamp. Shape varies by `type`:
 Two shapes by `face`:
 ```yaml
 # EDGE hole (edge drilling): face = edge1|edge2|edge3|edge4
-- { face: edge3, from: 50, dia: 5, depth: 35, type: single, src: cf-1 }
+- { face: edge3, from: 50, dia: 4, depth: 35, type: single, src: cf-1 }
 - { face: edge2, from: 100, dia: 8, depth: 13, type: multi, count: 5, spacing: 32 }
-# SURFACE hole (surface drilling): face = front|back
-- { face: front, x: 37, y: 100, dia: 5, depth: 13, type: single }
-- { face: back,  x: 37, y: 100, dia: 8, depth: through, type: multi, count: 4, spacing: 32, direction: y }
+# SURFACE hole (surface drilling): face = outer|inner  (see docs/conventions.md)
+- { face: inner, x: 37, y: 100, dia: 5, depth: 13, type: single }
+- { face: outer, x: 37, y: 100, dia: 8, depth: through, type: multi, count: 4, spacing: 32, direction: y }
 ```
+- `face` (surface): **`outer`** (visible outside) or **`inner`** (toward cavity); picks the drill side
+  only — x,y stay in the one panel frame (editor: outer → przód, inner → tył).
 - `from` (edge holes): distance from 0 — left for top/bottom (1,3), bottom for left/right (2,4).
 - `x,y` (surface holes): from bottom-left.
 - `dia`: edge = 4|8; surface = 3|5|8|10|15|20|35.
@@ -104,7 +106,7 @@ Two shapes by `face`:
 ## Cabinet (`cabinets/<c>.yaml`)
 ```yaml
 id: d60-base
-name: "Szafka dolna 600"
+name: "Base cabinet 600"
 kind: custom               # custom | readymade
 category: base             # base | wall | tall | wardrobe
 construction: confirmat    # default joinery hint
@@ -128,8 +130,8 @@ References panels; **applying** it (`meble fit`) stamps holes onto them. Confirm
 ```yaml
 - id: cf-bl                # unique within the cabinet; becomes the holes' `src`
   hardware: confirmat-7x50 # ref; the drill pattern lives there
-  through: bok-l           # panel the screw passes through -> gets the FACE/surface hole
-  into: wieniec-dolny      # panel whose EDGE receives the screw
+  through: side-l          # panel the screw passes through -> gets the FACE/surface hole
+  into: bottom             # panel whose EDGE receives the screw
   seam: { through_edge: 3, into_edge: 4 }  # edge of each panel that forms the joint line
   at: [50, 282, 510]       # positions along the seam (from 0)
 ```
@@ -143,7 +145,7 @@ A reusable sub-assembly = a mini cabinet. Same shape as a custom cabinet (`panel
 ## Set (`sets/<s>/set.yaml`)
 ```yaml
 id: kitchen
-name: "Kuchnia"
+name: "Kitchen"
 room: kitchen
 cabinets: [d60-base, ...]  # cabinet ids in this set's cabinets/ dir
 layout: {}                 # optional notes about relative placement (positions also live on cabinets)

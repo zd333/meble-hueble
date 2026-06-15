@@ -1,7 +1,7 @@
 # Reusable ready-made unit: IKEA PAX wardrobe frame, nominal 100×58×236 cm.
 # Dimensions are ACTUAL mm: a "100 cm" PAX frame is 998 mm wide; "236 cm" is 2364 mm.
 id: ikea-pax-100
-name: "IKEA PAX rama 100×58×236"
+name: "IKEA PAX frame 100×58×236"
 kind: readymade
 system: pax
 unit_type: wardrobe-frame

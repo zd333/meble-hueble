@@ -52,11 +52,22 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
 - **mm** everywhere. Coordinate origin **bottom-left**; width → X, height → Y.
 - Edges: **1 = top, 2 = right, 3 = bottom, 4 = left**.
 - Edge-hole distance from 0: left for top/bottom (1,3), bottom for left/right (2,4). Surface holes: x,y
-  from bottom-left, on the `front` or `back` face.
+  from bottom-left.
+- **Faces are `outer` (visible outside) / `inner` (toward cavity)** — never front/back. One panel frame;
+  the face only picks the **drill side** (x,y are NOT mirrored between faces). Editor mapping: outer →
+  przód (front), inner → tył (back). Confirmat heads → outer; shelf-pin/System-32/hinge holes → inner.
+- **Left & right sides are MIRROR parts** (front edge = 2 on the left, 4 on the right; asymmetric holes
+  mirror too) — never identical. Full table + edge cases: **`docs/conventions.md`** (read before drilling).
 - Edge-band thickness only **1 or 2 mm**; glue default **long** ("kryjące długie").
 - `grain` default **forces orientation** (panels never rotate). `any|width|height` → CSV `Słoje` 0|2|1.
 - Carcass (top/bottom **between** sides): **`top/bottom length = width − 2×thickness`** (e.g. `W−36`).
 - Ball-bearing drawer box width = `internal − 25.4`. System-32 = **Ø5, 32 mm pitch, 37 mm front setback**.
+- **Prefer bulk (multi) drilling.** Whenever holes form a regular series — a shelf-pin column, a
+  System-32 row, repeated confirmats along a seam — specify **one `multi` hole** (`count` + `spacing`,
+  plus `direction` for surface holes), **not N singles**. In the editor a multi hole is one entry
+  instead of N, so it's far less manual typing and can be cheaper. `meble fit` already collapses
+  evenly-spaced fitting screws into a multi hole — do the same when adding holes by hand. Only fall back
+  to singles for genuinely irregular positions.
 
 ## Quick-reference drill table (supplier convention — verify before first order)
 
@@ -74,9 +85,16 @@ Board 18 mm, back 3 mm HDF. Deep dive: **`docs/cabinet-construction.md`**. IKEA 
 
 ## Tools (run from repo root)
 
+Convenient entry point: **`task <name>`** (see `Taskfile.yml`; `task --list`). Most take a scope after
+`--`, e.g. `task pdf -- --cabinet d60-base`. User-facing tasks: `list`, `review`, `csv`, `pdf`, `render`,
+`setup`. The design internals (`scaffold`, `fit`, `validate`) are `python -m meble …` commands the
+`design-cabinet` / `cabinet-review` skills run for you during a session — not surfaced as tasks. Full CLI: 
+
 ```bash
 source .venv/bin/activate && export PYTHONPATH=tools     # one-time per shell
-python -m meble validate --apartment bohaterow           # consistency checks
+python -m meble list                                     # what's in the project
+python -m meble validate --apartment bohaterow           # schema/bounds checks
+python -m meble review   --apartment bohaterow           # domain linter (mirror, carcass math, wrong face…)
 python -m meble scaffold base --width 600 --height 720 --depth 560   # seed a new cabinet (prints YAML)
 python -m meble fit  --cabinet d60-base                  # (re)stamp holes from fittings (safe/idempotent)
 python -m meble csv  --set kitchen                       # -> out/csv/<board>.csv   (import to meble.pl)
@@ -87,7 +105,9 @@ python -m meble compile-scene --set kitchen              # -> out/scene.json
 `--cabinet <id>`, `--set <id>`, or `--apartment <id>` select scope for most commands.
 
 Skills wrap these: **design-cabinet** (author/edit + scaffold + fit), **generate-order-csv**,
-**generate-panel-pdf**, **render-3d**, **validate-design**. All real logic is in `tools/meble/`.
+**generate-panel-pdf**, **render-3d**, **validate-design**, and **cabinet-review** (independent
+domain-expert review: runs `meble review` + a skeptical LLM pass against a growing pitfall checklist,
+report-only). Run `cabinet-review` before ordering. All real logic is in `tools/meble/`.
 
 ## Render artifacts
 

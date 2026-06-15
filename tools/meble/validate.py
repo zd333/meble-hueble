@@ -40,8 +40,10 @@ def _check_hole(panel: Panel, h: Hole, err, warn, where: str) -> None:
             err(f"{where}: surface hole ({x},{y})..({ext_x},{ext_y}) outside panel {panel.width}×{panel.height}")
         if h.type == "multi" and (not h.count or not h.spacing or h.direction not in ("x", "y")):
             err(f"{where}: multi surface hole needs count + spacing + direction(x|y)")
+    elif h.face in ("front", "back"):
+        err(f"{where}: face '{h.face}' is deprecated — use 'outer' (visible) / 'inner' (cavity)")
     else:
-        err(f"{where}: bad face '{h.face}' (expected edge1..4 | front | back)")
+        err(f"{where}: bad face '{h.face}' (expected edge1..4 | outer | inner)")
 
 
 def validate_cabinet(proj: Project, cab: Cabinet, err, warn) -> None:

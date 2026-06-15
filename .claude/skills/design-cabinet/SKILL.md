@@ -37,6 +37,9 @@ Guided authoring of cabinet YAML. **Panels are the single source of truth** — 
    `fit` is safe and idempotent: it only (re)writes holes whose `src` matches the fitting; **manual holes
    are never touched.** Add an extra screw either by adding a fitting (it stamps) or by adding a hole by
    hand to the panel's `holes` list.
+   - **Prefer bulk (`multi`) holes** for any regular series (shelf-pin columns, System-32 rows, repeated
+     screws): one `multi` hole = one editor entry instead of N. `fit` already collapses evenly-spaced
+     fitting screws; do the same for manual holes. See CLAUDE.md → Conventions.
 5. **Validate**: `python -m meble validate --cabinet <id>` — fix any errors (bad refs, out-of-bounds
    holes, illegal Ø/depth).
 6. Hand off to `generate-order-csv` / `generate-panel-pdf` / `render-3d`.

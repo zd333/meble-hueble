@@ -47,6 +47,52 @@ def cmd_validate(args) -> int:
     return 0
 
 
+def cmd_list(args) -> int:
+    proj = load_project()
+    print("Apartments:")
+    for apt in proj.apartments.values():
+        print(f"  {apt.id} — {apt.name}   rooms: {', '.join(apt.rooms)}")
+        for fs in apt.sets.values():
+            print(f"    set '{fs.id}' ({fs.name}):")
+            for cid in fs.cabinet_ids:
+                cab = proj.cabinet(cid)
+                if not cab:
+                    print(f"      • {cid}  (MISSING)")
+                elif cab.kind == "custom":
+                    pieces = sum(q for _, q in proj.expanded_panels(cab))
+                    print(f"      • {cab.id:16} {cab.name}  [{cab.category}]  "
+                          f"{len(cab.panels)} panels / {pieces} pieces")
+                else:
+                    print(f"      • {cab.id:16} {cab.name}  [readymade {cab.raw.get('system', '')}]")
+    print("\nLibrary:")
+    print(f"  boards:    {', '.join(proj.boards) or '—'}")
+    print(f"  edgebands: {', '.join(proj.edgebands) or '—'}")
+    print(f"  hardware:  {', '.join(proj.hardware) or '—'}")
+    print(f"  parts:     {', '.join(proj.parts) or '—'}")
+    print(f"  units:     {', '.join(proj.units) or '—'}")
+    return 0
+
+
+def cmd_review(args) -> int:
+    from .model import Cabinet
+    from .review import review
+    proj = load_project()
+    cabs = _resolve(proj, args)
+    if not args.cabinet:                       # also lint reusable library parts (drawer boxes, etc.)
+        cabs = list(cabs) + [Cabinet.from_dict(p) for p in proj.parts.values()]
+    findings = review(proj, cabs)
+    order = {"info": 0, "warn": 1, "error": 2}
+    for f in sorted(findings, key=lambda x: order[x.severity]):
+        label = {"info": "info ", "warn": "warn ", "error": "ERROR"}[f.severity]
+        print(f"  {label} [{f.cabinet}] {f.rule}: {f.message}")
+    errs = sum(1 for f in findings if f.severity == "error")
+    warns = sum(1 for f in findings if f.severity == "warn")
+    infos = sum(1 for f in findings if f.severity == "info")
+    mark = "✗" if errs else "✓"
+    print(f"\n{mark} review: {errs} error(s), {warns} warning(s), {infos} info across {len(cabs)} cabinet(s).")
+    return 1 if errs else 0
+
+
 def cmd_scaffold(args) -> int:
     from .templates import scaffold, to_yaml
     cab = scaffold(args.kind, args.width, args.height, args.depth,
@@ -115,8 +161,14 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="meble", description="MFC cabinet design tools.")
     sub = parser.add_subparsers(dest="command", required=True)
 
+    p = sub.add_parser("list", help="list apartments, sets, cabinets and library contents")
+    p.set_defaults(func=cmd_list)
+
     p = sub.add_parser("validate", help="static consistency checks"); _scope_args(p)
     p.set_defaults(func=cmd_validate)
+
+    p = sub.add_parser("review", help="domain linter — well-known cabinetmaking pitfalls"); _scope_args(p)
+    p.set_defaults(func=cmd_review)
 
     p = sub.add_parser("scaffold", help="seed a new cabinet YAML (prints to stdout)")
     p.add_argument("kind", choices=["base", "wall", "tall", "wardrobe"])

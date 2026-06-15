@@ -1,4 +1,4 @@
 id: bohaterow
-name: "Mieszkanie Bohaterów"
+name: "Bohaterów apartment"
 rooms: [kitchen, bathroom, bedroom1, bedroom2]
 sets: [kitchen]

@@ -143,7 +143,7 @@ class Hole:
 
     @property
     def is_surface(self) -> bool:
-        return self.face in ("front", "back")
+        return self.face in ("outer", "inner")
 
     @property
     def edge_no(self) -> Optional[int]:

@@ -32,9 +32,15 @@ format. Source: user's description of the live editor + the two provided PRO100 
    - **Edge drilling** (per hole): edge number (1–4); distance from 0 (always from **left/bottom**);
      bore Ø **4 or 8 mm**; depth **2–35 mm** (1 mm step); type **single | multi**; if multi → number of
      holes + distance between them.
-   - **Surface drilling** (per hole): surface **back | front**; **x, y** (from **left, bottom**); bore Ø
+   - **Surface drilling** (per hole): surface **back | front** (we model these as **inner | outer** — see
+     `conventions.md`: outer → front/przód, inner → back/tył); **x, y** (from **left, bottom**); bore Ø
      **3 / 5 / 8 / 10 / 15 / 20 / 35 mm**; depth **2–15 mm** (1 mm step) **or drill-through**; type
      **single | multi**; if multi → number of holes + distance + direction (**X or Y axis**).
+
+   **Prefer `multi` for regular series.** A `multi` hole is a *single editor entry* that produces a whole
+   evenly-spaced row/column (shelf-pin columns, System-32 rows, repeated confirmats). Using it instead of
+   N `single` holes drastically cuts manual entry and can be cheaper. Always collapse an evenly-spaced run
+   into one `multi`; only use `single` for irregular positions.
 6. **Grooving** — out of scope for now; reserved (`grooving: []`). Adding it later must not reshape
    existing structures.
 
@@ -44,7 +50,7 @@ format. Source: user's description of the live editor + the two provided PRO100 
 - Edges: **1 top, 2 right, 3 bottom, 4 left**.
 - Edge-hole "distance from 0": from **left** for top/bottom edges (1, 3); from **bottom** for left/right
   edges (2, 4).
-- Surface holes: **x** from left, **y** from bottom; choose **front** or **back** surface.
+- Surface holes: **x** from left, **y** from bottom; face = **outer**/**inner** (editor: front/back).
 
 ## PRO100 CSV import format (dimensions only)
 

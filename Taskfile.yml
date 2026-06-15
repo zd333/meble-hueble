@@ -1,0 +1,60 @@
+# Workflows you run for the meble cabinet project.   Runner: https://taskfile.dev
+#   Install once:   brew install go-task
+#   See tasks:      task --list
+#
+# Designing/editing cabinets happens in a Claude Code session (just ask). The lower-level internals
+# (scaffold a carcass, stamp fitting holes) are run for you there via `python -m meble …`; you don't
+# invoke them by hand, so they're not tasks here.
+#
+# Most tasks take an optional scope after `--`, e.g.  task pdf -- --cabinet d60-base
+# (default scope is the kitchen set / bohaterow apartment).
+version: '3'
+
+env:
+  PYTHONPATH: tools
+
+vars:
+  PY: .venv/bin/python
+  BLENDER: blender
+
+tasks:
+  default:
+    desc: "List available tasks"
+    cmds: ["task --list"]
+    silent: true
+
+  setup:
+    desc: "Create the venv and install dependencies (run once)"
+    cmds:
+      - python3 -m venv .venv
+      - .venv/bin/pip install -q -r tools/requirements.txt
+      - echo "✓ ready — try 'task list'"
+
+  list:
+    desc: "List apartments, sets, cabinets and library contents"
+    cmds: ["{{.PY}} -m meble list"]
+
+  review:
+    desc: "Check designs before ordering — schema + cabinetmaking pitfalls (mirror, carcass math, wrong face…). Scope after --"
+    cmds:
+      - '{{.PY}} -m meble validate {{.CLI_ARGS | default "--apartment bohaterow"}}'
+      - '{{.PY}} -m meble review {{.CLI_ARGS | default "--apartment bohaterow"}}'
+
+  csv:
+    desc: "Export the meble.pl CSV (one per board) and open the folder. Scope after --"
+    cmds:
+      - '{{.PY}} -m meble csv {{.CLI_ARGS | default "--set kitchen"}}'
+      - "open out/csv"
+
+  pdf:
+    desc: "Export per-panel PDF spec sheets and open it. Scope after --"
+    cmds:
+      - '{{.PY}} -m meble pdf {{.CLI_ARGS | default "--set kitchen"}} --out out/panels.pdf'
+      - "open out/panels.pdf"
+
+  render:
+    desc: "Build + render a 3D preview (Blender) and open it. Scope after --"
+    cmds:
+      - '{{.PY}} -m meble compile-scene {{.CLI_ARGS | default "--set kitchen"}} --out out/scene.json'
+      - "{{.BLENDER}} --background --python render/compile.py -- out/scene.json out/render.png"
+      - "open out/render.png"

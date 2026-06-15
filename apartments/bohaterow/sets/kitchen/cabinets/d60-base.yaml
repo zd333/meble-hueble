@@ -1,10 +1,12 @@
 # Worked example: a simple 600-wide base cabinet, carcass-only, confirmat construction.
 # Sides + top/bottom + HDF back + one adjustable shelf. (Fronts/drawers come in a later iteration.)
 #
-# Drilling workflow: the shelf-pin holes below are MANUAL (no `src`). The confirmat holes are stamped by
-# `python -m meble fit --cabinet d60-base`, which writes them into each panel tagged with `src`.
+# Faces: `outer` = visible outside of the box, `inner` = toward the cavity (see docs/conventions.md).
+# Sides are MIRROR parts: side-l's front edge is 2 (right), side-r's front edge is 4 (left).
+# Shelf-pin columns (manual, on the inner face) are bulk `multi`. Confirmat holes are stamped by
+# `python -m meble fit --cabinet d60-base` onto the OUTER face (heads visible), also as bulk `multi`.
 id: d60-base
-name: "Szafka dolna 600"
+name: "Base cabinet 600"
 kind: custom
 category: base
 construction: confirmat
@@ -15,157 +17,94 @@ back: {type: surface}
 plinth: {height: 100}
 
 panels:
-- id: bok-l
-  name: "Bok lewy"
+- id: side-l
+  name: "Left side"
   element_type: panel
-  role: side-left
-  width: 560              # depth (X = front-to-back)
-  height: 720             # vertical
-  edge_banding: {edges: {2: eb-w980-1}, glue_type: long}         # front edge banded
+  role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = BACK
+  width: 560                  # depth (X = back→front)
+  height: 720                 # vertical
+  edge_banding: {edges: {2: eb-w980-1}, glue_type: long}         # band the FRONT edge (2)
   holes:
-  - {face: front, x: 523, y: 350, dia: 5, depth: 13, type: single}
-  - {face: front, x: 107, y: 350, dia: 5, depth: 13, type: single}
-  - face: back
+      # adjustable-shelf pin columns on the INNER face (37 mm from each end), bulk multi
+  - {face: inner, x: 37, y: 100, dia: 5, depth: 13, type: multi, count: 16, spacing: 32, direction: y}
+  - {face: inner, x: 523, y: 100, dia: 5, depth: 13, type: multi, count: 16, spacing: 32, direction: y}
+  - face: outer
     x: 50
     y: 9.0
     dia: 8
     depth: through
-    type: single
+    type: multi
+    count: 3
+    spacing: 230
+    direction: x
     src: cf-bot-l
-  - face: back
-    x: 280
-    y: 9.0
-    dia: 8
-    depth: through
-    type: single
-    src: cf-bot-l
-  - face: back
-    x: 510
-    y: 9.0
-    dia: 8
-    depth: through
-    type: single
-    src: cf-bot-l
-  - face: back
+  - face: outer
     x: 50
     y: 711.0
     dia: 8
     depth: through
-    type: single
+    type: multi
+    count: 3
+    spacing: 230
+    direction: x
     src: cf-top-l
-  - face: back
-    x: 280
-    y: 711.0
-    dia: 8
-    depth: through
-    type: single
-    src: cf-top-l
-  - face: back
-    x: 510
-    y: 711.0
-    dia: 8
-    depth: through
-    type: single
-    src: cf-top-l
-- id: bok-r
-  name: "Bok prawy"
+- id: side-r
+  name: "Right side"
   element_type: panel
-  role: side-right
+  role: side-right            # mirror of side-l: outer faces right; edge4 = cabinet FRONT, edge2 = BACK
   width: 560
   height: 720
-  edge_banding: {edges: {2: eb-w980-1}, glue_type: long}
+  edge_banding: {edges: {4: eb-w980-1}, glue_type: long}         # band the FRONT edge (4 — mirrored)
   holes:
-  - {face: front, x: 523, y: 350, dia: 5, depth: 13, type: single}
-  - {face: front, x: 107, y: 350, dia: 5, depth: 13, type: single}
-  - face: back
+  - {face: inner, x: 37, y: 100, dia: 5, depth: 13, type: multi, count: 16, spacing: 32, direction: y}
+  - {face: inner, x: 523, y: 100, dia: 5, depth: 13, type: multi, count: 16, spacing: 32, direction: y}
+  - face: outer
     x: 50
     y: 9.0
     dia: 8
     depth: through
-    type: single
+    type: multi
+    count: 3
+    spacing: 230
+    direction: x
     src: cf-bot-r
-  - face: back
-    x: 280
-    y: 9.0
-    dia: 8
-    depth: through
-    type: single
-    src: cf-bot-r
-  - face: back
-    x: 510
-    y: 9.0
-    dia: 8
-    depth: through
-    type: single
-    src: cf-bot-r
-  - face: back
+  - face: outer
     x: 50
     y: 711.0
     dia: 8
     depth: through
-    type: single
+    type: multi
+    count: 3
+    spacing: 230
+    direction: x
     src: cf-top-r
-  - face: back
-    x: 280
-    y: 711.0
-    dia: 8
-    depth: through
-    type: single
-    src: cf-top-r
-  - face: back
-    x: 510
-    y: 711.0
-    dia: 8
-    depth: through
-    type: single
-    src: cf-top-r
-- id: wieniec-dolny
-  name: "Wieniec dolny"
+- id: bottom
+  name: "Bottom panel"
   element_type: panel
-  role: bottom
-  width: 564              # 600 − 2×18
-  height: 560             # depth
-  edge_banding: {edges: {1: eb-w980-1}, glue_type: long}         # front edge banded
+  role: bottom                # edge1 = cabinet FRONT
+  width: 564                  # 600 − 2×18
+  height: 560                 # depth
+  edge_banding: {edges: {1: eb-w980-1}, glue_type: long}         # band the FRONT edge (1)
 
   holes:
   - face: edge4
     from: 50
     dia: 4
     depth: 35
-    type: single
-    src: cf-bot-l
-  - face: edge4
-    from: 280
-    dia: 4
-    depth: 35
-    type: single
-    src: cf-bot-l
-  - face: edge4
-    from: 510
-    dia: 4
-    depth: 35
-    type: single
+    type: multi
+    count: 3
+    spacing: 230
     src: cf-bot-l
   - face: edge2
     from: 50
     dia: 4
     depth: 35
-    type: single
+    type: multi
+    count: 3
+    spacing: 230
     src: cf-bot-r
-  - face: edge2
-    from: 280
-    dia: 4
-    depth: 35
-    type: single
-    src: cf-bot-r
-  - face: edge2
-    from: 510
-    dia: 4
-    depth: 35
-    type: single
-    src: cf-bot-r
-- id: wieniec-gorny
-  name: "Wieniec górny"
+- id: top
+  name: "Top panel"
   element_type: panel
   role: top
   width: 564
@@ -176,63 +115,44 @@ panels:
     from: 50
     dia: 4
     depth: 35
-    type: single
-    src: cf-top-l
-  - face: edge4
-    from: 280
-    dia: 4
-    depth: 35
-    type: single
-    src: cf-top-l
-  - face: edge4
-    from: 510
-    dia: 4
-    depth: 35
-    type: single
+    type: multi
+    count: 3
+    spacing: 230
     src: cf-top-l
   - face: edge2
     from: 50
     dia: 4
     depth: 35
-    type: single
+    type: multi
+    count: 3
+    spacing: 230
     src: cf-top-r
-  - face: edge2
-    from: 280
-    dia: 4
-    depth: 35
-    type: single
-    src: cf-top-r
-  - face: edge2
-    from: 510
-    dia: 4
-    depth: 35
-    type: single
-    src: cf-top-r
-- id: polka
-  name: "Półka"
+
+- id: shelf
+  name: "Shelf"
   element_type: panel
   role: shelf
   width: 564
-  height: 540             # a bit shallower than carcass for clearance
+  height: 540                 # a bit shallower than carcass for clearance
   edge_banding: {edges: {1: eb-w980-1}, glue_type: long}
   holes: []
 
-- id: plecy
-  name: "Plecy HDF"
+- id: back
+  name: "Back (HDF)"
   element_type: panel
   role: back
   material: hdf-3
   width: 600
   height: 720
   grain: any
-  edge_banding: {}        # HDF back, surface-mounted — no banding
+  edge_banding: {}            # HDF back, surface-mounted — no banding
 
   holes: []
 assembly:
   fittings:
-  - {id: cf-bot-l, hardware: confirmat-7x50, through: bok-l, into: wieniec-dolny, seam: {through_edge: 3, into_edge: 4}, at: [50, 280, 510]}
-  - {id: cf-bot-r, hardware: confirmat-7x50, through: bok-r, into: wieniec-dolny, seam: {through_edge: 3, into_edge: 2}, at: [50, 280, 510]}
-  - {id: cf-top-l, hardware: confirmat-7x50, through: bok-l, into: wieniec-gorny, seam: {through_edge: 1, into_edge: 4}, at: [50, 280, 510]}
-  - {id: cf-top-r, hardware: confirmat-7x50, through: bok-r, into: wieniec-gorny, seam: {through_edge: 1, into_edge: 2}, at: [50, 280, 510]}
+  - {id: cf-bot-l, hardware: confirmat-7x50, through: side-l, into: bottom, seam: {through_edge: 3, into_edge: 4}, at: [50, 280, 510]}
+  - {id: cf-bot-r, hardware: confirmat-7x50, through: side-r, into: bottom, seam: {through_edge: 3, into_edge: 2}, at: [50, 280, 510]}
+  - {id: cf-top-l, hardware: confirmat-7x50, through: side-l, into: top, seam: {through_edge: 1, into_edge: 4}, at: [50, 280, 510]}
+  - {id: cf-top-r, hardware: confirmat-7x50, through: side-r, into: top, seam: {through_edge: 1, into_edge: 2}, at: [50, 280, 510]}
 
 parts: []

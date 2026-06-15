@@ -27,12 +27,22 @@ def _thickness(panel: dict, boards: dict) -> float:
     return (b.get("thickness") if b else None) or 18
 
 
+def _series(positions: list):
+    """If positions are an evenly-spaced run (>=2, equal gaps), return (start, count, spacing) so we can
+    emit ONE multi (bulk) hole instead of many singles. Else None."""
+    if len(positions) >= 2:
+        gap = positions[1] - positions[0]
+        if gap > 0 and all(positions[i + 1] - positions[i] == gap for i in range(len(positions) - 1)):
+            return positions[0], len(positions), gap
+    return None
+
+
 def _stamp_butt_joint(fitting: dict, panels_by_id: dict, hw: dict, boards: dict) -> dict:
     """Butt joint: screw/dowel passes through `through` panel's face toward `into` panel's edge.
 
     Stamps a face/surface hole on the through panel (if the hardware has a `face` pattern) and an edge
-    hole on the into panel (if it has an `edge` pattern). Confirmat = face only (its Ø5 edge pilot is
-    not orderable — see hardware.yaml). Dowel = face + edge (both Ø8).
+    hole on the into panel (if it has an `edge` pattern). Confirmat = Ø8 face + Ø4 edge. Dowel = Ø8 + Ø8.
+    Evenly-spaced runs are emitted as a single MULTI hole (bulk) to minimise manual entry in the editor.
     """
     fid = fitting["id"]
     through = panels_by_id[fitting["through"]]
@@ -40,35 +50,49 @@ def _stamp_butt_joint(fitting: dict, panels_by_id: dict, hw: dict, boards: dict)
     seam = fitting.get("seam", {})
     te = int(seam["through_edge"])
     ie = int(seam["into_edge"])
-    positions = fitting.get("at", [])
+    positions = list(fitting.get("at", []))
     drill = hw.get("drill", {})
+    series = _series(positions)
 
     t_into = _thickness(into, boards)
     W = through.get("width", 0)
     H = through.get("height", 0)
-    face = fitting.get("through_face", "back")   # outer face by default
+    face = fitting.get("through_face", "outer")   # confirmat head sits on the OUTER (visible) face
 
     out: dict[str, list] = {}
 
     if "face" in drill:
-        face_dia = drill["face"].get("dia")
-        face_depth = drill["face"].get("depth", "through")   # confirmat clearance = through-hole
+        fd = drill["face"].get("dia")
+        fdepth = drill["face"].get("depth", "through")   # confirmat clearance = through-hole
+        # the screw row runs along the seam: along X for a horizontal seam, along Y for a vertical one
+        def face_xy(a):
+            if te in (1, 3):
+                return a, (t_into / 2 if te == 3 else H - t_into / 2)
+            return (t_into / 2 if te == 4 else W - t_into / 2), a
+        direction = "x" if te in (1, 3) else "y"
         holes = []
-        for a in positions:
-            # surface hole on the through panel, centered over the into panel's thickness
-            if te in (1, 3):                      # horizontal seam -> holes run along X
-                x, y = a, (t_into / 2 if te == 3 else H - t_into / 2)
-            else:                                 # vertical seam (2/4) -> holes run along Y
-                x, y = (t_into / 2 if te == 4 else W - t_into / 2), a
-            holes.append({"face": face, "x": round(x, 1), "y": round(y, 1),
-                          "dia": face_dia, "depth": face_depth, "type": "single", "src": fid})
+        if series:
+            start, count, gap = series
+            x, y = face_xy(start)
+            holes.append({"face": face, "x": round(x, 1), "y": round(y, 1), "dia": fd, "depth": fdepth,
+                          "type": "multi", "count": count, "spacing": gap, "direction": direction, "src": fid})
+        else:
+            for a in positions:
+                x, y = face_xy(a)
+                holes.append({"face": face, "x": round(x, 1), "y": round(y, 1),
+                              "dia": fd, "depth": fdepth, "type": "single", "src": fid})
         out.setdefault(fitting["through"], []).extend(holes)
 
     if "edge" in drill:
-        edge_dia = drill["edge"].get("dia")
-        edge_depth = drill["edge"].get("depth")
-        holes = [{"face": f"edge{ie}", "from": a, "dia": edge_dia,
-                  "depth": edge_depth, "type": "single", "src": fid} for a in positions]
+        ed = drill["edge"].get("dia")
+        edepth = drill["edge"].get("depth")
+        if series:
+            start, count, gap = series
+            holes = [{"face": f"edge{ie}", "from": start, "dia": ed, "depth": edepth,
+                      "type": "multi", "count": count, "spacing": gap, "src": fid}]
+        else:
+            holes = [{"face": f"edge{ie}", "from": a, "dia": ed, "depth": edepth,
+                      "type": "single", "src": fid} for a in positions]
         out.setdefault(fitting["into"], []).extend(holes)
 
     return out

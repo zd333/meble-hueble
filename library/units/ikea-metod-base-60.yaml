@@ -1,7 +1,7 @@
 # Reusable ready-made unit: IKEA METOD base cabinet, nominal 60×60×80 cm.
 # Dimensions are ACTUAL mm (nominal != actual — see docs/ikea-metod-pax-reference.md).
 id: ikea-metod-base-60
-name: "IKEA METOD szafka dolna 60"
+name: "IKEA METOD base cabinet 60"
 kind: readymade
 system: metod
 unit_type: base
