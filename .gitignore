@@ -1,0 +1,14 @@
+# Generated, disposable artifacts (rebuilt from YAML on demand)
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+*.swp

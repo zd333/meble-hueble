@@ -1,0 +1,5 @@
+id: kitchen
+name: "Kitchen"
+room: kitchen
+cabinets: [d60-base]
+layout: {}   # relative placement notes; per-cabinet positions live on the cabinet

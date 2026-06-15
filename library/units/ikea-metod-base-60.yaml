@@ -1,0 +1,18 @@
+# Reusable ready-made unit: IKEA METOD base cabinet, nominal 60×60×80 cm.
+# Dimensions are ACTUAL mm (nominal != actual — see docs/ikea-metod-pax-reference.md).
+id: ikea-metod-base-60
+name: "IKEA METOD base cabinet 60"
+kind: readymade
+system: metod
+unit_type: base
+nominal_size: "60x60x80"
+dimensions: { width: 600, depth: 590, height: 800 }
+depth_with_rail: 600
+panel_thickness: 18
+leg_height: 80
+plinth_height: 80
+rail_height_from_floor: 820
+mount_type: floor+rail
+color: "#F2F1ED"
+model_ref: null            # set to library/units/models/<file>.glb to render a real model instead of a box
+catalog: { article: "" }

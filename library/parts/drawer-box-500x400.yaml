@@ -1,0 +1,55 @@
+# Reusable sub-assembly: a confirmat drawer box, 500 deep × 400 outer width.
+# Ball-bearing slides need 12.7 mm/side, so a 400 outer box fits a cabinet opening ≈ 425 mm → a
+# ~450–460 mm cabinet. RESIZE the width for other openings (box outer = internal − 25.4): e.g. for the
+# 600 example cabinet (internal 564) use ~538 outer → front/back length 502, bottom 502 × 464.
+# Same shape as a cabinet (panels + assembly). Referenced by cabinet.parts[]; panels flow in ×quantity.
+id: drawer-box-500x400
+name: "Drawer box 500×400 (confirmat, ~450 cabinet)"
+type: drawer-box
+defaults: { material: w980-18, edgeband: eb-w980-1 }
+
+panels:
+  - id: side
+    name: "Drawer side"
+    role: side
+    width: 500            # depth
+    height: 150
+    quantity: 2
+    grain: width
+    edge_banding: { edges: { 1: eb-w980-1 }, glue_type: long }   # band the top edge
+
+  - id: front-back
+    name: "Front/back (inner)"
+    role: front-back
+    width: 364            # 400 outer − 2×18 (between the sides)
+    height: 150
+    quantity: 2
+    grain: width
+    edge_banding: { edges: { 1: eb-w980-1 }, glue_type: long }
+
+  - id: bottom
+    name: "Drawer bottom (HDF)"
+    role: back
+    material: hdf-3
+    width: 364            # between sides
+    height: 464           # between front & back: 500 − 2×18 (captured)
+    quantity: 1
+    grain: any
+    edge_banding: {}      # HDF bottom — no banding
+
+assembly:
+  fittings:
+    - id: cf-fl
+      hardware: confirmat-7x50
+      through: side
+      into: front-back
+      seam: { through_edge: 4, into_edge: 2 }
+      at: [50, 100]       # ≥50 mm from each end of the 150 mm edge
+    - id: cf-fr
+      hardware: confirmat-7x50
+      through: side
+      into: front-back
+      seam: { through_edge: 2, into_edge: 4 }
+      at: [50, 100]
+  hardware:
+    - { ref: slide-bb-500, quantity: 1 }   # one pair of slides

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>meble — 3D viewer</title>
+<style>
+  :root { --bg:#eceff1; --panel:rgba(255,255,255,.94); --ink:#263238; --muted:#78909c; --accent:#1565c0; }
+  * { box-sizing: border-box; }
+  body { margin:0; overflow:hidden; font-family:-apple-system,Segoe UI,Roboto,sans-serif; color:var(--ink); background:var(--bg); }
+  canvas { display:block; }
+  #ui { position:absolute; top:12px; left:12px; width:250px; max-height:calc(100vh - 24px); overflow:auto;
+        background:var(--panel); border-radius:10px; padding:12px 14px; box-shadow:0 4px 18px rgba(0,0,0,.15); font-size:13px; }
+  #ui h1 { font-size:14px; margin:0 0 2px; }
+  #ui .sub { color:var(--muted); font-size:11px; margin-bottom:10px; }
+  #ui .group { margin:10px 0; }
+  #ui .label { font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin-bottom:5px; }
+  .btn { display:inline-block; padding:4px 8px; margin:2px 3px 2px 0; border:1px solid #cfd8dc; border-radius:6px;
+         background:#fff; cursor:pointer; font-size:12px; }
+  .btn:hover { border-color:var(--accent); color:var(--accent); }
+  #panels { border-top:1px solid #eceff1; margin-top:8px; padding-top:6px; }
+  .row { display:flex; align-items:center; gap:6px; padding:2px 0; font-size:12px; }
+  .row .sw { width:11px; height:11px; border-radius:2px; border:1px solid #b0bec5; flex:0 0 auto; }
+  .row .nm { cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .row .nm:hover { color:var(--accent); text-decoration:underline; }
+  input[type=range] { width:100%; }
+  .label3d { background:rgba(38,50,56,.86); color:#fff; font-size:11px; padding:2px 6px; border-radius:4px;
+             white-space:nowrap; pointer-events:none; }
+  .label3d .dim { color:#b0bec5; }
+  #hint { position:absolute; bottom:10px; left:12px; color:var(--muted); font-size:11px; }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="ui">
+  <h1 id="title">meble</h1>
+  <div class="sub" id="subtitle"></div>
+
+  <div class="group">
+    <div class="label">View</div>
+    <span class="btn" data-view="front">Front</span><span class="btn" data-view="back">Back</span>
+    <span class="btn" data-view="left">Left</span><span class="btn" data-view="right">Right</span>
+    <span class="btn" data-view="top">Top</span><span class="btn" data-view="iso">Iso</span>
+  </div>
+
+  <div class="group">
+    <div class="label">Exploded</div>
+    <input type="range" id="explode" min="0" max="1" step="0.01" value="0" />
+  </div>
+
+  <div class="group">
+    <label class="row"><input type="checkbox" id="labels" /> Show all labels</label>
+    <label class="row"><input type="checkbox" id="edges" checked /> Show edges</label>
+    <span class="btn" id="showall">Show all panels</span>
+  </div>
+
+  <div id="panels"><div class="label">Panels</div></div>
+</div>
+<div id="hint">drag = rotate · scroll = zoom · right-drag = pan · hover a panel for its size</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+
+const SCENE = /*SCENE_JSON*/;
+
+// scene is Z-up (height); three.js is Y-up. Remap (x,y,z) -> (x, z, -y).
+const toThree = (v) => [v[0], v[2], -v[1]];
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const labelRenderer = new CSS2DRenderer();
+labelRenderer.setSize(window.innerWidth, window.innerHeight);
+labelRenderer.domElement.style.position = 'absolute';
+labelRenderer.domElement.style.top = '0';
+labelRenderer.domElement.style.pointerEvents = 'none';
+document.body.appendChild(labelRenderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xeceff1);
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100000);
+
+scene.add(new THREE.AmbientLight(0xffffff, 0.65));
+const key = new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(1, 2, 1.5); scene.add(key);
+const fill = new THREE.DirectionalLight(0xffffff, 0.8); fill.position.set(-1, 0.5, -1); scene.add(fill);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x9e9e9e, 0.4));
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+
+// ---- build boxes ----
+const meshes = [];
+const group = new THREE.Group();
+scene.add(group);
+const bbox = new THREE.Box3();
+
+SCENE.objects.forEach((o, i) => {
+  const s = toThree(o.size).map(Math.abs);
+  const c = toThree(o.center);
+  const geom = new THREE.BoxGeometry(s[0], s[1], s[2]);
+  const col = new THREE.Color(o.color ? o.color[0] : .8, o.color ? o.color[1] : .8, o.color ? o.color[2] : .8);
+  const mat = new THREE.MeshStandardMaterial({ color: col, roughness: 0.65, metalness: 0.0 });
+  const mesh = new THREE.Mesh(geom, mat);
+  mesh.position.set(c[0], c[1], c[2]);
+  mesh.userData = { o, baseColor: col.clone(), home: mesh.position.clone(), size: s };
+
+  const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geom),
+    new THREE.LineBasicMaterial({ color: 0x546e7a }));
+  mesh.add(edges); mesh.userData.edges = edges;
+
+  // label
+  const div = document.createElement('div');
+  div.className = 'label3d';
+  const cut = o.cut ? `<span class="dim"> ${o.cut[0]}×${o.cut[1]}${o.cut[2] ? '×' + o.cut[2] : ''}</span>` : '';
+  div.innerHTML = (o.panel || o.name) + cut;
+  const label = new CSS2DObject(div);
+  label.position.set(0, 0, 0);
+  label.visible = false;
+  mesh.add(label);
+  mesh.userData.label = label;
+
+  group.add(mesh);
+  meshes.push(mesh);
+  bbox.expandByObject(mesh);
+});
+
+const center = bbox.getCenter(new THREE.Vector3());
+const size = bbox.getSize(new THREE.Vector3());
+const maxDim = Math.max(size.x, size.y, size.z) || 1000;
+controls.target.copy(center);
+
+// grid on the floor (three y = scene height 0)
+const grid = new THREE.GridHelper(maxDim * 3, 24, 0xb0bec5, 0xcfd8dc);
+grid.position.set(center.x, bbox.min.y, center.z);
+scene.add(grid);
+
+// explode normals: thinnest local axis, pushed away from centroid
+meshes.forEach(m => {
+  const s = m.userData.size;
+  const axis = s[0] <= s[1] && s[0] <= s[2] ? 0 : (s[1] <= s[2] ? 1 : 2);
+  const dir = new THREE.Vector3();
+  const comp = m.position.toArray()[axis] - center.toArray()[axis];
+  dir.setComponent(axis, comp >= 0 ? 1 : -1);
+  m.userData.explodeDir = dir;
+});
+
+// ---- camera presets ----
+function setView(which) {
+  const d = maxDim * 2.2;
+  const p = { front: [0, 0, d], back: [0, 0, -d], left: [-d, 0, 0], right: [d, 0, 0],
+              top: [0, d, 0.0001], iso: [d * 0.8, d * 0.7, d * 0.8] }[which] || [d, d, d];
+  camera.position.set(center.x + p[0], center.y + p[1], center.z + p[2]);
+  controls.target.copy(center);
+  controls.update();
+}
+document.querySelectorAll('[data-view]').forEach(b =>
+  b.addEventListener('click', () => setView(b.dataset.view)));
+
+// ---- exploded ----
+const explodeEl = document.getElementById('explode');
+function applyExplode() {
+  const f = parseFloat(explodeEl.value) * maxDim * 0.5;
+  meshes.forEach(m => m.position.copy(m.userData.home).addScaledVector(m.userData.explodeDir, f));
+}
+explodeEl.addEventListener('input', applyExplode);
+
+// ---- visibility / isolate ----
+function setVisible(m, v) { m.visible = v; }
+function isolate(target) { meshes.forEach(m => setVisible(m, m === target)); syncRows(); }
+function showAll() { meshes.forEach(m => setVisible(m, true)); syncRows(); }
+document.getElementById('showall').addEventListener('click', showAll);
+
+// ---- panel list ----
+const panelsEl = document.getElementById('panels');
+const rows = [];
+meshes.forEach(m => {
+  const o = m.userData.o;
+  const row = document.createElement('div'); row.className = 'row';
+  const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = true;
+  cb.addEventListener('change', () => { setVisible(m, cb.checked); });
+  const sw = document.createElement('span'); sw.className = 'sw';
+  sw.style.background = '#' + m.userData.baseColor.getHexString();
+  const nm = document.createElement('span'); nm.className = 'nm';
+  nm.textContent = o.panel || o.name; nm.title = 'click to isolate';
+  nm.addEventListener('click', () => isolate(m));
+  row.append(cb, sw, nm); panelsEl.appendChild(row);
+  rows.push({ m, cb });
+});
+function syncRows() { rows.forEach(r => r.cb.checked = r.m.visible); }
+
+// ---- labels + hover ----
+const labelsEl = document.getElementById('labels');
+const edgesEl = document.getElementById('edges');
+edgesEl.addEventListener('change', () => meshes.forEach(m => m.userData.edges.visible = edgesEl.checked));
+
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+let hovered = null;
+renderer.domElement.addEventListener('pointermove', (e) => {
+  pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+  pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(pointer, camera);
+  const hits = raycaster.intersectObjects(meshes.filter(m => m.visible), false);
+  const hit = hits.length ? hits[0].object : null;
+  if (hit !== hovered) {
+    if (hovered) hovered.material.emissive.setHex(0x000000);
+    hovered = hit;
+    if (hovered) hovered.material.emissive.setHex(0x16407a);
+  }
+});
+
+function updateLabels() {
+  const showAllLabels = labelsEl.checked;
+  meshes.forEach(m => { m.userData.label.visible = m.visible && (showAllLabels || m === hovered); });
+}
+
+// ---- render loop ----
+setView('iso');
+document.getElementById('title').textContent = 'meble — ' + (SCENE.name || 'scene');
+document.getElementById('subtitle').textContent = SCENE.objects.length + ' panels · mm';
+
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  updateLabels();
+  renderer.render(scene, camera);
+  labelRenderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  labelRenderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>

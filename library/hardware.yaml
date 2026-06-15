@@ -1,0 +1,56 @@
+# Fasteners / fittings + their DRILL PATTERNS. Referenced by id from cabinet.assembly.fittings[].hardware.
+# `drill` is what `meble fit` stamps onto the joined panels. Numbers follow the supplier convention
+# (see docs/cabinet-construction.md). Verify order-critical ones against the live editor.
+hardware:
+  - id: confirmat-7x50
+    type: confirmat
+    name: "Confirmat 7×50"
+    drill:
+      face: { dia: 8, countersink: true }   # Ø8 surface clearance, through the passing panel
+      edge: { dia: 4, depth: 35 }           # Ø4 pilot into the end-grain of the mating panel
+    end_margin: 50                          # keep first/last screw >= this from the panel end
+
+  - id: minifix-15
+    type: minifix
+    name: "Minifix cam 15 (pin 34+11)"
+    drill:
+      cam:   { dia: 15, depth: 13 }         # cam housing in the rail/shelf face
+      dowel: { dia: 8, depth: 15 }          # alignment dowel beside the cam
+      bolt:  { dia: 5 }                     # connecting-bolt hole in the side edge
+
+  - id: rafix-20
+    type: rafix
+    name: "Rafix 20"
+    drill:
+      housing: { dia: 20, depth: 14 }
+      bolt:    { dia: 5 }
+
+  - id: dowel-8x30
+    type: dowel
+    name: "Dowel Ø8×30"
+    drill:
+      face: { dia: 8, depth: 15 }
+      edge: { dia: 8, depth: 15 }
+
+  - id: shelf-pin-5
+    type: shelf-pin
+    name: "Shelf pin Ø5"
+    drill:
+      hole: { dia: 5, depth: 13 }           # on the 32 mm grid, 37 mm setback
+
+  # ---- used once FRONTS / DRAWERS are added (defined now as ready knowledge) ----
+  - id: hinge-clip-110
+    type: hinge
+    name: "Concealed hinge clip 110°"
+    drill:
+      cup:   { dia: 35, depth: 12, boring: 5 }   # on the door (front)
+      plate: { pattern: system32, screws: 2 }    # on the cabinet side, 37 mm setback
+
+  - id: slide-bb-500
+    type: slide
+    name: "Ball-bearing slide 500 (full extension)"
+    length: 500
+    side_clearance: 12.7                          # per side -> drawer box width = internal - 25.4
+    drill:
+      cabinet: { pattern: system32, front_setback: 37 }
+      drawer:  { pattern: system32 }

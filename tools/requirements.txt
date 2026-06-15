@@ -1,0 +1,2 @@
+ruamel.yaml>=0.18    # round-trip YAML so `meble fit` can stamp holes without clobbering comments
+reportlab>=4.0       # PDF spec sheets with vector diagrams

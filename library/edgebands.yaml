@@ -1,0 +1,26 @@
+# Edge bands. Referenced by id from panel.edge_banding. Match decor_code + texture to the board.
+# Only 1 mm and 2 mm variants exist in the editor (carcass ~1 mm, fronts 2 mm).
+edgebands:
+  - id: eb-w980-1
+    name: "ABS White W980 1mm"
+    decor_code: W980
+    texture: ST2
+    thickness: 1
+
+  - id: eb-w980-2
+    name: "ABS White W980 2mm"
+    decor_code: W980
+    texture: ST2
+    thickness: 2
+
+  - id: eb-u727-1
+    name: "ABS Grey Dust U727 1mm"
+    decor_code: U727
+    texture: ST9
+    thickness: 1
+
+  - id: eb-h1334-1
+    name: "ABS Sorano Oak H1334 1mm"
+    decor_code: H1334
+    texture: ST9
+    thickness: 1
