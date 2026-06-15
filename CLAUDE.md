@@ -62,7 +62,7 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
 
 | Fitting               | Face hole              | Edge hole | Notes |
 |-----------------------|------------------------|-----------|-------|
-| Confirmat (l=45)      | Ø8 + countersink       | Ø5 d≈35   | default carcass joint; ≥50 mm from panel end |
+| Confirmat (l=45)      | Ø8 + countersink       | Ø4 d≈35   | default carcass joint; edge Ø4 (editor allows 4/8); ≥50 mm from end |
 | Minifix 15            | Ø15 cam + Ø8 dowel     | Ø5 bolt   | knock-down, hidden |
 | Rafix 20              | Ø20 housing (~14 deep) | Ø5 bolt   | faster, pricier |
 | Dowel Ø8 (l=30)       | Ø8                     | Ø8        | alignment |

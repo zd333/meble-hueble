@@ -6,10 +6,8 @@ hardware:
     type: confirmat
     name: "Konfirmat 7×50"
     drill:
-      face: { dia: 8, countersink: true }   # ORDERED: Ø8 surface clearance, through the passing panel
-    # The Ø5 edge pilot is drilled by the assembler / self-tapped — the editor's manual EDGE drilling
-    # supports only Ø4/Ø8, so a Ø5 confirmat pilot is NOT ordered as a CNC edge hole.
-    edge_pilot: { dia: 5, depth: 35, by: assembler }
+      face: { dia: 8, countersink: true }   # Ø8 surface clearance, through the passing panel
+      edge: { dia: 4, depth: 35 }           # Ø4 pilot into the end-grain of the mating panel
     end_margin: 50                          # keep first/last screw >= this from the panel end
 
   - id: minifix-15

@@ -127,7 +127,43 @@ panels:
   height: 560             # depth
   edge_banding: {edges: {1: eb-w980-1}, glue_type: long}         # front edge banded
 
-  holes: []
+  holes:
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-bot-l
+  - face: edge4
+    from: 280
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-bot-l
+  - face: edge4
+    from: 510
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-bot-l
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-bot-r
+  - face: edge2
+    from: 280
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-bot-r
+  - face: edge2
+    from: 510
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-bot-r
 - id: wieniec-gorny
   name: "Wieniec górny"
   element_type: panel
@@ -135,7 +171,43 @@ panels:
   width: 564
   height: 560
   edge_banding: {edges: {1: eb-w980-1}, glue_type: long}
-  holes: []
+  holes:
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-top-l
+  - face: edge4
+    from: 280
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-top-l
+  - face: edge4
+    from: 510
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-top-l
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-top-r
+  - face: edge2
+    from: 280
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-top-r
+  - face: edge2
+    from: 510
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-top-r
 - id: polka
   name: "Półka"
   element_type: panel

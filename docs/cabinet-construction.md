@@ -59,10 +59,11 @@ the frameless / 32 mm convention and the supplier default. Therefore:
 ### Confirmat screw — DEFAULT cheap method
 - Screw: generic **Ø7 × 50 mm**; **supplier machines for l = 45 mm confirmats**. Self-tapping in
   chipboard, no extra hardware, head visible on the outside (cap if exposed).
-- Drilling **(supplier)**:
-  - Through the **face** of the joining panel: **Ø8 mm** clearance hole, countersunk for the head
-    (generic guides say Ø7 — supplier uses Ø8).
-  - Into the **edge** (end-grain) of the mating panel: **Ø5 mm** pilot, depth ≈ 35–40 mm.
+- Drilling:
+  - Through the **face** of the joining panel: **Ø8 mm** clearance hole, countersunk for the head.
+  - Into the **edge** (end-grain) of the mating panel: **Ø4 mm** pilot, depth ≈ 35–40 mm. (Generic
+    guides cite Ø5, but the meble.pl editor's edge drilling offers only Ø4/Ø8 and **Ø4 works fine for a
+    standard confirmat** — use Ø4.)
   - Edge hole **centered ~8–9 mm** in an 18 mm panel; first/last screw **≥ 50 mm from the panel end**.
 - Use: primary carcass assembly.
 
@@ -147,7 +148,7 @@ from back; long-hang clear 1600–1800; double-hang 2 × 900–1000; sliding doo
 
 | Fitting               | Face hole              | Edge hole | Notes |
 |-----------------------|------------------------|-----------|-------|
-| Confirmat (l=45)      | Ø8 + countersink       | Ø5        | seam screw; ≥50 mm from panel end |
+| Confirmat (l=45)      | Ø8 + countersink       | Ø4        | seam screw; edge Ø4 (editor 4/8); ≥50 mm from panel end |
 | Minifix 15 (pin 34+11)| Ø15 cam + Ø8 dowel     | Ø5 bolt   | cam in rail/shelf, bolt in side |
 | Rafix 20              | Ø20 housing (~14 deep) | Ø5 bolt   | faster KD, pricier |
 | Dowel Ø8 (l=30)       | Ø8                     | Ø8        | alignment; centered ~9 mm in 18 mm |
