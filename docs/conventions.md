@@ -41,7 +41,7 @@ always a mistake (the linter flags it).
 | `side-left`     | left              | **2 (right)**      | mirror of side-right |
 | `side-right`    | right             | **4 (left)**       | mirror of side-left |
 | `bottom`        | down              | **1 (top)**        | width = internal (W−2t), height = depth |
-| `top`           | up                | **1 (top)**        | |
+| `top`           | **down**          | **1 (top)**        | see the note below — `inner` is its UP face |
 | `shelf`         | (symmetric)       | **1 (top)**        | faces equivalent; use `inner` as reference |
 | `back`          | toward wall       | —                  | usually unbanded; ~3 mm HDF |
 | `divider` / other | —               | —                  | declare explicitly |
@@ -49,6 +49,23 @@ always a mistake (the linter flags it).
 So a `side-left` is entered with its **outer (left-facing) face**, cabinet front on the **right (edge 2)**,
 cabinet top at the top (edge 1). The `side-right` is its **mirror**: outer faces right, cabinet front on
 the **left (edge 4)**.
+
+### Horizontals: which face is up
+
+For a horizontal panel (`top` / `bottom` / `shelf` / `divider`) the frame is pinned by its joinery:
+**edge 4 is the cabinet LEFT, edge 2 the RIGHT, edge 1 the FRONT** (a left-side fitting joins into the
+horizontal's edge 4 — see `d60-base`). With the panel frame being right-handed and read from the outer
+face, those two facts **force the outer face to point DOWN** on *every* horizontal. So:
+
+- `bottom`: `outer` = down, `inner` = up (toward the cavity) — as you'd expect.
+- **`top`: `outer` = down (toward the cavity), `inner` = UP.** Counter-intuitive, but it is the same
+  frame; a top panel is not mirrored relative to a bottom panel. To bore a cam or a pin hole into the
+  **underside** of a top panel, use **`outer`**.
+- `shelf`: both faces are in the cavity, so it only matters for keeping a hole set self-consistent.
+
+Most horizontals are symmetric about their vertical axis, so the physical part can be flipped at
+assembly time and still fit — but the **face you name here is the face the supplier drills**, so name the
+one you actually want machined.
 
 ## Left & right sides are MIRROR parts
 

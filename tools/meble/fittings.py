@@ -4,9 +4,10 @@ A fitting references the panels it joins. Applying it computes the drill holes f
 drill pattern and writes them onto those panels, tagged with `src: <fitting id>`. Re-applying is safe:
 only holes whose `src` matches a (re)applied fitting are replaced; manual holes (no `src`) are untouched.
 
-v1 implements butt-joint hardware that has both a `face` and an `edge` drill pattern (confirmat, dowel).
-Cam/cup/slide hardware (minifix, hinge, slide) is recognised but stamping is deferred (warn + skip) —
-they come into play with drawers/fronts in a later iteration.
+v1 implements butt-joint hardware that has both a `face` and an `edge` drill pattern (confirmat, dowel),
+and only where the seam runs along one of the through panel's own edges (`seam.through_edge`). A mid-face
+T-joint — an internal gable landing on a top/bottom panel, say — is recognised but skipped (warn), as is
+cam/cup/slide hardware (minifix, hinge, slide); those holes are hand-written for now.
 """
 from __future__ import annotations
 
@@ -126,11 +127,20 @@ def apply_fittings(cabinet: dict, hardware_by_id: dict, boards_by_id: dict,
                 break
         else:
             drill = hw.get("drill", {})
-            if ("face" in drill or "edge" in drill) and f.get("through") and f.get("into"):
+            seam = f.get("seam") or {}
+            is_butt = ("face" in drill or "edge" in drill) and f.get("through") and f.get("into")
+            if is_butt and seam.get("through_edge") is not None:
                 res = _stamp_butt_joint(f, panels_by_id, hw, boards_by_id)
                 for pid, holes in res.items():
                     stamped.setdefault(pid, []).extend(holes)
                 applied.add(fid)
+            elif is_butt:
+                # No `through_edge` -> the seam is not along one of the through panel's own edges, so the
+                # screw meets it mid-face (a T-joint, e.g. an internal gable landing on a shelf/top). The
+                # perimeter maths below does not apply; those holes are hand-written.
+                warnings.append(
+                    f"fitting '{fid}': seam has no `through_edge`, so this is a mid-face (T) joint — "
+                    f"stamping it is not implemented; its holes must be hand-written (skipped)")
             else:
                 warnings.append(
                     f"fitting '{fid}': stamping for hardware type '{hw.get('type')}' not implemented "

@@ -18,6 +18,27 @@ _yaml = YAML(typ="safe")
 WIDTH_EDGES = (1, 3)   # top + bottom — their length equals the panel width
 HEIGHT_EDGES = (2, 4)  # right + left — their length equals the panel height
 
+# Bore-diameter colour palette — shared by the PDF spec sheets and the 3D viewer so a Ø5 is the same
+# green on paper and on screen. Keep it here (not in a renderer) so the two can never drift apart.
+DIA_COLORS = {3: "#00B8D4", 4: "#1565C0", 5: "#2E7D32", 8: "#E65100",
+              10: "#6A1B9A", 15: "#795548", 20: "#C2185B", 35: "#B71C1C"}
+DIA_COLOR_DEFAULT = "#455A64"
+
+
+def dia_color(dia) -> str:
+    return DIA_COLORS.get(int(dia) if dia else 0, DIA_COLOR_DEFAULT)
+
+
+# Bright palette assigned per edge-band id (deterministic: sorted order). Also shared by the PDF and the
+# 3D viewer, so a band is the same colour in both.
+BAND_PALETTE = ["#D81B60", "#8E24AA", "#3949AB", "#00897B", "#7CB342",
+                "#FB8C00", "#6D4C41", "#00ACC1", "#C0CA33", "#5E35B1"]
+BAND_COLOR_DEFAULT = "#90A4AE"
+
+
+def band_color_map(band_ids) -> dict:
+    return {bid: BAND_PALETTE[i % len(BAND_PALETTE)] for i, bid in enumerate(sorted(band_ids))}
+
 
 def load_yaml(path: Path) -> Any:
     with open(path, "r", encoding="utf-8") as f:
@@ -148,6 +169,26 @@ class Hole:
     @property
     def edge_no(self) -> Optional[int]:
         return int(self.face[4:]) if self.is_edge else None
+
+    def edge_positions(self) -> list:
+        """Expand a multi EDGE hole into its individual distances-from-0."""
+        if self.type == "multi" and self.count and self.spacing:
+            return [(self.frm or 0) + i * self.spacing for i in range(self.count)]
+        return [self.frm or 0]
+
+    def surface_positions(self) -> list:
+        """Expand a multi SURFACE hole into its individual (x, y) points."""
+        n = self.count if (self.type == "multi" and self.count) else 1
+        sp = self.spacing or 0
+        pts = []
+        for i in range(n):
+            x, y = self.x or 0, self.y or 0
+            if self.direction == "x":
+                x += i * sp
+            elif self.direction == "y":
+                y += i * sp
+            pts.append((x, y))
+        return pts
 
 
 @dataclass

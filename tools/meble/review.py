@@ -17,6 +17,14 @@ from .model import Cabinet, Project
 FRONT_EDGE = {"side-left": 2, "side-right": 4, "bottom": 1, "top": 1, "shelf": 1}
 VERTICAL_EDGES = {2, 4}
 
+# which face points toward the cavity, per role — default is "inner"; a `top` panel is the one
+# exception, since its OUTER face is the one facing down into the cabinet (docs/conventions.md,
+# "Horizontals: which face is up"). Roles with BOTH faces facing a cavity (an internal divider with a
+# compartment on each side, or a shelf) have no visible face at all, so the wrong-face heuristic — which
+# assumes "outer" means "visible exterior" — doesn't apply; skip them outright.
+CAVITY_FACE = {"top": "outer"}
+NO_VISIBLE_FACE_ROLES = {"gable", "shelf"}
+
 
 @dataclass
 class Finding:
@@ -69,15 +77,18 @@ def _review_cabinet(proj: Project, cab: Cabinet, out: list) -> None:
 
     for p in panels:
         t = proj.panel_thickness(p)
+        cavity_face = CAVITY_FACE.get(p.role, "inner")
+        check_face = p.role not in NO_VISIBLE_FACE_ROLES
         for h in p.holes:
             if h.is_surface:
-                if h.dia == 5 and h.depth != "through" and h.face == "outer":
+                if check_face and h.dia == 5 and h.depth != "through" and h.face != cavity_face:
                     add("warn", "wrong-face",
-                        f"'{p.id}': Ø5 blind hole on the OUTER (visible) face — shelf-pin/system holes "
-                        f"normally go on the INNER face.")
-                if h.dia == 8 and h.depth == "through" and h.face == "inner" and h.src:
+                        f"'{p.id}': Ø5 blind hole on the {h.face.upper()} face — shelf-pin/system holes "
+                        f"normally go toward the cavity ({cavity_face.upper()} here).")
+                if check_face and h.dia == 8 and h.depth == "through" and h.face == cavity_face and h.src:
                     add("warn", "wrong-face",
-                        f"'{p.id}': Ø8 through-hole (confirmat) on the INNER face — heads normally on OUTER.")
+                        f"'{p.id}': Ø8 through-hole (confirmat) on the {cavity_face.upper()} face — heads "
+                        f"normally face away from the cavity.")
                 if h.depth != "through" and isinstance(h.depth, (int, float)) and h.depth >= t:
                     add("error", "breakthrough",
                         f"'{p.id}': blind hole depth {h.depth} ≥ panel thickness {t} — it breaks through. "

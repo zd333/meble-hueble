@@ -59,6 +59,17 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   przód (front), inner → tył (back). Confirmat heads → outer; shelf-pin/System-32/hinge holes → inner.
 - **Left & right sides are MIRROR parts** (front edge = 2 on the left, 4 on the right; asymmetric holes
   mirror too) — never identical. Full table + edge cases: **`docs/conventions.md`** (read before drilling).
+- **Every dimension is the FINISHED size — banding is included, never added on top.** The size you type
+  into the meble.pl editor is the finished element, so YAML sizes go in as-is: **never** subtract band
+  thickness on banded axes, and never inflate a panel to "leave room" for the band. (Confirmed against
+  the live editor.) So e.g. two 417-wide doors + a 2 mm gap really do fill an 836 carcass.
+- **Pick the joint by whether the screw head is ever seen.** Default to **confirmat** wherever the head
+  lands on a face nobody looks at: the underside of a bottom/divider, the top face of a top panel, an
+  internal gable's end joints, anything inside a sealed boxing, a carcass face against a wall. Confirmats
+  are cheaper than cam fittings, faster to assemble, need no Ø15 cam + Ø8 dowel bores (so far less to
+  type into the editor), and pull a T-joint tighter. Reach for **minifix/rafix** only when the head would
+  otherwise sit on a show face — or when the joint is meant to be taken apart repeatedly, since a
+  confirmat's Ø4 pilot strips after a few cycles.
 - Edge-band thickness only **1 or 2 mm**; glue default **long** ("kryjące długie").
 - `grain` default **forces orientation** (panels never rotate). `any|width|height` → CSV `Słoje` 0|2|1.
 - Carcass (top/bottom **between** sides): **`top/bottom length = width − 2×thickness`** (e.g. `W−36`).

@@ -19,7 +19,8 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
-from .model import Cabinet, Panel, Project
+from .model import (BAND_COLOR_DEFAULT, Cabinet, DIA_COLORS, DIA_COLOR_DEFAULT, Panel, Project,
+                    band_color_map)
 
 MM = 72.0 / 25.4
 PW, PH = A4
@@ -71,16 +72,10 @@ C_BAND = colors.HexColor("#6A1B9A")    # edge-banding section
 C_DRILL = colors.HexColor("#BF360C")   # drilling sections
 C_GREY = colors.HexColor("#9E9E9E")
 
-# static palette by bore diameter — convenient, consistent colours for the common holes
-DIA_COLORS = {
-    3: "#00B8D4", 4: "#1565C0", 5: "#2E7D32", 8: "#E65100",
-    10: "#6A1B9A", 15: "#795548", 20: "#C2185B", 35: "#B71C1C",
-}
-_DIA_DEFAULT = "#455A64"
+# bore-diameter palette lives in model.py — shared with the 3D viewer (same colour on paper and screen)
+_DIA_DEFAULT = DIA_COLOR_DEFAULT
 
-# bright palette assigned per edge-band id (deterministic: sorted order), consistent across all panels
-_BAND_PALETTE = ["#D81B60", "#8E24AA", "#3949AB", "#00897B", "#7CB342",
-                 "#FB8C00", "#6D4C41", "#00ACC1", "#C0CA33", "#5E35B1"]
+# per-edge-band palette lives in model.py — shared with the 3D viewer
 BAND_COLORS: dict[str, str] = {}       # band id -> hex, populated in export_pdf
 
 # bright palette assigned per board (faded to a pastel for the plate fill); arbitrary, not the real decor
@@ -94,7 +89,7 @@ def _dia_color(dia) -> colors.Color:
 
 
 def _band_color(band_id) -> colors.Color:
-    return colors.HexColor(BAND_COLORS.get(band_id, "#90A4AE"))
+    return colors.HexColor(BAND_COLORS.get(band_id, BAND_COLOR_DEFAULT))
 
 
 def _lighten(hex_color: str, amt: float) -> colors.Color:
@@ -115,25 +110,13 @@ def _depth_str(d) -> str:
     return "through" if d == "through" else f"{d} mm"
 
 
-# ---- hole instance enumeration (expand multi for the diagram) ----
+# ---- hole instance enumeration (expand multi for the diagram) — shared with the 3D viewer ----
 def _edge_positions(h) -> list:
-    if h.type == "multi" and h.count and h.spacing:
-        return [(h.frm or 0) + i * h.spacing for i in range(h.count)]
-    return [h.frm or 0]
+    return h.edge_positions()
 
 
 def _surface_positions(h) -> list:
-    n = h.count if (h.type == "multi" and h.count) else 1
-    sp = h.spacing or 0
-    pts = []
-    for i in range(n):
-        x, y = h.x or 0, h.y or 0
-        if h.direction == "x":
-            x += i * sp
-        elif h.direction == "y":
-            y += i * sp
-        pts.append((x, y))
-    return pts
+    return h.surface_positions()
 
 
 # ---- small primitives ----
@@ -391,8 +374,7 @@ def export_pdf(proj: Project, cabinets: list[Cabinet], out_path: Path, title: st
     if not _register_fonts():
         print("  warn: no Unicode TTF found — Polish characters may not render (install Arial/DejaVu).")
     # deterministic colours across all panels (sorted ids -> palette)
-    for i, bid in enumerate(sorted(proj.edgebands)):
-        BAND_COLORS[bid] = _BAND_PALETTE[i % len(_BAND_PALETTE)]
+    BAND_COLORS.update(band_color_map(proj.edgebands.keys()))
     for i, bid in enumerate(sorted(proj.boards)):
         MATERIAL_COLORS[bid] = _MATERIAL_PALETTE[i % len(_MATERIAL_PALETTE)]
 

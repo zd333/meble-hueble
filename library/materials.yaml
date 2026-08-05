@@ -28,6 +28,16 @@ boards:
     grain_directional: true     # woodgrain — default grain runs along the panel height
     color: "#C9A877"
 
+  - id: u604-18
+    name: "Egger U604 ST9"       # TODO confirm the decor NAME + texture against the meble.pl board list
+    vendor: Egger
+    decor_code: U604
+    texture: ST9                 # TODO confirm (ST9 is the usual finish for the U-series unis)
+    thickness: 18
+    grain_directional: false     # uni decor — but ST9 has a directional emboss, so we still force
+                                 # orientation on the tall visible panels (grain: height)
+    color: "#CFCBC4"             # TODO placeholder tint for the 3D viewer only — not the real decor
+
   - id: hdf-3
     name: "White HDF 3mm (back)"
     vendor: generic

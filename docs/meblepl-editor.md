@@ -17,7 +17,9 @@ format. Source: user's description of the live editor + the two provided PRO100 
 ## Per-panel fields (what the PDF spec sheet must mirror, in entry order)
 
 1. **Name** (free text; does not affect the cut).
-2. **Size**: width + height. **No grain-direction / rotation option** — panels keep their orientation
+2. **Size**: width + height. This is the **FINISHED size — the edge band is included, not added on top**
+   (confirmed against the live editor). Enter our YAML dimensions verbatim; never subtract the band
+   thickness on a banded axis. **No grain-direction / rotation option** — panels keep their orientation
    (width is always width). The cutting engine does not rotate them.
 3. **Quantity**.
 4. **Edge banding:**
