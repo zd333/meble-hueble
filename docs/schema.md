@@ -80,6 +80,9 @@ Carries the **drill pattern** that fittings stamp. Shape varies by `type`:
   placement:               # optional, FOR VIZ ONLY (not order-relevant)
     pos: [0, 0, 0]         # min-corner in cabinet local frame (x=width, y=depth, z=height)
     rot: [0, 0, 0]         # Euler degrees; local panel frame W->X H->Y thickness->Z
+    step: [0, 0, 424]      # optional: draw all `quantity` copies, each offset by this from the last
+                           # (e.g. identical shelves on a pitch). Count comes from `quantity`, so the
+                           # two can't disagree; omit `step` and only ONE box is drawn.
 ```
 
 ### Hole (`panel.holes[]`)

@@ -23,7 +23,24 @@
   .row .sw { width:11px; height:11px; border-radius:2px; border:1px solid #b0bec5; flex:0 0 auto; }
   .row .nm { cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .row .nm:hover { color:var(--accent); text-decoration:underline; }
+  .row .ct { color:var(--muted); font-size:11px; flex:0 0 auto; }
+  .row .dot { width:11px; height:11px; border-radius:50%; flex:0 0 auto; box-sizing:border-box; }
+  .row .lb { flex:1; white-space:nowrap; }
+  #legend { margin-top:5px; }
+  .hd { font-size:10px; color:var(--muted); margin:4px 0 2px; }
+  /* collapsible sections — long lists (panels, bores, bands) start closed so the panel stays compact */
+  details { margin-top:6px; }
+  summary { cursor:pointer; list-style:none; display:flex; align-items:center; gap:5px; padding:3px 0;
+            font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted);
+            user-select:none; }
+  summary::-webkit-details-marker { display:none; }
+  summary::before { content:'▸'; font-size:9px; line-height:1; transition:transform .12s; }
+  details[open] > summary::before { transform:rotate(90deg); }
+  summary:hover { color:var(--accent); }
+  summary .n { margin-left:auto; text-transform:none; letter-spacing:0; }
   input[type=range] { width:100%; }
+  .slider { display:flex; align-items:center; gap:6px; }
+  .slider span { font-size:11px; color:var(--muted); white-space:nowrap; }
   .label3d { background:rgba(38,50,56,.86); color:#fff; font-size:11px; padding:2px 6px; border-radius:4px;
              white-space:nowrap; pointer-events:none; }
   .label3d .dim { color:#b0bec5; }
@@ -55,13 +72,38 @@
     <input type="range" id="explode" min="0" max="1" step="0.01" value="0" />
   </div>
 
+  <div class="group" id="bandbox">
+    <div class="label">Edge banding</div>
+    <label class="row"><input type="checkbox" id="bands" checked /> Show edge banding</label>
+    <div class="slider"><span>size ×<b id="bsval">3</b></span>
+      <input type="range" id="bandscale" min="1" max="10" step="0.5" value="3" /></div>
+    <details><summary>Bands <span class="n" id="bandcount"></span></summary>
+      <div id="bandlegend"></div>
+    </details>
+  </div>
+
+  <div class="group" id="drillbox">
+    <div class="label">Drilling</div>
+    <label class="row"><input type="checkbox" id="drills" checked /> Show drilling</label>
+    <label class="row"><input type="checkbox" id="xray" checked /> X-ray through boards</label>
+    <div class="slider"><span>min Ø <b id="dsval">12</b></span>
+      <input type="range" id="drillmin" min="0" max="40" step="1" value="12" /></div>
+    <details><summary>Bores <span class="n" id="drillcount"></span></summary>
+      <div id="legend"></div>
+    </details>
+  </div>
+
   <div class="group">
     <label class="row"><input type="checkbox" id="labels" /> Show all labels</label>
-    <label class="row"><input type="checkbox" id="edges" checked /> Show edges</label>
+    <label class="row"><input type="checkbox" id="edges" checked /> Show outlines</label>
     <span class="btn" id="showall">Show all panels</span>
   </div>
 
-  <div id="panels"><div class="label">Panels</div></div>
+  <div id="panels">
+    <details><summary>Panels <span class="n" id="panelcount"></span></summary>
+      <div id="panelrows"></div>
+    </details>
+  </div>
 </div>
 <div id="hint">drag = rotate · scroll = zoom · right-drag = pan · hover a panel for its size</div>
 
@@ -74,6 +116,10 @@ const SCENE = /*SCENE_JSON*/;
 
 // scene is Z-up (height); three.js is Y-up. Remap (x,y,z) -> (x, z, -y).
 const toThree = (v) => [v[0], v[2], -v[1]];
+
+// a panel entry with placement.step is drawn once per `quantity` copy — number them so the list and the
+// hover labels tell the copies apart
+const panelLabel = (o) => (o.panel || o.name) + (o.instances ? ` #${o.instance}/${o.instances}` : '');
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -123,7 +169,7 @@ SCENE.objects.forEach((o, i) => {
   const div = document.createElement('div');
   div.className = 'label3d';
   const cut = o.cut ? `<span class="dim"> ${o.cut[0]}×${o.cut[1]}${o.cut[2] ? '×' + o.cut[2] : ''}</span>` : '';
-  div.innerHTML = (o.panel || o.name) + cut;
+  div.innerHTML = panelLabel(o) + cut;
   const label = new CSS2DObject(div);
   label.position.set(0, 0, 0);
   label.visible = false;
@@ -155,6 +201,185 @@ meshes.forEach(m => {
   m.userData.explodeDir = dir;
 });
 
+// ---- edge banding ------------------------------------------------------------
+// One thin box per banded edge, parented to its panel so it follows that panel's visibility, isolate
+// state and explode offset. Panel sizes are FINISHED sizes (band included), so a strip lies INSIDE the
+// footprint: its visible face is flush with the panel edge and its thickness runs inward. `glue_type` is
+// already resolved upstream, so the covering edges run full length and the butting ones stop short —
+// you can read the corner treatment straight off the model. Colours match the PDF's band swatches.
+const meshByOwner = new Map(meshes.map(m => [m.userData.o.name, m]));
+const bandMeshes = [];
+const bandGroups = new Map();       // band id -> {name, thickness, color, mm, on, mat}
+const UNIT_BOX = new THREE.BoxGeometry(1, 1, 1);
+let bandScale = 3;
+
+(SCENE.bands || []).forEach(b => {
+  const owner = meshByOwner.get(b.owner);
+  if (!owner) return;
+  if (!bandGroups.has(b.band))
+    bandGroups.set(b.band, { name: b.band_name, thickness: b.thickness, color: b.color, mm: 0, on: true, key: b.band });
+  const g = bandGroups.get(b.band);
+  g.mm += b.length * (b.qty || 1);
+  if (!g.mat) {
+    const col = new THREE.Color(b.color);
+    g.mat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.25,
+                                             roughness: 0.5, metalness: 0.0 });
+  }
+
+  const along = new THREE.Vector3(...toThree(b.along)).normalize();
+  const normal = new THREE.Vector3(...toThree(b.normal)).normalize();
+  const third = new THREE.Vector3().crossVectors(along, normal);   // makeBasis wants z = x × y
+  const mesh = new THREE.Mesh(UNIT_BOX, g.mat);
+  mesh.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(along, normal, third));
+  // owner has no rotation, so world -> owner-local is a plain translation
+  const fc = new THREE.Vector3(...toThree(b.face_center)).sub(owner.position);
+  mesh.userData = { b, fc, n: normal, len: b.length, span: b.span, th: b.thickness, key: b.band };
+  mesh.renderOrder = 1;
+  owner.add(mesh);
+  bandMeshes.push(mesh);
+});
+
+function applyBandScale() {
+  bandMeshes.forEach(m => {
+    const th = m.userData.th * bandScale;
+    m.scale.set(Math.max(m.userData.len, 0.1), th, Math.max(m.userData.span, 0.1));
+    m.position.copy(m.userData.fc).addScaledVector(m.userData.n, -th / 2);
+  });
+}
+function applyBands() {
+  const on = document.getElementById('bands').checked;
+  bandMeshes.forEach(m => { m.visible = on && bandGroups.get(m.userData.key).on; });
+}
+applyBandScale();
+applyBands();
+
+const bandLegendEl = document.getElementById('bandlegend');
+if (bandGroups.size) {
+  document.getElementById('bandcount').textContent = `${bandMeshes.length} edges`;
+  const hd = document.createElement('div');
+  hd.className = 'hd';
+  hd.textContent = 'running length incl. qty';
+  bandLegendEl.appendChild(hd);
+  [...bandGroups.values()].sort((a, b) => a.thickness - b.thickness || a.name.localeCompare(b.name))
+    .forEach(g => {
+      const row = document.createElement('label'); row.className = 'row';
+      const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = true;
+      cb.addEventListener('change', () => { g.on = cb.checked; applyBands(); });
+      const sw = document.createElement('span'); sw.className = 'sw'; sw.style.background = g.color;
+      const lb = document.createElement('span'); lb.className = 'lb';
+      lb.textContent = `${g.name}`;
+      const ct = document.createElement('span'); ct.className = 'ct';
+      ct.textContent = `≈${(g.mm / 1000).toFixed(1)} m`;
+      row.append(cb, sw, lb, ct); bandLegendEl.appendChild(row);
+    });
+} else {
+  document.getElementById('bandbox').style.display = 'none';
+}
+document.getElementById('bands').addEventListener('change', applyBands);
+document.getElementById('bandscale').addEventListener('input', (e) => {
+  bandScale = parseFloat(e.target.value);
+  document.getElementById('bsval').textContent = bandScale;
+  applyBandScale();
+});
+
+// ---- drilling ----------------------------------------------------------------
+// Each hole is a cylinder from `start` along `dir` for `depth`, parented to its panel mesh so it
+// inherits that panel's visibility, isolate state and explode offset for free.
+//
+// Sizing: depth is always true, and the diameter is only ever *raised to a floor* ("min Ø"), never
+// multiplied. A Ø5 bore on a 2500 mm column is sub-pixel and needs the help; a Ø35 hinge cup does not,
+// and scaling it up made it read as a crater a fifth as wide as the door. So big bores stay true size —
+// drop the floor to 0 for wholly true-to-life diameters.
+//
+// Colours come from the same per-diameter palette as the PDF spec sheets, so a Ø5 is the same green on
+// paper and on screen. Through holes are drawn translucent (the PDF draws them as hollow circles).
+const holeMeshes = [];
+const holeGroups = new Map();          // key -> {dia, depth, through, color, count, on}
+const CYL = new THREE.CylinderGeometry(1, 1, 1, 16);   // unit cylinder along +Y, scaled per hole
+const AXIS_Y = new THREE.Vector3(0, 1, 0);
+let drillMinDia = 12;      // mm; bores narrower than this are drawn at this Ø so they stay visible
+
+(SCENE.holes || []).forEach(h => {
+  const owner = meshByOwner.get(h.owner);
+  if (!owner) return;
+  const key = `${h.dia}|${h.through ? 'through' : h.depth}`;
+  if (!holeGroups.has(key))
+    holeGroups.set(key, { dia: h.dia, depth: h.depth, through: h.through, color: h.color, count: 0, on: true, key });
+  holeGroups.get(key).count++;
+
+  const g = holeGroups.get(key);
+  if (!g.mat) {
+    const col = new THREE.Color(h.color || '#455A64');
+    g.mat = new THREE.MeshStandardMaterial({
+      color: col, emissive: col, emissiveIntensity: 0.5, roughness: 0.3, metalness: 0.0,
+      transparent: h.through, opacity: h.through ? 0.5 : 1.0,
+      depthTest: false, depthWrite: !h.through,
+    });
+  }
+  const start = new THREE.Vector3(...toThree(h.start));
+  const dir = new THREE.Vector3(...toThree(h.dir)).normalize();
+  const len = Math.max(h.depth, 0.6);
+  const mesh = new THREE.Mesh(CYL, g.mat);
+  mesh.quaternion.setFromUnitVectors(AXIS_Y, dir);
+  // owner has no rotation, so world -> owner-local is a plain translation
+  mesh.position.copy(start).addScaledVector(dir, len / 2).sub(owner.position);
+  mesh.renderOrder = 3;
+  mesh.userData = { h, len, key };
+  owner.add(mesh);
+  holeMeshes.push(mesh);
+});
+
+function applyDrillSizes() {
+  holeMeshes.forEach(m => {
+    const r = Math.max(m.userData.h.dia || 5, drillMinDia, 1) / 2;
+    m.scale.set(r, m.userData.len, r);
+  });
+}
+function applyDrills() {
+  const on = document.getElementById('drills').checked;
+  holeMeshes.forEach(m => { m.visible = on && holeGroups.get(m.userData.key).on; });
+}
+function applyXray() {
+  const x = document.getElementById('xray').checked;
+  holeGroups.forEach(g => { if (g.mat) { g.mat.depthTest = !x; g.mat.needsUpdate = true; } });
+}
+applyDrillSizes();
+applyXray();
+applyDrills();
+
+// legend: one row per Ø × depth actually present, each independently toggleable
+const legendEl = document.getElementById('legend');
+if (holeGroups.size) {
+  document.getElementById('drillcount').textContent = `${holeMeshes.length} holes`;
+  const hd = document.createElement('div');
+  hd.className = 'hd';
+  hd.textContent = 'Ø × depth (hollow = through)';
+  legendEl.appendChild(hd);
+  [...holeGroups.values()]
+    .sort((a, b) => a.dia - b.dia || a.depth - b.depth)
+    .forEach(g => {
+      const row = document.createElement('label'); row.className = 'row';
+      const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = true;
+      cb.addEventListener('change', () => { g.on = cb.checked; applyDrills(); });
+      const dot = document.createElement('span'); dot.className = 'dot';
+      if (g.through) dot.style.border = '2px solid ' + g.color; else dot.style.background = g.color;
+      const lb = document.createElement('span'); lb.className = 'lb';
+      lb.textContent = `Ø${g.dia} × ${g.through ? 'through' : g.depth + ' mm'}`;
+      const ct = document.createElement('span'); ct.className = 'ct'; ct.textContent = g.count;
+      row.append(cb, dot, lb, ct); legendEl.appendChild(row);
+    });
+} else {
+  document.getElementById('drillbox').style.display = 'none';
+}
+
+document.getElementById('drills').addEventListener('change', applyDrills);
+document.getElementById('xray').addEventListener('change', applyXray);
+document.getElementById('drillmin').addEventListener('input', (e) => {
+  drillMinDia = parseFloat(e.target.value);
+  document.getElementById('dsval').textContent = drillMinDia;
+  applyDrillSizes();
+});
+
 // ---- camera presets ----
 function setView(which) {
   const d = maxDim * 2.2;
@@ -182,7 +407,8 @@ function showAll() { meshes.forEach(m => setVisible(m, true)); syncRows(); }
 document.getElementById('showall').addEventListener('click', showAll);
 
 // ---- panel list ----
-const panelsEl = document.getElementById('panels');
+const panelsEl = document.getElementById('panelrows');
+document.getElementById('panelcount').textContent = meshes.length;
 const rows = [];
 meshes.forEach(m => {
   const o = m.userData.o;
@@ -192,7 +418,7 @@ meshes.forEach(m => {
   const sw = document.createElement('span'); sw.className = 'sw';
   sw.style.background = '#' + m.userData.baseColor.getHexString();
   const nm = document.createElement('span'); nm.className = 'nm';
-  nm.textContent = o.panel || o.name; nm.title = 'click to isolate';
+  nm.textContent = panelLabel(o); nm.title = 'click to isolate';
   nm.addEventListener('click', () => isolate(m));
   row.append(cb, sw, nm); panelsEl.appendChild(row);
   rows.push({ m, cb });
@@ -228,7 +454,8 @@ function updateLabels() {
 // ---- render loop ----
 setView('iso');
 document.getElementById('title').textContent = 'meble — ' + (SCENE.name || 'scene');
-document.getElementById('subtitle').textContent = SCENE.objects.length + ' panels · mm';
+document.getElementById('subtitle').textContent =
+  SCENE.objects.length + ' panels · ' + holeMeshes.length + ' holes · mm';
 
 function animate() {
   requestAnimationFrame(animate);

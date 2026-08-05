@@ -19,6 +19,18 @@ edgebands:
     texture: ST9
     thickness: 1
 
+  - id: eb-u604-1
+    name: "ABS U604 ST9 1mm"     # carcass edges
+    decor_code: U604
+    texture: ST9
+    thickness: 1
+
+  - id: eb-u604-2
+    name: "ABS U604 ST9 2mm"     # fronts (doors + the WC cover panel)
+    decor_code: U604
+    texture: ST9
+    thickness: 2
+
   - id: eb-h1334-1
     name: "ABS Sorano Oak H1334 1mm"
     decor_code: H1334

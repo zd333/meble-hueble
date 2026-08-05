@@ -1,0 +1,5 @@
+id: bathroom
+name: "Bathroom"
+room: bathroom
+cabinets: [wc-column]
+layout: {}   # single unit for now; per-cabinet positions live on the cabinet
