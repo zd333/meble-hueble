@@ -71,14 +71,16 @@ def _panel_matrix(panel: Panel) -> list:
     return [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
 
 
-def _rot_size(size, rot) -> tuple:
-    """Map a panel's local (width, height, thickness) onto world (x, y, z) extents through `rot`.
+def _frame_size(r: list, size) -> tuple:
+    """Map a panel's local (width, height, thickness) onto world (x, y, z) extents through matrix `r`.
 
-    `placement.rot` is Euler degrees (schema.md). For a box only axis-aligned rotations are meaningful,
-    so we take |R| and read off which world axis each local axis ends up along. Absent or zero rot is the
-    identity — the panel keeps width->X, height->Y, thickness->Z, as before.
+    For a box only axis-aligned rotations are meaningful, so we take |r| and read off which world axis
+    each local axis ends up along. An identity frame keeps width->X, height->Y, thickness->Z.
+
+    Always derive this from the SAME matrix used to place the panel's holes (`_panel_matrix`) — deriving
+    the box from `rot` alone while the holes follow the role frame silently desynchronises the two for
+    any panel that is explicitly positioned but takes its orientation from its role (e.g. a `back`).
     """
-    r = _rot_matrix(rot)
     return tuple(sum(abs(r[i][j]) * size[j] for j in range(3)) for i in range(3))
 
 
@@ -260,9 +262,9 @@ def _custom_boxes(proj: Project, cab: Cabinet, holes_out: list | None = None,
         color = _rgb(board.color if board else None)
         role = p.role or ""
 
-        if p.placement.get("pos"):                     # explicit placement wins (min-corner + size W,H,t)
+        if p.placement.get("pos"):                     # explicit placement wins (min-corner + oriented size)
             px, py, pz = (float(v) for v in p.placement["pos"])
-            size = _rot_size((p.width, p.height, t), p.placement.get("rot"))
+            size = _frame_size(_panel_matrix(p), (p.width, p.height, t))
             center = (ox + px + size[0] / 2, oy + py + size[1] / 2, oz + pz + size[2] / 2)
         elif role == "side-left":
             size = (t, D, H); center = (ox + t / 2, oy + D / 2, oz + H / 2)
