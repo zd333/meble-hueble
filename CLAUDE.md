@@ -39,7 +39,10 @@ Key rules:
 - **Nothing regenerates panels.** There is one representation of what gets ordered, so there's nothing to
   keep in sync. Adding an extra screw = add a fitting (it stamps) or add a hole by hand. Both first-class.
 - `meble fit` is **idempotent and safe**: it only replaces holes whose `src` matches the fitting;
-  **manual holes (no `src`) are never touched.**
+  **manual holes (no `src`) are never touched.** Flip side: it only stamps **perimeter butt joints** (the
+  seam runs along one of the through panel's own edges). Cam hardware, mid-face T-joints, and joints
+  whose two panels measure the seam from different origins are skipped with a warning and written by
+  hand — and **hand-written holes do not follow a resize.** Re-derive them yourself when dimensions move.
 - **Templates are one-shot scaffolds** (`meble scaffold`): they seed a new cabinet's panels once; you then
   own and edit them. Re-running scaffolds a fresh cabinet, it does not re-bind an existing one.
 - **`element_type`** on a panel is `panel` (carcass board) for now; `front` and `countertop` are reserved
@@ -54,7 +57,9 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
 - Edges: **1 = top, 2 = right, 3 = bottom, 4 = left**.
 - Edge-hole distance from 0: left for top/bottom (1,3), bottom for left/right (2,4). Surface holes: x,y
   from bottom-left.
-- **Faces are `outer` (visible outside) / `inner` (toward cavity)** — never front/back. One panel frame;
+- **Faces are `outer` (visible outside) / `inner` (toward cavity)** — never front/back. That gloss
+  **inverts on a `top` panel** (its outer faces DOWN into the cabinet); the frame is fixed by the
+  joinery, not by what you can see — see `docs/conventions.md`. One panel frame;
   the face only picks the **drill side** (x,y are NOT mirrored between faces). Editor mapping: outer →
   przód (front), inner → tył (back). Confirmat heads → outer; shelf-pin/System-32/hinge holes → inner.
 - **Left & right sides are MIRROR parts** (front edge = 2 on the left, 4 on the right; asymmetric holes
@@ -70,6 +75,10 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   type into the editor), and pull a T-joint tighter. Reach for **minifix/rafix** only when the head would
   otherwise sit on a show face — or when the joint is meant to be taken apart repeatedly, since a
   confirmat's Ø4 pilot strips after a few cycles.
+- **Panel `width`/`height` must be whole millimetres.** The CSV writes them as integers, so a half-mm
+  dimension is silently rounded away in the order. Choose envelope numbers that keep every *derived*
+  size whole — e.g. 736 wide rather than 735, so the two doors land on 367 and not 366.5. Hole
+  coordinates are exempt: 22.5 for a hinge cup is fine.
 - Edge-band thickness only **1 or 2 mm**; glue default **long** ("kryjące długie").
 - `grain` default **forces orientation** (panels never rotate). `any|width|height` → CSV `Słoje` 0|2|1.
 - Carcass (top/bottom **between** sides): **`top/bottom length = width − 2×thickness`** (e.g. `W−36`).
