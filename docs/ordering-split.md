@@ -14,10 +14,10 @@ Two stock sizes are offered:
 ## The decision: which optional panels go on the white board
 
 Several panels are hidden or deliberately-white, so their decor is a free choice. Moving them between
-U604 and W980 changes how each decor rounds up to whole sheets. Three options were costed
+U604 and W1100 changes how each decor rounds up to whole sheets. Three options were costed
 (conservative shelf packing, 5 mm kerf, 10 mm trim per sheet):
 
-| | U604 | W980 | purchased | used |
+| | U604 | W1100 | purchased | used |
 |---|---|---|---|---|
 | everything optional stays U604 | 3 big + 2 small | 2 small | 25.93 m² | 72 % |
 | **only the never-seen panels → white** | **3 big + 1 small** | **2 small** | **23.80 m²** | **78 %** |
@@ -26,7 +26,7 @@ U604 and W980 changes how each decor rounds up to whole sheets. Three options we
 **The middle row is what this repo implements.** Note the third row is *worse* than the second: pushing
 more onto the white board just moves the waste across, and it costs a big sheet. More is not better.
 
-Only three panel entries (4 boards, 0.90 m²) carry `material: w980-18` for this reason:
+Only three panel entries (4 boards, 0.90 m²) carry `material: w1100-18` for this reason:
 
 | panel | size | why the decor does not matter |
 |---|---|---|
@@ -34,7 +34,7 @@ Only three panel entries (4 boards, 0.90 m²) carry `material: w980-18` for this
 | `wm-wardrobe` / `rail-lower` | 726 × 200 | behind the washing machine |
 | `sink-vanity` / `rail-back` ×2 | 524 × 100 | behind the drawers, against the wall |
 
-That is exactly enough to drop U604 below the threshold for a second small sheet, while W980 absorbs
+That is exactly enough to drop U604 below the threshold for a second small sheet, while W1100 absorbs
 them without needing another sheet of its own (it goes from 46 % to 68 % full — dead area you were
 paying for anyway).
 
@@ -47,7 +47,7 @@ CSV's free-text `Nazwa` column (which does not affect nesting).
 |---|---|---|---|---|---|
 | 1 | U604 | 3 × 2070×2800 | 33 | 14.15 m² | 81 % |
 | 2 | U604 | 1 × 2070×1032 | 12 | 1.61 m² | 75 % |
-| 3 | W980 | 2 × 2070×1032 | 14 | 2.89 m² | 68 % |
+| 3 | W1100 | 2 × 2070×1032 | 14 | 2.89 m² | 68 % |
 
 **Order 2 contents** (everything else U604 is order 1):
 
@@ -58,7 +58,7 @@ CSV's free-text `Nazwa` column (which does not affect nesting).
 The split falls on whole panel entries, so no CSV line is cut in half.
 
 Ready-to-import files are written by `meble csv` plus a filter on the marker:
-`out/csv/order1-u604-2070x2800.csv`, `order2-u604-2070x1032.csv`, `order3-w980-2070x1032.csv`.
+`out/csv/order1-u604-2070x2800.csv`, `order2-u604-2070x1032.csv`, `order3-w1100-2070x1032.csv`.
 
 ## Why order 1 is safe at 81 %
 

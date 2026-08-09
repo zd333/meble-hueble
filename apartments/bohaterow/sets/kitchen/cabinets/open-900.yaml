@@ -52,7 +52,7 @@ category: base
 construction: confirmat      # ALL of it — see ALL SIDES ARE INVISIBLE above
 dimensions: {width: 900, height: 400, depth: 600}
 position: {x: 0, y: 0, z: 0, rotation: 0}
-defaults: {material: w980-18, edgeband: eb-w980-1}
+defaults: {material: w1100-18, edgeband: eb-w1100-1}
 back: {type: surface}        # /!\ ORDER-IRRELEVANT METADATA and inaccurate: there is NO back panel,
                              # only the three stretchers. The schema has no value for that; the panel
                              # geometry below is what counts.
@@ -61,15 +61,15 @@ plinth: {}                   # no plinth — the sides run to whatever this stan
 panels:
 
 - id: side-l
-  name: "Left side  [order 3 · W980 · sheet 2070×1032]"
+  name: "Left side  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = wall.
                               # X: 0 = wall, 600 = front.  Y: 0 = bottom, 400 = top.
   width: 600                  # depth
   height: 400
-  grain: any                  # W980 is a plain uni decor with a light ST2 texture — let the optimiser
+  grain: any                  # W1100 is a plain uni decor with a light ST2 texture — let the optimiser
                               # rotate every panel in this cabinet
-  edge_banding: {edges: {2: eb-w980-1}, glue_type: long}   # FRONT edge only — there is no facade, so
+  edge_banding: {edges: {2: eb-w1100-1}, glue_type: long}   # FRONT edge only — there is no facade, so
                                                            # this edge is the finished front of the unit
   holes:                      # stamped by cf-bot-l / cf-top-l — nothing for the back stretchers,
                               # which are fixed on site (see their panel notes)
@@ -94,14 +94,14 @@ panels:
     direction: x
     src: cf-top-l
 - id: side-r
-  name: "Right side  [order 3 · W980 · sheet 2070×1032]"
+  name: "Right side  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: side-right            # MIRROR of side-l. X: 0 = FRONT, 600 = wall — so edge4 (not edge2) is the
                               # cabinet front, and the stretcher's through-holes read x 591 not x 9.
   width: 600
   height: 400
   grain: any
-  edge_banding: {edges: {4: eb-w980-1}, glue_type: long}   # front edge, mirrored
+  edge_banding: {edges: {4: eb-w1100-1}, glue_type: long}   # front edge, mirrored
   holes:                      # stamped by cf-bot-r / cf-top-r — nothing for the back stretchers
   - face: outer
     x: 50
@@ -124,7 +124,7 @@ panels:
     direction: x
     src: cf-top-r
 - id: bottom
-  name: "Bottom panel  [order 3 · W980 · sheet 2070×1032]"
+  name: "Bottom panel  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: bottom                # 864 = 900 − 2×18. edge1 = cabinet FRONT (y 600), edge3 = wall (y 0).
                               # inner = UP, outer = DOWN (docs/conventions.md "Horizontals: which face
@@ -132,7 +132,7 @@ panels:
   width: 864
   height: 600                 # depth
   grain: any
-  edge_banding: {edges: {1: eb-w980-1}, glue_type: long}   # front edge only
+  edge_banding: {edges: {1: eb-w1100-1}, glue_type: long}   # front edge only
   holes:                      # stamped by cf-bot-l / cf-bot-r
   - face: edge4
     from: 50
@@ -153,14 +153,14 @@ panels:
   placement: {pos: [18, 0, 0]}
 
 - id: top
-  name: "Top panel  [order 3 · W980 · sheet 2070×1032]"
+  name: "Top panel  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: top                   # 864 = 900 − 2×18. NB on a `top` panel OUTER is the DOWN face and INNER
                               # the UP face — see docs/conventions.md.
   width: 864
   height: 600
   grain: any
-  edge_banding: {edges: {1: eb-w980-1}, glue_type: long}   # front edge only
+  edge_banding: {edges: {1: eb-w1100-1}, glue_type: long}   # front edge only
   holes:                      # stamped by cf-top-l / cf-top-r
   - face: edge4
     from: 50
@@ -181,7 +181,7 @@ panels:
   placement: {pos: [18, 0, 382]}
 
 - id: rail-back-h
-  name: "Back stretcher (horizontal)  [order 3 · W980 · sheet 2070×1032]"
+  name: "Back stretcher (horizontal)  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: rail                  # fills the TOP of the back opening, z 232..382, in the back plane
                               # y 582..600 so it sits flat against the wall. Frame declared like a
@@ -193,7 +193,7 @@ panels:
   width: 864                  # 900 − 2×18
   height: 150
   grain: any
-  edge_banding: {edges: {3: eb-w980-1}, glue_type: long}
+  edge_banding: {edges: {3: eb-w1100-1}, glue_type: long}
                               # BOTTOM edge only: it is the one edge you can see through the open front.
                               # Its top edge butts the top panel's underside, and its two ends butt the
                               # sides.
@@ -204,7 +204,7 @@ panels:
     # the `back` frame: +u = cabinet LEFT, +v = UP, outer toward the wall.
 
 - id: rail-back-v
-  name: "Back stretcher (vertical)  [order 3 · W980 · sheet 2070×1032]"
+  name: "Back stretcher (vertical)  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: rail                  # full internal height, z 18..382, in a SECOND LAYER at y 564..582 — 18 mm
                               # in front of the horizontal stretcher, so the two cross without fouling
@@ -213,7 +213,7 @@ panels:
   width: 100
   height: 364                 # 400 − 2×18, floor of the box to ceiling of the box
   grain: any
-  edge_banding: {edges: {2: eb-w980-1, 4: eb-w980-1}, glue_type: long}
+  edge_banding: {edges: {2: eb-w1100-1, 4: eb-w1100-1}, glue_type: long}
                               # both LONG (vertical) edges — they face sideways into the open box and are
                               # seen through the front. Top and bottom edges butt the top/bottom panels.
   holes: []                   # DELIBERATELY EMPTY. Their x is decided on site, so there is nothing to

@@ -22,10 +22,10 @@ kind.
 
 ## Board (`materials.yaml: boards[]`)
 ```yaml
-- id: w980-18              # used in panel.material
-  name: "Egger Biały W980 ST2"
+- id: w1100-18              # used in panel.material
+  name: "Egger Biały W1100 ST9"
   vendor: Egger
-  decor_code: W980
+  decor_code: W1100
   texture: ST2
   thickness: 18            # mm; panels inherit this unless they override
   grain_directional: false # true for woodgrains (affects sensible default grain)
@@ -34,9 +34,9 @@ kind.
 
 ## Edge band (`edgebands.yaml: edgebands[]`)
 ```yaml
-- id: eb-w980-1
-  name: "ABS Biały W980 1mm"
-  decor_code: W980
+- id: eb-w1100-1
+  name: "ABS Biały W1100 1mm"
+  decor_code: W1100
   texture: ST2
   thickness: 1             # 1 | 2  (the only variants the editor supports)
 ```
@@ -64,7 +64,7 @@ Carries the **drill pattern** that fittings stamp. Shape varies by `type`:
   name: "Left side"
   element_type: panel      # panel (carcass, default) | front | countertop  (latter two added later)
   role: side               # optional label: side | top | bottom | shelf | back | divider | ...
-  material: w980-18        # ref; defaults to cabinet.defaults.material
+  material: w1100-18        # ref; defaults to cabinet.defaults.material
   width: 560               # X
   height: 720              # Y
   thickness: 18            # optional; defaults to material.thickness
@@ -72,8 +72,8 @@ Carries the **drill pattern** that fittings stamp. Shape varies by `type`:
   grain: height            # any | width | height  (default = force orientation; see meblepl-editor.md)
   edge_banding:
     all_edges: false       # if true, band all 4 with `band` (below) / default band
-    band: eb-w980-1        # single band when all_edges or no per-edge override
-    edges: { 2: eb-w980-1 }# per-edge: key 1=top 2=right 3=bottom 4=left; value = band id (or true)
+    band: eb-w1100-1        # single band when all_edges or no per-edge override
+    edges: { 2: eb-w1100-1 }# per-edge: key 1=top 2=right 3=bottom 4=left; value = band id (or true)
     glue_type: long        # long ("kryjące długie", default) | short
   holes: []                # see Hole; explicit; stamped holes carry `src`
   grooving: []             # reserved; structures must not reshape when this is filled in later
@@ -115,7 +115,7 @@ category: base             # base | wall | tall | wardrobe
 construction: confirmat    # default joinery hint
 dimensions: { width: 900, height: 400, depth: 600 }   # envelope (layout/grouping/viz)
 position: { x: 0, y: 0, z: 0, rotation: 0 }           # placement within the set/room
-defaults: { material: w980-18, edgeband: eb-w980-1 }
+defaults: { material: w1100-18, edgeband: eb-w1100-1 }
 back: { type: surface }    # surface | rebate | groove
 plinth: { height: 100 }
 panels: [ ... ]            # source of truth

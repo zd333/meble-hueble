@@ -86,7 +86,7 @@ def _carcass(cab_id, name, category, width, height, depth, material, edgeband,
 
 def scaffold(kind: str, width: float, height: float, depth: float,
              cab_id: str | None = None, name: str | None = None,
-             material: str = "w980-18", edgeband: str = "eb-w980-1",
+             material: str = "w1100-18", edgeband: str = "eb-w1100-1",
              thickness: int = 18) -> dict:
     if kind not in KINDS:
         raise ValueError(f"unknown scaffold kind '{kind}' (choose from {', '.join(KINDS)})")

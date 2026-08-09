@@ -391,20 +391,20 @@ panels:
   placement: {pos: [0, -18, 0], rot: [90, 0, 0]}      # stands upright in front of the carcass
 
 - id: cover-spacer
-  name: "Spacer behind cover  [order 3 · W980 · sheet 2070×1032]"
+  name: "Spacer behind cover  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: spacer                # free-standing filler, no joinery — see note below
   # MATERIAL IS FREE CHOICE: this panel is sealed inside the lower box and never seen, so it does not
   # have to be u604-18. Any 18 mm board works — offcuts, or a white board left over from another
   # cabinet. If you order it in a different decor, give it its own `material:` here so it lands in that
   # board's CSV instead of the U604 one.
-  material: w980-18          # NOT the cabinet default: this panel is never seen, so it rides on the
+  material: w1100-18          # NOT the cabinet default: this panel is never seen, so it rides on the
                              # WHITE board to balance the two decors across whole meble.pl sheets.
                              # See docs/ordering-split.md.
   width: 550
   height: 1191                # floor -> the divider's UNDERSIDE (divider spans z 1191..1209)
   grain: any                  # completely hidden inside the sealed lower box, so let the optimiser rotate
-  edge_banding: {edges: {3: eb-w980-1}, glue_type: long}   # BOTTOM edge only — it stands on a wet floor
+  edge_banding: {edges: {3: eb-w1100-1}, glue_type: long}   # BOTTOM edge only — it stands on a wet floor
                                                            # and raw chipboard would wick. The other three
                                                            # edges are buried/hidden, so left raw.
   holes: []                   # no fixings: it drops in behind the cover and is held captive by it.

@@ -397,7 +397,7 @@ panels:
                               # Local frame per docs/conventions.md: outer faces the WALL, and because
                               # you read that frame from the outer face, local +x runs RIGHT-to-LEFT —
                               # its edge4 meets side-r, its edge2 meets side-l.
-  # MATERIAL MAY BE A DIFFERENT BOARD: white `material: w980-18` here is an equally good choice and lands
+  # MATERIAL MAY BE A DIFFERENT BOARD: white `material: w1100-18` here is an equally good choice and lands
   # in that board's CSV instead of the U604 one. It is NOT a free hidden swap though — this panel's INNER
   # face is the back wall of both shelf compartments and IS visible whenever a door is open, so white is
   # a deliberate look (a brighter interior in a 657 mm deep cavity, and a common, cheaper carcass choice).
@@ -431,7 +431,7 @@ panels:
   placement: {pos: [18, 657, 968]}   # role 'back' would size it to the whole carcass — place it here
 
 - id: rail-lower
-  name: "Rear rail (machine bay brace)  [order 3 · W980 · sheet 2070×1032]"
+  name: "Rear rail (machine bay brace)  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: rail                  # a horizontal brace standing on edge across the BACK of the machine bay,
                               # z 50..250 (centre 150), coplanar with back-upper at y 657..675 so the
@@ -446,14 +446,14 @@ panels:
                               # and keeps the carcass square while it is walked into the niche.
   # MATERIAL IS FREE CHOICE: the machine (600 deep, stopping at y 657) hides this panel completely; only
   # a sliver shows through the 63 mm gap at each side of the bay. Any 18 mm board works — give it its own
-  # `material:` here (e.g. w980-18) and it lands in that board's CSV instead of the U604 one.
-  material: w980-18          # NOT the cabinet default: this panel is never seen, so it rides on the
+  # `material:` here (e.g. w1100-18) and it lands in that board's CSV instead of the U604 one.
+  material: w1100-18          # NOT the cabinet default: this panel is never seen, so it rides on the
                              # WHITE board to balance the two decors across whole meble.pl sheets.
                              # See docs/ordering-split.md.
   width: 726                  # 762 − 2×18, same span as the divider and back-upper
   height: 200
   grain: any                  # hidden — let the optimiser rotate it
-  edge_banding: {edges: {1: eb-w980-1, 3: eb-w980-1}, glue_type: long}
+  edge_banding: {edges: {1: eb-w1100-1, 3: eb-w1100-1}, glue_type: long}
                               # top and bottom edges: the bottom sits 50 mm off a bathroom floor that
                               # floods if a hose fails, and the top is the one edge you can glimpse past
                               # the machine. edges 2/4 are butted against the sides — left raw.

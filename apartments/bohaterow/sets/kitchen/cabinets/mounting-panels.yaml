@@ -19,14 +19,14 @@ category: base               # nothing consumes this for a loose-panel entry; `b
 construction: none           # no joinery at all
 dimensions: {width: 287, height: 1000, depth: 18}   # viewer envelope only: 3 boards drawn on a 100 pitch
 position: {x: 3000, y: 0, z: 0, rotation: 0}        # VIEWER PLACEHOLDER — parked clear of open-900
-defaults: {material: w980-18, edgeband: eb-w980-1}
+defaults: {material: w1100-18, edgeband: eb-w1100-1}
 back: {}
 plinth: {}
 
 panels:
 
 - id: mount-panel
-  name: "Mounting panel 87×1000  [order 3 · W980 · sheet 2070×1032]"
+  name: "Mounting panel 87×1000  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: spacer                # free-standing board, no joinery — same role wc-column uses for its filler
   quantity: 3

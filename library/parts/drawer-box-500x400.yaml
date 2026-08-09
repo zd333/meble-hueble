@@ -6,7 +6,7 @@
 id: drawer-box-500x400
 name: "Drawer box 500×400 (confirmat, ~450 cabinet)"
 type: drawer-box
-defaults: { material: w980-18, edgeband: eb-w980-1 }
+defaults: { material: w1100-18, edgeband: eb-w1100-1 }
 
 panels:
   - id: side
@@ -16,7 +16,7 @@ panels:
     height: 150
     quantity: 2
     grain: width
-    edge_banding: { edges: { 1: eb-w980-1 }, glue_type: long }   # band the top edge
+    edge_banding: { edges: { 1: eb-w1100-1 }, glue_type: long }   # band the top edge
 
   - id: front-back
     name: "Front/back (inner)"
@@ -25,7 +25,7 @@ panels:
     height: 150
     quantity: 2
     grain: width
-    edge_banding: { edges: { 1: eb-w980-1 }, glue_type: long }
+    edge_banding: { edges: { 1: eb-w1100-1 }, glue_type: long }
 
   - id: bottom
     name: "Drawer bottom (HDF)"

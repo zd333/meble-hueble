@@ -206,19 +206,19 @@ panels:
     # frame: +u = cabinet right, +v = up, outer toward the room.
 
 - id: rail-back
-  name: "Back rail / wall cleat  [order 3 · W980 · sheet 2070×1032]"
+  name: "Back rail / wall cleat  [order 3 · W1100 · sheet 2070×1032]"
   element_type: panel
   role: rail                  # in the BACK plane, inset at y 432..450 so the unit still sits flat on the
                               # wall. Frame declared like a `back`: OUTER faces the WALL, so local +x
                               # runs cabinet RIGHT-to-LEFT.
   quantity: 2
-  material: w980-18          # NOT the cabinet default: this panel is never seen, so it rides on the
+  material: w1100-18          # NOT the cabinet default: this panel is never seen, so it rides on the
                              # WHITE board to balance the two decors across whole meble.pl sheets.
                              # See docs/ordering-split.md.
   width: 524                  # 560 − 2×18, same span as the bottom panel
   height: 100
   grain: any
-  edge_banding: {edges: {1: eb-w980-1, 3: eb-w980-1}, glue_type: long}
+  edge_banding: {edges: {1: eb-w1100-1, 3: eb-w1100-1}, glue_type: long}
                               # top and bottom edges: both stand in humid air in an open-backed bay
   holes: []                   # DELIBERATELY EMPTY — see the header. Where these rails land depends on
                               # where the pipes come out of the wall, so they are positioned and drilled
@@ -260,7 +260,7 @@ panels:
 # BOTTOM DRAWER BOX — z 22..140.  All-18 mm, confirmat, every head hidden.
 #
 # MATERIAL: these six drawer-box panels (and d2's five) may OPTIONALLY be switched to white —
-# `material: w980-18` + `edgeband: eb-w980-1` on each of them. Brighter interiors, a common cheaper
+# `material: w1100-18` + `edgeband: eb-w1100-1` on each of them. Brighter interiors, a common cheaper
 # carcass board, and they land in their own CSV file. Nothing else in the design changes.
 # ---------------------------------------------------------------------------------------------------
 - id: d1-bottom

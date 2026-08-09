@@ -184,7 +184,7 @@ def main(argv=None) -> int:
     p.add_argument("--height", type=float, required=True)
     p.add_argument("--depth", type=float, required=True)
     p.add_argument("--id"); p.add_argument("--name")
-    p.add_argument("--material", default="w980-18"); p.add_argument("--edgeband", default="eb-w980-1")
+    p.add_argument("--material", default="w1100-18"); p.add_argument("--edgeband", default="eb-w1100-1")
     p.set_defaults(func=cmd_scaffold)
 
     p = sub.add_parser("fit", help="stamp holes from fittings onto panels (safe/idempotent)")
