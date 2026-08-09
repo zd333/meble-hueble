@@ -51,6 +51,13 @@ here.** If the user wants fixes applied, that's a separate `design-cabinet` step
 **Drilling**
 - Blind surface holes: depth < panel thickness (else breakthrough). Edge holes ≥ ~50 mm from a panel end
   (confirmat) and never < ~16 mm (blowout).
+- **OPPOSING blind holes meet inside the panel.** Two Ø5 × 13 shelf-pin bores on *both* faces of an
+  18 mm gable at the same `x, y` add up to 26 > 18 and produce a ragged through-hole. `meble review`
+  only checks one hole at a time, so it never fires. Fix: **one `depth: through` column pair serving
+  both compartments** — half the holes, and both sides' shelves land on the same x. Flag any design that
+  still has two opposing blind columns. (Note the pins must have a collar; see CLAUDE.md.)
+- **Blind holes near an edge-hole's reach.** A 35 mm deep Ø4 confirmat pilot occupies the first 35 mm
+  in from that edge; a pin column at x 37 is only 2 mm clear of it.
 - Holes on the 32 mm grid / 37 mm setback where they interface system hardware.
 - Regular rows/columns expressed as **bulk `multi`**, not many singles (entry cost + price).
 - Holes on both panels of a joint actually coincide (face hole ↔ edge hole at the same point).
@@ -63,6 +70,19 @@ here.** If the user wants fixes applied, that's a separate `design-cabinet` step
 **Material / banding**
 - Back is thin HDF (~3 mm), not 18 mm. Carcass 18 mm. Edge-band decor matches the board.
 - Grain direction consistent across a visible run (woodgrains); `grain` set where it matters.
+
+**Can it actually be built and installed?** (found the hard way on `wm-wardrobe`)
+- **Tip-up diagonal.** A carcass assembled flat must clear `sqrt(height² + depth²)` to be stood upright —
+  a 2520 × 675 unit needs **2609 mm**, more than most rooms are tall. Check it, and if it fails, work out
+  a sub-assembly that does fit (build the back + gable + horizontals as a flat core, tip that, then add
+  the sides upright).
+- **Screw access at the ceiling and against walls.** Confirmats driven *down* through a top panel's up
+  face need headroom; confirmats through a side's outer face need the unit out of the niche. Confirm the
+  assembly order actually reaches every head, and that nothing needs re-tightening after install.
+- **Fit tolerance.** A carcass whose height equals the measured opening cannot be installed. Sides that
+  run to the floor with no feet, plinth or scribe leave nothing to adjust on site.
+- **Wet rooms:** standard MFC core is not moisture resistant (P3 is); band or seal edges that stand on
+  the floor; keep a run of wall fixings low down when the bottom of the carcass is an open bay.
 
 **Smell tests**
 - Sink/hob base with a fixed full top (should be rails). Tall/wall unit depths plausible. Door/drawer

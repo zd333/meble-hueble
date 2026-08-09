@@ -89,6 +89,20 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   instead of N, so it's far less manual typing and can be cheaper. `meble fit` already collapses
   evenly-spaced fitting screws into a multi hole — do the same when adding holes by hand. Only fall back
   to singles for genuinely irregular positions.
+- **A gable/divider with shelves on BOTH sides gets ONE `depth: through` pin column pair, not two
+  opposing blind ones.** Two Ø5 × 13 bores facing each other in an 18 mm panel add up to 26 mm: they
+  meet in the middle and you get a ragged, drill-wandered through-hole whether you asked for one or not.
+  Ask for it on purpose — half the holes, and both compartments' shelves land on the *same* x, so they
+  are supported identically. Buy pins **with a collar/flange** (two meet mid-panel at ~9 mm each, which
+  is plenty; a plain collarless peg has nothing to stop it). `meble review` does **not** catch the
+  opposing-bore case — it only checks one hole at a time against the thickness. Blind is still right for
+  a side panel, where a through Ø5 would show on the outside.
+- **Shelf-pin depth 13 is the System-32 line-boring standard**, not a requirement of the pin (a Ø5 pin
+  engages ~10 mm). On a blind bore the extra is free clearance; it is never a reason to thin a panel.
+- **Fixed pins beat an adjustable column when drilling is charged per hole.** A full System-32 run over a
+  1.5 m cabinet is ~40 holes *per column* — 328 across four columns, vs 32 for four chosen heights.
+  Decide the shelf heights against the storage boxes you will actually buy, order the 32, and drill more
+  by hand later if you need them (depth stop + a shelf-pin jig).
 
 ## Quick-reference drill table (supplier convention — verify before first order)
 
