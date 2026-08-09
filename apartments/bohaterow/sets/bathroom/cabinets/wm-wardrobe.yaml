@@ -224,7 +224,7 @@ plinth: {}                   # sides run to the floor — silicone the bottom ed
 
 panels:
 - id: side-l
-  name: "Left side"
+  name: "Left side  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = wall. X: 0 = wall, 675 = front
   width: 675                  # depth
@@ -258,7 +258,7 @@ panels:
     direction: x
     src: cf-top-l
 - id: side-r
-  name: "Right side"
+  name: "Right side  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: side-right            # MIRROR of side-l. X: 0 = front, 675 = wall — so the front column is x 37
                               # here and the rear one x 620, and edge4 (not edge2) is the cabinet front.
@@ -290,7 +290,7 @@ panels:
     direction: x
     src: cf-top-r
 - id: divider
-  name: "Divider @950 (machine-bay ceiling / upper-cabinet floor)"
+  name: "Divider @950 (machine-bay ceiling / upper-cabinet floor)  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: bottom                # 726 = 762 − 2×18. edge1 = cabinet FRONT (y 675), edge3 = wall (y 0).
                               # inner face = UP (into the upper cavity); outer = DOWN, into the machine
@@ -323,7 +323,7 @@ panels:
   placement: {pos: [18, 0, 950]}     # role 'bottom' would sit it on the floor — place it explicitly
 
 - id: top-panel
-  name: "Top panel"
+  name: "Top panel  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: top                   # 726 = 762 − 2×18. edge1 = cabinet FRONT.
                               # NB on a `top` panel OUTER is the DOWN face and INNER the UP face — see
@@ -363,7 +363,7 @@ panels:
     direction: x
     src: cf-back-top
 - id: gable-mid
-  name: "Centre gable (vertical)"
+  name: "Centre gable (vertical)  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: gable                  # internal full-height divider of the UPPER cabinet — EDGE CASE not in
                                # docs/conventions.md's table: both faces face a cavity (like a shelf), so
@@ -388,7 +388,7 @@ panels:
   placement: {pos: [372, 0, 968], rot: [90, 0, -90]}
 
 - id: back-upper
-  name: "Back (upper cabinet)"
+  name: "Back (upper cabinet)  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: back                  # 18 mm, NOT the usual 3 mm HDF — `meble review` flags that; it is
                               # deliberate here (see the BACK PANEL note in the header).
@@ -431,7 +431,7 @@ panels:
   placement: {pos: [18, 657, 968]}   # role 'back' would size it to the whole carcass — place it here
 
 - id: rail-lower
-  name: "Rear rail (machine bay brace)"
+  name: "Rear rail (machine bay brace)  [order 3 · W980 · sheet 2070×1032]"
   element_type: panel
   role: rail                  # a horizontal brace standing on edge across the BACK of the machine bay,
                               # z 50..250 (centre 150), coplanar with back-upper at y 657..675 so the
@@ -447,10 +447,13 @@ panels:
   # MATERIAL IS FREE CHOICE: the machine (600 deep, stopping at y 657) hides this panel completely; only
   # a sliver shows through the 63 mm gap at each side of the bay. Any 18 mm board works — give it its own
   # `material:` here (e.g. w980-18) and it lands in that board's CSV instead of the U604 one.
+  material: w980-18          # NOT the cabinet default: this panel is never seen, so it rides on the
+                             # WHITE board to balance the two decors across whole meble.pl sheets.
+                             # See docs/ordering-split.md.
   width: 726                  # 762 − 2×18, same span as the divider and back-upper
   height: 200
   grain: any                  # hidden — let the optimiser rotate it
-  edge_banding: {edges: {1: eb-u604-1, 3: eb-u604-1}, glue_type: long}
+  edge_banding: {edges: {1: eb-w980-1, 3: eb-w980-1}, glue_type: long}
                               # top and bottom edges: the bottom sits 50 mm off a bathroom floor that
                               # floods if a hose fails, and the top is the one edge you can glimpse past
                               # the machine. edges 2/4 are butted against the sides — left raw.
@@ -466,7 +469,7 @@ panels:
     # thickness toward the wall, i.e. outer faces the wall, as declared above.
 
 - id: shelf-l
-  name: "Left-compartment shelf"
+  name: "Left-compartment shelf  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: shelf                 # 5 mm shallower than the cavity so the closed door clears it
   width: 352                  # opening (726 − 18 gable) / 2 = 354, less 2 mm clearance
@@ -483,7 +486,7 @@ panels:
   placement: {pos: [19, 5, 1274], step: [0, 0, 288]}   # z 1274 / 1562 / 1850 / 2138
 
 - id: shelf-r
-  name: "Right-compartment shelf"
+  name: "Right-compartment shelf  [order 2 · U604 · sheet 2070×1032]"
   element_type: panel
   role: shelf
   width: 352
@@ -495,7 +498,7 @@ panels:
   placement: {pos: [391, 5, 1274], step: [0, 0, 288]}
 
 - id: door-l
-  name: "Door left"
+  name: "Door left  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: front                 # hinges on edge4 (its LEFT edge, on side-l) — FULL overlay, 18 mm
   width: 380
@@ -510,7 +513,7 @@ panels:
   placement: {pos: [0, -18, 950], rot: [90, 0, 0]}
 
 - id: door-r
-  name: "Door right"
+  name: "Door right  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: front                 # MIRROR of door-l: hinges on edge2 (its RIGHT edge, on side-r) — FULL
                               # overlay. Handle/free edge is edge4 (left), meeting door-l's in the middle.
