@@ -1,0 +1,242 @@
+# =====================================================================================================
+# KITCHEN OPEN UNIT — 900 W × 400 H × 600 D, carcass only, no fronts
+# =====================================================================================================
+#
+# The only custom cabinet in the kitchen. Everything else in the room is standard IKEA and is handled
+# outside this project.
+#
+# WHAT IT IS
+#   A plain white box: two sides, a top, a bottom, and nothing on the front — no doors, no drawers, no
+#   facade of any kind. The back is open too; three stretchers replace the back panel.
+#
+# THE THREE BACK STRETCHERS — ALL THREE ARE UNDRILLED
+#   - `rail-back-h`  864 × 150, HORIZONTAL, in the back plane (y 582..600) against the wall, filling the
+#     top of the back opening (z 232..382).
+#   - `rail-back-v` ×2  100 × 364, VERTICAL, full internal height, sitting 18 mm IN FRONT of the back
+#     plane (y 564..582) so they cross the horizontal without fouling it.
+#   NONE of them carries a single hole or fitting. Every position here is decided during assembly —
+#   the verticals' x, and the wall fixings in whichever stretcher lands where the dowels go. Screw the
+#   verticals down through the top panel and up through the bottom panel, and the horizontal through
+#   the sides; nothing here is visible, so the heads do not matter.
+#   The carcass does NOT depend on them for squareness: the full 600-deep top and bottom panels, each
+#   with 3 confirmats per side, already fix the box. The stretchers are there to hang it on the wall.
+#   The z positions above (and the verticals' x 300/500 below) are INDICATIVE, for the 3D preview only.
+#
+# ALL SIDES ARE INVISIBLE -> CONFIRMAT THROUGHOUT
+#   No cam fittings anywhere. Every head lands on a side's outer face, the top's up face or the bottom's
+#   underside, and none of those is ever seen.
+#
+# BANDING — FRONT EDGES ONLY (plus the stretchers' exposed long edges)
+#   There is no facade, so the carcass's own front edges ARE the finished front: side-l edge 2, side-r
+#   edge 4, top and bottom edge 1. Everything else is butted, against a wall, or facing into a cavity
+#   nobody looks at. This is a dry room, so unlike the bathroom units there is no reason to band the
+#   hidden edges.
+#
+# COUPLED DIMENSIONS — change one, re-derive the rest
+#   W = 900   internal = 900 − 36 = 864   -> top, bottom and the horizontal stretcher all span 864
+#   D = 600   side width. Cabinet frame: y 0 = FRONT, y 600 = the wall.
+#             back plane y 582..600 (horizontal stretcher), second layer y 564..582 (verticals)
+#   H = 400   side height; top and bottom are 18 each -> internal height 364 (z 18..382)
+#             horizontal stretcher z 232..382 = the top 150 of the back opening
+#             vertical stretchers  z  18..382 = the full internal height
+#
+# EVERY HOLE IN THIS FILE IS STAMPED BY `meble fit`
+#   There is nothing hand-written, so the whole cabinet follows a resize cleanly — change a dimension,
+#   re-run `fit`, done. (The bathroom units are not like this; see their headers.)
+# =====================================================================================================
+
+id: open-900
+name: "Kitchen open unit 900"
+kind: custom
+category: base
+construction: confirmat      # ALL of it — see ALL SIDES ARE INVISIBLE above
+dimensions: {width: 900, height: 400, depth: 600}
+position: {x: 0, y: 0, z: 0, rotation: 0}
+defaults: {material: w980-18, edgeband: eb-w980-1}
+back: {type: surface}        # /!\ ORDER-IRRELEVANT METADATA and inaccurate: there is NO back panel,
+                             # only the three stretchers. The schema has no value for that; the panel
+                             # geometry below is what counts.
+plinth: {}                   # no plinth — the sides run to whatever this stands on
+
+panels:
+
+- id: side-l
+  name: "Left side"
+  element_type: panel
+  role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = wall.
+                              # X: 0 = wall, 600 = front.  Y: 0 = bottom, 400 = top.
+  width: 600                  # depth
+  height: 400
+  grain: any                  # W980 is a plain uni decor with a light ST2 texture — let the optimiser
+                              # rotate every panel in this cabinet
+  edge_banding: {edges: {2: eb-w980-1}, glue_type: long}   # FRONT edge only — there is no facade, so
+                                                           # this edge is the finished front of the unit
+  holes:                      # stamped by cf-bot-l / cf-top-l — nothing for the back stretchers,
+                              # which are fixed on site (see their panel notes)
+  - face: outer
+    x: 50
+    y: 9.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 250
+    direction: x
+    src: cf-bot-l
+  - face: outer
+    x: 50
+    y: 391.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 250
+    direction: x
+    src: cf-top-l
+- id: side-r
+  name: "Right side"
+  element_type: panel
+  role: side-right            # MIRROR of side-l. X: 0 = FRONT, 600 = wall — so edge4 (not edge2) is the
+                              # cabinet front, and the stretcher's through-holes read x 591 not x 9.
+  width: 600
+  height: 400
+  grain: any
+  edge_banding: {edges: {4: eb-w980-1}, glue_type: long}   # front edge, mirrored
+  holes:                      # stamped by cf-bot-r / cf-top-r — nothing for the back stretchers
+  - face: outer
+    x: 50
+    y: 9.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 250
+    direction: x
+    src: cf-bot-r
+  - face: outer
+    x: 50
+    y: 391.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 250
+    direction: x
+    src: cf-top-r
+- id: bottom
+  name: "Bottom panel"
+  element_type: panel
+  role: bottom                # 864 = 900 − 2×18. edge1 = cabinet FRONT (y 600), edge3 = wall (y 0).
+                              # inner = UP, outer = DOWN (docs/conventions.md "Horizontals: which face
+                              # is up").
+  width: 864
+  height: 600                 # depth
+  grain: any
+  edge_banding: {edges: {1: eb-w980-1}, glue_type: long}   # front edge only
+  holes:                      # stamped by cf-bot-l / cf-bot-r
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 250
+    src: cf-bot-l
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 250
+    src: cf-bot-r
+  placement: {pos: [18, 0, 0]}
+
+- id: top
+  name: "Top panel"
+  element_type: panel
+  role: top                   # 864 = 900 − 2×18. NB on a `top` panel OUTER is the DOWN face and INNER
+                              # the UP face — see docs/conventions.md.
+  width: 864
+  height: 600
+  grain: any
+  edge_banding: {edges: {1: eb-w980-1}, glue_type: long}   # front edge only
+  holes:                      # stamped by cf-top-l / cf-top-r
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 250
+    src: cf-top-l
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 250
+    src: cf-top-r
+  placement: {pos: [18, 0, 382]}
+
+- id: rail-back-h
+  name: "Back stretcher (horizontal)"
+  element_type: panel
+  role: rail                  # fills the TOP of the back opening, z 232..382, in the back plane
+                              # y 582..600 so it sits flat against the wall. Frame declared like a
+                              # `back`: OUTER faces the WALL, so local +x runs cabinet RIGHT-to-LEFT —
+                              # its edge2 meets side-l and edge4 meets side-r.
+                              # Local y 0 = its own bottom edge = cabinet z 232.
+                              # This is the panel that ties the two sides together at the back and the
+                              # obvious place to put the wall fixings.
+  width: 864                  # 900 − 2×18
+  height: 150
+  grain: any
+  edge_banding: {edges: {3: eb-w980-1}, glue_type: long}
+                              # BOTTOM edge only: it is the one edge you can see through the open front.
+                              # Its top edge butts the top panel's underside, and its two ends butt the
+                              # sides.
+  holes: []                   # DELIBERATELY EMPTY, like the two verticals — fixed on site.
+  placement: {pos: [18, 582, 232], rot: [90, 0, 180]}
+    # rot is REQUIRED: `rail` is not in the viewer's ROLE_FRAME table (tools/meble/scene.py), so without
+    # it the panel falls back to the identity frame and lies flat on the floor. [90, 0, 180] reproduces
+    # the `back` frame: +u = cabinet LEFT, +v = UP, outer toward the wall.
+
+- id: rail-back-v
+  name: "Back stretcher (vertical)"
+  element_type: panel
+  role: rail                  # full internal height, z 18..382, in a SECOND LAYER at y 564..582 — 18 mm
+                              # in front of the horizontal stretcher, so the two cross without fouling
+                              # each other and each vertical can slide anywhere along the width.
+  quantity: 2
+  width: 100
+  height: 364                 # 400 − 2×18, floor of the box to ceiling of the box
+  grain: any
+  edge_banding: {edges: {2: eb-w980-1, 4: eb-w980-1}, glue_type: long}
+                              # both LONG (vertical) edges — they face sideways into the open box and are
+                              # seen through the front. Top and bottom edges butt the top/bottom panels.
+  holes: []                   # DELIBERATELY EMPTY. Their x is decided on site, so there is nothing to
+                              # drill in advance — screw them down through the top panel and up through
+                              # the bottom panel once positioned. Wall fixings likewise drilled on site.
+  placement: {pos: [300, 564, 18], step: [200, 0, 0], rot: [90, 0, 180]}
+    # x 300 and 500 are INDICATIVE ONLY — "somewhere in the middle", exact position found on site.
+    # rot reproduces the `back` frame, same as the horizontal stretcher.
+
+assembly:
+  fittings:
+
+  # --- sides <-> bottom and top. `at` is measured from the WALL along the 600 mm depth and is SYMMETRIC
+  #     about the 300 mid-depth. That symmetry is load-bearing, not cosmetic: side-l's local x runs from
+  #     the wall but side-r's runs from the FRONT, so only a symmetric set lands on the same physical
+  #     points read from both frames. All four are clean perimeter butt joints -> `fit` stamps them.
+  - {id: cf-bot-l, hardware: confirmat-7x50, through: side-l, into: bottom, seam: {through_edge: 3, into_edge: 4}, at: [50, 300, 550]}
+  - {id: cf-bot-r, hardware: confirmat-7x50, through: side-r, into: bottom, seam: {through_edge: 3, into_edge: 2}, at: [50, 300, 550]}
+  - {id: cf-top-l, hardware: confirmat-7x50, through: side-l, into: top, seam: {through_edge: 1, into_edge: 4}, at: [50, 300, 550]}
+  - {id: cf-top-r, hardware: confirmat-7x50, through: side-r, into: top, seam: {through_edge: 1, into_edge: 2}, at: [50, 300, 550]}
+
+  # --- NONE of the three back stretchers has a fitting. All of them are positioned and drilled on site,
+  #     so there is nothing to machine in advance. The box does not need them to be square: the full
+  #     600-deep top and bottom panels, each with 3 confirmats per side, already fix the carcass.
+
+parts: []

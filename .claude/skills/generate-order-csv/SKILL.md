@@ -13,7 +13,7 @@ We never produce a cutting layout — meble.pl owns nesting.
 ## Run
 ```bash
 python -m meble csv --set kitchen          # all cabinets in a set
-python -m meble csv --cabinet d60-base     # one cabinet
+python -m meble csv --cabinet open-900     # one cabinet
 python -m meble csv --apartment bohaterow  # everything in an apartment
 # -> out/csv/<board-id>.csv  (one file per board model; out/ is git-ignored)
 ```

@@ -1,5 +1,7 @@
 id: kitchen
 name: "Kitchen"
 room: kitchen
-cabinets: [d60-base]
-layout: {}   # relative placement notes; per-cabinet positions live on the cabinet
+cabinets: [open-900, mounting-panels]
+layout: {}   # relative placement notes; per-cabinet positions live on the cabinet.
+             # Everything else in this kitchen is standard IKEA and is handled outside this project —
+             # `open-900` is the only custom carcass, and `mounting-panels` is three loose boards.

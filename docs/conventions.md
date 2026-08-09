@@ -54,7 +54,7 @@ the **left (edge 4)**.
 
 For a horizontal panel (`top` / `bottom` / `shelf` / `divider`) the frame is pinned by its joinery:
 **edge 4 is the cabinet LEFT, edge 2 the RIGHT, edge 1 the FRONT** (a left-side fitting joins into the
-horizontal's edge 4 — see `d60-base`). With the panel frame being right-handed and read from the outer
+horizontal's edge 4 — see `open-900`). With the panel frame being right-handed and read from the outer
 face, those two facts **force the outer face to point DOWN** on *every* horizontal. So:
 
 - `bottom`: `outer` = down, `inner` = up (toward the cavity) — as you'd expect.
@@ -73,7 +73,7 @@ They are **not** the same part. At minimum the **front-edge banding is on a mirr
 left, 4 on the right). If the cabinet is asymmetric front-to-back (a hinge on one edge, offset holes),
 the hole positions mirror too. Entering two *identical* sides is the classic error that wastes a sheet —
 `meble review` flags it (`mirror-pair`). In a *symmetric* cabinet the hole sets happen to be identical
-and only the banding edge differs (as in the `d60-base` example).
+and only the banding edge differs (as in the `open-900` example).
 
 ## Edge cases
 
