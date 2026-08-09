@@ -1,0 +1,678 @@
+# =====================================================================================================
+# BATHROOM SINK VANITY — 560 W × 480 H × 450 D, two drawers, wall-hung under a WALL-HUNG BASIN
+# =====================================================================================================
+#
+# WHAT MAKES THIS CARCASS UNUSUAL
+#   The basin hangs off the WALL, not off this cabinet. The cabinet only has to hold itself, the drawers
+#   and their contents, and it has to let the trap + supply pipes through. So:
+#     - NO TOP PANEL. The top is open; the bowl and the trap drop into it. A single 100 mm upright
+#       stretcher across the top FRONT (`rail-top`) is what stops the two sides splaying, and it doubles
+#       as the closed-position stop for the top drawer's facade.
+#     - NO BACK PANEL. Two loose 100 mm rails (`rail-back` ×2) sit in the back plane instead. They carry
+#       NO holes and NO fittings on purpose: their height depends on where the pipes actually come out
+#       of the wall, so they are positioned and drilled during assembly. They double as the wall cleats.
+#     - THE BOTTOM IS A NORMAL FULL PANEL (524 × 450). Notch it on site if a pipe or the trap needs to
+#       pass — it is the one panel that can lose material without weakening the box.
+#
+# HOW TO FIX THE BACK RAILS
+#   NOT with confirmats through the side panels — see "VISIBLE SIDES" below, that is the whole reason
+#   the carcass is cam-fixed. Use L-brackets from inside the cabinet, and screw the rails to the wall
+#   itself. The unit hangs off those rails.
+#
+# VISIBLE SIDES -> THE CARCASS IS MINIFIX, THE DRAWERS ARE CONFIRMAT
+#   Both outer side faces are on show in the room. The two carcass joints whose confirmat head would land
+#   there (bottom -> sides, top stretcher -> sides) are `minifix-15` instead: 10 cams, nothing on the
+#   outside. Everywhere a head is genuinely hidden — the whole of both drawer boxes — stays confirmat,
+#   per CLAUDE.md "Pick the joint by whether the screw head is ever seen".
+#
+# COUPLED DIMENSIONS — change one, re-derive the rest
+#   W = 560   internal = 560 − 36 = 524     -> bottom, both back rails and the top stretcher all span 524
+#             drawer box outer = 524 − 26 = 498   (ball-bearing: internal − 25.4; docs say use 26 to be
+#             safe)  -> box sits x 31..529, 13 mm slide clearance each side
+#             box front/back panels are the full 498; the sides sit BETWEEN them -> side length 350 − 36
+#   D = 450   side width. Cabinet frame: y 0 = FRONT, y 450 = the wall.
+#             drawer back edge 100 mm off the wall (pipes) -> box depth = 350, sides span y 18..332
+#             back rails inset at y 432..450, flush with the sides' rear edges
+#   H = 480   side height. No top panel.
+#             top-front stretcher   z 380..480   (upright, 100 tall, y 0..18)
+#             bottom drawer box     z  22..140   (18 bottom + 100 walls)   4 mm clear of the bottom panel
+#             top    drawer box     z 148..316   (18 bottom + 150 sides)   8 mm clear of the box below
+#                                                 its back is only 100 -> tops out at 266
+#             -> 164 mm clear above the top drawer for the bowl and the trap, 64 mm under the stretcher
+#   facades   bottom  z   0..150            150 tall
+#             gap 3
+#             top     z 153..474            321 tall  -> 6 mm open at the very top, as specified
+#             both 560 wide, full overlay, front face at y −18..0
+#
+# DRAWER BOX CONSTRUCTION — deliberately NOT library/parts/drawer-box-500x400
+#   That part runs its sides full length and screws through them, which puts confirmat heads on exactly
+#   the faces the slides bolt to. Here the FRONT and BACK are the outermost panels (full 498 wide) and
+#   the SIDES sit between them (314), with the bottom underneath everything. Every head then lands on:
+#     - the front panel's front face  -> covered by the facade
+#     - the back panel's rear face    -> faces the 100 mm pipe gap
+#     - the bottom's underside        -> never seen
+#   and both side faces stay perfectly flat for the slides.
+#   It costs no travel: the outer side plane is still a continuous flat 350 mm (side panel plus the two
+#   end grains, all flush), so the slide length and the drawer's extension are exactly what they would
+#   have been the other way round. The cut list changes — sides 314 instead of 350, front/back 498
+#   instead of 462 — and there is ONE real price:
+#   THE FRONT/BACK PANELS' SHORT ENDS ARE NOW ON SHOW. Turning the box inside out moves those 18 mm ends
+#   from hidden (butted between the sides) into the box's outer side plane, where you see them every time
+#   the drawer is open. So all four of those panels are banded on edges 2 and 4 as well as edge 1 —
+#   8 short edges in total. Cheap, but do not drop them from the order.
+#
+# SLIDES — 350 mm ball-bearing, MOUNTED ON SITE
+#   No pre-drilled slide holes anywhere. `pattern: system32` in the library is symbolic (nothing expands
+#   it), drilling is charged per hole, and brands differ — screw them on with chipboard screws.
+#   The box's outer side plane is CONTINUOUS over the full 350 mm depth: the front panel's end (y 0..18),
+#   the side panel (y 18..332) and the back panel's end (y 332..350) are all flush in that plane. So a
+#   350 slide fits the box exactly and the cabinet member sits at y 0..350, flush with the carcass front.
+#   ONE CONSTRAINT: the drawer member's screws must land in the SIDE panel (y 18..332), never in the
+#   18 mm end grain at either end. A typical drawer member's front hole is ~20-25 mm back, so it clears —
+#   but check your slides before drilling, and skip any hole that falls in the first or last 18 mm.
+#
+# FACADES — blank, no handle holes, no fixing holes
+#   Each box has its own internal front panel precisely so the facades can be positioned by hand: hang
+#   the drawer, offer the facade up, clamp it, then screw through the box front from INSIDE the drawer.
+#   Handles likewise get drilled after the fronts are aligned.
+#
+# WET ROOM
+#   Standard MFC core is not moisture resistant. Both sides are banded on all four edges; so is every
+#   drawer bottom (its whole perimeter is exposed). Silicone the bottom panel's seams after assembly.
+#   Keep the LOWER back rail low so at least one run of wall fixings sits below the open bay.
+#
+# DRAWER SCREW COUNT
+#   ONE confirmat on a SHORT seam (the four vertical corners of each box), TWO on a LONG seam (bottom ->
+#   walls). 12 screws per box, 24 in total. A single screw per corner cannot pivot because the bottom
+#   panel is screwed to BOTH panels of every corner, which is what locks the joint against rotation.
+#
+# EXPECTED `meble review` WARNINGS — these are not bugs
+#   - `mirror-pair`  both sides are banded all round, so their vertical-edge sets match. They ARE genuine
+#     mirrors: the stretcher's bolt seats sit at x 441 on side-l and x 9 on side-r.
+#   (that is the only one — every confirmat now clears the 50 mm end margin.)
+#
+# EXPECTED `meble fit` SKIPS — their holes are HAND-WRITTEN below and DO NOT follow a resize
+#   - the four `mf-*` fittings          (minifix stamping is not implemented)
+#   - the four `cf-d?-bot-s*` fittings  (no `through_edge`: the sides start 18 mm in from the bottom
+#     panel's front edge, so a single `at` list cannot serve both panels' origins)
+#   Re-derive those by hand if any dimension moves.
+# =====================================================================================================
+
+id: sink-vanity
+name: "Bathroom sink vanity (wall-hung basin)"
+kind: custom
+category: base
+construction: mixed          # minifix on the two carcass joints that would show a head on a visible
+                             # side; confirmat for both drawer boxes, where nothing is ever seen.
+dimensions: {width: 560, height: 480, depth: 450}   # EXTERNAL; facades sit at y −18..0 in front
+position: {x: 1800, y: 0, z: 0, rotation: 0}   # VIEWER PLACEHOLDER — clear of wm-wardrobe (x 900, 762
+                                               # wide). z 0 is a placeholder too: the unit is WALL-HUNG,
+                                               # so set the real mounting height once the basin is up.
+defaults: {material: u604-18, edgeband: eb-u604-1}
+back: {type: surface}        # /!\ ORDER-IRRELEVANT METADATA and inaccurate: there is NO back panel at
+                             # all, only the two loose rails. The schema has no value for that; the
+                             # panel geometry below is what counts.
+plinth: {}                   # wall-hung — nothing stands on the floor
+
+panels:
+
+# ---------------------------------------------------------------------------------------------------
+# CARCASS
+# ---------------------------------------------------------------------------------------------------
+- id: side-l
+  name: "Left side"
+  element_type: panel
+  role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = wall.
+                              # X: 0 = wall, 450 = front.  Y: 0 = bottom, 480 = top.
+  width: 450                  # depth
+  height: 480
+  grain: height               # vertical ST9 emboss, matching wc-column / wm-wardrobe
+  edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
+                              # ALL FOUR: this face is on show, the top edge is exposed (no top panel),
+                              # the rear edge sits against a wet wall and the bottom edge is visible
+                              # from below on a wall-hung unit
+  holes:
+    # NOTHING on the outer face — that is the entire point of the minifix carcass.
+    # Ø5 minifix bolt seats only, all on the inner face.
+    # bottom panel: seats at its mid-thickness (y = 9). x is measured from the WALL, matching mf-bot-l's
+    # `at` — the list is symmetric about the 225 mid-depth so side-r can reuse the same numbers.
+  - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 3, spacing: 175, direction: x, src: mf-bot-l}
+  - {face: inner, x: 441, y: 405, dia: 5, depth: 12, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-l}
+- id: side-r
+  name: "Right side"
+  element_type: panel
+  role: side-right            # MIRROR of side-l. X: 0 = FRONT, 450 = wall — so edge4 (not edge2) is the
+                              # cabinet front, and the stretcher's bolt seats read x 9 instead of x 441.
+  width: 450
+  height: 480
+  grain: height
+  edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
+  holes:
+    # The bottom-panel seats read the same numbers as side-l ONLY because mf-bot-r's `at` is symmetric
+    # about the mid-depth — they are not the same physical points in the same order.
+  - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 3, spacing: 175, direction: x, src: mf-bot-r}
+  - {face: inner, x: 9, y: 405, dia: 5, depth: 12, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-r}
+- id: bottom
+  name: "Bottom panel"
+  element_type: panel
+  role: bottom                # 524 = 560 − 2×18. edge1 = cabinet FRONT (y 450), edge3 = wall (y 0).
+                              # On a `bottom`, inner = the UP face and outer = DOWN (docs/conventions.md
+                              # "Horizontals: which face is up").
+                              # NOTCH THIS ON SITE if a pipe needs to pass — it is the sacrificial panel.
+  width: 524
+  height: 450                 # full depth, right back to the wall
+  grain: any                  # uni decor, hidden under the drawers — let the optimiser rotate it
+  edge_banding: {edges: {1: eb-u604-1, 3: eb-u604-1}, glue_type: long}
+                              # front edge (behind the bottom facade, and glimpsed from below) AND the
+                              # rear edge, which stands in humid air over the plumbing with no back panel
+                              # to seal it
+  holes:
+    # MINIFIX. Cams on the INNER (up) face — the underside of a wall-hung vanity is at eye level for
+    # anyone sitting down, so nothing goes on `outer`. Ø15 × 13 in an 18 mm panel: 5 mm left.
+    # Cam centre 34 mm in from the end, the standard minifix bolt reach.
+    # y is measured from the WALL (local y 0 = wall), matching the `at` lists.
+  - {face: inner, x: 34, y: 50, dia: 15, depth: 13, type: multi, count: 3, spacing: 175, direction: y, src: mf-bot-l}
+  - {face: inner, x: 490, y: 50, dia: 15, depth: 13, type: multi, count: 3, spacing: 175, direction: y, src: mf-bot-r}
+  - {face: edge4, from: 50, dia: 8, depth: 30, type: multi, count: 3, spacing: 175, src: mf-bot-l}
+  - {face: edge2, from: 50, dia: 8, depth: 30, type: multi, count: 3, spacing: 175, src: mf-bot-r}
+  placement: {pos: [18, 0, 0]}
+
+- id: rail-top
+  name: "Top-front stretcher"
+  element_type: panel
+  role: rail                  # upright, in the FRONT plane at y 0..18, z 380..480. Frame declared like a
+                              # door: OUTER faces the room, so local +x runs cabinet LEFT-to-RIGHT —
+                              # edge4 meets side-l, edge2 meets side-r. Local y 0 = its own bottom edge
+                              # (cabinet z 380).
+                              # This single panel is what holds the two sides parallel at the top, and
+                              # the top drawer's facade closes against its front face.
+  width: 524                  # 560 − 2×18
+  height: 100
+  grain: any                  # 100 mm strip, uni decor — let the optimiser rotate it
+  edge_banding: {edges: {1: eb-u604-1, 3: eb-u604-1}, glue_type: long}
+                              # TOP edge: visible through the 6 mm gap above the top facade.
+                              # BOTTOM edge: seen from below whenever the top drawer is open.
+                              # The two ends butt the sides — left raw.
+  holes:
+    # MINIFIX, cams on the INNER face (looking back into the cabinet). NOT on outer: a cam housing there
+    # would stand proud into the 0 mm gap behind the facade and foul it.
+  - {face: inner, x: 34, y: 25, dia: 15, depth: 13, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-l}
+  - {face: inner, x: 490, y: 25, dia: 15, depth: 13, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-r}
+  - {face: edge4, from: 25, dia: 8, depth: 30, type: multi, count: 2, spacing: 50, src: mf-rail-l}
+  - {face: edge2, from: 25, dia: 8, depth: 30, type: multi, count: 2, spacing: 50, src: mf-rail-r}
+  placement: {pos: [18, 0, 380], rot: [90, 0, 0]}
+    # rot is REQUIRED: `rail` is not in the viewer's ROLE_FRAME table (tools/meble/scene.py), so without
+    # it the panel falls back to the identity frame and lies flat. [90, 0, 0] reproduces the `front`
+    # frame: +u = cabinet right, +v = up, outer toward the room.
+
+- id: rail-back
+  name: "Back rail / wall cleat"
+  element_type: panel
+  role: rail                  # in the BACK plane, inset at y 432..450 so the unit still sits flat on the
+                              # wall. Frame declared like a `back`: OUTER faces the WALL, so local +x
+                              # runs cabinet RIGHT-to-LEFT.
+  quantity: 2
+  width: 524                  # 560 − 2×18, same span as the bottom panel
+  height: 100
+  grain: any
+  edge_banding: {edges: {1: eb-u604-1, 3: eb-u604-1}, glue_type: long}
+                              # top and bottom edges: both stand in humid air in an open-backed bay
+  holes: []                   # DELIBERATELY EMPTY — see the header. Where these rails land depends on
+                              # where the pipes come out of the wall, so they are positioned and drilled
+                              # during assembly. Fix with L-brackets from INSIDE (never through the
+                              # visible sides) and screw them to the wall.
+  placement: {pos: [18, 432, 60], step: [0, 0, 260], rot: [90, 0, 180]}
+    # z 60 and 320 are INDICATIVE ONLY, for the 3D preview — the real heights are set on site.
+    # rot reproduces the `back` frame: +u = cabinet LEFT, +v = up, outer toward the wall.
+
+# ---------------------------------------------------------------------------------------------------
+# FACADES — 2 mm banding on all edges, like the wm-wardrobe doors. No holes of any kind.
+# ---------------------------------------------------------------------------------------------------
+- id: facade-bot
+  name: "Bottom drawer facade"
+  element_type: panel
+  role: front                 # full overlay, 18 mm, z 0..150, front face at y −18
+  width: 560
+  height: 150
+  grain: height               # vertical emboss, matching the wardrobe doors across the room
+  edge_banding: {all_edges: true, band: eb-u604-2, glue_type: long}
+  holes: []                   # blank: no handle holes (drilled on site once the fronts are aligned) and
+                              # no fixing holes (screwed from inside the drawer, through d1-front)
+  placement: {pos: [0, -18, 0], rot: [90, 0, 0]}
+
+- id: facade-top
+  name: "Top drawer facade"
+  element_type: panel
+  role: front                 # z 153..474 — 3 mm reveal below, 6 mm open above, as specified.
+                              # TALL FACADE, SHORT BOX: it is fixed only over z 166..316 (the box front),
+                              # and the 158 mm above that is what hides the basin bowl and the trap.
+  width: 560
+  height: 321                 # 474 − 153
+  grain: height
+  edge_banding: {all_edges: true, band: eb-u604-2, glue_type: long}
+  holes: []                   # blank — see facade-bot
+  placement: {pos: [0, -18, 153], rot: [90, 0, 0]}
+
+# ---------------------------------------------------------------------------------------------------
+# BOTTOM DRAWER BOX — z 22..140.  All-18 mm, confirmat, every head hidden.
+#
+# MATERIAL: these six drawer-box panels (and d2's five) may OPTIONALLY be switched to white —
+# `material: w980-18` + `edgeband: eb-w980-1` on each of them. Brighter interiors, a common cheaper
+# carcass board, and they land in their own CSV file. Nothing else in the design changes.
+# ---------------------------------------------------------------------------------------------------
+- id: d1-bottom
+  name: "Bottom drawer — bottom"
+  element_type: panel
+  role: drawer-bottom         # sits UNDER all four walls, so its whole perimeter is flush with the box
+                              # outside. Frame declared like a carcass `bottom`: outer = DOWN (where the
+                              # confirmat heads land), local x 0 = cabinet left, local y 0 = the drawer's
+                              # BACK (+v runs toward the front).
+  width: 498                  # box outer width
+  height: 350                 # box depth
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
+                              # ALL FOUR — nothing covers these edges, and they are the lowest thing in
+                              # a bathroom cabinet
+  holes:
+    # -> the two sides. HAND-WRITTEN (cf-d1-bot-s* carry no `through_edge`, so `fit` skips them): the
+    # sides span y 18..332 while this panel spans 0..350, so one `at` list cannot serve both origins.
+    # x 9 / 489 = each side's mid-thickness. Local y measured from the drawer BACK.
+  - {face: outer, x: 9, y: 98, dia: 8, depth: through, type: multi, count: 2, spacing: 154, direction: y, src: cf-d1-bot-sl}
+  - {face: outer, x: 489, y: 98, dia: 8, depth: through, type: multi, count: 2, spacing: 154, direction: y, src: cf-d1-bot-sr}
+  - face: outer
+    x: 125
+    y: 341.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 2
+    spacing: 248
+    direction: x
+    src: cf-d1-bot-f
+  - face: outer
+    x: 125
+    y: 9.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 2
+    spacing: 248
+    direction: x
+    src: cf-d1-bot-b
+  placement: {pos: [31, 0, 22], rot: [180, 0, 0]}
+    # rot reproduces the `bottom`/`shelf` frame: +u = cabinet right, +v = toward the front, outer = down.
+
+# The four walls below are FOUR SEPARATE ENTRIES even though d1-front / d1-back are the same board and
+# d1-side-l / d1-side-r are the same board (this box's front and back are both 100 tall, so unlike d2 its
+# sides are NOT a mirror pair). One entry per physical board is required, not cosmetic: two fittings
+# landing on one shared entry stamp the SAME row twice, and the duplicate is then ordered and drilled
+# twice. Merge the identical pairs by hand in the editor if you want fewer line items.
+- id: d1-front
+  name: "Bottom drawer — front (internal)"
+  element_type: panel
+  role: drawer-front-back     # y 0..18, the full 498 wide (outermost). This is what facade-bot screws to
+                              # from inside the drawer, which is why the facade's position stays free.
+                              # Heads on its front face — covered by the facade.
+  width: 498
+  height: 100
+  grain: any
+  edge_banding: {edges: {1: eb-u604-1, 2: eb-u604-1, 4: eb-u604-1}, glue_type: long}
+                              # TOP edge, plus BOTH SHORT ENDS. The ends are not hidden here:
+                              # because the front/back are the outermost panels, their 18 mm
+                              # ends form part of the box's OUTER side plane and are on show
+                              # whenever the drawer is open. 498 is the FINISHED width, so the
+                              # 1 mm band is inside it and stays flush with the side panels.
+  holes:                      # stamped by cf-d1-fl / cf-d1-fr / cf-d1-bot-f
+  - face: outer
+    x: 9.0
+    y: 50
+    dia: 8
+    depth: through
+    type: single
+    src: cf-d1-fl
+  - face: outer
+    x: 489.0
+    y: 50
+    dia: 8
+    depth: through
+    type: single
+    src: cf-d1-fr
+  - face: edge3
+    from: 125
+    dia: 4
+    depth: 35
+    type: multi
+    count: 2
+    spacing: 248
+    src: cf-d1-bot-f
+  placement: {pos: [31, 0, 40], rot: [90, 0, 0]}
+
+- id: d1-back
+  name: "Bottom drawer — back"
+  element_type: panel
+  role: drawer-back           # y 332..350. IDENTICAL BOARD to d1-front. Heads on its rear face, facing
+                              # the 100 mm pipe gap.
+                              # Frame declared like a `back`: OUTER faces the wall, local +x runs cabinet
+                              # RIGHT-to-LEFT, so its edge2 meets the LEFT side and edge4 the right.
+  width: 498
+  height: 100
+  grain: any
+  edge_banding: {edges: {1: eb-u604-1, 2: eb-u604-1, 4: eb-u604-1}, glue_type: long}
+                              # TOP edge, plus BOTH SHORT ENDS. The ends are not hidden here:
+                              # because the front/back are the outermost panels, their 18 mm
+                              # ends form part of the box's OUTER side plane and are on show
+                              # whenever the drawer is open. 498 is the FINISHED width, so the
+                              # 1 mm band is inside it and stays flush with the side panels.
+  holes:                      # stamped by cf-d1-bl / cf-d1-br / cf-d1-bot-b
+  - face: outer
+    x: 489.0
+    y: 50
+    dia: 8
+    depth: through
+    type: single
+    src: cf-d1-bl
+  - face: outer
+    x: 9.0
+    y: 50
+    dia: 8
+    depth: through
+    type: single
+    src: cf-d1-br
+  - face: edge3
+    from: 125
+    dia: 4
+    depth: 35
+    type: multi
+    count: 2
+    spacing: 248
+    src: cf-d1-bot-b
+  placement: {pos: [31, 332, 40], rot: [90, 0, 180]}
+
+- id: d1-side-l
+  name: "Bottom drawer — left side"
+  element_type: panel
+  role: drawer-side           # BETWEEN the front and back panels: 350 − 36 = 314. Same board as
+                              # d1-side-r — both ends drilled 30/70, because this box's front and back
+                              # are both 100 tall (d2's are not, which is what makes ITS sides mirrors).
+                              # Its outer face carries NO holes at all — that is where the slide bolts on.
+                              # Frame like `side-left`: local x 0 = the drawer's BACK, so edge2 is the
+                              # FRONT end and edge4 the back end.
+  width: 314                  # box depth 350 less the 18 mm front and back
+  height: 100
+  grain: any
+  edge_banding: {edges: {1: eb-u604-1}, glue_type: long}   # top edge only
+  placement: {pos: [31, 18, 40], rot: [90, 0, -90]}
+  holes:                      # end pilots stamped by cf-d1-fl (edge2) / cf-d1-bl (edge4)
+    # bottom-edge pilots: HAND-WRITTEN, because cf-d1-bot-sl carries no `through_edge` and `fit` skips
+    # it. `from` runs along this panel's own bottom edge; the set is symmetric about 157 so both sides
+    # take the same numbers despite reading their frames in opposite directions.
+  - {face: edge3, from: 80, dia: 4, depth: 35, type: multi, count: 2, spacing: 154, src: cf-d1-bot-sl}
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-d1-fl
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-d1-bl
+- id: d1-side-r
+  name: "Bottom drawer — right side"
+  element_type: panel
+  role: drawer-side           # Same board as d1-side-l. Frame like `side-right`: local x 0 = the
+                              # drawer's FRONT, so edge4 is the front end and edge2 the back end.
+  width: 314
+  height: 100
+  grain: any
+  edge_banding: {edges: {1: eb-u604-1}, glue_type: long}
+  placement: {pos: [511, 18, 40], rot: [90, 0, 90]}
+  holes:                      # end pilots stamped by cf-d1-fr (edge4) / cf-d1-br (edge2)
+  - {face: edge3, from: 80, dia: 4, depth: 35, type: multi, count: 2, spacing: 154, src: cf-d1-bot-sr}
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-d1-fr
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-d1-br
+- id: d2-bottom
+  name: "Top drawer — bottom"
+  element_type: panel
+  role: drawer-bottom         # IDENTICAL BOARD to d1-bottom (498 × 350, same banding, same holes). Kept
+                              # as its own entry so its fittings reference this drawer's own panels —
+                              # merge the two lines by hand in the editor if you want one CSV row.
+  width: 498
+  height: 350
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
+  holes:
+    # -> the two sides, hand-written for the same origin reason as d1-bottom.
+  - {face: outer, x: 9, y: 98, dia: 8, depth: through, type: multi, count: 2, spacing: 154, direction: y, src: cf-d2-bot-sl}
+  - {face: outer, x: 489, y: 98, dia: 8, depth: through, type: multi, count: 2, spacing: 154, direction: y, src: cf-d2-bot-sr}
+  - face: outer
+    x: 125
+    y: 341.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 2
+    spacing: 248
+    direction: x
+    src: cf-d2-bot-f
+  - face: outer
+    x: 125
+    y: 9.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 2
+    spacing: 248
+    direction: x
+    src: cf-d2-bot-b
+  placement: {pos: [31, 0, 148], rot: [180, 0, 0]}
+
+- id: d2-front
+  name: "Top drawer — front (internal)"
+  element_type: panel
+  role: drawer-front-back     # 150 tall, matching the sides. This is what facade-top screws to, from
+                              # inside the drawer — which is why the facade's exact position stays free.
+  width: 498
+  height: 150
+  grain: any
+  edge_banding: {edges: {1: eb-u604-1, 2: eb-u604-1, 4: eb-u604-1}, glue_type: long}
+                              # TOP edge, plus BOTH SHORT ENDS. The ends are not hidden here:
+                              # because the front/back are the outermost panels, their 18 mm
+                              # ends form part of the box's OUTER side plane and are on show
+                              # whenever the drawer is open. 498 is the FINISHED width, so the
+                              # 1 mm band is inside it and stays flush with the side panels.
+  holes:                      # stamped by cf-d2-fl / cf-d2-fr / cf-d2-bot-f
+  - face: outer
+    x: 9.0
+    y: 75
+    dia: 8
+    depth: through
+    type: single
+    src: cf-d2-fl
+  - face: outer
+    x: 489.0
+    y: 75
+    dia: 8
+    depth: through
+    type: single
+    src: cf-d2-fr
+  - face: edge3
+    from: 125
+    dia: 4
+    depth: 35
+    type: multi
+    count: 2
+    spacing: 248
+    src: cf-d2-bot-f
+  placement: {pos: [31, 0, 166], rot: [90, 0, 0]}
+
+- id: d2-back
+  name: "Top drawer — back"
+  element_type: panel
+  role: drawer-back           # ONLY 100 TALL, against 150 sides: the drawer has to travel under the trap
+                              # and the basin's waste, and the back is the panel that gets there first.
+                              # IDENTICAL BOARD to d1-front / d1-back — same 498 × 100, same banding, same
+                              # 30/70 end pilots — so all three can be ordered as one line if you prefer.
+                              # Frame declared like a `back`: OUTER faces the wall, local +x runs cabinet
+                              # RIGHT-to-LEFT, so its edge2 meets side-l's box side and edge4 meets the
+                              # right one.
+  width: 498
+  height: 100
+  grain: any
+  edge_banding: {edges: {1: eb-u604-1, 2: eb-u604-1, 4: eb-u604-1}, glue_type: long}
+                              # TOP edge, plus BOTH SHORT ENDS. The ends are not hidden here:
+                              # because the front/back are the outermost panels, their 18 mm
+                              # ends form part of the box's OUTER side plane and are on show
+                              # whenever the drawer is open. 498 is the FINISHED width, so the
+                              # 1 mm band is inside it and stays flush with the side panels.
+  holes:                      # stamped by cf-d2-bl / cf-d2-br / cf-d2-bot-b
+  - face: outer
+    x: 489.0
+    y: 50
+    dia: 8
+    depth: through
+    type: single
+    src: cf-d2-bl
+  - face: outer
+    x: 9.0
+    y: 50
+    dia: 8
+    depth: through
+    type: single
+    src: cf-d2-br
+  - face: edge3
+    from: 125
+    dia: 4
+    depth: 35
+    type: multi
+    count: 2
+    spacing: 248
+    src: cf-d2-bot-b
+  placement: {pos: [31, 332, 166], rot: [90, 0, 180]}
+
+- id: d2-side-l
+  name: "Top drawer — left side"
+  element_type: panel
+  role: drawer-side           # GENUINE MIRROR PAIR with d2-side-r, and the reason is the low back: the
+                              # front end takes screws at 50/100 (into a 150 mm front) and the back end
+                              # at 30/70 (into a 100 mm back). Flipping the part end-for-end does NOT
+                              # reproduce that, so the two sides are different boards.
+                              # Frame like `side-left`: local x 0 = the drawer's BACK, x 314 = its front,
+                              # so edge2 is the FRONT end and edge4 the back end.
+  width: 314
+  height: 150
+  grain: any
+  edge_banding: {edges: {1: eb-u604-1}, glue_type: long}
+  holes:                      # stamped by cf-d2-fl (edge2) / cf-d2-bl (edge4) / cf-d2-bot-sl (edge3)
+  - {face: edge3, from: 80, dia: 4, depth: 35, type: multi, count: 2, spacing: 154, src: cf-d2-bot-sl}
+  - face: edge2
+    from: 75
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-d2-fl
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-d2-bl
+  placement: {pos: [31, 18, 166], rot: [90, 0, -90]}
+
+- id: d2-side-r
+  name: "Top drawer — right side"
+  element_type: panel
+  role: drawer-side           # MIRROR of d2-side-l. Frame like `side-right`: local x 0 = the drawer's
+                              # FRONT, so edge4 is the front end and edge2 the back end — the opposite
+                              # of d2-side-l, which is exactly what mirrors the 50/100 vs 30/70 sets.
+  width: 314
+  height: 150
+  grain: any
+  edge_banding: {edges: {1: eb-u604-1}, glue_type: long}
+  holes:                      # stamped by cf-d2-fr (edge4) / cf-d2-br (edge2) / cf-d2-bot-sr (edge3)
+  - {face: edge3, from: 80, dia: 4, depth: 35, type: multi, count: 2, spacing: 154, src: cf-d2-bot-sr}
+  - face: edge4
+    from: 75
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-d2-fr
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: single
+    src: cf-d2-br
+  placement: {pos: [511, 18, 166], rot: [90, 0, 90]}
+
+assembly:
+  fittings:
+
+  # --- CARCASS: MINIFIX. `meble fit` cannot stamp minifix (fittings.py skips non-butt hardware), so
+  #     every hole for these four lives hand-written on the panels above, tagged with these ids.
+  #     bottom -> sides: `at` is measured from the WALL along the 450 mm depth and is SYMMETRIC about the
+  #     225 mid-depth. That symmetry is load-bearing: side-l's local x runs from the wall but side-r's
+  #     runs from the FRONT, so only a symmetric set lands on the same physical points from both frames.
+  - {id: mf-bot-l, hardware: minifix-15, through: bottom, into: side-l, seam: {through_edge: 4, into_face: inner}, at: [50, 225, 400]}
+  - {id: mf-bot-r, hardware: minifix-15, through: bottom, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [50, 225, 400]}
+  #     stretcher -> sides: `at` is the height above the STRETCHER's own bottom edge, so 25/75 land at
+  #     cabinet z 405/455. Only 2 cams per end — the panel is 100 tall and this is the practical spacing.
+  - {id: mf-rail-l, hardware: minifix-15, through: rail-top, into: side-l, seam: {through_edge: 4, into_face: inner}, at: [25, 75]}
+  - {id: mf-rail-r, hardware: minifix-15, through: rail-top, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [25, 75]}
+
+  # --- DRAWER SCREW COUNT: ONE confirmat on a SHORT seam (the four vertical corners, 100–150 mm),
+  #     TWO on a LONG seam (bottom -> walls, 314 and 498 mm). 12 screws per box instead of 20.
+  #     A single screw per corner cannot pivot here because the bottom panel is screwed to BOTH panels
+  #     of every corner, which is what locks the joint against rotation.
+  #     Bonus: every position now clears the 50 mm confirmat end margin, so `meble review` is silent.
+
+  # --- BOTTOM DRAWER: all confirmat, all heads hidden. These are clean perimeter butt joints with
+  #     aligned origins, so `meble fit` stamps them.
+  #     Corners: `at` = height up the seam, measured from the bottom on BOTH panels. 50 = mid-height of
+  #     a 100 mm edge, and exactly the 50 mm end margin at both ends.
+  - {id: cf-d1-fl, hardware: confirmat-7x50, through: d1-front, into: d1-side-l, seam: {through_edge: 4, into_edge: 2}, at: [50]}
+  - {id: cf-d1-fr, hardware: confirmat-7x50, through: d1-front, into: d1-side-r, seam: {through_edge: 2, into_edge: 4}, at: [50]}
+  #     The back reads its frame right-to-left, so its edge2 meets the LEFT side and edge4 the right.
+  - {id: cf-d1-bl, hardware: confirmat-7x50, through: d1-back, into: d1-side-l, seam: {through_edge: 2, into_edge: 4}, at: [50]}
+  - {id: cf-d1-br, hardware: confirmat-7x50, through: d1-back, into: d1-side-r, seam: {through_edge: 4, into_edge: 2}, at: [50]}
+  #     Bottom -> front/back: heads on the bottom's underside. `at` runs along the 498 width. Symmetric
+  #     about 249 because the back panel reads its frame right-to-left.
+  - {id: cf-d1-bot-f, hardware: confirmat-7x50, through: d1-bottom, into: d1-front, seam: {through_edge: 1, into_edge: 3}, at: [125, 373]}
+  - {id: cf-d1-bot-b, hardware: confirmat-7x50, through: d1-bottom, into: d1-back, seam: {through_edge: 3, into_edge: 3}, at: [125, 373]}
+  #     Bottom -> sides: NO `through_edge` on purpose, so `fit` skips them instead of stamping them
+  #     wrong (the sides start 18 mm in from the bottom panel's front edge). Holes hand-written above.
+  #     `at` = distance along the SIDE's own bottom edge; symmetric about 157 so both sides share it.
+  - {id: cf-d1-bot-sl, hardware: confirmat-7x50, through: d1-bottom, into: d1-side-l, seam: {into_edge: 3}, at: [80, 234]}
+  - {id: cf-d1-bot-sr, hardware: confirmat-7x50, through: d1-bottom, into: d1-side-r, seam: {into_edge: 3}, at: [80, 234]}
+
+  # --- TOP DRAWER: same shapes, but the front (150) and back (100) are separate panels with separate
+  #     end-screw heights, which is what makes d2-side-l / d2-side-r a mirror pair.
+  #     75 = mid-height of the 150 mm front; 50 = mid-height of the 100 mm back.
+  - {id: cf-d2-fl, hardware: confirmat-7x50, through: d2-front, into: d2-side-l, seam: {through_edge: 4, into_edge: 2}, at: [75]}
+  - {id: cf-d2-fr, hardware: confirmat-7x50, through: d2-front, into: d2-side-r, seam: {through_edge: 2, into_edge: 4}, at: [75]}
+  #     The back reads its frame right-to-left, so its edge2 meets the LEFT side and edge4 the right.
+  - {id: cf-d2-bl, hardware: confirmat-7x50, through: d2-back, into: d2-side-l, seam: {through_edge: 2, into_edge: 4}, at: [50]}
+  - {id: cf-d2-br, hardware: confirmat-7x50, through: d2-back, into: d2-side-r, seam: {through_edge: 4, into_edge: 2}, at: [50]}
+  - {id: cf-d2-bot-f, hardware: confirmat-7x50, through: d2-bottom, into: d2-front, seam: {through_edge: 1, into_edge: 3}, at: [125, 373]}
+  - {id: cf-d2-bot-b, hardware: confirmat-7x50, through: d2-bottom, into: d2-back, seam: {through_edge: 3, into_edge: 3}, at: [125, 373]}
+  - {id: cf-d2-bot-sl, hardware: confirmat-7x50, through: d2-bottom, into: d2-side-l, seam: {into_edge: 3}, at: [80, 234]}
+  - {id: cf-d2-bot-sr, hardware: confirmat-7x50, through: d2-bottom, into: d2-side-r, seam: {into_edge: 3}, at: [80, 234]}
+
+  hardware:
+    # Documentary only — the loader reads assembly.fittings and ignores this key (same as
+    # library/parts/drawer-box-500x400.yaml). Nothing here is drilled: see SLIDES in the header.
+  - {ref: slide-bb-350, quantity: 2}     # one pair per drawer; cabinet member at y 0..350
+
+parts: []
