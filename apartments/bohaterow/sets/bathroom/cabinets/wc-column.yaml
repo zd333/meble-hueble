@@ -19,7 +19,7 @@
 #             side-r's = x 37;  the gable's = x 181 − 37 = 144 (its own frame is only 181 deep)
 #   H = 2524  side height                                cover height 1209 (= WC frame + margin)
 #             divider centre = cover − 9 (its top face sits flush with the cover's top edge)
-#             door height = H − cover − 3 = 1312 (3 mm reveal above the cover)
+#             door height = H − cover − 3 − 4 = 1308 (3 mm reveal above the cover, 4 mm below the top)
 #             gable height = H − 18 − cover = 1297        top panel occupies the last 18
 #
 # After editing: `python -m meble fit --cabinet wc-column`, then `validate` + `review`. NOTE the
@@ -40,7 +40,8 @@
 #                    by a centre gable (x 359..377) into 2 compartments;
 #                    each gets 2 FIXED shelves on Ø5 pins (not adjustable — a fixed pin costs the same to
 #                    drill as a column of them, so skip the adjustability once positions are settled)
-#   z 1212 .. 2524   2 doors (367×1312), 3 mm reveal above the cover, flush with the unit top
+#   z 1212 .. 2520   2 doors (367×1308), 3 mm reveal above the cover and 4 mm below the unit top, so
+#                    the doors can never rub the ceiling
 #   z 2506 .. 2524   top panel (700×199)
 #
 # WIDTH
@@ -275,10 +276,14 @@ panels:
   - {face: inner, x: 144, y: 87, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 144, y: 643, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 144, y: 1199, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
-  - {face: outer, x: 37, y: 421, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: outer, x: 144, y: 421, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: inner, x: 37, y: 421, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: inner, x: 144, y: 421, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
+    # shelf pins — `depth: through`, ONE column pair serving BOTH compartments. This panel has shelves
+    # on either side of it, and two opposing Ø5 × 13 blind bores would meet inside an 18 mm panel
+    # (13 + 13 = 26) and leave a ragged, drill-wandered hole. One clean through-hole is the same hole
+    # done on purpose, at half the drilling. `face: outer` only picks the drill-entry side.
+    # USE PINS WITH A COLLAR — two meet in the middle (~9 mm each); a plain peg would push through.
+    # See CLAUDE.md "A gable/divider with shelves on BOTH sides".
+  - {face: outer, x: 37, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y}
+  - {face: outer, x: 144, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y}
   - {face: edge3, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-gable-bot}
   - {face: edge1, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-gable-top}
   placement: {pos: [359, 0, 1209], rot: [90, 0, -90]}
@@ -409,7 +414,8 @@ panels:
   element_type: panel
   role: front                 # hinges on edge4 (its LEFT edge, on side-l) — FULL overlay, 18 mm
   width: 367
-  height: 1312
+  height: 1308                # 4 mm trimmed off the TOP so the door can never rub the ceiling; the
+                              # bottom edge and every hole stay exactly where they were
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-2, glue_type: long}
   holes:
@@ -426,7 +432,7 @@ panels:
                               # covers only 8 mm of it, so these are HALF-overlay hinges. Handle/free
                               # edge is edge2 (right), next to the sink.
   width: 367
-  height: 1312
+  height: 1308                # 4 mm trimmed off the TOP — see door-l
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-2, glue_type: long}
   holes:
