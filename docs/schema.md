@@ -108,12 +108,12 @@ Two shapes by `face`:
 
 ## Cabinet (`cabinets/<c>.yaml`)
 ```yaml
-id: d60-base
-name: "Base cabinet 600"
+id: open-900
+name: "Kitchen open unit 900"
 kind: custom               # custom | readymade
 category: base             # base | wall | tall | wardrobe
 construction: confirmat    # default joinery hint
-dimensions: { width: 600, height: 720, depth: 560 }   # envelope (layout/grouping/viz)
+dimensions: { width: 900, height: 400, depth: 600 }   # envelope (layout/grouping/viz)
 position: { x: 0, y: 0, z: 0, rotation: 0 }           # placement within the set/room
 defaults: { material: w980-18, edgeband: eb-w980-1 }
 back: { type: surface }    # surface | rebate | groove
@@ -150,7 +150,7 @@ A reusable sub-assembly = a mini cabinet. Same shape as a custom cabinet (`panel
 id: kitchen
 name: "Kitchen"
 room: kitchen
-cabinets: [d60-base, ...]  # cabinet ids in this set's cabinets/ dir
+cabinets: [open-900, ...]  # cabinet ids in this set's cabinets/ dir
 layout: {}                 # optional notes about relative placement (positions also live on cabinets)
 ```
 

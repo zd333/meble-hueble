@@ -6,7 +6,7 @@
 # (scaffold a carcass, stamp fitting holes) are run for you there via `python -m meble …`; you don't
 # invoke them by hand, so they're not tasks here.
 #
-# Most tasks take an optional scope after `--`, e.g.  task pdf -- --cabinet d60-base
+# Most tasks take an optional scope after `--`, e.g.  task pdf -- --cabinet open-900
 # (default scope is the kitchen set / bohaterow apartment).
 version: '3'
 

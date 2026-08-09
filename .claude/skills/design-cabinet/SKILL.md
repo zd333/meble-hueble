@@ -20,7 +20,7 @@ Guided authoring of cabinet YAML. **Panels are the single source of truth** — 
    internal layout (shelves, later: doors/drawers).
 2. **Scaffold** a starting point (optional but fast):
    ```bash
-   python -m meble scaffold base --width 600 --height 720 --depth 560 --id d60-base --name "Szafka dolna 600"
+   python -m meble scaffold base --width 900 --height 400 --depth 600 --id open-900 --name "Kitchen open unit 900"
    ```
    It prints YAML — save it to the cabinet path above. The scaffold is one-shot: after saving you own
    and edit the file freely.

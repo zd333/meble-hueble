@@ -121,7 +121,7 @@ Board 18 mm, back 3 mm HDF. Deep dive: **`docs/cabinet-construction.md`**. IKEA 
 ## Tools (run from repo root)
 
 Convenient entry point: **`task <name>`** (see `Taskfile.yml`; `task --list`). Most take a scope after
-`--`, e.g. `task pdf -- --cabinet d60-base`. User-facing tasks: `list`, `review`, `csv`, `pdf`, `view`,
+`--`, e.g. `task pdf -- --cabinet open-900`. User-facing tasks: `list`, `review`, `csv`, `pdf`, `view`,
 `setup`. The design internals (`scaffold`, `fit`, `validate`) are `python -m meble …` commands the
 `design-cabinet` / `cabinet-review` skills run for you during a session — not surfaced as tasks. Full CLI: 
 
@@ -131,7 +131,7 @@ python -m meble list                                     # what's in the project
 python -m meble validate --apartment bohaterow           # schema/bounds checks
 python -m meble review   --apartment bohaterow           # domain linter (mirror, carcass math, wrong face…)
 python -m meble scaffold base --width 600 --height 720 --depth 560   # seed a new cabinet (prints YAML)
-python -m meble fit  --cabinet d60-base                  # (re)stamp holes from fittings (safe/idempotent)
+python -m meble fit  --cabinet open-900                  # (re)stamp holes from fittings (safe/idempotent)
 python -m meble csv  --set kitchen                       # -> out/csv/<board>.csv   (import to meble.pl)
 python -m meble pdf  --set kitchen                        # -> out/pdf/<set>.pdf     (manual-entry sheets)
 python -m meble view --set kitchen                       # interactive 3D viewer (opens browser)

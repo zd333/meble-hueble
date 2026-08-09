@@ -24,7 +24,7 @@ DEFAULT_COLOR = [0.85, 0.85, 0.83]
 #
 # Below, u and v are given per role in the CABINET frame: X = width (left -> right), Y = depth
 # (0 = FRONT, D = wall), Z = height (0 = floor). Taken from docs/conventions.md plus the joinery in the
-# d60-base worked example, which pins down the horizontals: a top/bottom panel's edge 4 is the cabinet
+# open-900 worked example, which pins down the horizontals: a top/bottom panel's edge 4 is the cabinet
 # LEFT (cf-*-l joins into_edge 4) and its edge 1 is the FRONT.
 #
 # CONSEQUENCE WORTH KNOWING: for a horizontal, edge4 = left and edge1 = front force w to point DOWN.
