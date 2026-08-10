@@ -124,7 +124,7 @@
 #                    both are screwed to it from behind. Service opening cut on site.
 #   z 1810 .. 1828   divider (726×657) — the bay's ceiling and the overhead cabinet's floor
 #   z 1828 .. 2502   overhead cabinet, 674 clear — the same back panel closes its rear.
-#                    ONE full-width shelf on Ø5 pins, 3 selectable heights drilled (see SHELF)
+#                    ONE full-width shelf on Ø5 pins at a single fixed height, z 2156 (see SHELF)
 #   z 1810 .. 2516   2 doors (380×706), bottom edge flush with the divider's underside, 4 mm reveal
 #                    below the unit top so they can never rub the ceiling
 #   z 2502 .. 2520   top panel (726×657) — 657 not 675, so the back runs past it to the cabinet top
@@ -184,24 +184,24 @@
 #   lateral plate adjustment absorbs it, but the doors hinge on OPPOSITE outer sides so any shortfall
 #   doubles at the centre — expect the 2 mm meeting gap to settle at 3–4 mm. Cosmetic only.
 #
-# SHELF — one full-width shelf (724×652) on 4 × Ø5 pins, with THREE heights drilled so you can choose
-# once you see what actually goes up there: z 2051 / 2156 / 2261 (one `multi` per column, count 3,
-# spacing 105). The middle height splits the 674 cavity into equal (674 − 18) / 2 = 328 bays; the outer
-# two sit ±105 off it. Bays that gives you, low to high:
-#     shelf @2051 -> 223 below / 433 above      @2156 -> 328 / 328      @2261 -> 433 / 223
-#   12 pin holes in total. The reason the previous design had only its 4 chosen heights was that a full
-#   System-32 run costs 328 holes and drilling is charged per hole — 12 is noise by comparison, and one
-#   shelf in an overhead box whose use is not yet decided is exactly the case where a spare position
-#   pays for itself. Drop to `count: 1` (4 holes) if you want the absolute minimum.
+# SHELF — one full-width shelf (724×652) on 4 × Ø5 pins at ONE height: z 2156, which splits the 674
+# cavity into equal (674 − 18) / 2 = 328 bays. 4 pin holes in total, one per column, no `multi`.
+#   An earlier revision drilled THREE heights (2051 / 2156 / 2261) so the position could be chosen at
+#   assembly. Dropped on 2026-08-10: it is one shelf in an overhead box, the middle height is the one
+#   you would pick anyway, and 8 of those 12 holes were always going to sit empty and visible on the
+#   inside faces of a cabinet you look up into. Fixed positions also mean the shelf cannot be put in
+#   crooked. If you genuinely want it higher or lower, decide BEFORE ordering and move this number —
+#   that costs nothing, whereas the spare holes cost drilling on every panel.
 #   Depth 13 is the System-32 line-boring standard from library/hardware.yaml; a Ø5 pin only engages
 #   ~10 mm, but the extra clearance is free on a blind bore (13 into 18 leaves 5 mm).
-#   /!\ IF YOU DRILL EXTRA PIN HOLES LATER use a depth stop at 13 mm — a Ø5 that goes through a side
-#       panel is visible from the outside of the carcass.
+#   /!\ ADDING A HEIGHT LATER IS A SITE JOB NOW, and a fiddly one — you are drilling 4 blind Ø5 holes
+#       inside a fitted 2520 mm carcass, above head height, with the doors on. Use a depth stop at
+#       13 mm and a shelf-pin jig registered off the front edge: a Ø5 that goes through a side panel is
+#       visible from the outside of the carcass, and one column drilled 2 mm off makes the shelf rock.
 #   /!\ KEEP ANY NEW HEIGHT AWAY FROM THE HINGES (cups z 1910 / 2416 ± ~45) — the closed hinge arm
-#       occupies the front-inner corner there. The three heights above clear them by 96 mm at the
-#       closest (2051 against the lower cup's 1955 top), and clear the hinge PLATE holes (which share
-#       the x 638 / x 37 column) by 125 mm. That margin shrank with this revision — the bay went up but
-#       the top cup did not, so the pins and the lower hinge are 30 mm closer than they were.
+#       occupies the front-inner corner there. The single height above clears them by 201 mm below and
+#       215 mm above, so there is plenty of room either way; that was 96 mm when three heights were
+#       drilled, and it is the constraint that bites first if you move the shelf toward either end.
 #   NO CENTRE GABLE. It was there to stop a 726 mm shelf span sagging and to split the cavity into two
 #   box-width columns — both arguments lose to the one thing overhead space is actually good for:
 #   swallowing bulky light objects (a suitcase, a folded drying rack, spare bedding), which a gable
@@ -322,8 +322,9 @@ panels:
   - {face: outer, x: 9, y: 176, dia: 8, depth: through, type: multi, count: 5, spacing: 550, direction: y, src: cf-back-l}
   - {face: inner, x: 638, y: 1894, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
   - {face: inner, x: 638, y: 2400, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
-  - {face: inner, x: 55, y: 2051, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
-  - {face: inner, x: 638, y: 2051, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
+    # shelf pins — ONE height (z 2156), so a plain single hole per column, not a `multi`.
+  - {face: inner, x: 55, y: 2156, dia: 5, depth: 13}
+  - {face: inner, x: 638, y: 2156, dia: 5, depth: 13}
   - {face: outer, x: 98, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-l}
 - id: side-r
   name: "Right side  [order 1 · U604 · sheet 2800×2070]"
@@ -342,8 +343,9 @@ panels:
   - {face: outer, x: 666, y: 176, dia: 8, depth: through, type: multi, count: 5, spacing: 550, direction: y, src: cf-back-r}
   - {face: inner, x: 37, y: 1894, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 37, y: 2400, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
-  - {face: inner, x: 37, y: 2051, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
-  - {face: inner, x: 620, y: 2051, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
+    # shelf pins — ONE height (z 2156), so a plain single hole per column, not a `multi`.
+  - {face: inner, x: 37, y: 2156, dia: 5, depth: 13}
+  - {face: inner, x: 620, y: 2156, dia: 5, depth: 13}
   - {face: outer, x: 77, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-r}
 - id: divider
   name: "Divider @1810 (bay ceiling / overhead-cabinet floor)  [order 1 · U604 · sheet 2800×2070]"
@@ -481,9 +483,9 @@ panels:
                               # butted/hidden, but they sit in an unventilated 657 mm deep cavity above
                               # a washer and a dryer — the wettest, warmest air in the room ends up here.
                               # It also makes the shelf reversible.
-  holes: []                   # rests on 4 × Ø5 pins (2 per side panel). THREE heights are drilled:
-                              # z 2051 / 2156 / 2261 — pick one at assembly. See SHELF in the header.
-  placement: {pos: [19, 5, 2156]}   # drawn at the middle position (328 mm bays either side)
+  holes: []                   # rests on 4 × Ø5 pins (2 per side panel), drilled at ONE height:
+                              # z 2156. See SHELF in the header.
+  placement: {pos: [19, 5, 2156]}   # equal 328 mm bays above and below
 
 - id: door-l
   name: "Door left  [order 1 · U604 · sheet 2800×2070]"
@@ -575,8 +577,8 @@ assembly:
   - {id: hg-door-l, hardware: hinge-clip-110, door: door-l, side: side-l, at: [1910, 2416]}
   - {id: hg-door-r, hardware: hinge-clip-110, door: door-r, side: side-r, at: [1910, 2416]}
 
-  # --- 4 × Ø5 shelf pins (2 per side panel) — no drilling of their own. THREE heights are bored so the
-  #     single shelf can be positioned once you know what goes up there; only one set is ever used.
-  - {id: pins, hardware: shelf-pin-5, at: [2051, 2156, 2261]}
+  # --- 4 × Ø5 shelf pins (2 per side panel) — no drilling of their own. ONE height, z 2156, giving
+  #     equal 328 mm bays above and below. See SHELF in the header for why the spare heights went.
+  - {id: pins, hardware: shelf-pin-5, at: [2156]}
 
 parts: []
