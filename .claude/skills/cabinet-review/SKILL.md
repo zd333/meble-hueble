@@ -76,9 +76,13 @@ here.** If the user wants fixes applied, that's a separate `design-cabinet` step
   a 2520 × 675 unit needs **2609 mm**, more than most rooms are tall. Check it, and if it fails, work out
   a sub-assembly that does fit (build the back + gable + horizontals as a flat core, tip that, then add
   the sides upright).
-- **Screw access at the ceiling and against walls.** Confirmats driven *down* through a top panel's up
-  face need headroom; confirmats through a side's outer face need the unit out of the niche. Confirm the
-  assembly order actually reaches every head, and that nothing needs re-tightening after install.
+- **Screw access — check the driver direction for EVERY fitting.** For each one ask: which way does the
+  driver come from, and is that space there once the unit is in place? Confirmats through a side's outer
+  face need the unit out of the niche; confirmats driven *down* through a top panel's up face need
+  headroom that a floor-to-ceiling unit does not have — **flag every one of those as undrivable, not
+  merely awkward.** Assembling flat first does not rescue them (you can never re-tighten). The fix is to
+  fix that panel at the sides, from below, or along its rear edge into the back, and butt the top edge.
+  Both bathroom cabinets had this and both were rewritten to have zero up-face holes.
 - **Fit tolerance.** A carcass whose height equals the measured opening cannot be installed. Sides that
   run to the floor with no feet, plinth or scribe leave nothing to adjust on site.
 - **Wet rooms:** standard MFC core is not moisture resistant (P3 is); band or seal edges that stand on

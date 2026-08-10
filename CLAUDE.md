@@ -97,6 +97,15 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   is plenty; a plain collarless peg has nothing to stop it). `meble review` does **not** catch the
   opposing-bore case — it only checks one hole at a time against the thickness. Blind is still right for
   a side panel, where a through Ø5 would show on the outside.
+- **A floor-to-ceiling cabinet gets NO screw driven down through its top panel.** If the unit finishes a
+  few mm under the ceiling there is no room for a bit, a driver or a hand above it — before *or* after
+  installation — so any fixing whose head lands on the top panel's up face is undrivable, and assembling
+  the box flat first only postpones the problem (you still cannot re-tighten it). This kills the obvious
+  way to fix a back panel's or a gable's TOP edge. Fix those panels at the **sides**, from **below**, or
+  along the **rear edge into the back panel** instead, and leave the top edge simply butted — a back
+  screwed along both vertical edges is already a shear diaphragm. Check the whole design by asking of
+  every fitting: *which direction does the driver come from, and is that space still there once the unit
+  is in place?* Height, depth and against-a-wall all constrain it. `meble review` does not check this.
 - **Shelf-pin depth 13 is the System-32 line-boring standard**, not a requirement of the pin (a Ø5 pin
   engages ~10 mm). On a blind bore the extra is free clearance; it is never a reason to thin a panel.
 - **Fixed pins beat an adjustable column when drilling is charged per hole.** A full System-32 run over a

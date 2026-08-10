@@ -36,13 +36,15 @@
 #                    between the cover's back face and the cistern frame. Height = floor to the divider's
 #                    UNDERSIDE. Banded on its bottom edge only (floor water); everything else is hidden.
 #   z 1191 .. 1209   divider  (700×199) — centre line at 1200, TOP face flush with the cover's top edge
-#   z 1209 .. 2506   upper cabinet, 1297 clear, closed at the rear by an 18 mm back (y 181..199), split
+#   z 1209 .. 2524   18 mm back (700×1315) at y 181..199 — runs PAST the top panel to the cabinet top so
+#                    the top panel does not cut it (see NO OVERHEAD SCREWS)
+#   z 1209 .. 2506   upper cabinet, 1297 clear, closed at the rear by that back, split
 #                    by a centre gable (x 359..377) into 2 compartments;
 #                    each gets 2 FIXED shelves on Ø5 pins (not adjustable — a fixed pin costs the same to
 #                    drill as a column of them, so skip the adjustability once positions are settled)
 #   z 1212 .. 2520   2 doors (367×1308), 3 mm reveal above the cover and 4 mm below the unit top, so
 #                    the doors can never rub the ceiling
-#   z 2506 .. 2524   top panel (700×199)
+#   z 2506 .. 2524   top panel (700×181) — 181 not 199, to let the back run past it to the top
 #
 # WIDTH
 #   sides 18 + 700 internal + 18 = 736.  Doors 367 + 2 gap + 367 = 736.
@@ -92,14 +94,30 @@
 # while the un-backed lower section sat flat, and the whole column would lean.
 #   -> CONSEQUENCE: it eats 18 mm of usable depth in the upper cabinet. The gable drops 199 -> 181 and
 #      the shelves 194 -> 176. Everything below the divider is untouched.
-#   -> Fixed on ALL FOUR edges, which is what makes it stiffen the upper box rather than just close it:
-#      2 confirmats into side-l (wall side), 2 minifix into side-r (visible side), and 2 confirmats each
-#      down from the top panel and up from the divider.
+#   -> Fixed on all four edges, which is what makes it stiffen the upper box rather than just close it:
+#      2 confirmats into side-l (wall side), 2 minifix into side-r (visible side), 2 confirmats up from
+#      the divider, and — instead of anything coming down from above — 3 confirmats driven FORWARD
+#      through its own outer face into the top panel's rear edge (cf-top-back). It also carries the
+#      gable along its whole rear edge (cf-gable-back, 4 screws).
 #   -> `meble review` warns that a back is normally ~3 mm HDF. Deliberate — ignore it here.
 # The LOWER section stays open at the back for the cistern frame and pipework.
 #
-# GABLE FIXING: confirmat, not minifix — the heads land on the divider's underside (sealed inside the WC
-# boxing) and the top panel's up face (2524 mm up), so nothing shows and we skip 4 Ø15 cam bores.
+# /!\ NO OVERHEAD SCREWS — A HARD RULE. The column finishes just under the ceiling, so ANY screw whose
+#     head lands on the top panel's up face at z 2524 is undrivable: no room for a bit, a driver or a
+#     hand. Two used to be there (cf-back-top, cf-gable-top) and both are gone — but note the fix was NOT
+#     to simply delete them. The back panel was extended past the top panel to z 2524 and the top panel
+#     shortened to 181, so both jobs are now done by screws driven FROM BEHIND: cf-top-back holds the top
+#     panel, cf-gable-back holds the gable. Every fixing now goes in
+#     horizontally through a side, upward from inside the WC boxing, or from BEHIND before the column is
+#     pushed to the wall. The top panel's up face carries no holes at all.
+#     Consequences: back-upper's top edge is unfixed (it is held on its other three edges), and the
+#     gable's top edge is unfixed — cf-gable-back below took over that job. Same rule now on wm-wardrobe.
+#
+# GABLE FIXING: confirmat, not minifix — the head lands on the divider's underside (sealed inside the WC
+# boxing) and on the back panel's wall face, so nothing shows and we skip the Ø15 cam bores.
+#   The gable is now tied at its BOTTOM (2 confirmats up into the divider) and along its whole REAR edge
+#   (3 confirmats through the back panel, cf-gable-back) — 5 fixings, against the 4 it had before, and
+#   the rear-edge line restrains it far better than a pair at the top ever did.
 #
 # NOTE ON SIZES: every dimension here is the FINISHED size (edge band included) — enter them verbatim,
 # never subtract the band thickness. See CLAUDE.md.
@@ -142,6 +160,7 @@ panels:
   - {face: inner, x: 55, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
   - {face: inner, x: 162, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
   - {face: outer, x: 9, y: 1359, dia: 8, depth: through, type: multi, count: 2, spacing: 997, direction: y, src: cf-back-l}
+  - {face: outer, x: 68, y: 2515, dia: 8, depth: through, type: multi, count: 2, spacing: 81, direction: x, src: cf-top-l}
   - face: edge2
     from: 60
     dia: 4
@@ -150,16 +169,6 @@ panels:
     count: 2
     spacing: 280
     src: cf-cover-l
-  - face: outer
-    x: 50
-    y: 2515.0
-    dia: 8
-    depth: through
-    type: multi
-    count: 2
-    spacing: 99
-    direction: x
-    src: cf-top-l
 - id: side-r
   name: "Right side  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
@@ -172,7 +181,7 @@ panels:
   edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
   holes:
   - {face: inner, x: 37, y: 1200, dia: 5, depth: 12, type: multi, count: 2, spacing: 125, direction: x, src: mf-div-r}
-  - {face: inner, x: 37, y: 2515, dia: 5, depth: 12, type: multi, count: 2, spacing: 125, direction: x, src: mf-top-r}
+  - {face: inner, x: 37, y: 2515, dia: 5, depth: 12, type: multi, count: 2, spacing: 107, direction: x, src: mf-top-r}
   - {face: inner, x: 37, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
   - {face: inner, x: 144, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
   - {face: inner, x: 190, y: 1359, dia: 5, depth: 12, type: multi, count: 2, spacing: 997, direction: y, src: mf-back-r}
@@ -224,7 +233,8 @@ panels:
                               # NB on a `top` panel OUTER is the DOWN face and INNER the UP face — see
                               # docs/conventions.md "Horizontals: which face is up".
   width: 700
-  height: 199
+  height: 181                 # depth — 199 LESS the 18 mm back, which now runs past this panel
+                              # up to the cabinet top instead of being cut by it.
   grain: any
   edge_banding: {edges: {1: eb-u604-1}, glue_type: long}
   holes:
@@ -232,27 +242,15 @@ panels:
     # if there is no clearance above the unit
     # LEFT end is confirmat (side-l is against the wall) -> its Ø4 edge4 pilots are stamped by `fit`
     # as cf-top-l; no cam needed here. RIGHT end stays minifix (side-r is visible).
-  - {face: outer, x: 666, y: 37, dia: 15, depth: 13, type: multi, count: 2, spacing: 125, direction: y, src: mf-top-r}
-  - {face: edge2, from: 37, dia: 8, depth: 30, type: multi, count: 2, spacing: 125, src: mf-top-r}
-  - {face: inner, x: 350, y: 68, dia: 8, depth: through, type: multi, count: 2, spacing: 81, direction: y, src: cf-gable-top}
-  - face: edge4
-    from: 50
-    dia: 4
-    depth: 35
-    type: multi
-    count: 2
-    spacing: 99
-    src: cf-top-l
-  - face: inner
-    x: 100
-    y: 9.0
-    dia: 8
-    depth: through
-    type: multi
-    count: 2
-    spacing: 500
-    direction: x
-    src: cf-back-top
+  - {face: outer, x: 666, y: 37, dia: 15, depth: 13, type: multi, count: 2, spacing: 107, direction: y, src: mf-top-r}
+  - {face: edge2, from: 37, dia: 8, depth: 30, type: multi, count: 2, spacing: 107, src: mf-top-r}
+  - {face: edge3, from: 100, dia: 4, depth: 35, type: multi, count: 3, spacing: 250, src: cf-top-back}
+  - {face: edge4, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-top-l}
+  placement: {pos: [18, 0, 2506]}
+    # placement is REQUIRED now that this panel is 181 deep rather than the full 199. The viewer's
+    # auto-placement for role `top` hardcodes the CABINET depth (tools/meble/scene.py: `size = (W-2t,
+    # D, t)`), so without an explicit pos it would draw a 199-deep panel and hide the fact that the
+    # back runs past it. The YAML, CSV and PDF were always right; only the 3D render lied.
 - id: gable-mid
   name: "Centre gable (vertical)  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
@@ -276,16 +274,10 @@ panels:
   - {face: inner, x: 144, y: 87, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 144, y: 643, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 144, y: 1199, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
-    # shelf pins — `depth: through`, ONE column pair serving BOTH compartments. This panel has shelves
-    # on either side of it, and two opposing Ø5 × 13 blind bores would meet inside an 18 mm panel
-    # (13 + 13 = 26) and leave a ragged, drill-wandered hole. One clean through-hole is the same hole
-    # done on purpose, at half the drilling. `face: outer` only picks the drill-entry side.
-    # USE PINS WITH A COLLAR — two meet in the middle (~9 mm each); a plain peg would push through.
-    # See CLAUDE.md "A gable/divider with shelves on BOTH sides".
   - {face: outer, x: 37, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y}
   - {face: outer, x: 144, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y}
   - {face: edge3, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-gable-bot}
-  - {face: edge1, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-gable-top}
+  - {face: edge4, from: 80, dia: 4, depth: 35, type: multi, count: 4, spacing: 380, src: cf-gable-back}
   placement: {pos: [359, 0, 1209], rot: [90, 0, -90]}
 
 - id: shelf-l
@@ -329,9 +321,15 @@ panels:
   # (white carcass interior, a common and cheaper choice), not a free hidden swap. Its edges stay unbanded
   # either way — they are all butted — so a contrasting core never shows.
   width: 700                  # 736 − 2×18, same span as the divider/top panel
-  height: 1297                # 2506 − 1209, between the divider's top and the top panel's underside
+  height: 1315                # 2524 − 1209: the divider's top up to the CABINET TOP, not the top panel's
+                              # underside. Running past the top panel instead of being cut by it is what
+                              # lets the top panel be fixed to the back FROM BEHIND rather than by a
+                              # confirmat driven down through it — see NO OVERHEAD SCREWS in the header.
+                              # The top panel is 181 deep to make room (it was 199).
   grain: any                  # inside face only; let the optimiser rotate a panel this big
-  edge_banding: {}            # every edge is butted against another panel — nothing visible, no banding
+  edge_banding: {edges: {1: eb-u604-1}, glue_type: long}
+                              # top edge only — it is now part of the cabinet's top surface at z 2524,
+                              # a few mm under the ceiling. Everything else is butted and hidden.
   holes:
     # minifix to both sides: Ø15 cam 34 mm in from each end + Ø8 through that end edge. Cams on the
     # INNER face (toward the shelves) so they can be turned during assembly — the outer face is against
@@ -339,6 +337,8 @@ panels:
   - {face: inner, x: 34, y: 150, dia: 15, depth: 13, type: multi, count: 2, spacing: 997, direction: y, src: mf-back-r}
   - {face: edge4, from: 150, dia: 8, depth: 30, type: multi, count: 2, spacing: 997, src: mf-back-r}
   - {face: edge2, from: 150, dia: 4, depth: 35, type: multi, count: 2, spacing: 997, src: cf-back-l}
+  - {face: outer, x: 350, y: 80, dia: 8, depth: through, type: multi, count: 4, spacing: 380, direction: y, src: cf-gable-back}
+  - {face: outer, x: 100, y: 1306, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-back}
   - face: edge3
     from: 100
     dia: 4
@@ -347,14 +347,6 @@ panels:
     count: 2
     spacing: 500
     src: cf-back-bot
-  - face: edge1
-    from: 100
-    dia: 4
-    depth: 35
-    type: multi
-    count: 2
-    spacing: 500
-    src: cf-back-top
   placement: {pos: [18, 181, 1209]}   # role 'back' would size it to the whole carcass — place it here
 
 - id: cover
@@ -457,7 +449,7 @@ assembly:
   #     `into` = the panel the bolt screws into (its inner FACE, so there is no into_edge).
   #     `at` = positions along the seam: from the wall for edges 2/4, from the left for edge 1.
   - {id: mf-div-r, hardware: minifix-15, through: divider, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [37, 162]}
-  - {id: mf-top-r, hardware: minifix-15, through: top-panel, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [37, 162]}
+  - {id: mf-top-r, hardware: minifix-15, through: top-panel, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [37, 144]}
   - {id: mf-cover-top, hardware: minifix-15, through: divider, into: cover, seam: {through_edge: 1, into_face: inner}, at: [100, 600]}
 
   # --- centre gable T-joints: CONFIRMAT, not minifix — both heads land on an unseen face (see CLAUDE.md
@@ -468,7 +460,14 @@ assembly:
   #     holes above are hand-written and tagged with these ids. `at` = distance from the WALL.
   #     Assembly tip: screw the gable to the divider BEFORE the divider goes between the sides.
   - {id: cf-gable-bot, hardware: confirmat-7x50, through: divider, into: gable-mid, seam: {through_face: outer, into_edge: 3}, at: [50, 131]}
-  - {id: cf-gable-top, hardware: confirmat-7x50, through: top-panel, into: gable-mid, seam: {through_face: inner, into_edge: 1}, at: [50, 131]}
+  # cf-gable-top REMOVED — it drove down through the top panel's up face at z 2524, and the column
+  # finishes just under the ceiling, so that screw was never actually drivable. Its job (holding the
+  # gable's top) is taken over by cf-gable-back below, which ties the gable along its whole REAR edge
+  # into the back panel and is driven from behind before the unit goes to the wall.
+  #     FOUR screws, and the top one at 1220 is deliberately ABOVE the top hinge cup at gable-y 1215:
+  #     this gable carries door-r, and with its top edge now unfixed the rear line is the only thing
+  #     stopping the top-front corner walking forward under door load.
+  - {id: cf-gable-back, hardware: confirmat-7x50, through: back-upper, into: gable-mid, seam: {through_face: outer, into_edge: 4}, at: [80, 460, 840, 1220]}
 
   # --- back panel: minifix to both sides (cams in the back, bolts into the sides' inner faces at their
   #     x 9 / x 190). Confirmat is not an option here — the screw would have to pass through a side
@@ -485,7 +484,13 @@ assembly:
   #         FLOOR and the back from z 1209, so fit's single shared `at` list cannot describe both.
   #     `at` = 50/149 rather than the 37/162 the minifix used: a Ø4 confirmat pilot needs the 50 mm end
   #     margin on a 199 mm deep edge, and a cam bore does not.
-  - {id: cf-top-l, hardware: confirmat-7x50, through: side-l, into: top-panel, seam: {through_edge: 1, into_edge: 4}, at: [50, 149]}
+  # cf-top-l is NO LONGER STAMPABLE and its `seam` deliberately omits `through_edge` so `fit` skips it:
+  # the top panel is 181 deep and sits 18 mm off the wall, while side-l measures from the wall, so
+  # side-l's x = 18 + at (68 / 149) rather than at. Hand-written above.
+  - {id: cf-top-l, hardware: confirmat-7x50, through: side-l, into: top-panel, seam: {into_edge: 4}, at: [50, 131]}
+  # --- top panel tied BACK into the back panel, taking over from the deleted cf-back-top. Driven from
+  #     behind, head countersunk flush on the back's wall face. Mid-face T-joint, so hand-written.
+  - {id: cf-top-back, hardware: confirmat-7x50, through: back-upper, into: top-panel, seam: {through_face: outer, into_edge: 3}, at: [100, 350, 600]}
   - {id: cf-div-l, hardware: confirmat-7x50, through: side-l, into: divider, seam: {into_edge: 4}, at: [50, 149]}
   - {id: cf-back-l, hardware: confirmat-7x50, through: side-l, into: back-upper, seam: {into_edge: 2}, at: [150, 1147]}
 
@@ -496,7 +501,9 @@ assembly:
   #     SYMMETRIC about the 350 centreline: the back's local x runs the opposite way (its outer face
   #     looks at the wall), so only a symmetric set lands on the same world coordinates for both panels.
   - {id: cf-back-bot, hardware: confirmat-7x50, through: divider, into: back-upper, seam: {through_edge: 3, into_edge: 3}, at: [100, 600]}
-  - {id: cf-back-top, hardware: confirmat-7x50, through: top-panel, into: back-upper, through_face: inner, seam: {through_edge: 3, into_edge: 1}, at: [100, 600]}
+  # cf-back-top REMOVED for the same reason. back-upper is still fixed on three edges — 2 confirmats
+  # into side-l, 2 minifix into side-r, 2 confirmats up from the divider — plus it now carries the
+  # gable. Its top edge simply butts the top panel's underside.
 
   # --- doors: 3 concealed hinges each. Cups on the door (see panel holes); plates screw into the
   #     mounting panel's 37 mm Ø5 setback line with euro screws (6.3×13) at z ±16 around each cup.
