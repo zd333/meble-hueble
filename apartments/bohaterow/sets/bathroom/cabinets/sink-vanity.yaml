@@ -120,7 +120,7 @@ panels:
 # CARCASS
 # ---------------------------------------------------------------------------------------------------
 - id: side-l
-  name: "Left side  [order 1 · U604 · sheet 2070×2800]"
+  name: "Left side  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = wall.
                               # X: 0 = wall, 450 = front.  Y: 0 = bottom, 480 = top.
@@ -139,7 +139,7 @@ panels:
   - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 3, spacing: 175, direction: x, src: mf-bot-l}
   - {face: inner, x: 441, y: 405, dia: 5, depth: 12, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-l}
 - id: side-r
-  name: "Right side  [order 1 · U604 · sheet 2070×2800]"
+  name: "Right side  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: side-right            # MIRROR of side-l. X: 0 = FRONT, 450 = wall — so edge4 (not edge2) is the
                               # cabinet front, and the stretcher's bolt seats read x 9 instead of x 441.
@@ -153,7 +153,7 @@ panels:
   - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 3, spacing: 175, direction: x, src: mf-bot-r}
   - {face: inner, x: 9, y: 405, dia: 5, depth: 12, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-r}
 - id: bottom
-  name: "Bottom panel  [order 1 · U604 · sheet 2070×2800]"
+  name: "Bottom panel  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: bottom                # 524 = 560 − 2×18. edge1 = cabinet FRONT (y 450), edge3 = wall (y 0).
                               # On a `bottom`, inner = the UP face and outer = DOWN (docs/conventions.md
@@ -178,7 +178,7 @@ panels:
   placement: {pos: [18, 0, 0]}
 
 - id: rail-top
-  name: "Top-front stretcher  [order 1 · U604 · sheet 2070×2800]"
+  name: "Top-front stretcher  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: rail                  # upright, in the FRONT plane at y 0..18, z 380..480. Frame declared like a
                               # door: OUTER faces the room, so local +x runs cabinet LEFT-to-RIGHT —
@@ -206,7 +206,7 @@ panels:
     # frame: +u = cabinet right, +v = up, outer toward the room.
 
 - id: rail-back
-  name: "Back rail / wall cleat  [order 3 · W1100 · sheet 2070×1032]"
+  name: "Back rail / wall cleat  [order 2 · W1100 · sheet 2800×1032]"
   element_type: panel
   role: rail                  # in the BACK plane, inset at y 432..450 so the unit still sits flat on the
                               # wall. Frame declared like a `back`: OUTER faces the WALL, so local +x
@@ -215,6 +215,8 @@ panels:
   material: w1100-18          # NOT the cabinet default: this panel is never seen, so it rides on the
                              # WHITE board to balance the two decors across whole meble.pl sheets.
                              # See docs/ordering-split.md.
+  decor_optional: u604-18     # behind the drawers, against the wall — either decor is genuinely fine,
+                             # so `meble pack --balance` may send it back to U604.
   width: 524                  # 560 − 2×18, same span as the bottom panel
   height: 100
   grain: any
@@ -232,7 +234,7 @@ panels:
 # FACADES — 2 mm banding on all edges, like the wm-wardrobe doors. No holes of any kind.
 # ---------------------------------------------------------------------------------------------------
 - id: facade-bot
-  name: "Bottom drawer facade  [order 1 · U604 · sheet 2070×2800]"
+  name: "Bottom drawer facade  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: front                 # full overlay, 18 mm, z 0..150, front face at y −18
   width: 560
@@ -244,7 +246,7 @@ panels:
   placement: {pos: [0, -18, 0], rot: [90, 0, 0]}
 
 - id: facade-top
-  name: "Top drawer facade  [order 1 · U604 · sheet 2070×2800]"
+  name: "Top drawer facade  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: front                 # z 153..474 — 3 mm reveal below, 6 mm open above, as specified.
                               # TALL FACADE, SHORT BOX: it is fixed only over z 166..316 (the box front),
@@ -264,7 +266,7 @@ panels:
 # carcass board, and they land in their own CSV file. Nothing else in the design changes.
 # ---------------------------------------------------------------------------------------------------
 - id: d1-bottom
-  name: "Bottom drawer — bottom  [order 1 · U604 · sheet 2070×2800]"
+  name: "Bottom drawer — bottom  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-bottom         # sits UNDER all four walls, so its whole perimeter is flush with the box
                               # outside. Frame declared like a carcass `bottom`: outer = DOWN (where the
@@ -311,7 +313,7 @@ panels:
 # landing on one shared entry stamp the SAME row twice, and the duplicate is then ordered and drilled
 # twice. Merge the identical pairs by hand in the editor if you want fewer line items.
 - id: d1-front
-  name: "Bottom drawer — front (internal)  [order 1 · U604 · sheet 2070×2800]"
+  name: "Bottom drawer — front (internal)  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-front-back     # y 0..18, the full 498 wide (outermost). This is what facade-bot screws to
                               # from inside the drawer, which is why the facade's position stays free.
@@ -351,7 +353,7 @@ panels:
   placement: {pos: [31, 0, 40], rot: [90, 0, 0]}
 
 - id: d1-back
-  name: "Bottom drawer — back  [order 1 · U604 · sheet 2070×2800]"
+  name: "Bottom drawer — back  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-back           # y 332..350. IDENTICAL BOARD to d1-front. Heads on its rear face, facing
                               # the 100 mm pipe gap.
@@ -392,7 +394,7 @@ panels:
   placement: {pos: [31, 332, 40], rot: [90, 0, 180]}
 
 - id: d1-side-l
-  name: "Bottom drawer — left side  [order 1 · U604 · sheet 2070×2800]"
+  name: "Bottom drawer — left side  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-side           # BETWEEN the front and back panels: 350 − 36 = 314. Same board as
                               # d1-side-r — both ends drilled 30/70, because this box's front and back
@@ -423,7 +425,7 @@ panels:
     type: single
     src: cf-d1-bl
 - id: d1-side-r
-  name: "Bottom drawer — right side  [order 1 · U604 · sheet 2070×2800]"
+  name: "Bottom drawer — right side  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-side           # Same board as d1-side-l. Frame like `side-right`: local x 0 = the
                               # drawer's FRONT, so edge4 is the front end and edge2 the back end.
@@ -447,7 +449,7 @@ panels:
     type: single
     src: cf-d1-br
 - id: d2-bottom
-  name: "Top drawer — bottom  [order 1 · U604 · sheet 2070×2800]"
+  name: "Top drawer — bottom  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-bottom         # IDENTICAL BOARD to d1-bottom (498 × 350, same banding, same holes). Kept
                               # as its own entry so its fittings reference this drawer's own panels —
@@ -483,7 +485,7 @@ panels:
   placement: {pos: [31, 0, 148], rot: [180, 0, 0]}
 
 - id: d2-front
-  name: "Top drawer — front (internal)  [order 1 · U604 · sheet 2070×2800]"
+  name: "Top drawer — front (internal)  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-front-back     # 150 tall, matching the sides. This is what facade-top screws to, from
                               # inside the drawer — which is why the facade's exact position stays free.
@@ -522,7 +524,7 @@ panels:
   placement: {pos: [31, 0, 166], rot: [90, 0, 0]}
 
 - id: d2-back
-  name: "Top drawer — back  [order 1 · U604 · sheet 2070×2800]"
+  name: "Top drawer — back  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-back           # ONLY 100 TALL, against 150 sides: the drawer has to travel under the trap
                               # and the basin's waste, and the back is the panel that gets there first.
@@ -566,7 +568,7 @@ panels:
   placement: {pos: [31, 332, 166], rot: [90, 0, 180]}
 
 - id: d2-side-l
-  name: "Top drawer — left side  [order 1 · U604 · sheet 2070×2800]"
+  name: "Top drawer — left side  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-side           # GENUINE MIRROR PAIR with d2-side-r, and the reason is the low back: the
                               # front end takes screws at 50/100 (into a 150 mm front) and the back end
@@ -595,7 +597,7 @@ panels:
   placement: {pos: [31, 18, 166], rot: [90, 0, -90]}
 
 - id: d2-side-r
-  name: "Top drawer — right side  [order 1 · U604 · sheet 2070×2800]"
+  name: "Top drawer — right side  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: drawer-side           # MIRROR of d2-side-l. Frame like `side-right`: local x 0 = the drawer's
                               # FRONT, so edge4 is the front end and edge2 the back end — the opposite

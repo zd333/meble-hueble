@@ -32,6 +32,33 @@ kind.
   color: "#F2F1ED"         # optional hint for 3D render
 ```
 
+## Sheet format (`materials.yaml: sheets[]`)
+
+The stock sheets meble.pl sells. `meble pack` uses these to work out how many to buy — see
+[ordering-split.md](ordering-split.md).
+
+```yaml
+- id: full                 # used in `meble pack --sheets`
+  name: "Full sheet 2800 × 2070"
+  length: 2800             # THE GRAIN AXIS — panel `grain` is resolved against this
+  width: 2070
+  price: 289               # optional; any currency. Given for every sheet, `pack` minimises
+                           # money instead of area — which is what you want when a half sheet
+                           # costs more than half a full one.
+```
+
+`length` being the grain axis matters more than it looks: this project's half sheet is the full one
+ripped lengthwise, so **both formats are 2800 long** and a narrower format does not mean shorter
+panels.
+
+## Packing allowances (`materials.yaml: packing`)
+```yaml
+packing:
+  kerf: 5                  # mm of blade lost around every panel
+  trim: 10                 # mm off each sheet edge before anything is cut
+```
+Deliberately pessimistic — `pack` only ever proves a list *fits*; meble.pl owns real nesting.
+
 ## Edge band (`edgebands.yaml: edgebands[]`)
 ```yaml
 - id: eb-w1100-1
@@ -70,6 +97,11 @@ Carries the **drill pattern** that fittings stamp. Shape varies by `type`:
   thickness: 18            # optional; defaults to material.thickness
   quantity: 1
   grain: height            # any | width | height  (default = force orientation; see meblepl-editor.md)
+  decor_optional: u604-18  # optional. Another board this panel could EQUALLY be cut from, because it
+                           # is genuinely never seen. `meble pack --balance` may move it there if that
+                           # rounds the order up more cheaply. NEVER set this on a panel any face of
+                           # which is visible in use — a drawer interior or an open carcass back is a
+                           # look decision, not a free swap.
   edge_banding:
     all_edges: false       # if true, band all 4 with `band` (below) / default band
     band: eb-w1100-1        # single band when all_edges or no per-edge override

@@ -141,7 +141,7 @@ plinth: {}                   # sides run to the floor — silicone the bottom ed
 
 panels:
 - id: side-l
-  name: "Left side  [order 1 · U604 · sheet 2070×2800]"
+  name: "Left side  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = wall. X: 0 = wall, 199 = front
   width: 199                  # depth
@@ -170,7 +170,7 @@ panels:
     spacing: 280
     src: cf-cover-l
 - id: side-r
-  name: "Right side  [order 1 · U604 · sheet 2070×2800]"
+  name: "Right side  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: side-right            # X: 0 = front, 199 = wall — so the front column is x 37 here, rear x 162.
                               # No hinges: door-r hangs off the centre gable, so this panel only carries
@@ -194,7 +194,7 @@ panels:
     spacing: 280
     src: cf-cover-r
 - id: divider
-  name: "Divider @1200 (upper cabinet bottom)  [order 1 · U604 · sheet 2070×2800]"
+  name: "Divider @1200 (upper cabinet bottom)  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: bottom                # 700 = 736 − 2×18. edge1 = cabinet FRONT. inner face = UP (into the cavity)
                               # (on a `bottom` panel inner IS the up face — unlike `top`, see conventions)
@@ -227,7 +227,7 @@ panels:
   placement: {pos: [18, 0, 1191]}     # role 'bottom' would sit it on the floor — place it explicitly
 
 - id: top-panel
-  name: "Top panel  [order 1 · U604 · sheet 2070×2800]"
+  name: "Top panel  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: top                   # 700 = 736 − 2×18. edge1 = cabinet FRONT.
                               # NB on a `top` panel OUTER is the DOWN face and INNER the UP face — see
@@ -252,7 +252,7 @@ panels:
     # D, t)`), so without an explicit pos it would draw a 199-deep panel and hide the fact that the
     # back runs past it. The YAML, CSV and PDF were always right; only the 3D render lied.
 - id: gable-mid
-  name: "Centre gable (vertical)  [order 2 · U604 · sheet 2070×1032]"
+  name: "Centre gable (vertical)  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: gable                  # internal full-height divider — EDGE CASE not in docs/conventions.md's
                                # table: both faces face a cavity (like a shelf), so outer/inner is our own
@@ -281,7 +281,7 @@ panels:
   placement: {pos: [359, 0, 1209], rot: [90, 0, -90]}
 
 - id: shelf-l
-  name: "Left-compartment shelf  [order 1 · U604 · sheet 2070×2800]"
+  name: "Left-compartment shelf  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: shelf                 # 5 mm shallower than the carcass so the closed door clears it
   width: 339                  # opening (700 − 18 gable) / 2 = 341, less 2 mm clearance
@@ -293,7 +293,7 @@ panels:
   placement: {pos: [19, 5, 1630], step: [0, 0, 438]}   # both shelves of the run, 438 apart (viz only)
 
 - id: shelf-r
-  name: "Right-compartment shelf  [order 1 · U604 · sheet 2070×2800]"
+  name: "Right-compartment shelf  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: shelf
   width: 339
@@ -305,7 +305,7 @@ panels:
   placement: {pos: [378, 5, 1630], step: [0, 0, 438]}
 
 - id: back-upper
-  name: "Back (upper cabinet)  [order 2 · U604 · sheet 2070×1032]"
+  name: "Back (upper cabinet)  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: back                  # 18 mm, NOT the usual 3 mm HDF — `meble review` flags that; it is
                               # deliberate here (see the BACK PANEL note in the header).
@@ -350,7 +350,7 @@ panels:
   placement: {pos: [18, 181, 1209]}   # role 'back' would size it to the whole carcass — place it here
 
 - id: cover
-  name: "Front cover (WC boxing)  [order 1 · U604 · sheet 2070×2800]"
+  name: "Front cover (WC boxing)  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel         # ordered as a cabinet panel (formatka), not a 'front' product
   role: front-fixed
   width: 736
@@ -383,20 +383,23 @@ panels:
   placement: {pos: [0, -18, 0], rot: [90, 0, 0]}      # stands upright in front of the carcass
 
 - id: cover-spacer
-  name: "Spacer behind cover  [order 3 · W1100 · sheet 2070×1032]"
+  name: "Spacer behind cover  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: spacer                # free-standing filler, no joinery — see note below
   # MATERIAL IS FREE CHOICE: this panel is sealed inside the lower box and never seen, so it does not
   # have to be u604-18. Any 18 mm board works — offcuts, or a white board left over from another
   # cabinet. If you order it in a different decor, give it its own `material:` here so it lands in that
   # board's CSV instead of the U604 one.
-  material: w1100-18          # NOT the cabinet default: this panel is never seen, so it rides on the
-                             # WHITE board to balance the two decors across whole meble.pl sheets.
-                             # See docs/ordering-split.md.
+  # It rides the CABINET DEFAULT (U604), which is the opposite of what this panel used to do. It was
+  # on the white board to balance the decors; with the real sheet formats that is backwards. White is
+  # only 2.74 m² and one half sheet holds 2.85 — moving this 0.66 m² panel OFF white is what drops
+  # W1100 from a full sheet to a half. `meble pack --balance` finds this; see docs/ordering-split.md.
+  decor_optional: w1100-18    # sealed inside the lower box — either decor is genuinely fine, so the
+                             # packer may send it back to white if a future design makes that cheaper.
   width: 550
   height: 1191                # floor -> the divider's UNDERSIDE (divider spans z 1191..1209)
   grain: any                  # completely hidden inside the sealed lower box, so let the optimiser rotate
-  edge_banding: {edges: {3: eb-w1100-1}, glue_type: long}   # BOTTOM edge only — it stands on a wet floor
+  edge_banding: {edges: {3: eb-u604-1}, glue_type: long}    # BOTTOM edge only — it stands on a wet floor
                                                            # and raw chipboard would wick. The other three
                                                            # edges are buried/hidden, so left raw.
   holes: []                   # no fixings: it drops in behind the cover and is held captive by it.
@@ -405,7 +408,7 @@ panels:
                                                   # behind the cover's back face (y 0..18)
 
 - id: door-l
-  name: "Door left  [order 1 · U604 · sheet 2070×2800]"
+  name: "Door left  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: front                 # hinges on edge4 (its LEFT edge, on side-l) — FULL overlay, 18 mm
   width: 367
@@ -420,7 +423,7 @@ panels:
   placement: {pos: [0, -18, 1212], rot: [90, 0, 0]}
 
 - id: door-r
-  name: "Door right  [order 1 · U604 · sheet 2070×2800]"
+  name: "Door right  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: front                 # hinges on edge4 (its LEFT edge, toward the centre gable) — same hole
                               # pattern as door-l, just mounted to the gable instead of side-r, and it

@@ -26,7 +26,7 @@ plinth: {}
 panels:
 
 - id: mount-panel
-  name: "Mounting panel 87×1000  [order 3 · W1100 · sheet 2070×1032]"
+  name: "Mounting panel 87×1000  [order 2 · W1100 · sheet 2800×1032]"
   element_type: panel
   role: spacer                # free-standing board, no joinery — same role wc-column uses for its filler
   quantity: 3

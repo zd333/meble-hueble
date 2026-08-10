@@ -112,6 +112,14 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   1.5 m cabinet is ~40 holes *per column* — 328 across four columns, vs 32 for four chosen heights.
   Decide the shelf heights against the storage boxes you will actually buy, order the 32, and drill more
   by hand later if you need them (depth stop + a shelf-pin jig).
+- **The half sheet is 2800 × 1032 — narrower, NOT shorter.** It is the full 2800 × 2070 sheet ripped down
+  its length, so it takes a full-height 2520 mm gable just as happily. Never assume the smaller format
+  means smaller panels: writing it down as 2070 × 1032 once barred every tall panel from it and cost a
+  whole sheet in the order plan. `meble pack` reads both formats from `library/materials.yaml`.
+- **Which decor a hidden panel rides is not "put it on the cheap board".** The useful move is whichever
+  one gets a decor *under* a whole-sheet boundary, and that direction flips with the design — the same
+  panel has been correct on both boards in this project. Mark genuinely-never-seen panels
+  `decor_optional:` and let `meble pack --balance` decide; never mark one whose face you can see.
 
 ## Quick-reference drill table (supplier convention — verify before first order)
 
@@ -130,7 +138,7 @@ Board 18 mm, back 3 mm HDF. Deep dive: **`docs/cabinet-construction.md`**. IKEA 
 ## Tools (run from repo root)
 
 Convenient entry point: **`task <name>`** (see `Taskfile.yml`; `task --list`). Most take a scope after
-`--`, e.g. `task pdf -- --cabinet open-900`. User-facing tasks: `list`, `review`, `csv`, `pdf`, `view`,
+`--`, e.g. `task pdf -- --cabinet open-900`. User-facing tasks: `list`, `review`, `pack`, `csv`, `pdf`, `view`,
 `setup`. The design internals (`scaffold`, `fit`, `validate`) are `python -m meble …` commands the
 `design-cabinet` / `cabinet-review` skills run for you during a session — not surfaced as tasks. Full CLI: 
 
@@ -141,6 +149,7 @@ python -m meble validate --apartment bohaterow           # schema/bounds checks
 python -m meble review   --apartment bohaterow           # domain linter (mirror, carcass math, wrong face…)
 python -m meble scaffold base --width 600 --height 720 --depth 560   # seed a new cabinet (prints YAML)
 python -m meble fit  --cabinet open-900                  # (re)stamp holes from fittings (safe/idempotent)
+python -m meble pack --apartment bohaterow --balance     # how many sheets to buy + the order split
 python -m meble csv  --set kitchen                       # -> out/csv/<board>.csv   (import to meble.pl)
 python -m meble pdf  --set kitchen                        # -> out/pdf/<set>.pdf     (manual-entry sheets)
 python -m meble view --set kitchen                       # interactive 3D viewer (opens browser)

@@ -39,6 +39,11 @@ tasks:
       - '{{.PY}} -m meble validate {{.CLI_ARGS | default "--apartment bohaterow"}}'
       - '{{.PY}} -m meble review {{.CLI_ARGS | default "--apartment bohaterow"}}'
 
+  pack:
+    desc: "Recommend how to split the order across whole sheets (which decor, which format, how many). Scope after --"
+    cmds:
+      - '{{.PY}} -m meble pack {{.CLI_ARGS | default "--apartment bohaterow --balance"}}'
+
   csv:
     desc: "Export the meble.pl CSV (one per board) and open the folder. Scope after --"
     cmds:
