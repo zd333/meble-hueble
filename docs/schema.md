@@ -22,21 +22,48 @@ kind.
 
 ## Board (`materials.yaml: boards[]`)
 ```yaml
-- id: w980-18              # used in panel.material
-  name: "Egger Biały W980 ST2"
+- id: w1100-18              # used in panel.material
+  name: "Egger Biały W1100 ST9"
   vendor: Egger
-  decor_code: W980
+  decor_code: W1100
   texture: ST2
   thickness: 18            # mm; panels inherit this unless they override
   grain_directional: false # true for woodgrains (affects sensible default grain)
   color: "#F2F1ED"         # optional hint for 3D render
 ```
 
+## Sheet format (`materials.yaml: sheets[]`)
+
+The stock sheets meble.pl sells. `meble pack` uses these to work out how many to buy — see
+[ordering-split.md](ordering-split.md).
+
+```yaml
+- id: full                 # used in `meble pack --sheets`
+  name: "Full sheet 2800 × 2070"
+  length: 2800             # THE GRAIN AXIS — panel `grain` is resolved against this
+  width: 2070
+  price: 289               # optional; any currency. Given for every sheet, `pack` minimises
+                           # money instead of area — which is what you want when a half sheet
+                           # costs more than half a full one.
+```
+
+`length` being the grain axis matters more than it looks: this project's half sheet is the full one
+ripped lengthwise, so **both formats are 2800 long** and a narrower format does not mean shorter
+panels.
+
+## Packing allowances (`materials.yaml: packing`)
+```yaml
+packing:
+  kerf: 5                  # mm of blade lost around every panel
+  trim: 10                 # mm off each sheet edge before anything is cut
+```
+Deliberately pessimistic — `pack` only ever proves a list *fits*; meble.pl owns real nesting.
+
 ## Edge band (`edgebands.yaml: edgebands[]`)
 ```yaml
-- id: eb-w980-1
-  name: "ABS Biały W980 1mm"
-  decor_code: W980
+- id: eb-w1100-1
+  name: "ABS Biały W1100 1mm"
+  decor_code: W1100
   texture: ST2
   thickness: 1             # 1 | 2  (the only variants the editor supports)
 ```
@@ -64,16 +91,21 @@ Carries the **drill pattern** that fittings stamp. Shape varies by `type`:
   name: "Left side"
   element_type: panel      # panel (carcass, default) | front | countertop  (latter two added later)
   role: side               # optional label: side | top | bottom | shelf | back | divider | ...
-  material: w980-18        # ref; defaults to cabinet.defaults.material
+  material: w1100-18        # ref; defaults to cabinet.defaults.material
   width: 560               # X
   height: 720              # Y
   thickness: 18            # optional; defaults to material.thickness
   quantity: 1
   grain: height            # any | width | height  (default = force orientation; see meblepl-editor.md)
+  decor_optional: u604-18  # optional. Another board this panel could EQUALLY be cut from, because it
+                           # is genuinely never seen. `meble pack --balance` may move it there if that
+                           # rounds the order up more cheaply. NEVER set this on a panel any face of
+                           # which is visible in use — a drawer interior or an open carcass back is a
+                           # look decision, not a free swap.
   edge_banding:
     all_edges: false       # if true, band all 4 with `band` (below) / default band
-    band: eb-w980-1        # single band when all_edges or no per-edge override
-    edges: { 2: eb-w980-1 }# per-edge: key 1=top 2=right 3=bottom 4=left; value = band id (or true)
+    band: eb-w1100-1        # single band when all_edges or no per-edge override
+    edges: { 2: eb-w1100-1 }# per-edge: key 1=top 2=right 3=bottom 4=left; value = band id (or true)
     glue_type: long        # long ("kryjące długie", default) | short
   holes: []                # see Hole; explicit; stamped holes carry `src`
   grooving: []             # reserved; structures must not reshape when this is filled in later
@@ -108,14 +140,14 @@ Two shapes by `face`:
 
 ## Cabinet (`cabinets/<c>.yaml`)
 ```yaml
-id: d60-base
-name: "Base cabinet 600"
+id: open-900
+name: "Kitchen open unit 900"
 kind: custom               # custom | readymade
 category: base             # base | wall | tall | wardrobe
 construction: confirmat    # default joinery hint
-dimensions: { width: 600, height: 720, depth: 560 }   # envelope (layout/grouping/viz)
+dimensions: { width: 900, height: 400, depth: 600 }   # envelope (layout/grouping/viz)
 position: { x: 0, y: 0, z: 0, rotation: 0 }           # placement within the set/room
-defaults: { material: w980-18, edgeband: eb-w980-1 }
+defaults: { material: w1100-18, edgeband: eb-w1100-1 }
 back: { type: surface }    # surface | rebate | groove
 plinth: { height: 100 }
 panels: [ ... ]            # source of truth
@@ -150,7 +182,7 @@ A reusable sub-assembly = a mini cabinet. Same shape as a custom cabinet (`panel
 id: kitchen
 name: "Kitchen"
 room: kitchen
-cabinets: [d60-base, ...]  # cabinet ids in this set's cabinets/ dir
+cabinets: [open-900, ...]  # cabinet ids in this set's cabinets/ dir
 layout: {}                 # optional notes about relative placement (positions also live on cabinets)
 ```
 

@@ -12,7 +12,7 @@ the editor's entry order, each row with a check box to track manual entry.
 ## Run
 ```bash
 python -m meble pdf --set kitchen          # all cabinets in a set
-python -m meble pdf --cabinet d60-base     # one cabinet
+python -m meble pdf --cabinet open-900     # one cabinet
 python -m meble pdf --apartment bohaterow  # everything
 # -> out/pdf/<scope>.pdf   (out/ is git-ignored)
 ```

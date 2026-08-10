@@ -46,6 +46,15 @@ hardware:
       cup:   { dia: 35, depth: 12, boring: 5 }   # on the door (front)
       plate: { pattern: system32, screws: 2 }    # on the cabinet side, 37 mm setback
 
+  - id: slide-bb-350
+    type: slide
+    name: "Ball-bearing slide 350 (full extension)"
+    length: 350
+    side_clearance: 12.7                          # per side -> drawer box width = internal - 25.4
+    drill:
+      cabinet: { pattern: system32, front_setback: 37 }
+      drawer:  { pattern: system32 }
+
   - id: slide-bb-500
     type: slide
     name: "Ball-bearing slide 500 (full extension)"

@@ -1,14 +1,17 @@
 # MFC boards (and HDF backs). Referenced by id from panel.material.
 # decor_code + texture identify the vendor decor; match edge bands to these.
 boards:
-  - id: w980-18
-    name: "Egger White W980 ST2"
+  - id: w1100-18
+    name: "Egger Alpine White W1100 ST9"   # TODO confirm the decor NAME against the meble.pl board list
     vendor: Egger
-    decor_code: W980
-    texture: ST2
+    decor_code: W1100
+    texture: ST9                 # /!\ ST9, not the ST2 this project used before. ST9 is a matt finish
+                                 # with a DIRECTIONAL emboss, so two adjacent panels cut at 90° to each
+                                 # other catch the light differently. Same caveat as u604-18: on a
+                                 # visible run set `grain` explicitly instead of leaving it `any`.
     thickness: 18
-    grain_directional: false
-    color: "#F2F1ED"
+    grain_directional: false     # uni decor — no printed grain; the emboss is the only directional cue
+    color: "#F4F4F1"             # viewer approximation only
 
   - id: u727-18
     name: "Egger Grey Dust U727 ST9"
@@ -46,3 +49,28 @@ boards:
     thickness: 3
     grain_directional: false
     color: "#FAFAF7"
+
+# Stock sheet formats meble.pl sells. meble.pl charges for WHOLE sheets and ONE ORDER CARRIES ONE
+# FORMAT, so the panel list has to be split by decor *and* by format — that split is what
+# `meble pack` computes. See docs/ordering-split.md.
+#
+# `length` is the GRAIN AXIS. Both formats are 2800 long because the half IS the full sheet ripped
+# down its length (1032 = 2070/2 less the saw kerf), so a half sheet takes a full-height 2500 mm
+# gable just as happily as a full sheet does — it is narrower, not shorter. Do not assume a smaller
+# format means shorter panels.
+sheets:
+  - id: full
+    name: "Full sheet 2800 × 2070"
+    length: 2800
+    width: 2070
+
+  - id: half
+    name: "Half sheet 2800 × 1032"
+    length: 2800
+    width: 1032
+
+# Allowances used when test-packing. Deliberately pessimistic: we only ever want to prove a list
+# FITS, never to produce a cutting layout (meble.pl owns nesting).
+packing:
+  kerf: 5     # mm of blade lost around every panel
+  trim: 10    # mm taken off each sheet edge before anything is cut

@@ -79,6 +79,44 @@ class Board:
 
 
 @dataclass
+class Sheet:
+    """A stock sheet format. `length` is the grain axis — see materials.yaml."""
+    id: str
+    name: str = ""
+    length: float = 0
+    width: float = 0
+    price: Optional[float] = None      # per sheet; any currency, only ratios matter
+
+    @property
+    def area(self) -> float:
+        """m²."""
+        return self.length * self.width / 1e6
+
+    @property
+    def cost(self) -> float:
+        """What `meble pack` minimises. Falls back to area when no price is given."""
+        return self.price if self.price is not None else self.area
+
+    def usable(self, trim: float) -> tuple[float, float]:
+        return self.length - trim, self.width - trim
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "Sheet":
+        return cls(**{k: d.get(k, getattr(cls, k, None)) for k in
+                      ("id", "name", "length", "width", "price")})
+
+
+@dataclass
+class PackParams:
+    kerf: float = 5
+    trim: float = 10
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "PackParams":
+        return cls(kerf=d.get("kerf", 5), trim=d.get("trim", 10))
+
+
+@dataclass
 class EdgeBand:
     id: str
     name: str = ""
@@ -203,6 +241,10 @@ class Panel:
     thickness: Optional[float] = None
     quantity: int = 1
     grain: Optional[str] = None
+    #: Another board this panel could equally be cut from, because it is hidden or its decor is a
+    #: free choice. `meble pack --balance` may move it there to round the order up more cheaply.
+    #: Never set this on a panel any face of which is visible in use.
+    decor_optional: Optional[str] = None
     edge_banding: EdgeBanding = field(default_factory=EdgeBanding)
     holes: list[Hole] = field(default_factory=list)
     grooving: list = field(default_factory=list)
@@ -216,7 +258,7 @@ class Panel:
             material=d.get("material", default_material),
             width=d.get("width", 0), height=d.get("height", 0),
             thickness=d.get("thickness"), quantity=int(d.get("quantity", 1) or 1),
-            grain=d.get("grain"),
+            grain=d.get("grain"), decor_optional=d.get("decor_optional"),
             edge_banding=EdgeBanding.from_dict(d.get("edge_banding")),
             holes=[Hole.from_dict(h) for h in (d.get("holes") or [])],
             grooving=list(d.get("grooving") or []),
@@ -284,6 +326,8 @@ class Apartment:
 class Project:
     root: Path
     boards: dict[str, Board] = field(default_factory=dict)
+    sheets: dict[str, Sheet] = field(default_factory=dict)
+    packing: "PackParams" = field(default_factory=lambda: PackParams())
     edgebands: dict[str, EdgeBand] = field(default_factory=dict)
     hardware: dict[str, Hardware] = field(default_factory=dict)
     parts: dict[str, dict] = field(default_factory=dict)          # raw part dicts
@@ -336,8 +380,12 @@ def load_project(root: Optional[Path] = None) -> Project:
     proj = Project(root=root)
 
     lib = root / "library"
-    for b in (load_yaml(lib / "materials.yaml") or {}).get("boards", []):
+    materials = load_yaml(lib / "materials.yaml") or {}
+    for b in materials.get("boards", []):
         proj.boards[b["id"]] = Board.from_dict(b)
+    for s in materials.get("sheets", []):
+        proj.sheets[s["id"]] = Sheet.from_dict(s)
+    proj.packing = PackParams.from_dict(materials.get("packing") or {})
     for e in (load_yaml(lib / "edgebands.yaml") or {}).get("edgebands", []):
         proj.edgebands[e["id"]] = EdgeBand.from_dict(e)
     for h in (load_yaml(lib / "hardware.yaml") or {}).get("hardware", []):

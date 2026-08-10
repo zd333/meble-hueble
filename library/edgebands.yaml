@@ -1,16 +1,16 @@
 # Edge bands. Referenced by id from panel.edge_banding. Match decor_code + texture to the board.
 # Only 1 mm and 2 mm variants exist in the editor (carcass ~1 mm, fronts 2 mm).
 edgebands:
-  - id: eb-w980-1
-    name: "ABS White W980 1mm"
-    decor_code: W980
-    texture: ST2
+  - id: eb-w1100-1
+    name: "ABS Alpine White W1100 ST9 1mm"   # carcass edges
+    decor_code: W1100
+    texture: ST9
     thickness: 1
 
-  - id: eb-w980-2
-    name: "ABS White W980 2mm"
-    decor_code: W980
-    texture: ST2
+  - id: eb-w1100-2
+    name: "ABS Alpine White W1100 ST9 2mm"   # fronts
+    decor_code: W1100
+    texture: ST9
     thickness: 2
 
   - id: eb-u727-1

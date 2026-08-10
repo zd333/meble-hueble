@@ -12,7 +12,7 @@ this before exporting or ordering.
 ```bash
 python -m meble validate --apartment bohaterow   # all sets/cabinets in an apartment
 python -m meble validate --set kitchen           # one set
-python -m meble validate --cabinet d60-base      # one cabinet
+python -m meble validate --cabinet open-900      # one cabinet
 python -m meble validate                         # everything in the repo
 ```
 

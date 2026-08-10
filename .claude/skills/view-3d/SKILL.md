@@ -11,7 +11,7 @@ viewer renders the same scene the tool computes (`build_scene`), with cabinet-aw
 ## Run
 ```bash
 python -m meble view --set kitchen          # whole set
-python -m meble view --cabinet d60-base     # one cabinet
+python -m meble view --cabinet open-900     # one cabinet
 python -m meble view --apartment bohaterow  # everything
 # flags: --no-serve (just write the html) · --port N · --out FILE
 ```

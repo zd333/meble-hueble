@@ -1,0 +1,45 @@
+# =====================================================================================================
+# KITCHEN MOUNTING PANELS — 3 × 87 × 1000, white 18 mm, loose
+# =====================================================================================================
+#
+# NOT A CABINET. This file exists so three loose boards land in the kitchen's CSV and PDF alongside
+# `open-900`. They are cut to size and used during the kitchen installation (packing, scribing, fixing
+# the standard IKEA units) — there is no carcass, no joinery and no drilling.
+#
+# UNBANDED ON PURPOSE: they get trimmed on site, so a band would only be cut off again.
+#
+# If any of them turns out to need banding or a different length, edit this file and re-run
+# `meble csv --set kitchen` — nothing else in the project depends on it.
+# =====================================================================================================
+
+id: mounting-panels
+name: "Kitchen mounting panels"
+kind: custom
+category: base               # nothing consumes this for a loose-panel entry; `base` keeps the loader happy
+construction: none           # no joinery at all
+dimensions: {width: 287, height: 1000, depth: 18}   # viewer envelope only: 3 boards drawn on a 100 pitch
+position: {x: 3000, y: 0, z: 0, rotation: 0}        # VIEWER PLACEHOLDER — parked clear of open-900
+defaults: {material: w1100-18, edgeband: eb-w1100-1}
+back: {}
+plinth: {}
+
+panels:
+
+- id: mount-panel
+  name: "Mounting panel 87×1000  [order 2 · W1100 · sheet 2800×1032]"
+  element_type: panel
+  role: spacer                # free-standing board, no joinery — same role wc-column uses for its filler
+  quantity: 3
+  width: 87
+  height: 1000
+  grain: any                  # trimmed on site; let the optimiser rotate them
+  edge_banding: {}            # none — see the header
+  holes: []                   # none — drilled on site if at all
+  placement: {pos: [0, 0, 0], step: [100, 0, 0], rot: [90, 0, 0]}
+    # rot is REQUIRED: `spacer` is not in the viewer's ROLE_FRAME table, so without it the boards lie
+    # flat on the floor. [90, 0, 0] stands them upright, 87 across × 1000 tall, on a 100 mm pitch.
+
+assembly:
+  fittings: []
+
+parts: []
