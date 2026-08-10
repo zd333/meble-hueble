@@ -153,7 +153,7 @@ panels:
   - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 3, spacing: 175, direction: x, src: mf-bot-r}
   - {face: inner, x: 9, y: 405, dia: 5, depth: 12, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-r}
 - id: bottom
-  name: "Bottom panel  [order 2 · U604 · sheet 2070×1032]"
+  name: "Bottom panel  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: bottom                # 524 = 560 − 2×18. edge1 = cabinet FRONT (y 450), edge3 = wall (y 0).
                               # On a `bottom`, inner = the UP face and outer = DOWN (docs/conventions.md
@@ -244,7 +244,7 @@ panels:
   placement: {pos: [0, -18, 0], rot: [90, 0, 0]}
 
 - id: facade-top
-  name: "Top drawer facade  [order 2 · U604 · sheet 2070×1032]"
+  name: "Top drawer facade  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: front                 # z 153..474 — 3 mm reveal below, 6 mm open above, as specified.
                               # TALL FACADE, SHORT BOX: it is fixed only over z 166..316 (the box front),
@@ -392,7 +392,7 @@ panels:
   placement: {pos: [31, 332, 40], rot: [90, 0, 180]}
 
 - id: d1-side-l
-  name: "Bottom drawer — left side  [order 2 · U604 · sheet 2070×1032]"
+  name: "Bottom drawer — left side  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: drawer-side           # BETWEEN the front and back panels: 350 − 36 = 314. Same board as
                               # d1-side-r — both ends drilled 30/70, because this box's front and back
@@ -423,7 +423,7 @@ panels:
     type: single
     src: cf-d1-bl
 - id: d1-side-r
-  name: "Bottom drawer — right side  [order 2 · U604 · sheet 2070×1032]"
+  name: "Bottom drawer — right side  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: drawer-side           # Same board as d1-side-l. Frame like `side-right`: local x 0 = the
                               # drawer's FRONT, so edge4 is the front end and edge2 the back end.
@@ -566,7 +566,7 @@ panels:
   placement: {pos: [31, 332, 166], rot: [90, 0, 180]}
 
 - id: d2-side-l
-  name: "Top drawer — left side  [order 2 · U604 · sheet 2070×1032]"
+  name: "Top drawer — left side  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: drawer-side           # GENUINE MIRROR PAIR with d2-side-r, and the reason is the low back: the
                               # front end takes screws at 50/100 (into a 150 mm front) and the back end
@@ -595,7 +595,7 @@ panels:
   placement: {pos: [31, 18, 166], rot: [90, 0, -90]}
 
 - id: d2-side-r
-  name: "Top drawer — right side  [order 2 · U604 · sheet 2070×1032]"
+  name: "Top drawer — right side  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: drawer-side           # MIRROR of d2-side-l. Frame like `side-right`: local x 0 = the drawer's
                               # FRONT, so edge4 is the front end and edge2 the back end — the opposite

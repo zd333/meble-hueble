@@ -252,7 +252,7 @@ panels:
     # D, t)`), so without an explicit pos it would draw a 199-deep panel and hide the fact that the
     # back runs past it. The YAML, CSV and PDF were always right; only the 3D render lied.
 - id: gable-mid
-  name: "Centre gable (vertical)  [order 1 · U604 · sheet 2070×2800]"
+  name: "Centre gable (vertical)  [order 2 · U604 · sheet 2070×1032]"
   element_type: panel
   role: gable                  # internal full-height divider — EDGE CASE not in docs/conventions.md's
                                # table: both faces face a cavity (like a shelf), so outer/inner is our own
@@ -293,7 +293,7 @@ panels:
   placement: {pos: [19, 5, 1630], step: [0, 0, 438]}   # both shelves of the run, 438 apart (viz only)
 
 - id: shelf-r
-  name: "Right-compartment shelf  [order 2 · U604 · sheet 2070×1032]"
+  name: "Right-compartment shelf  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: shelf
   width: 339
@@ -305,7 +305,7 @@ panels:
   placement: {pos: [378, 5, 1630], step: [0, 0, 438]}
 
 - id: back-upper
-  name: "Back (upper cabinet)  [order 1 · U604 · sheet 2070×2800]"
+  name: "Back (upper cabinet)  [order 2 · U604 · sheet 2070×1032]"
   element_type: panel
   role: back                  # 18 mm, NOT the usual 3 mm HDF — `meble review` flags that; it is
                               # deliberate here (see the BACK PANEL note in the header).

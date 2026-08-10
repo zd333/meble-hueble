@@ -284,7 +284,7 @@ plinth: {}                   # sides run to the floor — silicone the bottom ed
 
 panels:
 - id: side-l
-  name: "Left side"
+  name: "Left side  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = wall. X: 0 = wall, 675 = front
   width: 675                  # depth
@@ -306,7 +306,7 @@ panels:
   - {face: inner, x: 638, y: 2036, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
   - {face: outer, x: 98, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-l}
 - id: side-r
-  name: "Right side"
+  name: "Right side  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: side-right            # MIRROR of side-l. X: 0 = front, 675 = wall — so the front column is x 37
                               # here and the rear one x 620, and edge4 (not edge2) is the cabinet front.
@@ -326,7 +326,7 @@ panels:
   - {face: inner, x: 620, y: 2036, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
   - {face: outer, x: 77, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-r}
 - id: divider
-  name: "Divider @1780 (bay ceiling / overhead-cabinet floor)"
+  name: "Divider @1780 (bay ceiling / overhead-cabinet floor)  [order 2 · U604 · sheet 2070×1032]"
   element_type: panel
   role: bottom                # 726 = 762 − 2×18. edge1 = cabinet FRONT (y 657), edge3 = REAR, butting
                               # the back panel. inner face = UP (into the overhead cavity); outer = DOWN,
@@ -354,7 +354,7 @@ panels:
   placement: {pos: [18, 0, 1780]}     # role 'bottom' would sit it on the floor — place it explicitly
 
 - id: top-panel
-  name: "Top panel"
+  name: "Top panel  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: top                   # 726 = 762 − 2×18. edge1 = cabinet FRONT.
                               # NB on a `top` panel OUTER is the DOWN face and INNER the UP face — see
@@ -383,7 +383,7 @@ panels:
     # D, t)`), so without it the 3D view would draw a 675-deep panel and hide the back running past.
 
 - id: back
-  name: "Back (full height)"
+  name: "Back (full height)  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: back                  # ONE CONTINUOUS PANEL, y 657..675, z 50..2502 — the whole rear face of
                               # the cabinet, uninterrupted from just above the floor to the underside of
@@ -447,7 +447,7 @@ panels:
   placement: {pos: [18, 657, 50]}   # role 'back' would size it to the whole carcass — place it here
 
 - id: shelf
-  name: "Overhead shelf"
+  name: "Overhead shelf  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: shelf                 # full width — there is no centre gable (see the SHELF note in the header).
                               # 5 mm shallower than the cavity so the closed door clears it.
@@ -465,7 +465,7 @@ panels:
   placement: {pos: [19, 5, 2141]}   # drawn at the middle position (343 mm bays either side)
 
 - id: door-l
-  name: "Door left"
+  name: "Door left  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: front                 # hinges on edge4 (its LEFT edge, on side-l) — FULL overlay, 18 mm
   width: 380
@@ -481,7 +481,7 @@ panels:
   placement: {pos: [0, -18, 1780], rot: [90, 0, 0]}
 
 - id: door-r
-  name: "Door right"
+  name: "Door right  [order 1 · U604 · sheet 2070×2800]"
   element_type: panel
   role: front                 # MIRROR of door-l: hinges on edge2 (its RIGHT edge, on side-r) — FULL
                               # overlay. Handle/free edge is edge4 (left), meeting door-l's in the middle.
