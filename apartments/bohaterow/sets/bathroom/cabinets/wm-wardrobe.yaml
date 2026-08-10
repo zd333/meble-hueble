@@ -1,8 +1,14 @@
 # Bathroom laundry column — open bay for a STACKED washer + dryer (bottom) + a closed 2-door
 # overhead cabinet (top).
 #
+# BAY RAISED 1780 -> 1810 on 2026-08-10 at the user's request, buying 30 mm of margin on the pre-order
+# risk below (a 1750 stack now fits with the full 60 mm working clearance, against 1720 before). The
+# envelope is unchanged, so the overhead cavity pays for it: 704 -> 674 clear. Everything that keys off
+# the divider moved with it — doors 736 -> 706, cups, hinge plates, shelf pins, and the divider's own
+# confirmat lines. See the height chain under H below.
+#
 # REDESIGNED 2026-08-09 for a stacked pair. It was built around a single washing machine (950 bay,
-# 1534 of shelving); adding a dryer on top pushes the bay to 1780 and leaves 704 above. The upper
+# 1534 of shelving); adding a dryer on top pushes the bay to 1810 and leaves 674 above. The upper
 # cabinet therefore stops being mixed prime-reach storage and becomes OVERHEAD-ONLY — that is what
 # killed the centre gable and seven of the eight shelves. Envelope, material and joinery are unchanged.
 # The 726×200 brace rail at the base also grew into ONE FULL-HEIGHT BACK: the wall behind the machines
@@ -22,18 +28,24 @@
 # changes to in-place assembly, every side joint has to become a minifix cam turned from inside.
 #
 # ############ CONFIRM BEFORE ORDERING — every item here changes ordered panel sizes ############
-#   1. THE ASSEMBLED STACK HEIGHT. The 1780 bay assumes the finished stack is ≤1720: 850 + 850 + 20
-#      (washer feet) + 60 clearance to walk the dryer up and reach the bracket. MEASURE THE REAL PAIR
-#      WITH THE REAL KIT rather than trusting the arithmetic — three things routinely blow it:
+#   1. THE ASSEMBLED STACK HEIGHT. The 1810 bay assumes the finished stack is ≤1750: 850 + 850 + 20
+#      (washer feet) + 30 for a stacking kit + 60 clearance to walk the dryer up and reach the bracket.
+#      MEASURE THE REAL PAIR WITH THE REAL KIT rather than trusting the arithmetic — three things
+#      routinely blow it:
 #        · the stacking kit's own thickness (a plain bracket 0–15, a kit WITH A PULL-OUT SHELF 40–70),
 #        · an anti-vibration mat under the washer (8–20), which eats the same 20 mm the feet wanted,
 #        · on many EU machines 850 is the height with the feet WOUND OUT, i.e. a maximum, not a
 #          nominal — on an uneven tiled floor you may be levelling upward from above 850.
 #      The divider is a fixed panel, so unlike an open-topped niche there is NO on-site recovery: if
-#      the stack measures 1790 you are re-cutting four panels. If the measured stack + mat comes out
-#      over ~1720, move the divider up before ordering — the overhead cavity can drop to 650 clear and
-#      lose almost nothing. 60 mm of headroom also satisfies the 30–50 mm most heat-pump dryers want
-#      above them, so do not spend it all.
+#      the stack measures 1820 you are re-cutting four panels. If the measured stack + mat comes out
+#      over ~1750, move the divider up again before ordering — the overhead cavity can drop to 650
+#      clear and lose almost nothing, which is another 24 mm of room beyond this revision.
+#      60 mm of headroom also satisfies the 30–50 mm most heat-pump dryers want above them, so do not
+#      spend it all.
+#      /!\ THIS IS THE ONLY REASON THE BAY IS 1810. The 30 mm came straight out of the overhead
+#          cabinet; it buys margin on a measurement nobody has taken yet. If the real stack turns out
+#          to be 1700, that 30 mm is simply gone — so take the measurement before ordering rather than
+#          buying margin twice.
 #   2. THE DRYER'S DEPTH — the live risk on this build, and the one number that can force four panels
 #      to be re-cut. Work it through properly:
 #          carcass depth                                    675
@@ -82,10 +94,12 @@
 #             -> upper cavity depth = 657;  shelf depth = 657 − 5 (door clearance) = 652
 #             keep the 37 mm front setback:  side-l's front hole column = x D − 37 = 638;
 #             side-r's = x 37.  Rear pin column: side-l x 55, side-r x 620 (= 18 back + 37)
-#   H = 2520  side height                          appliance bay 1780 clear (see APPLIANCE BAY below)
-#             divider z 1780..1798                 upper cavity = H − 1780 − 18 − 18 = 704 clear
-#             door height = H − 1780 − 4 = 736     (4 mm reveal below the unit top — see DOORS)
-#             check: 1780 + 18 + 704 + 18 = 2520
+#   H = 2520  side height                          appliance bay 1810 clear (see APPLIANCE BAY below)
+#             divider z 1810..1828                 upper cavity = H − 1810 − 18 − 18 = 674 clear
+#             door height = H − 1810 − 4 = 706     (4 mm reveal below the unit top — see DOORS)
+#             check: 1810 + 18 + 674 + 18 = 2520
+#             THE BAY IS THE ONLY FREE VARIABLE HERE. H is fixed by the room, so every mm added to the
+#             bay comes out of the overhead cavity and shortens the doors by the same amount.
 #
 # After editing: `python -m meble fit --cabinet wm-wardrobe`, then `validate` + `review`. NOTE the
 # hinge-plate, shelf-pin, divider-confirmat and back-to-side-confirmat holes are
@@ -97,7 +111,7 @@
 # 675 = wall), z = height (0 = floor).
 #
 # VERTICAL STACK
-#   z    0 .. 1780   APPLIANCE BAY — 726 wide × 1780 clear × 657 deep, open at the FRONT (no doors) and
+#   z    0 .. 1810   APPLIANCE BAY — 726 wide × 1810 clear × 657 deep, open at the FRONT (no doors) and
 #                    CLOSED at the back by the full-height back panel, with a service opening cut on
 #                    site for the tap, waste and sockets. NO BOTTOM PANEL: the machines stand on the
 #                    floor slab. ~150 kg
@@ -108,10 +122,10 @@
 #                    braces the sides over their full height, and carries BOTH horizontals: the divider
 #                    and the top panel are each 657 deep and stop against it, so neither cuts it and
 #                    both are screwed to it from behind. Service opening cut on site.
-#   z 1780 .. 1798   divider (726×657) — the bay's ceiling and the overhead cabinet's floor
-#   z 1798 .. 2502   overhead cabinet, 704 clear — the same back panel closes its rear.
-#                    ONE full-width shelf on Ø5 pins, 3 selectable heights drilled (see SHELF)
-#   z 1780 .. 2516   2 doors (380×736), bottom edge flush with the divider's underside, 4 mm reveal
+#   z 1810 .. 1828   divider (726×657) — the bay's ceiling and the overhead cabinet's floor
+#   z 1828 .. 2502   overhead cabinet, 674 clear — the same back panel closes its rear.
+#                    ONE full-width shelf on Ø5 pins at a single fixed height, z 2156 (see SHELF)
+#   z 1810 .. 2516   2 doors (380×706), bottom edge flush with the divider's underside, 4 mm reveal
 #                    below the unit top so they can never rub the ceiling
 #   z 2502 .. 2520   top panel (726×657) — 657 not 675, so the back runs past it to the cabinet top
 #
@@ -125,8 +139,8 @@
 #       buy the bracket kit for your machine pair. The cabinet sides are 63 mm clear of the stack on
 #       each side and will not catch a falling dryer.
 #   Clearances designed in: 63 mm each side (vibration — the stack must never touch a side panel) and
-#   1780 − 1720 = 60 mm above the dryer, which is what you need to walk it up onto the washer and get a
-#   hand to the bracket.
+#   1810 − 1750 = 60 mm above the dryer, which is what you need to walk it up onto the washer and get a
+#   hand to the bracket. If your pair measures the older 1720, you simply have 90 mm up there instead.
 #   /!\ CHECK THE PLUMBING AND THE SOCKETS BEFORE ORDERING. A 600-deep machine in a 675 bay leaves
 #       75 mm; the back panel cuts that to 57 mm behind the stack. If the tap or waste stub sits proud
 #       of the wall the stack will stand forward of the carcass face — measure the stub-out height and
@@ -140,7 +154,7 @@
 #   reachable and pulls forward — fine. If you plumb the condensate into the washer's waste instead,
 #   the hose cannot run down the wall plane (the back is flush there); it has to come forward of the
 #   panel, through the service opening, or down one of the 63 mm side gaps.
-#   /!\ THE WHOLE WALL FROM z 50 TO 1780 IS NOW COVERED at y 657..675. Anything projecting off it — a
+#   /!\ THE WHOLE WALL FROM z 50 TO 1810 IS NOW COVERED at y 657..675. Anything projecting off it — a
 #       floor-level trap, a skirting, a pipe run, a tiled upstand, a socket faceplate — either lands
 #       inside the site-cut service opening or fouls the panel. Mark them all before cutting.
 #   VENTILATION: the bay is open front and back, which is why it stays door-less. A heat-pump or
@@ -152,37 +166,42 @@
 #   handholds. Two people and a strap.
 #
 # DOORS — full overlay, both hinged at the OUTER edges (door-l on side-l, door-r on side-r: a mirror
-# pair) so the handles meet in the middle. 2 hinges each is right for a 736 mm door.
+# pair) so the handles meet in the middle. 2 hinges each is right for a 706 mm door.
 #   /!\ DOOR SWING vs THE NICHE. The doors are flush with the carcass sides, so a 110° full-overlay
 #       hinge needs a few mm of gap to each niche wall to arc past it. If the installed gap is under
 #       ~5 mm, narrow BOTH doors to 375 (375 + 2 + 375 = 752, a deliberate 5 mm reveal at each outer
 #       edge). Nothing else changes except door-r's cup x, which becomes 375 − 22.5 = 352.5.
 #
-# HINGES: cups at door y 100 / 636 -> cabinet z 1880 / 2416. Plate pair = Ø5 ×2, 32 mm apart, centred
+# HINGES: cups at door y 100 / 606 -> cabinet z 1910 / 2416. Plate pair = Ø5 ×2, 32 mm apart, centred
 # on the cup, on the 37 mm front-setback line: side-l x 638, side-r x 37.
 #   The doors are SYMMETRIC top-to-bottom (100 mm margin at both ends), so unlike the old 1566 mm doors
 #   there is no way to hang one upside down. Nothing to mark, nothing to get wrong.
+#   The TOP cup stays at cabinet z 2416: the door's top edge is still 2516, and the margin is still 100.
+#   Only the BOTTOM cup moved with the divider, 1880 -> 1910, and its plate pair with it.
 #   NO HANDLE HOLES ARE DRILLED. If you want meble.pl to bore them they have to be in this YAML —
 #   otherwise drill on site once the doors are hung and you can see where your hand lands.
 #   A standard 0-crank clip hinge gives ~17 mm of overlay against the 18 mm assumed here. The ±2 mm
 #   lateral plate adjustment absorbs it, but the doors hinge on OPPOSITE outer sides so any shortfall
 #   doubles at the centre — expect the 2 mm meeting gap to settle at 3–4 mm. Cosmetic only.
 #
-# SHELF — one full-width shelf (724×652) on 4 × Ø5 pins, with THREE heights drilled so you can choose
-# once you see what actually goes up there: z 2036 / 2141 / 2246 (one `multi` per column, count 3,
-# spacing 105). Bays that gives you, low to high:
-#     shelf @2036 -> 238 below / 448 above      @2141 -> 343 / 343      @2246 -> 448 / 238
-#   12 pin holes in total. The reason the previous design had only its 4 chosen heights was that a full
-#   System-32 run costs 328 holes and drilling is charged per hole — 12 is noise by comparison, and one
-#   shelf in an overhead box whose use is not yet decided is exactly the case where a spare position
-#   pays for itself. Drop to `count: 1` (4 holes) if you want the absolute minimum.
+# SHELF — one full-width shelf (724×652) on 4 × Ø5 pins at ONE height: z 2156, which splits the 674
+# cavity into equal (674 − 18) / 2 = 328 bays. 4 pin holes in total, one per column, no `multi`.
+#   An earlier revision drilled THREE heights (2051 / 2156 / 2261) so the position could be chosen at
+#   assembly. Dropped on 2026-08-10: it is one shelf in an overhead box, the middle height is the one
+#   you would pick anyway, and 8 of those 12 holes were always going to sit empty and visible on the
+#   inside faces of a cabinet you look up into. Fixed positions also mean the shelf cannot be put in
+#   crooked. If you genuinely want it higher or lower, decide BEFORE ordering and move this number —
+#   that costs nothing, whereas the spare holes cost drilling on every panel.
 #   Depth 13 is the System-32 line-boring standard from library/hardware.yaml; a Ø5 pin only engages
 #   ~10 mm, but the extra clearance is free on a blind bore (13 into 18 leaves 5 mm).
-#   /!\ IF YOU DRILL EXTRA PIN HOLES LATER use a depth stop at 13 mm — a Ø5 that goes through a side
-#       panel is visible from the outside of the carcass.
-#   /!\ KEEP ANY NEW HEIGHT AWAY FROM THE HINGES (cups z 1880 / 2416 ± ~45) — the closed hinge arm
-#       occupies the front-inner corner there. The three heights above already clear them by 152 mm at
-#       the closest, and clear the hinge PLATE holes (which share the x 638 / x 37 column) by 140 mm.
+#   /!\ ADDING A HEIGHT LATER IS A SITE JOB NOW, and a fiddly one — you are drilling 4 blind Ø5 holes
+#       inside a fitted 2520 mm carcass, above head height, with the doors on. Use a depth stop at
+#       13 mm and a shelf-pin jig registered off the front edge: a Ø5 that goes through a side panel is
+#       visible from the outside of the carcass, and one column drilled 2 mm off makes the shelf rock.
+#   /!\ KEEP ANY NEW HEIGHT AWAY FROM THE HINGES (cups z 1910 / 2416 ± ~45) — the closed hinge arm
+#       occupies the front-inner corner there. The single height above clears them by 201 mm below and
+#       215 mm above, so there is plenty of room either way; that was 96 mm when three heights were
+#       drilled, and it is the constraint that bites first if you move the shelf toward either end.
 #   NO CENTRE GABLE. It was there to stop a 726 mm shelf span sagging and to split the cavity into two
 #   box-width columns — both arguments lose to the one thing overhead space is actually good for:
 #   swallowing bulky light objects (a suitcase, a folded drying rack, spare bedding), which a gable
@@ -191,7 +210,7 @@
 #   Fine for suitcases and bedding; visibly saggy for anything dense, so keep dense things off it.
 #   Dropping the gable also removes the only point load the divider ever carried.
 #
-#   ERGONOMICS — everything in this cabinet is now above 1798 mm. You cannot see a shelf surface from
+#   ERGONOMICS — everything in this cabinet is now above 1828 mm. You cannot see a shelf surface from
 #   below at that height, so:
 #     · boxes only, labelled on the FRONT face, pulled out whole. Nothing loose goes up there — it is
 #       invisible and therefore lost.
@@ -230,7 +249,7 @@
 # slides horizontally into its own slot from BEHIND, so nothing large ever has to be tipped.
 #   (For the record, a finished 2520 × 675 carcass could not be tipped upright anyway — it sweeps a
 #   diagonal of sqrt(2520² + 675²) = 2609 mm, ~90 mm more than the room is tall.)
-#   1. Stand both sides. Fit the DIVIDER at z 1780 and the TOP PANEL at z 2502 between them, and drive
+#   1. Stand both sides. Fit the DIVIDER at z 1810 and the TOP PANEL at z 2502 between them, and drive
 #      cf-div-* and cf-top-* horizontally through each side's outer face. You now have a rigid U.
 #   2. Slide the BACK in from behind, forward into the y 657..675 slot. It runs past the divider (which
 #      is why the divider is only 657 deep) and under the top panel, and lands against the divider's
@@ -252,9 +271,9 @@
 #     to stop a 2520 mm column tipping forward when the top is loaded.
 #     That is a real reduction: THREE screws per side at ~z 400 / 1200 / 2400, plus 2 brackets through
 #     the back into the rear wall (~z 1900 and ~z 2400).
-#     Nothing above ~1650 inside the bay — the divider's underside is at 1780 and a driver needs room.
+#     Nothing above ~1680 inside the bay — the divider's underside is at 1810 and a driver needs room.
 #     All drilled on site, NOT ordered. Get them in BEFORE the stack goes in: once it does, it
-#     permanently blocks every anchor below 1720.
+#     permanently blocks every anchor below the top of the stack (~1750).
 # /!\ SILICONE THE BOTTOM EDGES of both sides to the floor. MFC wicks water and this is a bathroom with
 #     a washing machine in it. Better still, order a P3 core (see the pre-order checklist) or stand the
 #     sides on 15–20 mm levelling feet so the chipboard never sits in standing water.
@@ -297,13 +316,15 @@ panels:
     # Ø8 through + countersink on OUTER, Ø4 pilot in the mating panel's edge.
     # x 87.5..587.5 are distances from the WALL; the set is symmetric about the 337.5 mid-depth on purpose
     # (see the note on cf-top-r in `assembly`).
-    # divider @1780 — mid-height, so `meble fit` can't stamp it (see the fitting note); hand-written.
-  - {face: outer, x: 98, y: 1789, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-div-l}
+    # divider @1810 — mid-height, so `meble fit` can't stamp it (see the fitting note); hand-written.
+    # y 1819 = the divider's mid-thickness (1810 + 9).
+  - {face: outer, x: 98, y: 1819, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-div-l}
   - {face: outer, x: 9, y: 176, dia: 8, depth: through, type: multi, count: 5, spacing: 550, direction: y, src: cf-back-l}
-  - {face: inner, x: 638, y: 1864, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
+  - {face: inner, x: 638, y: 1894, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
   - {face: inner, x: 638, y: 2400, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
-  - {face: inner, x: 55, y: 2036, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
-  - {face: inner, x: 638, y: 2036, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
+    # shelf pins — ONE height (z 2156), so a plain single hole per column, not a `multi`.
+  - {face: inner, x: 55, y: 2156, dia: 5, depth: 13}
+  - {face: inner, x: 638, y: 2156, dia: 5, depth: 13}
   - {face: outer, x: 98, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-l}
 - id: side-r
   name: "Right side  [order 1 · U604 · sheet 2800×2070]"
@@ -318,15 +339,16 @@ panels:
     # x is measured from the FRONT on this panel. The confirmat sets read the same numbers as side-l only
     # because the `at` list is symmetric about the mid-depth — they are NOT the same physical points in
     # the same order.
-  - {face: outer, x: 77, y: 1789, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-div-r}
+  - {face: outer, x: 77, y: 1819, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-div-r}
   - {face: outer, x: 666, y: 176, dia: 8, depth: through, type: multi, count: 5, spacing: 550, direction: y, src: cf-back-r}
-  - {face: inner, x: 37, y: 1864, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
+  - {face: inner, x: 37, y: 1894, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 37, y: 2400, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
-  - {face: inner, x: 37, y: 2036, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
-  - {face: inner, x: 620, y: 2036, dia: 5, depth: 13, type: multi, count: 3, spacing: 105, direction: y}
+    # shelf pins — ONE height (z 2156), so a plain single hole per column, not a `multi`.
+  - {face: inner, x: 37, y: 2156, dia: 5, depth: 13}
+  - {face: inner, x: 620, y: 2156, dia: 5, depth: 13}
   - {face: outer, x: 77, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-r}
 - id: divider
-  name: "Divider @1780 (bay ceiling / overhead-cabinet floor)  [order 1 · U604 · sheet 2800×2070]"
+  name: "Divider @1810 (bay ceiling / overhead-cabinet floor)  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: bottom                # 726 = 762 − 2×18. edge1 = cabinet FRONT (y 657), edge3 = REAR, butting
                               # the back panel. inner face = UP (into the overhead cavity); outer = DOWN,
@@ -351,7 +373,7 @@ panels:
   - {face: edge4, from: 80, dia: 4, depth: 35, type: multi, count: 3, spacing: 250, src: cf-div-l}
   - {face: edge2, from: 80, dia: 4, depth: 35, type: multi, count: 3, spacing: 250, src: cf-div-r}
   - {face: edge3, from: 126, dia: 4, depth: 35, type: multi, count: 3, spacing: 237, src: cf-back-div}
-  placement: {pos: [18, 0, 1780]}     # role 'bottom' would sit it on the floor — place it explicitly
+  placement: {pos: [18, 0, 1810]}     # role 'bottom' would sit it on the floor — place it explicitly
 
 - id: top-panel
   name: "Top panel  [order 1 · U604 · sheet 2800×2070]"
@@ -442,7 +464,8 @@ panels:
     # diaphragm in shear, not as a beam, so it does not need more.
   - {face: edge2, from: 126, dia: 4, depth: 35, type: multi, count: 5, spacing: 550, src: cf-back-l}
   - {face: edge4, from: 126, dia: 4, depth: 35, type: multi, count: 5, spacing: 550, src: cf-back-r}
-  - {face: outer, x: 126, y: 1739, dia: 8, depth: through, type: multi, count: 3, spacing: 237, direction: x, src: cf-back-div}
+    # y 1769 = cabinet z 1819 (the divider's mid-thickness) less this panel's own bottom at z 50.
+  - {face: outer, x: 126, y: 1769, dia: 8, depth: through, type: multi, count: 3, spacing: 237, direction: x, src: cf-back-div}
   - {face: outer, x: 126, y: 2461, dia: 8, depth: through, type: multi, count: 3, spacing: 237, direction: x, src: cf-top-back}
   placement: {pos: [18, 657, 50]}   # role 'back' would size it to the whole carcass — place it here
 
@@ -460,25 +483,25 @@ panels:
                               # butted/hidden, but they sit in an unventilated 657 mm deep cavity above
                               # a washer and a dryer — the wettest, warmest air in the room ends up here.
                               # It also makes the shelf reversible.
-  holes: []                   # rests on 4 × Ø5 pins (2 per side panel). THREE heights are drilled:
-                              # z 2036 / 2141 / 2246 — pick one at assembly. See SHELF in the header.
-  placement: {pos: [19, 5, 2141]}   # drawn at the middle position (343 mm bays either side)
+  holes: []                   # rests on 4 × Ø5 pins (2 per side panel), drilled at ONE height:
+                              # z 2156. See SHELF in the header.
+  placement: {pos: [19, 5, 2156]}   # equal 328 mm bays above and below
 
 - id: door-l
   name: "Door left  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: front                 # hinges on edge4 (its LEFT edge, on side-l) — FULL overlay, 18 mm
   width: 380
-  height: 736
+  height: 706                 # H − bay − 4 = 2520 − 1810 − 4. Was 736 when the bay was 1780.
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-2, glue_type: long}
   holes:
     # 2 × Ø35 hinge cups, centre 22.5 from the HINGE edge (edge4 = left) -> 5 mm boring distance.
     # 100 mm from each end, so the door is symmetric and cannot be hung upside down.
-    # cabinet z = 1880 / 2416, matching the plate pairs on side-l's front-setback column (its own
+    # cabinet z = 1910 / 2416, matching the plate pairs on side-l's front-setback column (its own
     # local x 638; 37 is the setback FROM the front edge, not the coordinate).
-  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 536, direction: y}
-  placement: {pos: [0, -18, 1780], rot: [90, 0, 0]}
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 506, direction: y}
+  placement: {pos: [0, -18, 1810], rot: [90, 0, 0]}
 
 - id: door-r
   name: "Door right  [order 1 · U604 · sheet 2800×2070]"
@@ -486,14 +509,14 @@ panels:
   role: front                 # MIRROR of door-l: hinges on edge2 (its RIGHT edge, on side-r) — FULL
                               # overlay. Handle/free edge is edge4 (left), meeting door-l's in the middle.
   width: 380
-  height: 736
+  height: 706                 # H − bay − 4 = 2520 − 1810 − 4. Was 736 when the bay was 1780.
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-2, glue_type: long}
   holes:
     # cup centre 22.5 from the HINGE edge (edge2 = right) -> x = 380 − 22.5 = 357.5. This is the ONLY
     # difference from door-l, and it is what makes the two doors a mirror pair rather than one part ×2.
-  - {face: inner, x: 357.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 536, direction: y}
-  placement: {pos: [382, -18, 1780], rot: [90, 0, 0]}
+  - {face: inner, x: 357.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 506, direction: y}
+  placement: {pos: [382, -18, 1810], rot: [90, 0, 0]}
 
 assembly:
   fittings:
@@ -525,7 +548,7 @@ assembly:
   #     describe both — skipped, hand-written above. `at` = height above the back's own bottom edge, so
   #     126..2326 land at cabinet z 176..2376.
   #     5 over 2452 mm is 550 mm centres. Sparse on purpose: this panel works as a diaphragm in shear,
-  #     not as a beam, and it is now the cabinet's ONLY brace between the floor and z 1780.
+  #     not as a beam, and it is now the cabinet's ONLY brace between the floor and z 1810.
   - {id: cf-back-l, hardware: confirmat-7x50, through: side-l, into: back, seam: {into_edge: 2}, at: [126, 676, 1226, 1776, 2326]}
   - {id: cf-back-r, hardware: confirmat-7x50, through: side-r, into: back, seam: {into_edge: 4}, at: [126, 676, 1226, 1776, 2326]}
 
@@ -551,11 +574,11 @@ assembly:
   #     on the door (panel holes above); plates screw into the mounting panel's 37 mm Ø5 setback line
   #     with euro screws (6.3×13) at z ∓16 around each cup. Both doors take the same hinge, and their
   #     drilling is a mirror pair — cup x 22.5 on door-l (edge4) vs 357.5 on door-r (edge2).
-  - {id: hg-door-l, hardware: hinge-clip-110, door: door-l, side: side-l, at: [1880, 2416]}
-  - {id: hg-door-r, hardware: hinge-clip-110, door: door-r, side: side-r, at: [1880, 2416]}
+  - {id: hg-door-l, hardware: hinge-clip-110, door: door-l, side: side-l, at: [1910, 2416]}
+  - {id: hg-door-r, hardware: hinge-clip-110, door: door-r, side: side-r, at: [1910, 2416]}
 
-  # --- 4 × Ø5 shelf pins (2 per side panel) — no drilling of their own. THREE heights are bored so the
-  #     single shelf can be positioned once you know what goes up there; only one set is ever used.
-  - {id: pins, hardware: shelf-pin-5, at: [2036, 2141, 2246]}
+  # --- 4 × Ø5 shelf pins (2 per side panel) — no drilling of their own. ONE height, z 2156, giving
+  #     equal 328 mm bays above and below. See SHELF in the header for why the spare heights went.
+  - {id: pins, hardware: shelf-pin-5, at: [2156]}
 
 parts: []
