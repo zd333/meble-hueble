@@ -26,11 +26,20 @@
 #   No cam fittings anywhere. Every head lands on a side's outer face, the top's up face or the bottom's
 #   underside, and none of those is ever seen.
 #
-# BANDING — FRONT EDGES ONLY (plus the stretchers' exposed long edges)
+# BANDING — EVERY EXPOSED EDGE, front and back (revised 2026-08-10)
 #   There is no facade, so the carcass's own front edges ARE the finished front: side-l edge 2, side-r
-#   edge 4, top and bottom edge 1. Everything else is butted, against a wall, or facing into a cavity
-#   nobody looks at. This is a dry room, so unlike the bathroom units there is no reason to band the
-#   hidden edges.
+#   edge 4, top and bottom edge 1.
+#   THE SIDES ARE BANDED ALL ROUND, and two of those edges are a correction rather than a preference:
+#   the top and bottom panels sit BETWEEN the sides, so each side's edge1 and edge3 form the outer
+#   18 mm of the unit's own top and bottom surfaces. They are on show on an open unit with no plinth
+#   and no worktop over it, and an earlier revision left them raw by mis-stating them as hidden.
+#   THE REAR EDGES ARE BANDED BY CHOICE — the sides' rear edge and the top and bottom panels' edge3.
+#   They face the wall and are effectively invisible, so this buys no appearance; it is a deliberate
+#   "no raw chipboard anywhere" call. It also means no exposed core to chip while the unit is carried
+#   or slid into place. Roughly doubles the banding on this cabinet, ~4.9 m to ~9.8 m of 1 mm tape.
+#   STILL RAW, on purpose: every BUTTED edge — the top and bottom panels' ends (edges 2/4), the
+#   stretchers' ends, the horizontal stretcher's top edge. Those are glued screw joints, and band
+#   inside a joint is a weaker joint, not a tidier one. Band goes on faces you can see or touch.
 #
 # COUPLED DIMENSIONS — change one, re-derive the rest
 #   W = 900   internal = 900 − 36 = 864   -> top, bottom and the horizontal stretcher all span 864
@@ -39,6 +48,12 @@
 #   H = 400   side height; top and bottom are 18 each -> internal height 364 (z 18..382)
 #             horizontal stretcher z 232..382 = the top 150 of the back opening
 #             vertical stretchers  z  18..382 = the full internal height
+#
+# EXPECTED `meble review` WARNING — not a bug
+#   - `mirror-pair`  both sides are now banded all round, so their vertical-edge sets match and the
+#     linter can no longer see the mirroring. They ARE a genuine mirror pair: side-l's front is edge2
+#     and side-r's is edge4, and their confirmat columns are at opposite ends. Banding every edge is
+#     what silenced the evidence, not a mistake. Same warning, same reason, on sink-vanity.
 #
 # EVERY HOLE IN THIS FILE IS STAMPED BY `meble fit`
 #   There is nothing hand-written, so the whole cabinet follows a resize cleanly — change a dimension,
@@ -69,8 +84,11 @@ panels:
   height: 400
   grain: any                  # W1100 is a plain uni decor with a light ST2 texture — let the optimiser
                               # rotate every panel in this cabinet
-  edge_banding: {edges: {2: eb-w1100-1}, glue_type: long}   # FRONT edge only — there is no facade, so
-                                                           # this edge is the finished front of the unit
+  edge_banding: {all_edges: true, band: eb-w1100-1, glue_type: long}
+                              # ALL FOUR. edge2 is the finished front (there is no facade). edge1 and
+                              # edge3 are NOT hidden either: the top and bottom panels sit BETWEEN the
+                              # sides, so these two edges are the outer 18 mm of the unit's own top and
+                              # bottom surfaces. edge4 (rear) is banded by choice — see BANDING.
   holes:                      # stamped by cf-bot-l / cf-top-l — nothing for the back stretchers,
                               # which are fixed on site (see their panel notes)
   - face: outer
@@ -101,7 +119,8 @@ panels:
   width: 600
   height: 400
   grain: any
-  edge_banding: {edges: {4: eb-w1100-1}, glue_type: long}   # front edge, mirrored
+  edge_banding: {all_edges: true, band: eb-w1100-1, glue_type: long}
+                              # ALL FOUR, as side-l — here edge4 is the front and edge2 the rear.
   holes:                      # stamped by cf-bot-r / cf-top-r — nothing for the back stretchers
   - face: outer
     x: 50
@@ -132,7 +151,10 @@ panels:
   width: 864
   height: 600                 # depth
   grain: any
-  edge_banding: {edges: {1: eb-w1100-1}, glue_type: long}   # front edge only
+  edge_banding: {edges: {1: eb-w1100-1, 3: eb-w1100-1}, glue_type: long}
+                              # edge1 = the finished front. edge3 = the rear edge, banded by choice
+                              # (see BANDING). Edges 2/4 butt the sides and carry this panel's confirmat
+                              # pilots — they stay RAW: band does not belong inside a glued screw joint.
   holes:                      # stamped by cf-bot-l / cf-bot-r
   - face: edge4
     from: 50
@@ -160,7 +182,9 @@ panels:
   width: 864
   height: 600
   grain: any
-  edge_banding: {edges: {1: eb-w1100-1}, glue_type: long}   # front edge only
+  edge_banding: {edges: {1: eb-w1100-1, 3: eb-w1100-1}, glue_type: long}
+                              # edge1 = the finished front, edge3 = the rear edge. Edges 2/4 butt the
+                              # sides and carry the confirmat pilots — RAW, as on the bottom panel.
   holes:                      # stamped by cf-top-l / cf-top-r
   - face: edge4
     from: 50
