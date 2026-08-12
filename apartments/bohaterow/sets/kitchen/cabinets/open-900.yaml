@@ -19,18 +19,46 @@
 #   a pale line, far more obvious than it was on white. The "no raw edge anywhere" call now earns its
 #   keep on appearance, not just on chip protection.
 #
-# THE THREE BACK STRETCHERS — ALL THREE ARE UNDRILLED
+# THIS CABINET HOUSES THE AIR-CONDITIONING INDOOR UNIT
+#   A standard ~12 000 BTU wall-mounted split indoor unit lives inside this box. That is what the two
+#   VERTICAL stretchers are for: they are the mounting rails its wall plate screws onto. The unit is
+#   NOT ordered here and appears nowhere in the panel list — the only thing the design owes it is a
+#   pair of rails in a believable place, so the 3D view can be shown to the installer preparing the
+#   pipe, drain and power runs.
+#
+# THE THREE STRETCHERS — ALL THREE ARE UNDRILLED
 #   - `rail-back-h`  864 × 150, HORIZONTAL, in the back plane (y 582..600) against the wall, filling the
 #     top of the back opening (z 232..382).
-#   - `rail-back-v` ×2  100 × 364, VERTICAL, full internal height, sitting 18 mm IN FRONT of the back
-#     plane (y 564..582) so they cross the horizontal without fouling it.
+#   - `rail-back-v` ×2  100 × 364, VERTICAL, full internal height, standing WELL FORWARD of the back at
+#     y 250..268 — see AC UNIT GEOMETRY below. They used to sit at y 564..582, just in front of the
+#     horizontal; that was fine as joinery but drew the unit hard against the back wall, which is not
+#     where it goes and would have misled anyone reading the picture.
 #   NONE of them carries a single hole or fitting. Every position here is decided during assembly —
-#   the verticals' x, and the wall fixings in whichever stretcher lands where the dowels go. Screw the
-#   verticals down through the top panel and up through the bottom panel, and the horizontal through
-#   the sides; nothing here is visible, so the heads do not matter.
+#   the verticals' x, and the wall fixings in the horizontal. Screw the verticals down through the top
+#   panel and up through the bottom panel, and the horizontal through the sides.
 #   The carcass does NOT depend on them for squareness: the full 600-deep top and bottom panels, each
-#   with 3 confirmats per side, already fix the box. The stretchers are there to hang it on the wall.
-#   The z positions above (and the verticals' x 300/500 below) are INDICATIVE, for the 3D preview only.
+#   with 3 confirmats per side, already fix the box.
+#   /!\ ONLY THE HORIZONTAL CAN HANG THE UNIT ON THE WALL now. It is the one still in the back plane;
+#       the verticals no longer reach the wall, so put every wall fixing in `rail-back-h`.
+#   /!\ THE VERTICALS NOW CARRY A HANGING LOAD (~10-12 kg of indoor unit, pulling forward and down).
+#       A screw driven into the END GRAIN of 18 mm MFC is the weakest joint in the book. Use confirmats
+#       top and bottom, not plain chipboard screws, and put two per end.
+#   The z positions above (and the verticals' x 150/650 below) are INDICATIVE, for the 3D preview only.
+#
+# AC UNIT GEOMETRY — where the y 250 came from
+#   Typical 12 000 BTU indoor unit: ~800 wide × 190-230 deep × 285-300 tall. It fits the 864 × 364
+#   internal envelope with room to spare.
+#     mounting face (verticals' front face)         y = 250
+#     less wall-plate + hanging-hook standoff       −15   -> unit's back casing at y ~235
+#     less unit depth 190-230                       ->     unit's FRONT face lands at y 5..45
+#   i.e. the unit finishes just behind the cabinet front for any unit in that range, never proud of it,
+#   which is what "close to the front" has to mean if the doors of the run are to shut past it.
+#   ONE NUMBER TO CHANGE: if the real unit's depth is known, set the verticals' `pos` y to
+#   (unit depth + 15 + however far you want it recessed) and nothing else moves.
+#   /!\ AIRFLOW, not checked by any tool here: these units breathe IN through the top grille and blow
+#       OUT downward-forward. A 290-tall unit in a 364 internal leaves ~74 mm above it — tight against
+#       the ~100 mm most makers ask for. The box is open front AND back, so air can reach it, but
+#       confirm the clearance against the actual model's manual before the carcass is cut.
 #
 # ALL SIDES ARE INVISIBLE -> CONFIRMAT THROUGHOUT
 #   No cam fittings anywhere. Every head lands on a side's outer face, the top's up face or the bottom's
@@ -54,7 +82,8 @@
 # COUPLED DIMENSIONS — change one, re-derive the rest
 #   W = 900   internal = 900 − 36 = 864   -> top, bottom and the horizontal stretcher all span 864
 #   D = 600   side width. Cabinet frame: y 0 = FRONT, y 600 = the wall.
-#             back plane y 582..600 (horizontal stretcher), second layer y 564..582 (verticals)
+#             back plane y 582..600 (horizontal stretcher); AC mounting rails y 250..268 (verticals),
+#             leaving y 268..582 clear behind them for the pipe, drain and power runs
 #   H = 400   side height; top and bottom are 18 each -> internal height 364 (z 18..382)
 #             horizontal stretcher z 232..382 = the top 150 of the back opening
 #             vertical stretchers  z  18..382 = the full internal height
@@ -240,9 +269,11 @@ panels:
 - id: rail-back-v
   name: "Back stretcher (vertical)  [order 2 · U899 · sheet 2800×1032]"
   element_type: panel
-  role: rail                  # full internal height, z 18..382, in a SECOND LAYER at y 564..582 — 18 mm
-                              # in front of the horizontal stretcher, so the two cross without fouling
-                              # each other and each vertical can slide anywhere along the width.
+  role: rail                  # full internal height, z 18..382, standing at y 250..268 — the MOUNTING
+                              # RAILS for the air-conditioning indoor unit, not back stretchers any
+                              # more. They are clear of the horizontal (y 582..600) by 314 mm, so the
+                              # two no longer touch and each vertical still slides anywhere along the
+                              # width. See AC UNIT GEOMETRY in the header for where 250 comes from.
   quantity: 2
   width: 100
   height: 364                 # 400 − 2×18, floor of the box to ceiling of the box
@@ -250,11 +281,27 @@ panels:
   edge_banding: {edges: {2: eb-u899-1, 4: eb-u899-1}, glue_type: long}
                               # both LONG (vertical) edges — they face sideways into the open box and are
                               # seen through the front. Top and bottom edges butt the top/bottom panels.
-  holes: []                   # DELIBERATELY EMPTY. Their x is decided on site, so there is nothing to
-                              # drill in advance — screw them down through the top panel and up through
-                              # the bottom panel once positioned. Wall fixings likewise drilled on site.
-  placement: {pos: [300, 564, 18], step: [200, 0, 0], rot: [90, 0, 180]}
-    # x 300 and 500 are INDICATIVE ONLY — "somewhere in the middle", exact position found on site.
+  holes: []                   # DELIBERATELY EMPTY, and still correct now that these mount the AC unit:
+                              # the wall plate's screw pattern varies by model and the rails' x is set
+                              # on site, so nothing can be drilled in advance. Screw them down through
+                              # the top panel and up through the bottom panel once positioned — with
+                              # confirmats, see the load warning in the header — then screw the AC wall
+                              # plate to their FRONT faces (y 250).
+  placement: {pos: [150, 250, 18], step: [500, 0, 0], rot: [90, 0, 180]}
+    # y 250 = the AC mounting face; the unit hangs off this plane forward toward the open front.
+    # x 150 and 650 -> the rails occupy x 150..250 and 650..750, centres 200 and 700, 500 mm apart and
+    # symmetric about the cabinet centre 450 (132 mm clear to the internal face at each side).
+    # WHY THIS WIDE. They were at 300/500 — centres only 200 apart, both sitting in the middle third of
+    # an ~800 mm wall plate. That supports the plate at its centre and lets both ends cantilever, which
+    # is the wrong way round: the load an indoor unit puts on its plate is a forward TIPPING moment, and
+    # the further apart the fixings, the less it can rock. It is also not where plates are drilled.
+    # WHY NOT WIDER. The rails must stay under the plate for every unit in the 12k class, and those run
+    # 722-845 mm wide. At the narrow end a 722 plate centred in the box spans x 89..811 — these rails
+    # (150..250, 650..750) are still comfortably inside it. Pushing them further out would miss it.
+    # BONUS: x 250..650 between the rails is now completely clear, which is where the refrigerant pipes
+    # and the condensate drain leave the back of the unit. Do not fill that gap.
+    # Still INDICATIVE — set to the actual plate's fixing holes once the model is known. The panels do
+    # not change, only where they land.
     # rot reproduces the `back` frame, same as the horizontal stretcher.
 
 assembly:
