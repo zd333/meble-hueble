@@ -387,15 +387,16 @@ panels:
   element_type: panel
   role: spacer                # free-standing filler, no joinery — see note below
   # MATERIAL IS FREE CHOICE: this panel is sealed inside the lower box and never seen, so it does not
-  # have to be u604-18. Any 18 mm board works — offcuts, or a white board left over from another
-  # cabinet. If you order it in a different decor, give it its own `material:` here so it lands in that
-  # board's CSV instead of the U604 one.
-  # It rides the CABINET DEFAULT (U604), which is the opposite of what this panel used to do. It was
-  # on the white board to balance the decors; with the real sheet formats that is backwards. White is
-  # only 2.74 m² and one half sheet holds 2.85 — moving this 0.66 m² panel OFF white is what drops
-  # W1100 from a full sheet to a half. `meble pack --balance` finds this; see docs/ordering-split.md.
-  decor_optional: w1100-18    # sealed inside the lower box — either decor is genuinely fine, so the
-                             # packer may send it back to white if a future design makes that cheaper.
+  # have to be u604-18. Any 18 mm board works — offcuts, or a leftover from another cabinet. If you
+  # order it in a different decor, give it its own `material:` here so it lands in that board's CSV
+  # instead of the U604 one.
+  # It rides the CABINET DEFAULT (U604) and the packer keeps it there. The alternative board is now the
+  # kitchen's u899-18, and moving this 0.66 m² panel across pushes U899 from one HALF sheet to a full
+  # one (2.89 m² -> 5.80) while saving U604 nothing — 23.18 m² purchased instead of 20.28. Verified
+  # against the packer; see docs/ordering-split.md.
+  decor_optional: u899-18     # sealed inside the lower box and explicitly signed off as OK in the dark
+                             # decor — kept so `--balance` can use it if a future design makes it pay.
+                             # It does not pay today.
   width: 550
   height: 1191                # floor -> the divider's UNDERSIDE (divider spans z 1191..1209)
   grain: any                  # completely hidden inside the sealed lower box, so let the optimiser rotate
