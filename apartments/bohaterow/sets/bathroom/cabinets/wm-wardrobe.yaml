@@ -445,8 +445,17 @@ panels:
   #     spanned z 50..250); the dryer above it could have gone back to 675. This panel caps BOTH machines
   #     at 657. If the dryer is the deeper machine — it usually is — that is 18 mm off its rear
   #     clearance. It does not create a new problem, it makes pre-order item 2 that much tighter.
-  # MATERIAL: keep it u604-18. The strips you see beside and above the stack are a visible face of the
-  # cabinet, and its inner face is the back wall of the overhead cabinet whenever a door is open.
+  # MATERIAL: u604-18, and that is what it is built in.
+  # /!\ THIS PANEL IS NOT A HIDDEN PANEL. The strips you see beside and above the stack are a visible
+  #     face of the cabinet, and its inner face is the back wall of the overhead cabinet whenever a door
+  #     is open. `decor_optional` below exists only because the owner explicitly signed off on this one
+  #     panel being acceptable in the dark kitchen decor (2026-08-12) — it is NOT the usual
+  #     "sealed away, either decor is fine" case the flag normally marks.
+  #     So: if `meble pack --balance` ever proposes moving this to u899-18, LOOK AT IT before adopting.
+  #     Today it proposes nothing — the move is an exact cost TIE (20.28 m² either way: U604 drops to
+  #     2 full + 1 half but U899 climbs from a half to a full), and COST_TIE keeps the baseline. A tie
+  #     is not a reason to make a visible panel a different colour from the cabinet around it.
+  decor_optional: u899-18
   width: 726                  # 762 - 2x18, same span as the divider and top panel
   height: 2470                # 2520 - 50: floor clearance at the bottom, THE CABINET TOP at the other.
                               # It runs past the top panel (which is 657 deep) rather than stopping

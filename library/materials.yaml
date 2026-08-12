@@ -4,6 +4,10 @@ boards:
   - id: w1100-18
     name: "Egger Alpine White W1100 ST9"   # TODO confirm the decor NAME against the meble.pl board list
     vendor: Egger
+    # NO LONGER USED BY ANY PANEL. The kitchen rode this board until the ready-made IKEA units turned out
+    # to be the METOD DARK carcass rather than white; it moved to u899-18 and the one bathroom panel that
+    # was parked here to balance the decors (sink-vanity/rail-back) went home to u604-18. Kept defined —
+    # like u727-18, h1334-18 and hdf-3 — because a board costs nothing until a panel references it.
     decor_code: W1100
     texture: ST9                 # /!\ ST9, not the ST2 this project used before. ST9 is a matt finish
                                  # with a DIRECTIONAL emboss, so two adjacent panels cut at 90° to each
@@ -32,14 +36,41 @@ boards:
     color: "#C9A877"
 
   - id: u604-18
-    name: "Egger U604 ST9"       # TODO confirm the decor NAME + texture against the meble.pl board list
+    name: "Egger Zieleń eukaliptusowa U604 ST9"
     vendor: Egger
+    # THE BATHROOM BOARD. Name and texture CONFIRMED against the live centrum.meble.pl listing
+    # 2026-08-12 ("Płyta meblowa EGGER U604 ST9 Zieleń eukaliptusowa 18 mm"; Egger's own EN name for the
+    # decor is "Reed Green"). 18 mm: 2800×2070 = 631,13 PLN · 2800×1032 = 315,57 PLN — again exactly
+    # half, so area-as-cost holds.
+    # /!\ IT IS A MUTED GREY-GREEN, NOT A NEUTRAL LIGHT GREY. NCS S 5010-G30Y, RAL 7033. This file used
+    #     to carry a placeholder "#CFCBC4" light-beige tint with a TODO, so every 3D preview rendered
+    #     before 2026-08-12 showed the bathroom far too pale and with no green in it at all. Re-look at
+    #     the viewer before judging how it sits next to the near-black kitchen board.
     decor_code: U604
-    texture: ST9                 # TODO confirm (ST9 is the usual finish for the U-series unis)
+    texture: ST9
     thickness: 18
     grain_directional: false     # uni decor — but ST9 has a directional emboss, so we still force
                                  # orientation on the tall visible panels (grain: height)
-    color: "#CFCBC4"             # TODO placeholder tint for the 3D viewer only — not the real decor
+    color: "#7D8471"             # viewer approximation of NCS S 5010-G30Y / RAL 7033
+
+  - id: u899-18
+    name: "Egger Czerń aksamitna U899 ST9"
+    vendor: Egger
+    # THE KITCHEN BOARD. Chosen to match the ready-made IKEA METOD dark carcass ("czarnoszary" — IKEA
+    # calls it black, but it is a very dark near-black GREY, the same family as NICKEBO / UPPLÖV antracyt,
+    # NCS S 8500-N). Egger U899 Soft Black carries the *same* NCS S 8500-N, and ST9 Smoothtouch Matt
+    # matches IKEA's matt (~10 GU) sheen — so this is a decor-card match, not a guess.
+    #   centrum.meble.pl 18 mm: 2800×2070 = 400,06 PLN · 2800×1032 = 200,03 PLN (exactly half, so the
+    #   packer's area-as-cost proxy stays honest and no `price:` keys are needed here).
+    # /!\ U899 has a WARM BROWN undercast; the IKEA carcass is a shade more neutral. Hold a sample against
+    #     a METOD box before ordering. Cooler fallbacks if it reads too warm: U961 Graphite Grey
+    #     (NCS S 8000-N) or U963 ST9 Szary diamentowy (NCS S 7500-N, one step lighter).
+    decor_code: U899
+    texture: ST9
+    thickness: 18
+    grain_directional: false     # uni decor. Same ST9 emboss caveat as the others, but every panel on
+                                 # this board is `grain: any` — none of them sits next to another in view.
+    color: "#37332F"             # viewer approximation only
 
   - id: hdf-3
     name: "White HDF 3mm (back)"

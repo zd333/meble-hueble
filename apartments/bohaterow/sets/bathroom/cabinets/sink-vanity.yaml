@@ -206,21 +206,22 @@ panels:
     # frame: +u = cabinet right, +v = up, outer toward the room.
 
 - id: rail-back
-  name: "Back rail / wall cleat  [order 2 · W1100 · sheet 2800×1032]"
+  name: "Back rail / wall cleat  [order 1 · U604 · sheet 2800×2070]"
   element_type: panel
   role: rail                  # in the BACK plane, inset at y 432..450 so the unit still sits flat on the
                               # wall. Frame declared like a `back`: OUTER faces the WALL, so local +x
                               # runs cabinet RIGHT-to-LEFT.
   quantity: 2
-  material: w1100-18          # NOT the cabinet default: this panel is never seen, so it rides on the
-                             # WHITE board to balance the two decors across whole meble.pl sheets.
-                             # See docs/ordering-split.md.
-  decor_optional: u604-18     # behind the drawers, against the wall — either decor is genuinely fine,
-                             # so `meble pack --balance` may send it back to U604.
+  # MATERIAL: cabinet default u604-18, no override. This panel used to be parked on the WHITE board to
+  # balance the two decors across whole sheets — that arrangement died when the kitchen moved to u899-18
+  # (the METOD dark carcass match) and white stopped being a board this project buys at all. Sending it
+  # home to U604 is free: order 1 still packs onto 3 full sheets. See docs/ordering-split.md.
+  # No `decor_optional` on purpose: it is never seen, but there is no cheaper board to send it to, and
+  # a lone dark rail inside a light bathroom carcass buys nothing.
   width: 524                  # 560 − 2×18, same span as the bottom panel
   height: 100
   grain: any
-  edge_banding: {edges: {1: eb-w1100-1, 3: eb-w1100-1}, glue_type: long}
+  edge_banding: {edges: {1: eb-u604-1, 3: eb-u604-1}, glue_type: long}
                               # top and bottom edges: both stand in humid air in an open-backed bay
   holes: []                   # DELIBERATELY EMPTY — see the header. Where these rails land depends on
                               # where the pipes come out of the wall, so they are positioned and drilled
@@ -261,9 +262,14 @@ panels:
 # ---------------------------------------------------------------------------------------------------
 # BOTTOM DRAWER BOX — z 22..140.  All-18 mm, confirmat, every head hidden.
 #
-# MATERIAL: these six drawer-box panels (and d2's five) may OPTIONALLY be switched to white —
-# `material: w1100-18` + `edgeband: eb-w1100-1` on each of them. Brighter interiors, a common cheaper
-# carcass board, and they land in their own CSV file. Nothing else in the design changes.
+# MATERIAL: these six drawer-box panels (and d2's five) may OPTIONALLY be switched to a second decor —
+# `material:` + a matching `edgeband:` on each of them — and they land in their own CSV file. Nothing
+# else in the design changes.
+# /!\ THE OBVIOUS CANDIDATE IS GONE. This used to read "switch them to white (w1100-18)" for brighter
+#     interiors on a cheaper board. W1100 is no longer bought by this project — the only other board it
+#     buys is u899-18, near-black, which is the opposite of a brighter interior AND would mean buying
+#     more of a sheet that currently carries only the kitchen. Switching these now COSTS money instead
+#     of saving it. If you want pale drawer interiors, that is a third decor and a third order.
 # ---------------------------------------------------------------------------------------------------
 - id: d1-bottom
   name: "Bottom drawer — bottom  [order 1 · U604 · sheet 2800×2070]"

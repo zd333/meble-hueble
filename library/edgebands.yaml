@@ -31,6 +31,18 @@ edgebands:
     texture: ST9
     thickness: 2
 
+  - id: eb-u899-1
+    name: "ABS Czerń aksamitna U899 ST9 23×0.8 mm"   # carcass edges — the only U899 band in use
+    decor_code: U899
+    texture: ST9
+    thickness: 1                 # the editor's "1 mm" class; the ABS actually sold is 0.8 mm
+
+  - id: eb-u899-2
+    name: "ABS Czerń aksamitna U899 ST9 23×2 mm"     # fronts — nothing on this board has one yet
+    decor_code: U899
+    texture: ST9
+    thickness: 2
+
   - id: eb-h1334-1
     name: "ABS Sorano Oak H1334 1mm"
     decor_code: H1334
