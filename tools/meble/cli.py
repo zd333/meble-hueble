@@ -145,7 +145,7 @@ def cmd_pdf(args) -> int:
 
 
 def cmd_hardware(args) -> int:
-    from .hardware import bill_of_materials, collared_pins
+    from .hardware import bill_of_materials, collared_pins, resolve_sourcing
     from .hardware_pdf import export_hardware_pdf
     proj = load_project()
     cabs = _resolve(proj, args)
@@ -155,14 +155,26 @@ def cmd_hardware(args) -> int:
         print("  (no fittings in scope)")
         return 1
     collared = collared_pins(proj, cabs)
+    gaps = []
     for l in lines:
         unit = f" {l.sold_as}s" if l.sold_as != "piece" else ""
         print(f"  {l.quantity:>4}{unit:>6}  {l.label}")
+        buys, missing = resolve_sourcing(proj, l, vendor=args.vendor)
+        for b in buys:
+            price = f"{b.price:.2f} PLN ea (checked {b.checked})" if b.price is not None else "no price"
+            print(f"              {b.sku or '—':10} {b.component_name:34} {price}")
+        for m in missing:
+            gaps.append(f"{l.label} — {m}")
+    if gaps:
+        print(f"\n  /!\\ {len(gaps)} component(s) have NO supplier recorded, so they carry no SKU and "
+              f"no price. Counted, but you have to look them up:")
+        for g in gaps:
+            print(f"        {g}")
     if collared:
         print(f"\n  /!\\ {collared} of the shelf pins go into THROUGH bores (shared between two "
               f"compartments) and must have a collar — a plain peg has nothing to stop it mid-panel.")
     out = Path(args.out) if args.out else proj.root / "out" / "pdf" / f"{label}-hardware.pdf"
-    export_hardware_pdf(proj, lines, collared, out, title=f"Hardware — {label}")
+    export_hardware_pdf(proj, lines, collared, out, title=f"Hardware — {label}", vendor=args.vendor)
     print(f"\n✓ {out}")
     return 0
 
@@ -232,6 +244,8 @@ def main(argv=None) -> int:
     p = sub.add_parser("hardware", help="what to buy: confirmats, hinges, pins, slides (per board)")
     _scope_args(p)
     p.add_argument("--out", help="output file")
+    p.add_argument("--vendor", help="only use `sourcing:` entries for this vendor "
+                                    "(shops package fittings differently; default: any)")
     p.set_defaults(func=cmd_hardware)
 
     p = sub.add_parser("view", help="build + open the interactive 3D viewer in the browser"); _scope_args(p)

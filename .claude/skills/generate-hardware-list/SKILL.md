@@ -48,6 +48,25 @@ sheet distinguishes them — only `variant:` does. Ten full-overlay hinges leave
 - {id: sl-d1, hardware: slide-bb-350, drilling: none, quantity: 1, drawer: d1-bottom}
 ```
 
+## SKUs, prices and who sells what
+
+`library/hardware.yaml` carries `components:` (the logical parts of one fitting) and `sourcing:`
+(offerings, each saying which components it `covers:`). A hinge is arm+cup **plus** a mounting plate;
+Blum sells those as two article numbers, cheaper ranges as one bundle — so the split is a VENDOR fact,
+looked up rather than assumed. `meble hardware --vendor centrum.meble.pl` resolves it.
+
+**The important output is the gap report.** A component with no offering means a part of the joint
+nobody is going to buy: 10 hinges with no plates hangs zero doors. Never quietly add a missing item to
+the sheet by hand — put it in `sourcing:` so it is there next time.
+
+/!\ **Prices are indicative and must carry `checked:`.** A test fails if a price has no date. They are
+for budgeting, never quoting — `meble pack` was deleted from this project precisely because a local
+number that looked authoritative invited confident decisions that turned out wrong.
+
+Known for centrum.meble.pl today: Blum CLIP top 110° `71T3550` (nakładany) / `71T3650` (bliźniaczy,
+i.e. half overlay) and plate `173L6100`. Confirmats, rafix, shelf pins and slides are **not yet
+sourced** and the sheet says so.
+
 ## Notes
 - **Shelf pins in a `depth: through` bore need a COLLAR.** A gable with shelves on both sides gets one
   shared bore, so two pins meet mid-panel at ~9 mm each — fine, but only with something to stop

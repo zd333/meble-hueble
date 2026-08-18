@@ -103,6 +103,12 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   `manual` (hand-derived, tagged `src:`, fit leaves them alone), or `none` (no holes by design, e.g.
   drawer slides mounted on site). Counting hardware from drill holes is wrong twice over: a hole does
   not know what it is for, and the count is not the quantity.
+- **A fitting's PARTS are its own; how a shop packages them is the vendor's.** `components:` on the
+  hardware lists the logical parts of one fitting (a hinge is arm+cup **plus** a plate; a rafix is
+  housing **plus** bolt). `sourcing:` lists offerings, each saying which components it `covers:` — one
+  for a loose part, several for a bundle. `meble hardware` resolves per vendor and **reports any
+  component nothing covers**, because 10 hinges with no plates hangs zero doors. Prices there are
+  indicative and carry a `checked:` date; they are never a quote (same lesson as `meble pack`).
 - **Prefer bulk (multi) drilling.** Whenever holes form a regular series — a shelf-pin column, a
   System-32 row, repeated confirmats along a seam — specify **one `multi` hole** (`count` + `spacing`,
   plus `direction` for surface holes), **not N singles**. In the editor a multi hole is one entry
