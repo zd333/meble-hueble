@@ -77,10 +77,15 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
 - **Pick the joint by whether the screw head is ever seen.** Default to **confirmat** wherever the head
   lands on a face nobody looks at: the underside of a bottom/divider, the top face of a top panel, an
   internal gable's end joints, anything inside a sealed boxing, a carcass face against a wall. Confirmats
-  are cheaper than cam fittings, faster to assemble, need no Ø15 cam + Ø8 dowel bores (so far less to
-  type into the editor), and pull a T-joint tighter. Reach for **minifix/rafix** only when the head would
-  otherwise sit on a show face — or when the joint is meant to be taken apart repeatedly, since a
-  confirmat's Ø4 pilot strips after a few cycles.
+  are cheaper than cam fittings, faster to assemble, need no Ø20 housing bore (so far less to type into
+  the editor), and pull a T-joint tighter. Reach for a cam fitting only when the head would otherwise
+  sit on a show face — or when the joint is meant to be taken apart repeatedly, since a confirmat's Ø4
+  pilot strips after a few cycles.
+- **The cam fitting is `rafix-20`, and it is the only one.** Two holes per joint, not three: the Ø20
+  housing sits **9.5 mm** from the seam edge so its bore breaks out there and the bolt enters directly.
+  Minifix puts its Ø15 cam ~34 mm back and needs a third bore — a Ø8 channel in from the edge — which
+  is an extra hole to be charged for and an extra line to type. Do not mix the two; `minifix-15` stays
+  in the library as reference only.
 - **Panel `width`/`height` must be whole millimetres.** The CSV writes them as integers, so a half-mm
   dimension is silently rounded away in the order. Choose envelope numbers that keep every *derived*
   size whole — e.g. 736 wide rather than 735, so the two doors land on 367 and not 366.5. Hole
@@ -142,8 +147,8 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
 | Fitting               | Face hole              | Edge hole | Notes |
 |-----------------------|------------------------|-----------|-------|
 | Confirmat (l=45)      | Ø8 + countersink       | Ø4 d≈35   | default carcass joint; edge Ø4 (editor allows 4/8); ≥50 mm from end |
-| Minifix 15            | Ø15 cam + Ø8 dowel     | Ø5 bolt   | knock-down, hidden |
-| Rafix 20              | Ø20 housing (~14 deep) | Ø5 bolt   | faster, pricier |
+| **Rafix 20** (our cam) | Ø20 housing ~14 deep, axis **9.5** from the edge | Ø5 bolt d12 | **2 holes**; bore breaks out at the edge so the bolt enters — no channel |
+| Minifix 15 (not used)  | Ø15 cam + Ø8 edge channel | Ø5 bolt | 3 holes; cam sits ~34 mm back |
 | Dowel Ø8 (l=30)       | Ø8                     | Ø8        | alignment |
 | Hinge cup             | Ø35 (~12 deep) + 2 scr | —         | boring dist 3–6, center ~22.5 from door edge |
 | Shelf pin / plate     | Ø5                     | —         | on 32 mm grid, 37 mm setback |
