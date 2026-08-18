@@ -133,7 +133,7 @@ EXPECTED = {
     ("confirmat-7x50", None): 85,
     ("hinge-clip-110", "full"): 7,
     ("hinge-clip-110", "half"): 3,
-    ("minifix-15", None): 18,
+    ("rafix-20", None): 18,
     ("shelf-pin-5", None): 20,
     ("slide-bb-350", None): 2,
 }

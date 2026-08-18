@@ -1,7 +1,7 @@
 confirmat-7x50   -        85 piece  open-900=12 sink-vanity=24 wc-column=21 wm-wardrobe=28
 hinge-clip-110   full      7 piece  wc-column=3 wm-wardrobe=4
 hinge-clip-110   half      3 piece  wc-column=3
-minifix-15       -        18 piece  sink-vanity=10 wc-column=8
+rafix-20         -        18 piece  sink-vanity=10 wc-column=8
 shelf-pin-5      -        20 piece  wc-column=16 wm-wardrobe=4
 slide-bb-350     -         2 pair   sink-vanity=2
 collared-pins    -         8

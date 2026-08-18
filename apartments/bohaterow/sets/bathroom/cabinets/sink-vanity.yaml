@@ -19,9 +19,9 @@
 #   the carcass is cam-fixed. Use L-brackets from inside the cabinet, and screw the rails to the wall
 #   itself. The unit hangs off those rails.
 #
-# VISIBLE SIDES -> THE CARCASS IS MINIFIX, THE DRAWERS ARE CONFIRMAT
+# VISIBLE SIDES -> THE CARCASS IS RAFIX, THE DRAWERS ARE CONFIRMAT
 #   Both outer side faces are on show in the room. The two carcass joints whose confirmat head would land
-#   there (bottom -> sides, top stretcher -> sides) are `minifix-15` instead: 10 cams, nothing on the
+#   there (bottom -> sides, top stretcher -> sides) are `rafix-20` instead: 10 housings, nothing on the
 #   outside. Everywhere a head is genuinely hidden — the whole of both drawer boxes — stays confirmat,
 #   per CLAUDE.md "Pick the joint by whether the screw head is ever seen".
 #
@@ -91,8 +91,9 @@
 #     mirrors: the stretcher's bolt seats sit at x 441 on side-l and x 9 on side-r.
 #   (that is the only one — every confirmat now clears the 50 mm end margin.)
 #
-# EXPECTED `meble fit` SKIPS — their holes are HAND-WRITTEN below and DO NOT follow a resize
-#   - the four `mf-*` fittings          (minifix stamping is not implemented)
+# EXPECTED `meble fit` SKIPS — their holes are HAND-WRITTEN below and DO NOT follow a resize.
+#   (the four `rx-*` cam fittings say `drilling: manual`, so they are skipped SILENTLY — the
+#    holes are theirs by intent, not an unimplemented feature.)
 #   - the four `cf-d?-bot-s*` fittings  (no `through_edge`: the sides start 18 mm in from the bottom
 #     panel's front edge, so a single `at` list cannot serve both panels' origins)
 #   Re-derive those by hand if any dimension moves.
@@ -102,7 +103,7 @@ id: sink-vanity
 name: "Bathroom sink vanity (wall-hung basin)"
 kind: custom
 category: base
-construction: mixed          # minifix on the two carcass joints that would show a head on a visible
+construction: mixed          # rafix on the two carcass joints that would show a head on a visible
                              # side; confirmat for both drawer boxes, where nothing is ever seen.
 dimensions: {width: 560, height: 480, depth: 450}   # EXTERNAL; facades sit at y −18..0 in front
 position: {x: 1800, y: 0, z: 0, rotation: 0}   # VIEWER PLACEHOLDER — clear of wm-wardrobe (x 900, 762
@@ -132,12 +133,12 @@ panels:
                               # the rear edge sits against a wet wall and the bottom edge is visible
                               # from below on a wall-hung unit
   holes:
-    # NOTHING on the outer face — that is the entire point of the minifix carcass.
-    # Ø5 minifix bolt seats only, all on the inner face.
-    # bottom panel: seats at its mid-thickness (y = 9). x is measured from the WALL, matching mf-bot-l's
+    # NOTHING on the outer face — that is the entire point of the cam-fixed carcass.
+    # Ø5 rafix bolt seats only, all on the inner face.
+    # bottom panel: seats at its mid-thickness (y = 9). x is measured from the WALL, matching rx-bot-l's
     # `at` — the list is symmetric about the 225 mid-depth so side-r can reuse the same numbers.
-  - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 3, spacing: 175, direction: x, src: mf-bot-l}
-  - {face: inner, x: 441, y: 405, dia: 5, depth: 12, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-l}
+  - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 3, spacing: 175, direction: x, src: rx-bot-l}
+  - {face: inner, x: 441, y: 405, dia: 5, depth: 12, type: multi, count: 2, spacing: 50, direction: y, src: rx-rail-l}
 - id: side-r
   name: "Right side"
   element_type: panel
@@ -148,10 +149,10 @@ panels:
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
   holes:
-    # The bottom-panel seats read the same numbers as side-l ONLY because mf-bot-r's `at` is symmetric
+    # The bottom-panel seats read the same numbers as side-l ONLY because rx-bot-r's `at` is symmetric
     # about the mid-depth — they are not the same physical points in the same order.
-  - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 3, spacing: 175, direction: x, src: mf-bot-r}
-  - {face: inner, x: 9, y: 405, dia: 5, depth: 12, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-r}
+  - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 3, spacing: 175, direction: x, src: rx-bot-r}
+  - {face: inner, x: 9, y: 405, dia: 5, depth: 12, type: multi, count: 2, spacing: 50, direction: y, src: rx-rail-r}
 - id: bottom
   name: "Bottom panel"
   element_type: panel
@@ -167,14 +168,16 @@ panels:
                               # rear edge, which stands in humid air over the plumbing with no back panel
                               # to seal it
   holes:
-    # MINIFIX. Cams on the INNER (up) face — the underside of a wall-hung vanity is at eye level for
-    # anyone sitting down, so nothing goes on `outer`. Ø15 × 13 in an 18 mm panel: 5 mm left.
-    # Cam centre 34 mm in from the end, the standard minifix bolt reach.
+    # RAFIX. Housings on the INNER (up) face — the underside of a wall-hung vanity is at eye level for
+    # anyone sitting down, so nothing goes on `outer`.
+    # /!\ Ø20 × 14 in an 18 mm panel leaves 4 mm, and THIS is the panel where that matters: the far
+    #     side is that visible underside. Minifix's Ø15 × 13 left 5 mm. If your rafix seats at 12.5-13
+    #     (they vary), reduce the depth here — the library deliberately specs the deep end.
+    # Housing centre 9.5 mm in from the end: the Ø20 bore breaks out at the edge, which is how the
+    # bolt gets in. Minifix put the cam 34 mm back and needed a Ø8 channel drilled to reach it.
     # y is measured from the WALL (local y 0 = wall), matching the `at` lists.
-  - {face: inner, x: 34, y: 50, dia: 15, depth: 13, type: multi, count: 3, spacing: 175, direction: y, src: mf-bot-l}
-  - {face: inner, x: 490, y: 50, dia: 15, depth: 13, type: multi, count: 3, spacing: 175, direction: y, src: mf-bot-r}
-  - {face: edge4, from: 50, dia: 8, depth: 30, type: multi, count: 3, spacing: 175, src: mf-bot-l}
-  - {face: edge2, from: 50, dia: 8, depth: 30, type: multi, count: 3, spacing: 175, src: mf-bot-r}
+  - {face: inner, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 3, spacing: 175, direction: y, src: rx-bot-l}
+  - {face: inner, x: 514.5, y: 50, dia: 20, depth: 14, type: multi, count: 3, spacing: 175, direction: y, src: rx-bot-r}
   placement: {pos: [18, 0, 0]}
 
 - id: rail-top
@@ -194,12 +197,10 @@ panels:
                               # BOTTOM edge: seen from below whenever the top drawer is open.
                               # The two ends butt the sides — left raw.
   holes:
-    # MINIFIX, cams on the INNER face (looking back into the cabinet). NOT on outer: a cam housing there
+    # RAFIX, housings on the INNER face (looking back into the cabinet). NOT on outer: a housing there
     # would stand proud into the 0 mm gap behind the facade and foul it.
-  - {face: inner, x: 34, y: 25, dia: 15, depth: 13, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-l}
-  - {face: inner, x: 490, y: 25, dia: 15, depth: 13, type: multi, count: 2, spacing: 50, direction: y, src: mf-rail-r}
-  - {face: edge4, from: 25, dia: 8, depth: 30, type: multi, count: 2, spacing: 50, src: mf-rail-l}
-  - {face: edge2, from: 25, dia: 8, depth: 30, type: multi, count: 2, spacing: 50, src: mf-rail-r}
+  - {face: inner, x: 9.5, y: 25, dia: 20, depth: 14, type: multi, count: 2, spacing: 50, direction: y, src: rx-rail-l}
+  - {face: inner, x: 514.5, y: 25, dia: 20, depth: 14, type: multi, count: 2, spacing: 50, direction: y, src: rx-rail-r}
   placement: {pos: [18, 0, 380], rot: [90, 0, 0]}
     # rot is REQUIRED: `rail` is not in the viewer's ROLE_FRAME table (tools/meble/scene.py), so without
     # it the panel falls back to the identity frame and lies flat. [90, 0, 0] reproduces the `front`
@@ -630,17 +631,17 @@ panels:
 assembly:
   fittings:
 
-  # --- CARCASS: MINIFIX. `meble fit` cannot stamp minifix (fittings.py skips non-butt hardware), so
+  # --- CARCASS: RAFIX. `meble fit` cannot stamp cam hardware (fittings.py skips non-butt joints), so
   #     every hole for these four lives hand-written on the panels above, tagged with these ids.
   #     bottom -> sides: `at` is measured from the WALL along the 450 mm depth and is SYMMETRIC about the
   #     225 mid-depth. That symmetry is load-bearing: side-l's local x runs from the wall but side-r's
   #     runs from the FRONT, so only a symmetric set lands on the same physical points from both frames.
-  - {id: mf-bot-l, hardware: minifix-15, through: bottom, into: side-l, seam: {through_edge: 4, into_face: inner}, at: [50, 225, 400]}
-  - {id: mf-bot-r, hardware: minifix-15, through: bottom, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [50, 225, 400]}
+  - {id: rx-bot-l, hardware: rafix-20, drilling: manual, through: bottom, into: side-l, seam: {through_edge: 4, into_face: inner}, at: [50, 225, 400]}
+  - {id: rx-bot-r, hardware: rafix-20, drilling: manual, through: bottom, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [50, 225, 400]}
   #     stretcher -> sides: `at` is the height above the STRETCHER's own bottom edge, so 25/75 land at
   #     cabinet z 405/455. Only 2 cams per end — the panel is 100 tall and this is the practical spacing.
-  - {id: mf-rail-l, hardware: minifix-15, through: rail-top, into: side-l, seam: {through_edge: 4, into_face: inner}, at: [25, 75]}
-  - {id: mf-rail-r, hardware: minifix-15, through: rail-top, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [25, 75]}
+  - {id: rx-rail-l, hardware: rafix-20, drilling: manual, through: rail-top, into: side-l, seam: {through_edge: 4, into_face: inner}, at: [25, 75]}
+  - {id: rx-rail-r, hardware: rafix-20, drilling: manual, through: rail-top, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [25, 75]}
 
   # --- DRAWER SCREW COUNT: ONE confirmat on a SHORT seam (the four vertical corners, 100–150 mm),
   #     TWO on a LONG seam (bottom -> walls, 314 and 498 mm). 12 screws per box instead of 20.

@@ -10,6 +10,9 @@ hardware:
       edge: { dia: 4, depth: 35 }           # Ø4 pilot into the end-grain of the mating panel
     end_margin: 50                          # keep first/last screw >= this from the panel end
 
+  # NOT USED IN THIS PROJECT — kept as reference knowledge. Every cam joint here is `rafix-20`, which
+  # does the same job in two holes instead of three (see below). Minifix is cheaper per unit but needs
+  # the extra Ø8 edge channel, and drilling is charged per hole.
   - id: minifix-15
     type: minifix
     name: "Minifix cam 15 (pin 34+11)"
@@ -21,9 +24,24 @@ hardware:
   - id: rafix-20
     type: rafix
     name: "Rafix 20"
+    # THE DEFAULT CAM FITTING HERE — used wherever a confirmat head would land on a face you can see.
+    #
+    # TWO HOLES, not three. That is the whole reason to prefer it over minifix: the Ø20 housing sits
+    # only `axis_from_edge` from the panel edge, so the bore (r=10) BREAKS OUT at the edge by ~0.5 mm
+    # and the bolt enters straight through that opening. Minifix needs a third bore — a Ø8 channel
+    # drilled in from the edge to reach a cam sitting ~34 mm back. One less hole per joint means one
+    # less line to type into the editor and one less hole to be charged for.
+    #
+    # /!\ VERIFY THESE THREE FIGURES against the rafix you actually buy before ordering drilling.
+    #     `depth: 14` is deliberately the DEEP end of the range (12.5-14 depending on maker): a hole
+    #     bored deeper than the housing needs still seats it, whereas one bored too shallow does not.
+    #     The cost of that choice is the far-side wall — 18 − 14 = 4 mm — which only matters where the
+    #     opposite face is on show. `axis_from_edge` is the order-critical one: too far from the edge
+    #     and the bore never breaks out, so the bolt has nothing to enter through.
+    axis_from_edge: 9.5                   # housing centre to the seam edge; Ø20 bore breaks out ~0.5
     drill:
-      housing: { dia: 20, depth: 14 }
-      bolt:    { dia: 5 }
+      housing: { dia: 20, depth: 14 }     # in the FACE of the panel the bolt enters
+      bolt:    { dia: 5, depth: 12 }      # in the FACE of the mating panel, on the seam centreline
 
   - id: dowel-8x30
     type: dowel
