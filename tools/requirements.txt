@@ -1,2 +1,3 @@
 ruamel.yaml>=0.18    # round-trip YAML so `meble fit` can stamp holes without clobbering comments
 reportlab>=4.0       # PDF spec sheets with vector diagrams
+pytest>=8.0          # `task test` — the order costs real money, so behaviour is locked by tests

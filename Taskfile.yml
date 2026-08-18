@@ -39,6 +39,10 @@ tasks:
       - '{{.PY}} -m meble validate {{.CLI_ARGS | default "--apartment bohaterow"}}'
       - '{{.PY}} -m meble review {{.CLI_ARGS | default "--apartment bohaterow"}}'
 
+  test:
+    desc: "Run the test suite — locks the export behaviour a wrong order would cost real money to discover"
+    cmds: ['{{.PY}} -m pytest -q {{.CLI_ARGS}}']
+
   pack:
     desc: "Recommend how to split the order across whole sheets (which decor, which format, how many). Scope after --"
     cmds:

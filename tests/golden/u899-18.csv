@@ -1,0 +1,8 @@
+Nazwa (nie wpływa na rozkrój);Szerokość;Oklejanie szerokości;Wysokość;Oklejanie wysokości;Grubość płyty;Ilość sztuk;Słoje [0 = bez znaczenia / 1 = po drugim wymiarze (po wysokości) / 2 lub puste = po pierwszym wymiarze (po szerokości)];
+open-900 Left side  [order 2 · U899 · sheet 2800×1032];600;=;400;=;18.00;1;0;
+open-900 Right side  [order 2 · U899 · sheet 2800×1032];600;=;400;=;18.00;1;0;
+open-900 Bottom panel  [order 2 · U899 · sheet 2800×1032];864;=;600;;18.00;1;0;
+open-900 Top panel  [order 2 · U899 · sheet 2800×1032];864;=;600;;18.00;1;0;
+open-900 Back stretcher (horizontal)  [order 2 · U899 · sheet 2800×1032];864;-;150;;18.00;1;0;
+open-900 Back stretcher (vertical)  [order 2 · U899 · sheet 2800×1032];100;;364;=;18.00;2;0;
+mounting-panels Mounting panel 87×1000  [order 2 · U899 · sheet 2800×1032];87;;1000;;18.00;3;0;
