@@ -17,7 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
 from meble.csv_export import export_csv          # noqa: E402
-from meble.hardware import bill_of_materials, collared_pins  # noqa: E402
+from meble.hardware import (bill_of_materials, collared_pins,  # noqa: E402
+                            resolve_sourcing)
 from meble.model import cabinets_for_scope, load_project  # noqa: E402
 from meble.pdf_export import export_pdf          # noqa: E402
 
@@ -33,6 +34,18 @@ def render_bom(proj, cabs) -> str:
         out.append(f"{line.hardware:16} {line.variant or '-':6} {line.quantity:>4} "
                    f"{line.sold_as:6} {where}")
     out.append(f"{'collared-pins':16} {'-':6} {collared_pins(proj, cabs):>4}")
+    # SKUs and prices too: a supplier change is as order-critical as a quantity change, and it should
+    # never land without somebody reading the diff.
+    out.append("")
+    out.append("-- sourcing (centrum.meble.pl) --")
+    for line in bill_of_materials(proj, cabs):
+        buys, missing = resolve_sourcing(proj, line, vendor="centrum.meble.pl")
+        for b in buys:
+            price = f"{b.price:.2f}" if b.price is not None else "-"
+            out.append(f"{line.hardware:16} {line.variant or '-':6} {b.component:8} "
+                       f"{b.sku:10} {price:>7} {b.checked}")
+        for m in missing:
+            out.append(f"{line.hardware:16} {line.variant or '-':6} NO SUPPLIER RECORDED")
     return "\n".join(out) + "\n"
 
 

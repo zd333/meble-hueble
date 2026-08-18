@@ -112,3 +112,104 @@ def bill_of_materials(proj: Project, cabinets: list[Cabinet]) -> list[Line]:
             line.per_cabinet[cab.id] = line.per_cabinet.get(cab.id, 0) + n
             line.fittings.append(f"{cab.id}/{f.get('id')}")
     return sorted(lines.values(), key=lambda l: l.key)
+
+
+# ---------------------------------------------------------------------------- sourcing
+
+#: A price older than this is shown with a warning. Long enough not to nag, short enough that nobody
+#: budgets off a year-old snapshot.
+PRICE_STALE_DAYS = 120
+
+
+@dataclass
+class Buy:
+    """One thing you put in a basket: an offering, the components it covers, and how many."""
+    component: str
+    component_name: str = ""
+    quantity: int = 0
+    vendor: str = ""
+    sku: str = ""
+    name: str = ""
+    price: float | None = None
+    checked: str = ""
+    note: str = ""
+    bundled_with: tuple = ()
+
+    @property
+    def total(self) -> float | None:
+        return None if self.price is None else round(self.price * self.quantity, 2)
+
+
+def _offerings(hw, vendor: str | None) -> list[dict]:
+    out = []
+    for s in (hw.raw.get("sourcing") or []):
+        if vendor is None or s.get("vendor") == vendor:
+            out.append(s)
+    return out
+
+
+def components_of(hw) -> list[dict]:
+    """The logical parts of one fitting. Hardware with none declared is a single part."""
+    return list(hw.raw.get("components") or [{"id": "item", "name": hw.raw.get("name", "")}])
+
+
+def resolve_sourcing(proj: Project, line: Line, vendor: str | None = None,
+                     prefer: dict | None = None) -> tuple[list[Buy], list[str]]:
+    """-> (things to buy, components nothing covers).
+
+    A vendor offering says which components it `covers:`, so one SKU may satisfy several parts (a
+    "hinge with plate" set) or exactly one (Blum, which sells them apart). Whether a fitting arrives
+    as one item or three is therefore looked up, never assumed — which is the only way the same
+    design can be ordered from two shops that package differently.
+
+    The second return value is what makes this worth having: a component with no offering is a part
+    of the joint that nobody is going to buy.
+    """
+    hw = proj.hw(line.hardware)
+    if hw is None:
+        return [], []
+    prefer = prefer or {}
+    comps = components_of(hw)
+    offers = _offerings(hw, vendor)
+
+    buys, claimed = [], set()
+    for comp in comps:
+        if comp["id"] in claimed:
+            continue
+        # an offering fits if it covers this component and either ignores variants or matches ours
+        cands = [o for o in offers
+                 if comp["id"] in (o.get("covers") or ["item"])
+                 and (o.get("variant") in (None, line.variant))]
+        if not cands:
+            continue
+        pick = next((o for o in cands if o.get("sku") == prefer.get(comp["id"])), cands[0])
+        covers = list(pick.get("covers") or ["item"])
+        claimed.update(covers)
+        buys.append(Buy(
+            component=comp["id"], component_name=comp.get("name", comp["id"]),
+            quantity=line.quantity, vendor=pick.get("vendor", ""), sku=pick.get("sku", ""),
+            name=pick.get("name", ""), price=pick.get("price"), checked=str(pick.get("checked", "")),
+            note=pick.get("note", ""),
+            bundled_with=tuple(c for c in covers if c != comp["id"])))
+    missing = [c.get("name", c["id"]) for c in comps if c["id"] not in claimed]
+    return buys, missing
+
+
+def alternatives(proj: Project, line: Line, vendor: str | None = None) -> list[dict]:
+    """Other offerings for the same components — the ones worth knowing you could have chosen."""
+    hw = proj.hw(line.hardware)
+    if hw is None:
+        return []
+    chosen = {b.sku for b in resolve_sourcing(proj, line, vendor)[0]}
+    return [o for o in _offerings(hw, vendor)
+            if o.get("sku") not in chosen and o.get("variant") in (None, line.variant)]
+
+
+def price_checked_dates(proj: Project, lines: list[Line], vendor: str | None = None) -> list[str]:
+    """Every distinct `checked:` date behind the prices on a list, so the sheet can date itself."""
+    seen = set()
+    for line in lines:
+        for b in resolve_sourcing(proj, line, vendor)[0]:
+            if b.price is not None and b.checked:
+                seen.add(b.checked)
+    return sorted(seen)

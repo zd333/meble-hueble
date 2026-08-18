@@ -168,3 +168,114 @@ def test_shelf_pin_totals_are_four_per_shelf(proj, cab_id, expected):
     assert shelves == expected
     pins = {l.hardware: l.quantity for l in bill_of_materials(proj, [cab])}.get("shelf-pin-5", 0)
     assert pins == expected * 4
+
+
+# ------------------------------------------------------------------ sourcing: components -> SKUs
+
+from meble.hardware import (alternatives, components_of, price_checked_dates,  # noqa: E402
+                            resolve_sourcing)
+
+HINGE_HW = "hinge-clip-110"
+
+
+def mk_line(hardware, variant=None, quantity=1, sold_as="piece"):
+    return Line(hardware=hardware, variant=variant, quantity=quantity, sold_as=sold_as)
+
+
+def test_hardware_with_no_components_declared_is_one_part(proj):
+    assert [c["id"] for c in components_of(proj.hw("confirmat-7x50"))] == ["item"]
+
+
+def test_a_hinge_is_two_parts(proj):
+    """The arm and the mounting plate. Blum sells them as two article numbers."""
+    assert [c["id"] for c in components_of(proj.hw(HINGE_HW))] == ["hinge", "plate"]
+
+
+def test_each_hinge_variant_resolves_to_its_own_sku_plus_a_shared_plate(proj):
+    full, _ = resolve_sourcing(proj, mk_line(HINGE_HW, "full", 7), vendor="centrum.meble.pl")
+    half, _ = resolve_sourcing(proj, mk_line(HINGE_HW, "half", 3), vendor="centrum.meble.pl")
+    assert [b.sku for b in full] == ["71T3550", "173L6100"]
+    assert [b.sku for b in half] == ["71T3650", "173L6100"]
+    # the plate fits all three overlays, so it is NOT variant-specific
+    assert full[1].sku == half[1].sku
+
+
+def test_quantity_flows_to_every_component(proj):
+    """7 hinges need 7 plates. Forgetting that is the whole reason this exists."""
+    buys, _ = resolve_sourcing(proj, mk_line(HINGE_HW, "full", 7), vendor="centrum.meble.pl")
+    assert [b.quantity for b in buys] == [7, 7]
+    assert buys[0].total == round(5.71 * 7, 2)
+
+
+def test_a_component_with_no_offering_is_reported_not_silently_dropped(proj):
+    """The failure this guards: 10 hinges and no plates hangs zero doors."""
+    _, missing = resolve_sourcing(proj, mk_line("rafix-20", quantity=18))
+    assert len(missing) == 2, missing        # housing + bolt, neither sourced yet
+
+
+def test_single_part_hardware_reports_one_gap(proj):
+    _, missing = resolve_sourcing(proj, mk_line("confirmat-7x50", quantity=85))
+    assert len(missing) == 1
+
+
+def test_a_bundle_offering_covers_several_components_in_one_line(proj):
+    """Some vendors sell "hinge with plate" as one SKU. One purchase, both parts satisfied."""
+    hw = proj.hw(HINGE_HW)
+    original = hw.raw.get("sourcing")
+    hw.raw["sourcing"] = [{"vendor": "bundler", "covers": ["hinge", "plate"], "sku": "SET-1",
+                           "name": "hinge with plate", "price": 9.0, "checked": "2026-08-18"}]
+    try:
+        buys, missing = resolve_sourcing(proj, mk_line(HINGE_HW, "full", 5), vendor="bundler")
+        assert len(buys) == 1 and buys[0].sku == "SET-1"
+        assert buys[0].bundled_with == ("plate",)
+        assert missing == []
+    finally:
+        hw.raw["sourcing"] = original
+
+
+def test_vendor_filter_isolates_one_shop(proj):
+    """Two shops package differently, so the resolution has to be per vendor."""
+    buys, _ = resolve_sourcing(proj, mk_line(HINGE_HW, "full", 1), vendor="nobody-here")
+    assert buys == []
+
+
+def test_alternatives_exclude_what_was_chosen(proj):
+    line = mk_line(HINGE_HW, "full", 7)
+    chosen = {b.sku for b in resolve_sourcing(proj, line, vendor="centrum.meble.pl")[0]}
+    alts = {a["sku"] for a in alternatives(proj, line, vendor="centrum.meble.pl")}
+    assert "71B3550" in alts, "the soft-close option should be offered"
+    assert not (chosen & alts)
+
+
+def test_alternatives_do_not_leak_across_variants(proj):
+    """A full-overlay hinge is not an alternative to a half-overlay one — it does not fit."""
+    alts = alternatives(proj, mk_line(HINGE_HW, "half", 3), vendor="centrum.meble.pl")
+    assert "71T3550" not in {a.get("sku") for a in alts}
+
+
+def test_prices_carry_the_date_they_were_checked(proj):
+    """A price with no date is a price nobody can trust later."""
+    buys, _ = resolve_sourcing(proj, mk_line(HINGE_HW, "full", 1), vendor="centrum.meble.pl")
+    for b in buys:
+        if b.price is not None:
+            assert b.checked, f"{b.sku} has a price but no `checked:` date"
+
+
+def test_every_sourced_price_in_the_library_is_dated(proj):
+    for hw in proj.hardware.values():
+        for s in (hw.raw.get("sourcing") or []):
+            if s.get("price") is not None:
+                assert s.get("checked"), f"{hw.id}/{s.get('sku')}: priced but not dated"
+
+
+def test_checked_dates_are_reported_for_the_sheet(proj):
+    lines = [mk_line(HINGE_HW, "full", 7)]
+    assert price_checked_dates(proj, lines, vendor="centrum.meble.pl") == ["2026-08-18"]
+
+
+def test_stale_prices_are_flagged(proj):
+    import datetime as dt
+    from meble.hardware_pdf import is_stale
+    assert is_stale("2020-01-01", dt.date(2026, 8, 18))
+    assert not is_stale("2026-08-18", dt.date(2026, 8, 18))
+    assert not is_stale("", dt.date(2026, 8, 18))       # undated: not stale, just unpriced

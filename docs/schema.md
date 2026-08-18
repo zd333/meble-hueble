@@ -91,6 +91,41 @@ Carries the **drill pattern** that fittings stamp. Shape varies by `type`:
   drill: { cup: {dia: 35, depth: 12, boring: 5}, plate: {pattern: system32, screws: 2} }
 ```
 
+## What a fitting is made of, and how a shop sells it (`hardware.yaml`)
+
+One fitting is often several physical parts — a hinge is an arm+cup **plus** a mounting plate, a rafix
+is a housing **plus** a bolt. **How those map onto things you can buy is a property of the vendor, not
+of the fitting**: Blum sells the hinge and the plate as two article numbers, while cheaper ranges sell
+"zawias z prowadnikiem" as one. So the two are modelled separately.
+
+```yaml
+- id: hinge-clip-110
+  components:                    # the logical parts of ONE fitting; vendor-independent
+    - { id: hinge, name: "arm + Ø35 cup", per_variant: true }
+    - { id: plate, name: "mounting plate (prowadnik)" }
+  sourcing:                      # offerings. `covers:` lists the components each one satisfies
+    - vendor: centrum.meble.pl
+      covers: [hinge]            # one part only — Blum sells them apart
+      variant: half              # optional: narrows the offering to one variant
+      sku: 71T3650
+      name: "Blum CLIP top 110° bliźniaczy, ze sprężyną"
+      price: 7.37                # INDICATIVE, and only meaningful with `checked:`
+      checked: 2026-08-18
+    - vendor: cheap-shop
+      covers: [hinge, plate]     # a bundle — one purchase satisfies both parts
+      sku: SET-1
+```
+
+`meble hardware [--vendor V]` resolves them and **reports any component nothing covers**. That check
+is the point: 10 hinges with no mounting plates hangs exactly zero doors, and the shopping list is
+where that has to surface rather than at assembly.
+
+**Prices are indicative and dated.** `checked:` is when someone last looked; the sheet prints it, flags
+anything older than `PRICE_STALE_DAYS`, and says plainly that it is not a quote. `meble pack` was
+deleted from this project because a local number that looked authoritative invited confident decisions
+that turned out wrong — a hard-coded price is the same trap. A price without `checked:` is a test
+failure.
+
 ## Panel (`cabinet.panels[]`) — SOURCE OF TRUTH
 ```yaml
 - id: side-l               # unique within the cabinet; referenced by fittings

@@ -1,4 +1,25 @@
 # Fasteners / fittings + their DRILL PATTERNS. Referenced by id from cabinet.assembly.fittings[].hardware.
+#
+# ---------------------------------------------------------------------------------------------------
+# `components:` and `sourcing:` — WHAT ONE FITTING IS MADE OF, AND HOW A SHOP SELLS IT
+# ---------------------------------------------------------------------------------------------------
+# One fitting is often several physical parts: a hinge is an arm+cup PLUS a mounting plate, a rafix is
+# a housing PLUS a bolt. HOW THOSE MAP ONTO THINGS YOU CAN BUY IS A PROPERTY OF THE VENDOR, not of the
+# fitting — Blum sells the hinge and the plate as two article numbers, while cheaper ranges sell
+# "zawias z prowadnikiem" as one. So:
+#
+#   components:  the logical parts of ONE fitting. Order-independent, vendor-independent.
+#   sourcing:    offerings. Each says which components it `covers:` — one for a single part, several
+#                for a bundle. `variant:` narrows an offering to one variant (hinge overlay).
+#
+# `meble hardware` resolves them per vendor and REPORTS ANY COMPONENT NOTHING COVERS. That check is the
+# point: 10 hinges with no mounting plates hangs exactly zero doors, and the shopping list is where
+# that has to surface — not the assembly.
+#
+# /!\ PRICES ARE INDICATIVE AND DATED. `checked:` is when someone last looked. They are here to
+#     budget with, never to quote: `meble pack` was deleted from this project precisely because a
+#     local number that looked authoritative invited confident decisions that turned out wrong. SKU,
+#     vendor and model are stable facts; the price beside them is a snapshot.
 # `drill` is what `meble fit` stamps onto the joined panels. Numbers follow the supplier convention
 # (see docs/cabinet-construction.md). Verify order-critical ones against the live editor.
 hardware:
@@ -42,6 +63,10 @@ hardware:
     drill:
       housing: { dia: 20, depth: 14 }     # in the FACE of the panel the bolt enters
       bolt:    { dia: 5, depth: 12 }      # in the FACE of the mating panel, on the seam centreline
+    components:                           # usually two article numbers, sometimes sold as a set
+      - { id: housing, name: "Ø20 housing (obudowa)" }
+      - { id: bolt,    name: "connecting bolt (trzpień)" }
+    sourcing: []                          # TODO look up SKUs; sold both loose and as sets
 
   - id: dowel-8x30
     type: dowel
@@ -78,6 +103,42 @@ hardware:
     drill:
       cup:   { dia: 35, depth: 12, boring: 5 }   # on the door (front)
       plate: { pattern: system32, screws: 2 }    # on the cabinet side, 37 mm setback
+    components:
+      - { id: hinge, name: "arm + Ø35 cup", per_variant: true }
+      - { id: plate, name: "mounting plate (prowadnik)" }
+    # Blum sells these as TWO article numbers. The plate fits all three overlays, so only the hinge
+    # is variant-specific. Buying hinges without plates hangs no doors at all.
+    sourcing:
+      - vendor: centrum.meble.pl
+        covers: [hinge]
+        variant: full
+        sku: 71T3550
+        name: "Blum CLIP top 110° nakładany, ze sprężyną, puszka na wkręty"
+        price: 5.71
+        checked: 2026-08-18
+      - vendor: centrum.meble.pl
+        covers: [hinge]
+        variant: half
+        sku: 71T3650
+        name: "Blum CLIP top 110° bliźniaczy, ze sprężyną, puszka na wkręty"
+        price: 7.37
+        checked: 2026-08-18
+        note: "meble.pl files half overlay under `drzwi bliźniacze` (twin doors)"
+      - vendor: centrum.meble.pl
+        covers: [plate]
+        sku: 173L6100
+        name: "Blum prowadnik krzyżakowy CLIP, dyst. 0 mm, regul. wysokości, bez Euro"
+        price: 0.76
+        checked: 2026-08-18
+        note: "fits nakładane / bliźniacze / wpuszczane alike; h=0 unless you want to trim the gap"
+      - vendor: centrum.meble.pl
+        covers: [hinge]
+        variant: full
+        sku: 71B3550
+        name: "Blum CLIP top BLUMOTION 110° nakładany (soft-close)"
+        price: 11.35
+        checked: 2026-08-18
+        note: "alternative to 71T3550 + damper; same cup and same drilling"
 
   - id: slide-bb-350
     type: slide
