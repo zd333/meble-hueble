@@ -43,11 +43,6 @@ tasks:
     desc: "Run the test suite — locks the export behaviour a wrong order would cost real money to discover"
     cmds: ['{{.PY}} -m pytest -q {{.CLI_ARGS}}']
 
-  pack:
-    desc: "Recommend how to split the order across whole sheets (which decor, which format, how many). Scope after --"
-    cmds:
-      - '{{.PY}} -m meble pack {{.CLI_ARGS | default "--apartment bohaterow --balance"}}'
-
   csv:
     desc: "Export the meble.pl CSV (one per board) and open the folder. Scope after --"
     cmds:

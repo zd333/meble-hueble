@@ -1,54 +1,54 @@
 Panele — bohaterow
 Click a row to jump to its panel sheet.
 
-P1. wc-column / Left side [order 1 · U604 · sheet 2800×2070] 199×2524 mm ×1                                          →
-P2. wc-column / Right side [order 1 · U604 · sheet 2800×2070] 199×2524 mm ×1                                         →
-P3. wc-column / Divider @1200 (upper cabinet bottom) [order 1 · U604 · sheet 2800×2070] 700×199 mm ×1                →
-P4. wc-column / Top panel [order 1 · U604 · sheet 2800×2070] 700×181 mm ×1                                           →
-P5. wc-column / Centre gable (vertical) [order 1 · U604 · sheet 2800×2070] 181×1297 mm ×1                            →
-P6. wc-column / Left-compartment shelf [order 1 · U604 · sheet 2800×2070] 339×176 mm ×2                              →
-P7. wc-column / Right-compartment shelf [order 1 · U604 · sheet 2800×2070] 339×176 mm ×2                             →
-P8. wc-column / Back (upper cabinet) [order 1 · U604 · sheet 2800×2070] 700×1315 mm ×1                               →
-P9. wc-column / Front cover (WC boxing) [order 1 · U604 · sheet 2800×2070] 736×1209 mm ×1                            →
-P10. wc-column / Spacer behind cover [order 1 · U604 · sheet 2800×2070] 550×1191 mm ×1                               →
-P11. wc-column / Door left [order 1 · U604 · sheet 2800×2070] 367×1308 mm ×1                                         →
-P12. wc-column / Door right [order 1 · U604 · sheet 2800×2070] 367×1308 mm ×1                                        →
-P13. wm-wardrobe / Left side [order 1 · U604 · sheet 2800×2070] 675×2520 mm ×1                                       →
-P14. wm-wardrobe / Right side [order 1 · U604 · sheet 2800×2070] 675×2520 mm ×1                                      →
-P15. wm-wardrobe / Divider @1810 (bay ceiling / overhead-cabinet floor) [order 1 · U604 · sheet 2800×2070] 726×657 mm →×1
-P16. wm-wardrobe / Top panel [order 1 · U604 · sheet 2800×2070] 726×657 mm ×1                                        →
-P17. wm-wardrobe / Back (full height) [order 1 · U604 · sheet 2800×2070] 726×2470 mm ×1                              →
-P18. wm-wardrobe / Overhead shelf [order 1 · U604 · sheet 2800×2070] 724×652 mm ×1                                   →
-P19. wm-wardrobe / Door left [order 1 · U604 · sheet 2800×2070] 380×706 mm ×1                                        →
-P20. wm-wardrobe / Door right [order 1 · U604 · sheet 2800×2070] 380×706 mm ×1                                       →
-P21. sink-vanity / Left side [order 1 · U604 · sheet 2800×2070] 450×480 mm ×1                                        →
-P22. sink-vanity / Right side [order 1 · U604 · sheet 2800×2070] 450×480 mm ×1                                       →
-P23. sink-vanity / Bottom panel [order 1 · U604 · sheet 2800×2070] 524×450 mm ×1                                     →
-P24. sink-vanity / Top-front stretcher [order 1 · U604 · sheet 2800×2070] 524×100 mm ×1                              →
-P25. sink-vanity / Back rail / wall cleat [order 1 · U604 · sheet 2800×2070] 524×100 mm ×2                           →
-P26. sink-vanity / Bottom drawer facade [order 1 · U604 · sheet 2800×2070] 560×150 mm ×1                             →
-P27. sink-vanity / Top drawer facade [order 1 · U604 · sheet 2800×2070] 560×321 mm ×1                                →
-P28. sink-vanity / Bottom drawer — bottom [order 1 · U604 · sheet 2800×2070] 498×350 mm ×1                           →
-P29. sink-vanity / Bottom drawer — front (internal) [order 1 · U604 · sheet 2800×2070] 498×100 mm ×1                 →
-P30. sink-vanity / Bottom drawer — back [order 1 · U604 · sheet 2800×2070] 498×100 mm ×1                             →
-P31. sink-vanity / Bottom drawer — left side [order 1 · U604 · sheet 2800×2070] 314×100 mm ×1                        →
-P32. sink-vanity / Bottom drawer — right side [order 1 · U604 · sheet 2800×2070] 314×100 mm ×1                       →
-P33. sink-vanity / Top drawer — bottom [order 1 · U604 · sheet 2800×2070] 498×350 mm ×1                              →
-P34. sink-vanity / Top drawer — front (internal) [order 1 · U604 · sheet 2800×2070] 498×150 mm ×1                    →
-P35. sink-vanity / Top drawer — back [order 1 · U604 · sheet 2800×2070] 498×100 mm ×1                                →
-P36. sink-vanity / Top drawer — left side [order 1 · U604 · sheet 2800×2070] 314×150 mm ×1                           →
-P37. sink-vanity / Top drawer — right side [order 1 · U604 · sheet 2800×2070] 314×150 mm ×1                          →
-P38. open-900 / Left side [order 2 · U899 · sheet 2800×1032] 600×400 mm ×1                                           →
-P39. open-900 / Right side [order 2 · U899 · sheet 2800×1032] 600×400 mm ×1                                          →
-P40. open-900 / Bottom panel [order 2 · U899 · sheet 2800×1032] 864×600 mm ×1                                        →
+P1. wc-column / Left side 199×2524 mm ×1                                                →
+P2. wc-column / Right side 199×2524 mm ×1                                               →
+P3. wc-column / Divider @1200 (upper cabinet bottom) 700×199 mm ×1                      →
+P4. wc-column / Top panel 700×181 mm ×1                                                 →
+P5. wc-column / Centre gable (vertical) 181×1297 mm ×1                                  →
+P6. wc-column / Left-compartment shelf 339×176 mm ×2                                    →
+P7. wc-column / Right-compartment shelf 339×176 mm ×2                                   →
+P8. wc-column / Back (upper cabinet) 700×1315 mm ×1                                     →
+P9. wc-column / Front cover (WC boxing) 736×1209 mm ×1                                  →
+P10. wc-column / Spacer behind cover 550×1191 mm ×1                                     →
+P11. wc-column / Door left 367×1308 mm ×1                                               →
+P12. wc-column / Door right 367×1308 mm ×1                                              →
+P13. wm-wardrobe / Left side 675×2520 mm ×1                                             →
+P14. wm-wardrobe / Right side 675×2520 mm ×1                                            →
+P15. wm-wardrobe / Divider @1810 (bay ceiling / overhead-cabinet floor) 726×657 mm ×1   →
+P16. wm-wardrobe / Top panel 726×657 mm ×1                                              →
+P17. wm-wardrobe / Back (full height) 726×2470 mm ×1                                    →
+P18. wm-wardrobe / Overhead shelf 724×652 mm ×1                                         →
+P19. wm-wardrobe / Door left 380×706 mm ×1                                              →
+P20. wm-wardrobe / Door right 380×706 mm ×1                                             →
+P21. sink-vanity / Left side 450×480 mm ×1                                              →
+P22. sink-vanity / Right side 450×480 mm ×1                                             →
+P23. sink-vanity / Bottom panel 524×450 mm ×1                                           →
+P24. sink-vanity / Top-front stretcher 524×100 mm ×1                                    →
+P25. sink-vanity / Back rail / wall cleat 524×100 mm ×2                                 →
+P26. sink-vanity / Bottom drawer facade 560×150 mm ×1                                   →
+P27. sink-vanity / Top drawer facade 560×321 mm ×1                                      →
+P28. sink-vanity / Bottom drawer — bottom 498×350 mm ×1                                 →
+P29. sink-vanity / Bottom drawer — front (internal) 498×100 mm ×1                       →
+P30. sink-vanity / Bottom drawer — back 498×100 mm ×1                                   →
+P31. sink-vanity / Bottom drawer — left side 314×100 mm ×1                              →
+P32. sink-vanity / Bottom drawer — right side 314×100 mm ×1                             →
+P33. sink-vanity / Top drawer — bottom 498×350 mm ×1                                    →
+P34. sink-vanity / Top drawer — front (internal) 498×150 mm ×1                          →
+P35. sink-vanity / Top drawer — back 498×100 mm ×1                                      →
+P36. sink-vanity / Top drawer — left side 314×150 mm ×1                                 →
+P37. sink-vanity / Top drawer — right side 314×150 mm ×1                                →
+P38. open-900 / Left side 600×400 mm ×1                                                 →
+P39. open-900 / Right side 600×400 mm ×1                                                →
+P40. open-900 / Bottom panel 864×600 mm ×1                                              →
 Panele — bohaterow
 Click a row to jump to its panel sheet.
 
-P41. open-900 / Top panel [order 2 · U899 · sheet 2800×1032] 864×600 mm ×1                       →
-P42. open-900 / Back stretcher (horizontal) [order 2 · U899 · sheet 2800×1032] 864×150 mm ×1     →
-P43. open-900 / Back stretcher (vertical) [order 2 · U899 · sheet 2800×1032] 100×364 mm ×2       →
-P44. mounting-panels / Mounting panel 87×1000 [order 2 · U899 · sheet 2800×1032] 87×1000 mm ×3   →
-P1. Left side [order 1 · U604 · sheet 2800×2070]                                                                 Bathroom WC column · wc-column/side-l
+P41. open-900 / Top panel 864×600 mm ×1                       →
+P42. open-900 / Back stretcher (horizontal) 864×150 mm ×1     →
+P43. open-900 / Back stretcher (vertical) 100×364 mm ×2       →
+P44. mounting-panels / Mounting panel 87×1000 87×1000 mm ×3   →
+P1. Left side                                                                                                    Bathroom WC column · wc-column/side-l
 
 
                           OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -101,7 +101,7 @@ Drilling — surface
 
 
                                                                   meble · wc-column · panel sheet P1
-P2. Right side [order 1 · U604 · sheet 2800×2070]                                                                Bathroom WC column · wc-column/side-r
+P2. Right side                                                                                                   Bathroom WC column · wc-column/side-r
 
 
                           OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -151,10 +151,8 @@ Drilling — surface
 
 
                                                                   meble · wc-column · panel sheet P2
-P3. Divider @1200 (upper cabinet bottom) [order 1 · U604
-                                                Bathroom WC· column
-                                                              sheet· wc-column/divider
-                                                                     2800×2070]
+P3. Divider @1200 (upper cabinet bottom)                                                                          Bathroom WC column · wc-column/divider
+
 
                            OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
 
@@ -201,7 +199,8 @@ Drilling — surface
 
 
                                                                  meble · wc-column · panel sheet P3
-P4. Top panel [order 1 · U604 · sheet 2800×2070]Bathroom WC column · wc-column/top-panel
+P4. Top panel                                                                                              Bathroom WC column · wc-column/top-panel
+
 
                            OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
 
@@ -244,9 +243,7 @@ Drilling — surface
 
 
                                                                 meble · wc-column · panel sheet P4
-P5. Centre gable (vertical) [order 1 · U604 · sheetBathroom
-                                                     2800×2070]
-                                                            WC column · wc-column/gable-mid
+P5. Centre gable (vertical)                                                                                 Bathroom WC column · wc-column/gable-mid
 
 
                        OUTER · editor: przód (front)                                                                    INNER · editor: tył (back)
@@ -297,9 +294,7 @@ Drilling — surface
 
 
                                                                     meble · wc-column · panel sheet P5
-P6. Left-compartment shelf [order 1 · U604 · sheet Bathroom
-                                                    2800×2070]
-                                                            WC column · wc-column/shelf-l
+P6. Left-compartment shelf                                                                                  Bathroom WC column · wc-column/shelf-l
 
 
                           OUTER · editor: przód (front)                                                         INNER · editor: tył (back)
@@ -343,8 +338,7 @@ Drilling — surface
 
 
                                                              meble · wc-column · panel sheet P6
-P7. Right-compartment shelf [order 1 · U604 · sheet 2800×2070]
-                                                 Bathroom WC column · wc-column/shelf-r
+P7. Right-compartment shelf                                                                                 Bathroom WC column · wc-column/shelf-r
 
 
                           OUTER · editor: przód (front)                                                         INNER · editor: tył (back)
@@ -388,9 +382,7 @@ Drilling — surface
 
 
                                                              meble · wc-column · panel sheet P7
-P8. Back (upper cabinet) [order 1 · U604 · sheetBathroom
-                                                 2800×2070]
-                                                         WC column · wc-column/back-upper
+P8. Back (upper cabinet)                                                                             Bathroom WC column · wc-column/back-upper
 
 
                            OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -440,27 +432,25 @@ Drilling — surface
 
 
                                                                meble · wc-column · panel sheet P8
-P9. Front cover (WC boxing) [order 1 · U604 · sheetBathroom
-                                                     2800×2070]
-                                                            WC column · wc-column/cover
+P9. Front cover (WC boxing)                                                                                             Bathroom WC column · wc-column/cover
 
 
-                             OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
+                             OUTER · editor: przód (front)                                                                    INNER · editor: tył (back)
 
-                                            1                                                                                           1
+                                            1                                                                                             1
 
 
 
 
                 h 1209                                                                                         h 1209
-                             4                              2                                                           4                                2
+                             4                              2                                                             4                                2
 
 
 
 
-                                            3                                                                                           3
+                                            3                                                                                             3
 
-                                          w 736                                                                                       w 736
+                                          w 736                                                                                         w 736
                                        Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
@@ -489,8 +479,7 @@ Drilling — surface
 
 
                                                                   meble · wc-column · panel sheet P9
-P10. Spacer behind cover [order 1 · U604 · sheet  2800×2070]
-                                             Bathroom WC column · wc-column/cover-spacer
+P10. Spacer behind cover                                                                            Bathroom WC column · wc-column/cover-spacer
 
 
                             OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -534,7 +523,7 @@ Drilling — surface
 
 
                                                                 meble · wc-column · panel sheet P10
-P11. Door left [order 1 · U604 · sheet 2800×2070]                                                              Bathroom WC column · wc-column/door-l
+P11. Door left                                                                                                 Bathroom WC column · wc-column/door-l
 
 
                       OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
@@ -579,9 +568,10 @@ Drilling — surface
 
 
                                                                 meble · wc-column · panel sheet P11
-P12. Door right [order 1 · U604 · sheet 2800×2070] Bathroom WC column · wc-column/door-r
+P12. Door right                                                                                                Bathroom WC column · wc-column/door-r
 
-                      OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                      OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
 
                                            1                                                                                      1
 
@@ -623,9 +613,7 @@ Drilling — surface
 
 
                                                                 meble · wc-column · panel sheet P12
-P13. Left side [order 1 · U604 · sheetBathroom
-                                       2800×2070]
-                                               laundry column (washer + dryer) · wm-wardrobe/side-l
+P13. Left side                                                                     Bathroom laundry column (washer + dryer) · wm-wardrobe/side-l
 
 
                           OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -676,8 +664,7 @@ Drilling — surface
 
 
                                                                    meble · wm-wardrobe · panel sheet P13
-P14. Right side [order 1 · U604 · sheet  2800×2070]
-                                     Bathroom laundry column (washer + dryer) · wm-wardrobe/side-r
+P14. Right side                                                                    Bathroom laundry column (washer + dryer) · wm-wardrobe/side-r
 
 
                           OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -729,9 +716,8 @@ Drilling — surface
 
                                                                    meble · wm-wardrobe · panel sheet P14
 P15. Divider @1810 (bay ceiling / overhead-cabinet
-                                    Bathroom laundry columnfloor)    [order
-                                                            (washer + dryer) · 1 · U604 · sheet 28
-                                                                              wm-wardrobe/divider
+                                    Bathroom laundry columnfloor)
+                                                            (washer + dryer) · wm-wardrobe/divider
 
 
                            OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
@@ -778,8 +764,7 @@ Drilling — surface
 
 
                                                             meble · wm-wardrobe · panel sheet P15
-P16. Top panel [order 1 · U604 · sheet   2800×2070]
-                                  Bathroom laundry column (washer + dryer) · wm-wardrobe/top-panel
+P16. Top panel                                                           Bathroom laundry column (washer + dryer) · wm-wardrobe/top-panel
 
 
                            OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
@@ -826,9 +811,7 @@ Drilling — surface
 
 
                                                             meble · wm-wardrobe · panel sheet P16
-P17. Back (full height) [order 1 · U604 · sheet
-                                      Bathroom     2800×2070]
-                                               laundry column (washer + dryer) · wm-wardrobe/back
+P17. Back (full height)                                                         Bathroom laundry column (washer + dryer) · wm-wardrobe/back
 
 
                       OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -876,10 +859,7 @@ Drilling — surface
 
 
                                                                meble · wm-wardrobe · panel sheet P17
-P18. Overhead shelf [order 1 · U604 ·Bathroom
-                                      sheetlaundry
-                                              2800×2070]
-                                                   column (washer + dryer) · wm-wardrobe/shelf
+P18. Overhead shelf                                                          Bathroom laundry column (washer + dryer) · wm-wardrobe/shelf
 
 
                            OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
@@ -923,9 +903,7 @@ Drilling — surface
 
 
                                                             meble · wm-wardrobe · panel sheet P18
-P19. Door left [order 1 · U604 · sheetBathroom
-                                       2800×2070]
-                                               laundry column (washer + dryer) · wm-wardrobe/door-l
+P19. Door left                                                              Bathroom laundry column (washer + dryer) · wm-wardrobe/door-l
 
 
                           OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -970,8 +948,7 @@ Drilling — surface
 
 
                                                              meble · wm-wardrobe · panel sheet P19
-P20. Door right [order 1 · U604 · sheet  2800×2070]
-                                     Bathroom laundry column (washer + dryer) · wm-wardrobe/door-r
+P20. Door right                                                             Bathroom laundry column (washer + dryer) · wm-wardrobe/door-r
 
 
                           OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -1016,8 +993,7 @@ Drilling — surface
 
 
                                                              meble · wm-wardrobe · panel sheet P20
-P21. Left side [order 1 · U604 · sheet 2800×2070]
-                                          Bathroom sink vanity (wall-hung basin) · sink-vanity/side-l
+P21. Left side                                                                                Bathroom sink vanity (wall-hung basin) · sink-vanity/side-l
 
 
                                  OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -1063,8 +1039,7 @@ Drilling — surface
 
 
                                                                     meble · sink-vanity · panel sheet P21
-P22. Right side [order 1 · U604 · sheet Bathroom
-                                       2800×2070]sink vanity (wall-hung basin) · sink-vanity/side-r
+P22. Right side                                                                               Bathroom sink vanity (wall-hung basin) · sink-vanity/side-r
 
 
                                  OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -1110,8 +1085,7 @@ Drilling — surface
 
 
                                                                     meble · sink-vanity · panel sheet P22
-P23. Bottom panel [order 1 · U604 · sheet 2800×2070]
-                                       Bathroom sink vanity (wall-hung basin) · sink-vanity/bottom
+P23. Bottom panel                                                                      Bathroom sink vanity (wall-hung basin) · sink-vanity/bottom
 
 
                             OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
@@ -1159,10 +1133,7 @@ Drilling — surface
 
 
                                                                 meble · sink-vanity · panel sheet P23
-P24. Top-front stretcher [order 1 · U604 ·Bathroom
-                                            sheetsink vanity
-                                                    2800×2070]
-                                                             (wall-hung basin) · sink-vanity/rail-top
+P24. Top-front stretcher                                                            Bathroom sink vanity (wall-hung basin) · sink-vanity/rail-top
 
 
                          OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
@@ -1204,9 +1175,7 @@ Drilling — surface
 
 
                                                              meble · sink-vanity · panel sheet P24
-P25. Back rail / wall cleat [order 1 · U604 ·  sheet
-                                          Bathroom       2800×2070]
-                                                   sink vanity (wall-hung basin) · sink-vanity/rail-back
+P25. Back rail / wall cleat                                                    Bathroom sink vanity (wall-hung basin) · sink-vanity/rail-back
 
 
                        OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -1244,10 +1213,7 @@ Drilling — surface
 
 
                                                           meble · sink-vanity · panel sheet P25
-P26. Bottom drawer facade [order 1 · U604
-                                     Bathroom·sink
-                                               sheet      2800×2070]
-                                                   vanity (wall-hung basin) · sink-vanity/facade-bot
+P26. Bottom drawer facade                                                   Bathroom sink vanity (wall-hung basin) · sink-vanity/facade-bot
 
 
                        OUTER · editor: przód (front)                                                         INNER · editor: tył (back)
@@ -1287,9 +1253,7 @@ Drilling — surface
 
 
                                                           meble · sink-vanity · panel sheet P26
-P27. Top drawer facade [order 1 · U604 ·  sheet
-                                     Bathroom       2800×2070]
-                                              sink vanity (wall-hung basin) · sink-vanity/facade-top
+P27. Top drawer facade                                                      Bathroom sink vanity (wall-hung basin) · sink-vanity/facade-top
 
 
                        OUTER · editor: przód (front)                                                         INNER · editor: tył (back)
@@ -1333,10 +1297,7 @@ Drilling — surface
 
 
                                                           meble · sink-vanity · panel sheet P27
-P28. Bottom drawer — bottom [order 1 · U604
-                                   Bathroom sink·vanity
-                                                  sheet       2800×2070]
-                                                        (wall-hung basin) · sink-vanity/d1-bottom
+P28. Bottom drawer — bottom                                                     Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-bottom
 
 
                         OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
@@ -1384,11 +1345,7 @@ Drilling — surface
 
 
                                                              meble · sink-vanity · panel sheet P28
-P29. Bottom drawer — front (internal) [order
-                                       Bathroom1 · vanity
-                                               sink U604 ·     sheet
-                                                          (wall-hung    2800×2070]
-                                                                     basin) · sink-vanity/d1-front
+P29. Bottom drawer — front (internal)                                              Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-front
 
 
                         OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
@@ -1429,9 +1386,7 @@ Drilling — surface
 
 
                                                              meble · sink-vanity · panel sheet P29
-P30. Bottom drawer — back [order 1 · U604   · sink
-                                     Bathroom sheet      2800×2070]
-                                                   vanity (wall-hung basin) · sink-vanity/d1-back
+P30. Bottom drawer — back                                                          Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-back
 
 
                         OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
@@ -1472,10 +1427,7 @@ Drilling — surface
 
 
                                                              meble · sink-vanity · panel sheet P30
-P31. Bottom drawer — left side [order 1 · U604
-                                      Bathroom sink·vanity
-                                                     sheet      2800×2070]
-                                                           (wall-hung basin) · sink-vanity/d1-side-l
+P31. Bottom drawer — left side                                                  Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-side-l
 
 
                        OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
@@ -1520,10 +1472,7 @@ Drilling — surface
 
 
                                                            meble · sink-vanity · panel sheet P31
-P32. Bottom drawer — right side [order 1  · U604
-                                     Bathroom sink ·  sheet
-                                                  vanity         2800×2070]
-                                                         (wall-hung basin) · sink-vanity/d1-side-r
+P32. Bottom drawer — right side                                                Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-side-r
 
 
                        OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
@@ -1568,9 +1517,7 @@ Drilling — surface
 
 
                                                            meble · sink-vanity · panel sheet P32
-P33. Top drawer — bottom [order 1 · U604   · sink
-                                    Bathroom sheet      2800×2070]
-                                                  vanity (wall-hung basin) · sink-vanity/d2-bottom
+P33. Top drawer — bottom                                                        Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-bottom
 
 
                         OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
@@ -1618,11 +1565,7 @@ Drilling — surface
 
 
                                                              meble · sink-vanity · panel sheet P33
-P34. Top drawer — front (internal) [order 1  · sink
-                                              U604
-                                       Bathroom        · sheet
-                                                    vanity          2800×2070]
-                                                           (wall-hung basin) · sink-vanity/d2-front
+P34. Top drawer — front (internal)                                                 Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-front
 
 
                         OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
@@ -1667,9 +1610,7 @@ Drilling — surface
 
 
                                                              meble · sink-vanity · panel sheet P34
-P35. Top drawer — back [order 1 · U604 · sheet
-                                     Bathroom      2800×2070]
-                                              sink vanity (wall-hung basin) · sink-vanity/d2-back
+P35. Top drawer — back                                                             Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-back
 
 
                         OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
@@ -1710,9 +1651,7 @@ Drilling — surface
 
 
                                                              meble · sink-vanity · panel sheet P35
-P36. Top drawer — left side [order 1 · U604   · sink
-                                       Bathroom sheet      2800×2070]
-                                                     vanity (wall-hung basin) · sink-vanity/d2-side-l
+P36. Top drawer — left side                                                     Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-side-l
 
 
                        OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
@@ -1759,10 +1698,7 @@ Drilling — surface
 
 
                                                            meble · sink-vanity · panel sheet P36
-P37. Top drawer — right side [order 1 ·Bathroom
-                                        U604 ·     sheet
-                                                sink          2800×2070]
-                                                     vanity (wall-hung basin) · sink-vanity/d2-side-r
+P37. Top drawer — right side                                                   Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-side-r
 
 
                        OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
@@ -1809,7 +1745,7 @@ Drilling — surface
 
 
                                                            meble · sink-vanity · panel sheet P37
-P38. Left side [order 2 · U899 · sheet 2800×1032]                                                                  Kitchen open unit 900 · open-900/side-l
+P38. Left side                                                                                                     Kitchen open unit 900 · open-900/side-l
 
 
                             OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
@@ -1855,7 +1791,8 @@ Drilling — surface
 
 
                                                                  meble · open-900 · panel sheet P38
-P39. Right side [order 2 · U899 · sheet 2800×1032] Kitchen open unit 900 · open-900/side-r
+P39. Right side                                                                                                    Kitchen open unit 900 · open-900/side-r
+
 
                             OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
 
@@ -1865,7 +1802,7 @@ Drilling — surface
 
 
    h 400                                                                                    h 400
-           4                                                              2                         4                                                 2
+           4                                                              2                         4                                                  2
 
 
 
@@ -1900,8 +1837,7 @@ Drilling — surface
 
 
                                                                  meble · open-900 · panel sheet P39
-P40. Bottom panel [order 2 · U899 · sheet 2800×1032]
-                                                 Kitchen open unit 900 · open-900/bottom
+P40. Bottom panel                                                                                            Kitchen open unit 900 · open-900/bottom
 
 
                           OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
@@ -1912,7 +1848,7 @@ Drilling — surface
 
 
    h 600                                                                                h 600
-           4                                                          2                         4                                               2
+           4                                                          2                         4                                                2
 
 
 
@@ -1947,7 +1883,7 @@ Drilling — surface
 
 
                                                              meble · open-900 · panel sheet P40
-P41. Top panel [order 2 · U899 · sheet 2800×1032]                                                              Kitchen open unit 900 · open-900/top
+P41. Top panel                                                                                                 Kitchen open unit 900 · open-900/top
 
 
                           OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
@@ -1993,9 +1929,7 @@ Drilling — surface
 
 
                                                              meble · open-900 · panel sheet P41
-P42. Back stretcher (horizontal) [order 2 · U899 ·Kitchen
-                                                   sheet     2800×1032]
-                                                          open unit 900 · open-900/rail-back-h
+P42. Back stretcher (horizontal)                                                                    Kitchen open unit 900 · open-900/rail-back-h
 
 
                        OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -2003,7 +1937,7 @@ Drilling — surface
                                      1                                                                                       1
 
    h 150                                                                              h 150
-           4                                                        2                         4                                             2
+           4                                                        2                         4                                              2
 
                                      3                                                                                       3
 
@@ -2033,8 +1967,7 @@ Drilling — surface
 
 
                                                           meble · open-900 · panel sheet P42
-P43. Back stretcher (vertical) [order 2 · U899 · sheet   2800×1032]
-                                                   Kitchen open unit 900 · open-900/rail-back-v
+P43. Back stretcher (vertical)                                                                       Kitchen open unit 900 · open-900/rail-back-v
 
 
                      OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
@@ -2078,11 +2011,7 @@ Drilling — surface
 
 
                                                             meble · open-900 · panel sheet P43
-P44. Mounting panel 87×1000 [order 2 · U899
-                                        Kitchen·mounting
-                                                 sheetpanels ·
-                                                         2800×1032]
-                                                               mounting-panels/mount-panel
+P44. Mounting panel 87×1000                                                         Kitchen mounting panels · mounting-panels/mount-panel
 
 
                      OUTER · editor: przód (front)                                                         INNER · editor: tył (back)

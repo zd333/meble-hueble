@@ -303,7 +303,7 @@ plinth: {}                   # sides run to the floor — silicone the bottom ed
 
 panels:
 - id: side-l
-  name: "Left side  [order 1 · U604 · sheet 2800×2070]"
+  name: "Left side"
   element_type: panel
   role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = wall. X: 0 = wall, 675 = front
   width: 675                  # depth
@@ -327,7 +327,7 @@ panels:
   - {face: inner, x: 638, y: 2156, dia: 5, depth: 13}
   - {face: outer, x: 98, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-l}
 - id: side-r
-  name: "Right side  [order 1 · U604 · sheet 2800×2070]"
+  name: "Right side"
   element_type: panel
   role: side-right            # MIRROR of side-l. X: 0 = front, 675 = wall — so the front column is x 37
                               # here and the rear one x 620, and edge4 (not edge2) is the cabinet front.
@@ -348,7 +348,7 @@ panels:
   - {face: inner, x: 620, y: 2156, dia: 5, depth: 13}
   - {face: outer, x: 77, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-r}
 - id: divider
-  name: "Divider @1810 (bay ceiling / overhead-cabinet floor)  [order 1 · U604 · sheet 2800×2070]"
+  name: "Divider @1810 (bay ceiling / overhead-cabinet floor)"
   element_type: panel
   role: bottom                # 726 = 762 − 2×18. edge1 = cabinet FRONT (y 657), edge3 = REAR, butting
                               # the back panel. inner face = UP (into the overhead cavity); outer = DOWN,
@@ -376,7 +376,7 @@ panels:
   placement: {pos: [18, 0, 1810]}     # role 'bottom' would sit it on the floor — place it explicitly
 
 - id: top-panel
-  name: "Top panel  [order 1 · U604 · sheet 2800×2070]"
+  name: "Top panel"
   element_type: panel
   role: top                   # 726 = 762 − 2×18. edge1 = cabinet FRONT.
                               # NB on a `top` panel OUTER is the DOWN face and INNER the UP face — see
@@ -405,7 +405,7 @@ panels:
     # D, t)`), so without it the 3D view would draw a 675-deep panel and hide the back running past.
 
 - id: back
-  name: "Back (full height)  [order 1 · U604 · sheet 2800×2070]"
+  name: "Back (full height)"
   element_type: panel
   role: back                  # ONE CONTINUOUS PANEL, y 657..675, z 50..2502 — the whole rear face of
                               # the cabinet, uninterrupted from just above the floor to the underside of
@@ -446,16 +446,12 @@ panels:
   #     at 657. If the dryer is the deeper machine — it usually is — that is 18 mm off its rear
   #     clearance. It does not create a new problem, it makes pre-order item 2 that much tighter.
   # MATERIAL: u604-18, and that is what it is built in.
-  # /!\ THIS PANEL IS NOT A HIDDEN PANEL. The strips you see beside and above the stack are a visible
-  #     face of the cabinet, and its inner face is the back wall of the overhead cabinet whenever a door
-  #     is open. `decor_optional` below exists only because the owner explicitly signed off on this one
-  #     panel being acceptable in the dark kitchen decor (2026-08-12) — it is NOT the usual
-  #     "sealed away, either decor is fine" case the flag normally marks.
-  #     So: if `meble pack --balance` ever proposes moving this to u899-18, LOOK AT IT before adopting.
-  #     Today it proposes nothing — the move is an exact cost TIE (20.28 m² either way: U604 drops to
-  #     2 full + 1 half but U899 climbs from a half to a full), and COST_TIE keeps the baseline. A tie
-  #     is not a reason to make a visible panel a different colour from the cabinet around it.
-  decor_optional: u899-18
+  # /!\ THIS PANEL IS NOT A HIDDEN PANEL, so do not "save" it onto whatever board is cheaper. The
+  #     strips you see beside and above the stack are a visible face of the cabinet, and its inner
+  #     face is the back wall of the overhead cabinet whenever a door is open. The owner did sign off
+  #     on u899-18 as acceptable here (2026-08-12) — but that was a specific concession on this one
+  #     panel, not the usual "sealed away, either decor is fine". Changing it is a LOOK decision and
+  #     wants a fresh look, not an inherited one.
   width: 726                  # 762 - 2x18, same span as the divider and top panel
   height: 2470                # 2520 - 50: floor clearance at the bottom, THE CABINET TOP at the other.
                               # It runs past the top panel (which is 657 deep) rather than stopping
@@ -479,7 +475,7 @@ panels:
   placement: {pos: [18, 657, 50]}   # role 'back' would size it to the whole carcass — place it here
 
 - id: shelf
-  name: "Overhead shelf  [order 1 · U604 · sheet 2800×2070]"
+  name: "Overhead shelf"
   element_type: panel
   role: shelf                 # full width — there is no centre gable (see the SHELF note in the header).
                               # 5 mm shallower than the cavity so the closed door clears it.
@@ -497,7 +493,7 @@ panels:
   placement: {pos: [19, 5, 2156]}   # equal 328 mm bays above and below
 
 - id: door-l
-  name: "Door left  [order 1 · U604 · sheet 2800×2070]"
+  name: "Door left"
   element_type: panel
   role: front                 # hinges on edge4 (its LEFT edge, on side-l) — FULL overlay, 18 mm
   width: 380
@@ -513,7 +509,7 @@ panels:
   placement: {pos: [0, -18, 1810], rot: [90, 0, 0]}
 
 - id: door-r
-  name: "Door right  [order 1 · U604 · sheet 2800×2070]"
+  name: "Door right"
   element_type: panel
   role: front                 # MIRROR of door-l: hinges on edge2 (its RIGHT edge, on side-r) — FULL
                               # overlay. Handle/free edge is edge4 (left), meeting door-l's in the middle.
