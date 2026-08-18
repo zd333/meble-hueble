@@ -40,6 +40,31 @@ send them the panel list and take their quote. `library/materials.yaml` keeps th
 comment only, for the one fact worth remembering — the 2800 × 1032 half sheet is **narrower, not
 shorter**, so it still takes a full-height 2520 mm gable.
 
+## Hardware you buy (`assembly.fittings[]`)
+
+A fitting is both a joint and a **line on the shopping list** (`meble hardware`). Three optional
+fields carry the purchasing side; all default sensibly, so existing fittings need nothing.
+
+```yaml
+- id: hg-door-r
+  hardware: hinge-clip-110
+  variant: half            # a PURCHASING difference the drilling cannot express. Must be one of the
+                           # hardware's `variants:`. Hinge overlay is the case that matters: the cup
+                           # and plate line are identical for full/half/inset, so this is the only
+                           # place the difference can live.
+  drilling: manual         # stamped (default) = `meble fit` computes the holes
+                           # manual            = holes are hand-derived and tagged `src: <this id>`
+                           # none              = no holes at all, by design (a slide mounted on site)
+  quantity: 16             # how many to BUY. Defaults to len(at); state it when it differs — a
+                           # shelf-pin fitting's `at` is a list of shelf HEIGHTS, 4 pins per shelf.
+  door: door-r             # panel refs; `shelves:` takes a list
+  side: gable-mid
+  at: [1312, 1868, 2424]
+```
+
+`drilling: manual` and `none` are skipped by `meble fit` **silently** — they are deliberate, not
+unimplemented, and warning about them on every run is how a warning stops being read.
+
 ## Edge band (`edgebands.yaml: edgebands[]`)
 ```yaml
 - id: eb-w1100-1
@@ -111,8 +136,11 @@ Two shapes by `face`:
 - `depth`: edge = 2–35; surface = 2–15 or `through`.
 - `type`: `single` | `multi`. multi edge → +`count`,+`spacing`; multi surface → +`count`,+`spacing`,
   +`direction` (`x`|`y`).
-- `src`: id of the fitting that stamped this hole (absent = manual). `meble fit` only ever replaces holes
-  with a matching `src`; manual holes are never touched.
+- `src`: **the fitting this hole belongs to.** For a `drilling: stamped` fitting that means `meble fit`
+  computed it and owns it; for `drilling: manual` (hinge plates, shelf pins) the hole is hand-derived
+  and the tag is just the audit trail the buy list and `review` read. Either way `fit` only ever
+  replaces holes belonging to a fitting it actually re-stamped, so a hand-written hole is never lost —
+  and a hole with no `src` at all is never touched by anything.
 
 ## Cabinet (`cabinets/<c>.yaml`)
 ```yaml

@@ -25,6 +25,16 @@ VERTICAL_EDGES = {2, 4}
 CAVITY_FACE = {"top": "outer"}
 NO_VISIBLE_FACE_ROLES = {"gable", "shelf"}
 
+# Roles that must have a hardware fitting or they silently vanish from the shopping list.
+# NOT `front`: it covers both a hinged door and a drawer facade screwed to its box from inside, and
+# nothing in the model separates them (scene.py leans on the shared role for placement). Only the
+# door needs hinges, so the check would fire on every correct drawer — and an alarm that cries wolf
+# is worse than no alarm. `hinge-overlay` below still catches the case that actually costs money.
+NEEDS_HARDWARE = {"shelf": "shelf-pin", "drawer-bottom": "slide"}
+# A door landing on one of these covers only ~half of it, so it takes HALF-overlay hinges. Declaring
+# `full` there is the mistake that buys ten hinges of which three do not fit.
+SHARED_MOUNT_ROLES = {"gable", "divider"}
+
 
 @dataclass
 class Finding:
@@ -114,7 +124,7 @@ def _review_cabinet(proj: Project, cab: Cabinet, out: list) -> None:
                 f"'{p.id}' ({p.role}) has no joinery (no holes, no fitting referencing it) — is it attached?")
 
     # end margin — first/last screw of a seam must clear the panel end (confirmat etc.)
-    pid_to_panel = {p.id: p for p in panels}
+    pid_to_panel = pid_to_panel_all = {p.id: p for p in panels}
     for f in cab.fittings:
         hw = proj.hw(f.get("hardware"))
         at = f.get("at")
@@ -130,6 +140,44 @@ def _review_cabinet(proj: Project, cab: Cabinet, out: list) -> None:
             add("warn", "end-margin",
                 f"fitting '{f.get('id')}': screws span {min(at)}–{max(at)} mm on a {seam_len} mm edge; "
                 f"violates the {em} mm end margin for {hw.id} (chipboard blowout at the ends).")
+
+    # --- hardware completeness. A shelf with no pin fitting is not a drawing error — it is a missing
+    #     line on the buy list, discovered at assembly with the shops shut.
+    hw_types_by_panel: dict = {}
+    for f in cab.fittings:
+        hw = proj.hw(f.get("hardware"))
+        if not hw:
+            continue
+        for ref in ("door", "side", "drawer", "through", "into", "shelves"):
+            val = f.get(ref)
+            for pid in (val if isinstance(val, list) else [val] if val else []):
+                hw_types_by_panel.setdefault(pid, set()).add(hw.raw.get("type"))
+
+    for p in panels:
+        want = NEEDS_HARDWARE.get(p.role)
+        if want and want not in hw_types_by_panel.get(p.id, set()):
+            add("warn", "missing-hardware",
+                f"'{p.id}' ({p.role}) has no {want} fitting — it will be missing from the buy list "
+                f"(`meble hardware`), so nobody orders it.")
+
+    # --- hinge overlay must match what the door actually lands on
+    for f in cab.fittings:
+        hw = proj.hw(f.get("hardware"))
+        if not hw or hw.raw.get("type") != "hinge":
+            continue
+        mount = pid_to_panel_all.get(f.get("side"))
+        variant = f.get("variant")
+        if mount is None or variant is None:
+            continue
+        if mount.role in SHARED_MOUNT_ROLES and variant == "full":
+            add("warn", "hinge-overlay",
+                f"fitting '{f.get('id')}': door mounts on '{mount.id}' ({mount.role}), which is shared "
+                f"with the compartment next to it, but the hinge is declared FULL overlay. A door that "
+                f"covers only part of a divider needs HALF overlay (crank ~9.5).")
+        if mount.role in ("side-left", "side-right") and variant == "half":
+            add("warn", "hinge-overlay",
+                f"fitting '{f.get('id')}': door mounts on '{mount.id}' ({mount.role}) and covers its "
+                f"whole thickness, but the hinge is declared HALF overlay — that is normally FULL.")
 
     # bulk-drilling hint: many identical singles that could be one multi
     for p in panels:

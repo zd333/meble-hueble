@@ -4,6 +4,10 @@ A fitting references the panels it joins. Applying it computes the drill holes f
 drill pattern and writes them onto those panels, tagged with `src: <fitting id>`. Re-applying is safe:
 only holes whose `src` matches a (re)applied fitting are replaced; manual holes (no `src`) are untouched.
 
+A fitting may opt out entirely with `drilling: manual` (its holes are hand-derived and tagged with its
+id) or `drilling: none` (it has no holes by design — a drawer slide mounted on site). Both are skipped
+silently; only `drilling: stamped`, the default, is expected to produce holes here.
+
 v1 implements butt-joint hardware that has both a `face` and an `edge` drill pattern (confirmat, dowel),
 and only where the seam runs along one of the through panel's own edges (`seam.through_edge`). A mid-face
 T-joint — an internal gable landing on a top/bottom panel, say — is recognised but skipped (warn), as is
@@ -121,6 +125,17 @@ def apply_fittings(cabinet: dict, hardware_by_id: dict, boards_by_id: dict,
         if hw is None:
             warnings.append(f"fitting '{fid}': unknown hardware '{f.get('hardware')}' (skipped)")
             continue
+        # DELIBERATELY not stamped, and therefore NOT a warning:
+        #   manual — the holes exist on the panels, hand-derived and tagged `src: <this id>` (hinge
+        #            cups and plates, shelf pins — none of them butt joints, so the perimeter maths
+        #            below cannot produce them). The merge step keeps them, because a fitting that is
+        #            never `applied` never has its holes dropped.
+        #   none   — there are no holes at all and there should not be (drawer slides, mounted on
+        #            site). The fitting exists only so the hardware still reaches the buy list.
+        # Before this, every one of these printed "not implemented (skipped)" on every single run —
+        # which is how a warning stops being read.
+        if f.get("drilling", "stamped") in ("manual", "none"):
+            continue
         for ref in ("through", "into"):
             if f.get(ref) and f[ref] not in panels_by_id:
                 warnings.append(f"fitting '{fid}': panel '{f[ref]}' not found (skipped)")
@@ -149,12 +164,19 @@ def apply_fittings(cabinet: dict, hardware_by_id: dict, boards_by_id: dict,
     # merge: drop previously-stamped holes from these fittings, keep manual holes, add fresh stamps
     added = 0
     for p in panels:
-        holes = list(p.get("holes") or [])
-        holes = [h for h in holes if h.get("src") not in applied]
+        original = list(p.get("holes") or [])
+        holes = [h for h in original if h.get("src") not in applied]
         new = stamped.get(p["id"], [])
         holes.extend(new)
         added += len(new)
-        p["holes"] = holes
+        # /!\ ONLY WRITE BACK WHEN SOMETHING ACTUALLY CHANGED. Assigning `p["holes"]` replaces the
+        #     ruamel sequence, and every comment attached to an item inside it is lost with it — so
+        #     an unconditional assignment quietly ate a line of design reasoning from EVERY panel on
+        #     EVERY run, including cabinets where `fit` stamped nothing at all. The comments in these
+        #     files are the reasoning behind the cuts; losing them silently is worse than any hole
+        #     this function stamps.
+        if new or len(holes) != len(original):
+            p["holes"] = holes
 
     return applied, warnings, added
 

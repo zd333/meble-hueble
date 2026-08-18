@@ -23,7 +23,7 @@
 #             gable height = H − 18 − cover = 1297        top panel occupies the last 18
 #
 # After editing: `python -m meble fit --cabinet wc-column`, then `validate` + `review`. NOTE the
-# minifix, hinge-plate, shelf-pin and gable-confirmat holes are HAND-WRITTEN (fit cannot stamp
+# rafix, hinge-plate, shelf-pin and gable-confirmat holes are HAND-WRITTEN (fit cannot stamp
 # cam hardware or mid-face T-joints yet) — they will NOT move on their own. Update them by hand.
 #
 # ENVELOPE  736 W × 199 D × 2524 H   (carcass 199 deep; the fronts add 18 in front of it -> 217 total)
@@ -62,9 +62,9 @@
 # SERVICEABILITY (the cover must come off to reach the cistern)
 #   · bottom fixings = 2 confirmats per side (z 60, 340), heads on the cover's OUTER face -> unscrewed
 #     from the front
-#   · top fixings    = 2 minifix into the DIVIDER's front edge (x 100, 600), cams bored in the divider's
+#   · top fixings    = 2 rafix into the DIVIDER's front edge (x 100, 600), housings bored in the divider's
 #     TOP face -> reached from inside the upper cabinet with the doors open. This is why the cover's top
-#     is fixed to the divider and not to the side panels: a cam in a side panel would sit in the sealed
+#     is fixed to the divider and not to the side panels: a housing in a side panel would sit in the sealed
 #     lower box.
 #   · release 2 cams + 2+2 confirmats and the cover pulls straight forward.
 #
@@ -95,7 +95,7 @@
 #   -> CONSEQUENCE: it eats 18 mm of usable depth in the upper cabinet. The gable drops 199 -> 181 and
 #      the shelves 194 -> 176. Everything below the divider is untouched.
 #   -> Fixed on all four edges, which is what makes it stiffen the upper box rather than just close it:
-#      2 confirmats into side-l (wall side), 2 minifix into side-r (visible side), 2 confirmats up from
+#      2 confirmats into side-l (wall side), 2 rafix into side-r (visible side), 2 confirmats up from
 #      the divider, and — instead of anything coming down from above — 3 confirmats driven FORWARD
 #      through its own outer face into the top panel's rear edge (cf-top-back). It also carries the
 #      gable along its whole rear edge (cf-gable-back, 4 screws).
@@ -113,8 +113,8 @@
 #     Consequences: back-upper's top edge is unfixed (it is held on its other three edges), and the
 #     gable's top edge is unfixed — cf-gable-back below took over that job. Same rule now on wm-wardrobe.
 #
-# GABLE FIXING: confirmat, not minifix — the head lands on the divider's underside (sealed inside the WC
-# boxing) and on the back panel's wall face, so nothing shows and we skip the Ø15 cam bores.
+# GABLE FIXING: confirmat, not rafix — the head lands on the divider's underside (sealed inside the WC
+# boxing) and on the back panel's wall face, so nothing shows and we skip the Ø20 housing bores.
 #   The gable is now tied at its BOTTOM (2 confirmats up into the divider) and along its whole REAR edge
 #   (3 confirmats through the back panel, cf-gable-back) — 5 fixings, against the 4 it had before, and
 #   the rear-edge line restrains it far better than a pair at the top ever did.
@@ -126,9 +126,9 @@ name: "Bathroom WC column"
 kind: custom
 category: tall
 construction: mixed          # LEFT side is confirmat throughout — it sits in the corner against the
-                             # wall, so no head is ever seen there. RIGHT side keeps minifix: it faces
+                             # wall, so no head is ever seen there. RIGHT side keeps rafix: it faces
                              # the sink and is visible. Otherwise:
-                             # minifix where a head would show (carcass corners, seen from outside);
+                             # rafix where a head would show (carcass corners, seen from outside);
                              # confirmat where it would not — the cover's bottom row and the centre
                              # gable's two end joints. See CLAUDE.md on picking the joint.
 dimensions: {width: 736, height: 2524, depth: 199}   # carcass depth; fronts sit at y −18..0
@@ -149,7 +149,7 @@ panels:
   grain: height               # emboss runs vertically
   edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
   holes:
-    # THIS PANEL IS CONFIRMAT-JOINED, not minifix: its outer face lands in the corner against the wall,
+    # THIS PANEL IS CONFIRMAT-JOINED, not rafix: its outer face lands in the corner against the wall,
     # so the heads are never seen. Ø8 through + countersink on OUTER, Ø4 pilot in the mating panel's edge.
     # x 37 = 37 from the wall, x 162 = 37 from the front edge.
     # divider @1200 — mid-height, so `meble fit` can't stamp it (see the fitting note); hand-written.
@@ -157,8 +157,8 @@ panels:
   - {face: inner, x: 162, y: 1296, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
   - {face: inner, x: 162, y: 1852, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
   - {face: inner, x: 162, y: 2408, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
-  - {face: inner, x: 55, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: inner, x: 162, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
+  - {face: inner, x: 55, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
+  - {face: inner, x: 162, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
   - {face: outer, x: 9, y: 1359, dia: 8, depth: through, type: multi, count: 2, spacing: 997, direction: y, src: cf-back-l}
   - {face: outer, x: 68, y: 2515, dia: 8, depth: through, type: multi, count: 2, spacing: 81, direction: x, src: cf-top-l}
   - face: edge2
@@ -174,17 +174,17 @@ panels:
   element_type: panel
   role: side-right            # X: 0 = front, 199 = wall — so the front column is x 37 here, rear x 162.
                               # No hinges: door-r hangs off the centre gable, so this panel only carries
-                              # structural minifix + the right compartment's fixed shelf pins.
+                              # structural rafix + the right compartment's fixed shelf pins.
   width: 199
   height: 2524
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
   holes:
-  - {face: inner, x: 37, y: 1200, dia: 5, depth: 12, type: multi, count: 2, spacing: 125, direction: x, src: mf-div-r}
-  - {face: inner, x: 37, y: 2515, dia: 5, depth: 12, type: multi, count: 2, spacing: 107, direction: x, src: mf-top-r}
-  - {face: inner, x: 37, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: inner, x: 144, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: inner, x: 190, y: 1359, dia: 5, depth: 12, type: multi, count: 2, spacing: 997, direction: y, src: mf-back-r}
+  - {face: inner, x: 37, y: 1200, dia: 5, depth: 12, type: multi, count: 2, spacing: 125, direction: x, src: rx-div-r}
+  - {face: inner, x: 37, y: 2515, dia: 5, depth: 12, type: multi, count: 2, spacing: 107, direction: x, src: rx-top-r}
+  - {face: inner, x: 37, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
+  - {face: inner, x: 144, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
+  - {face: inner, x: 190, y: 1359, dia: 5, depth: 12, type: multi, count: 2, spacing: 997, direction: y, src: rx-back-r}
   - face: edge4
     from: 60
     dia: 4
@@ -204,15 +204,14 @@ panels:
   edge_banding: {edges: {1: eb-u604-1}, glue_type: long}   # front edge only (see review notes: the rear
                                                            # edge 3 faces bare tiles — consider banding it)
   holes:
-    # MOUNT WITH THE CAM FACE (inner) UP — all cams must be reachable from the upper cabinet.
-    # to the side panels: Ø15 cam 34 mm in from each end + Ø8 through the end edge
-    # LEFT end is confirmat (side-l is against the wall): just a Ø4 pilot in edge4, no cam. RIGHT end
-    # stays minifix, because side-r's outer face is visible next to the sink.
+    # MOUNT WITH THE HOUSING FACE (inner) UP — all housings must be reachable from the upper cabinet.
+    # to the side panels: ONE Ø20 housing 9.5 mm in from each end (its bore breaks out at the edge,
+    # which is what lets the bolt in — no separate Ø8 channel, unlike minifix)
+    # LEFT end is confirmat (side-l is against the wall): just a Ø4 pilot in edge4, no housing. RIGHT
+    # end stays rafix, because side-r's outer face is visible next to the sink.
   - {face: edge4, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 99, src: cf-div-l}
-  - {face: inner, x: 666, y: 37, dia: 15, depth: 13, type: multi, count: 2, spacing: 125, direction: y, src: mf-div-r}
-  - {face: edge2, from: 37, dia: 8, depth: 30, type: multi, count: 2, spacing: 125, src: mf-div-r}
-  - {face: inner, x: 100, y: 165, dia: 15, depth: 13, type: multi, count: 2, spacing: 500, direction: x, src: mf-cover-top}
-  - {face: edge1, from: 100, dia: 8, depth: 30, type: multi, count: 2, spacing: 500, src: mf-cover-top}
+  - {face: inner, x: 690.5, y: 37, dia: 20, depth: 14, type: multi, count: 2, spacing: 125, direction: y, src: rx-div-r}
+  - {face: inner, x: 100, y: 189.5, dia: 20, depth: 14, type: multi, count: 2, spacing: 500, direction: x, src: rx-cover-top}
   - {face: outer, x: 350, y: 68, dia: 8, depth: through, type: multi, count: 2, spacing: 81, direction: y, src: cf-gable-bot}
   - face: outer
     x: 100
@@ -241,9 +240,8 @@ panels:
     # cams bored from the DOWN face (= outer) so they stay reachable from inside the upper cabinet even
     # if there is no clearance above the unit
     # LEFT end is confirmat (side-l is against the wall) -> its Ø4 edge4 pilots are stamped by `fit`
-    # as cf-top-l; no cam needed here. RIGHT end stays minifix (side-r is visible).
-  - {face: outer, x: 666, y: 37, dia: 15, depth: 13, type: multi, count: 2, spacing: 107, direction: y, src: mf-top-r}
-  - {face: edge2, from: 37, dia: 8, depth: 30, type: multi, count: 2, spacing: 107, src: mf-top-r}
+    # as cf-top-l; no housing needed here. RIGHT end stays rafix (side-r is visible).
+  - {face: outer, x: 690.5, y: 37, dia: 20, depth: 14, type: multi, count: 2, spacing: 107, direction: y, src: rx-top-r}
   - {face: edge3, from: 100, dia: 4, depth: 35, type: multi, count: 3, spacing: 250, src: cf-top-back}
   - {face: edge4, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-top-l}
   placement: {pos: [18, 0, 2506]}
@@ -274,8 +272,8 @@ panels:
   - {face: inner, x: 144, y: 87, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 144, y: 643, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 144, y: 1199, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
-  - {face: outer, x: 37, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: outer, x: 144, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y}
+  - {face: outer, x: 37, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y, src: pins}
+  - {face: outer, x: 144, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y, src: pins}
   - {face: edge3, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-gable-bot}
   - {face: edge4, from: 80, dia: 4, depth: 35, type: multi, count: 4, spacing: 380, src: cf-gable-back}
   placement: {pos: [359, 0, 1209], rot: [90, 0, -90]}
@@ -331,11 +329,10 @@ panels:
                               # top edge only — it is now part of the cabinet's top surface at z 2524,
                               # a few mm under the ceiling. Everything else is butted and hidden.
   holes:
-    # minifix to both sides: Ø15 cam 34 mm in from each end + Ø8 through that end edge. Cams on the
+    # rafix to both sides: ONE Ø20 housing 9.5 mm in from each end, no edge channel. Housings on the
     # INNER face (toward the shelves) so they can be turned during assembly — the outer face is against
     # the wall and unreachable once up.
-  - {face: inner, x: 34, y: 150, dia: 15, depth: 13, type: multi, count: 2, spacing: 997, direction: y, src: mf-back-r}
-  - {face: edge4, from: 150, dia: 8, depth: 30, type: multi, count: 2, spacing: 997, src: mf-back-r}
+  - {face: inner, x: 9.5, y: 150, dia: 20, depth: 14, type: multi, count: 2, spacing: 997, direction: y, src: rx-back-r}
   - {face: edge2, from: 150, dia: 4, depth: 35, type: multi, count: 2, spacing: 997, src: cf-back-l}
   - {face: outer, x: 350, y: 80, dia: 8, depth: through, type: multi, count: 4, spacing: 380, direction: y, src: cf-gable-back}
   - {face: outer, x: 100, y: 1306, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-back}
@@ -358,8 +355,8 @@ panels:
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-2, glue_type: long}
   holes:
-    # minifix bolts into the divider's front edge (top row — released from inside the upper cabinet)
-  - {face: inner, x: 118, y: 1200, dia: 5, depth: 12, type: multi, count: 2, spacing: 500, direction: x, src: mf-cover-top}
+    # rafix bolts into the divider's front edge (top row — released from inside the upper cabinet)
+  - {face: inner, x: 118, y: 1200, dia: 5, depth: 12, type: multi, count: 2, spacing: 500, direction: x, src: rx-cover-top}
   - face: outer
     x: 9.0
     y: 60
@@ -443,16 +440,18 @@ assembly:
   - {id: cf-cover-l, hardware: confirmat-7x50, through: cover, into: side-l, seam: {through_edge: 4, into_edge: 2}, at: [60, 340]}
   - {id: cf-cover-r, hardware: confirmat-7x50, through: cover, into: side-r, seam: {through_edge: 2, into_edge: 4}, at: [60, 340]}
 
-  # --- minifix joints. `meble fit` does NOT stamp cam hardware yet (it warns and skips), so the holes
-  #     above are hand-written and tagged with these ids: when minifix stamping lands, `fit` will take
-  #     them over cleanly. `through` = the panel that gets the Ø8 edge hole + the Ø15 cam;
+  # --- RAFIX joints (`drilling: manual`: `meble fit` does not stamp cam hardware, so the holes above
+  #     are hand-written and tagged with these ids). TWO HOLES each, which is why rafix and not
+  #     minifix: the Ø20 housing sits 9.5 mm from the seam edge so its bore breaks out there and the
+  #     bolt enters directly — minifix would need a third bore, a Ø8 channel in from the edge to
+  #     reach a cam 34 mm back. `through` = the panel that gets the Ø20 housing;
   #     `into` = the panel the bolt screws into (its inner FACE, so there is no into_edge).
   #     `at` = positions along the seam: from the wall for edges 2/4, from the left for edge 1.
-  - {id: mf-div-r, hardware: minifix-15, through: divider, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [37, 162]}
-  - {id: mf-top-r, hardware: minifix-15, through: top-panel, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [37, 144]}
-  - {id: mf-cover-top, hardware: minifix-15, through: divider, into: cover, seam: {through_edge: 1, into_face: inner}, at: [100, 600]}
+  - {id: rx-div-r, hardware: rafix-20, drilling: manual, through: divider, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [37, 162]}
+  - {id: rx-top-r, hardware: rafix-20, drilling: manual, through: top-panel, into: side-r, seam: {through_edge: 2, into_face: inner}, at: [37, 144]}
+  - {id: rx-cover-top, hardware: rafix-20, drilling: manual, through: divider, into: cover, seam: {through_edge: 1, into_face: inner}, at: [100, 600]}
 
-  # --- centre gable T-joints: CONFIRMAT, not minifix — both heads land on an unseen face (see CLAUDE.md
+  # --- centre gable T-joints: CONFIRMAT, not rafix — both heads land on an unseen face (see CLAUDE.md
   #     "Pick the joint by whether the screw head is ever seen"). The screw passes through the HORIZONTAL
   #     panel's face, on the gable's centreline, into the gable's end EDGE.
   #     `meble fit` cannot stamp these: it only knows perimeter butt joints, where the seam runs along one
@@ -469,21 +468,21 @@ assembly:
   #     stopping the top-front corner walking forward under door load.
   - {id: cf-gable-back, hardware: confirmat-7x50, through: back-upper, into: gable-mid, seam: {through_face: outer, into_edge: 4}, at: [80, 460, 840, 1220]}
 
-  # --- back panel: minifix to both sides (cams in the back, bolts into the sides' inner faces at their
+  # --- back panel: rafix to both sides (housings in the back, bolts into the sides' inner faces at their
   #     x 9 / x 190). Confirmat is not an option here — the screw would have to pass through a side
   #     panel's VISIBLE outer face. `at` = height above the back's own bottom edge (cabinet z − 1209).
-  - {id: mf-back-r, hardware: minifix-15, through: back-upper, into: side-r, seam: {through_edge: 4, into_face: inner}, at: [150, 1147]}
+  - {id: rx-back-r, hardware: rafix-20, drilling: manual, through: back-upper, into: side-r, seam: {through_edge: 4, into_face: inner}, at: [150, 1147]}
 
   # --- LEFT SIDE IS CONFIRMAT THROUGHOUT. side-l ends up in the corner against the wall, so its outer
   #     face is never seen and there is no reason to pay for cams there (CLAUDE.md: pick the joint by
-  #     whether the head is ever seen). side-r keeps minifix — it faces the sink and IS visible.
+  #     whether the head is ever seen). side-r keeps rafix — it faces the sink and IS visible.
   #     Only cf-top-l is a clean perimeter joint that `meble fit` can stamp. The other two are skipped
   #     (no `through_edge`) and hand-written above, for different reasons:
   #       · cf-div-l  — the divider lands mid-height on side-l, not along one of its edges.
   #       · cf-back-l — the seam does run along side-l's edge4, but side-l measures height from the
   #         FLOOR and the back from z 1209, so fit's single shared `at` list cannot describe both.
-  #     `at` = 50/149 rather than the 37/162 the minifix used: a Ø4 confirmat pilot needs the 50 mm end
-  #     margin on a 199 mm deep edge, and a cam bore does not.
+  #     `at` = 50/149 rather than the 37/162 the cam joint used: a Ø4 confirmat pilot needs the 50 mm
+  #     end margin on a 199 mm deep edge, and a housing bore does not.
   # cf-top-l is NO LONGER STAMPABLE and its `seam` deliberately omits `through_edge` so `fit` skips it:
   # the top panel is 181 deep and sits 18 mm off the wall, while side-l measures from the wall, so
   # side-l's x = 18 + at (68 / 149) rather than at. Hand-written above.
@@ -502,18 +501,26 @@ assembly:
   #     looks at the wall), so only a symmetric set lands on the same world coordinates for both panels.
   - {id: cf-back-bot, hardware: confirmat-7x50, through: divider, into: back-upper, seam: {through_edge: 3, into_edge: 3}, at: [100, 600]}
   # cf-back-top REMOVED for the same reason. back-upper is still fixed on three edges — 2 confirmats
-  # into side-l, 2 minifix into side-r, 2 confirmats up from the divider — plus it now carries the
+  # into side-l, 2 rafix into side-r, 2 confirmats up from the divider — plus it now carries the
   # gable. Its top edge simply butts the top panel's underside.
 
   # --- doors: 3 concealed hinges each. Cups on the door (see panel holes); plates screw into the
   #     mounting panel's 37 mm Ø5 setback line with euro screws (6.3×13) at z ±16 around each cup.
-  #     door-l -> side-l, FULL overlay (18 mm).  door-r -> the GABLE, HALF overlay (8 mm, crank ~9.5).
-  #     Same drilling either way; only the hinge you buy differs. See the DOOR HANDING note up top.
-  - {id: hg-door-l, hardware: hinge-clip-110, door: door-l, side: side-l, at: [1312, 1868, 2424]}
-  - {id: hg-door-r, hardware: hinge-clip-110, door: door-r, side: gable-mid, at: [1312, 1868, 2424]}
+  # /!\ THE TWO DOORS TAKE DIFFERENT HINGES — see `variant:` below, which is now the authoritative
+  #     statement of it (it used to live only in prose, so the buy list could not see it).
+  #     door-l covers the full 18 mm of side-l -> FULL overlay. door-r covers only 8 mm of the SHARED
+  #     centre gable -> HALF overlay (crank ~9.5). The DRILLING IS THE SAME either way; only the hinge
+  #     you buy differs, which is exactly why this has to be declared and cannot be inferred from the
+  #     holes. `meble review` cross-checks it against the mounting panel's role.
+  #     `drilling: manual` = the cup and plate holes above are hand-derived and tagged `src:`; they are
+  #     NOT stampable (a hinge is not a butt joint), and `meble fit` must leave them alone in silence.
+  - {id: hg-door-l, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-l, side: side-l, at: [1312, 1868, 2424]}
+  - {id: hg-door-r, hardware: hinge-clip-110, variant: half, drilling: manual, door: door-r, side: gable-mid, at: [1312, 1868, 2424]}
 
-  # --- 16 × Ø5 fixed shelf pins (4 per shelf: front+back on each of 2 supporting panels) — no drilling
-  #     of their own; not adjustable, so just the 2 chosen heights instead of a full System-32 column.
-  - {id: pins, hardware: shelf-pin-5, at: [1630, 2068]}
+  # --- Ø5 fixed shelf pins. `at` is the two chosen SHELF HEIGHTS, not a pin count — 4 pins per shelf
+  #     (front + back on each of the 2 supporting panels) × 4 shelves = 16, so `quantity` is explicit.
+  #     Not adjustable, so 2 heights instead of a full System-32 column. The gable's bores are
+  #     `depth: through` and shared by both compartments, so those pins MUST have a collar.
+  - {id: pins, hardware: shelf-pin-5, drilling: manual, at: [1630, 2068], quantity: 16, shelves: [shelf-l, shelf-r]}
 
 parts: []

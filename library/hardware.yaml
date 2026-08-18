@@ -10,6 +10,9 @@ hardware:
       edge: { dia: 4, depth: 35 }           # Ø4 pilot into the end-grain of the mating panel
     end_margin: 50                          # keep first/last screw >= this from the panel end
 
+  # NOT USED IN THIS PROJECT — kept as reference knowledge. Every cam joint here is `rafix-20`, which
+  # does the same job in two holes instead of three (see below). Minifix is cheaper per unit but needs
+  # the extra Ø8 edge channel, and drilling is charged per hole.
   - id: minifix-15
     type: minifix
     name: "Minifix cam 15 (pin 34+11)"
@@ -21,9 +24,24 @@ hardware:
   - id: rafix-20
     type: rafix
     name: "Rafix 20"
+    # THE DEFAULT CAM FITTING HERE — used wherever a confirmat head would land on a face you can see.
+    #
+    # TWO HOLES, not three. That is the whole reason to prefer it over minifix: the Ø20 housing sits
+    # only `axis_from_edge` from the panel edge, so the bore (r=10) BREAKS OUT at the edge by ~0.5 mm
+    # and the bolt enters straight through that opening. Minifix needs a third bore — a Ø8 channel
+    # drilled in from the edge to reach a cam sitting ~34 mm back. One less hole per joint means one
+    # less line to type into the editor and one less hole to be charged for.
+    #
+    # /!\ VERIFY THESE THREE FIGURES against the rafix you actually buy before ordering drilling.
+    #     `depth: 14` is deliberately the DEEP end of the range (12.5-14 depending on maker): a hole
+    #     bored deeper than the housing needs still seats it, whereas one bored too shallow does not.
+    #     The cost of that choice is the far-side wall — 18 − 14 = 4 mm — which only matters where the
+    #     opposite face is on show. `axis_from_edge` is the order-critical one: too far from the edge
+    #     and the bore never breaks out, so the bolt has nothing to enter through.
+    axis_from_edge: 9.5                   # housing centre to the seam edge; Ø20 bore breaks out ~0.5
     drill:
-      housing: { dia: 20, depth: 14 }
-      bolt:    { dia: 5 }
+      housing: { dia: 20, depth: 14 }     # in the FACE of the panel the bolt enters
+      bolt:    { dia: 5, depth: 12 }      # in the FACE of the mating panel, on the seam centreline
 
   - id: dowel-8x30
     type: dowel
@@ -35,6 +53,10 @@ hardware:
   - id: shelf-pin-5
     type: shelf-pin
     name: "Shelf pin Ø5"
+    # /!\ BUY THE COLLARED KIND wherever a pin goes into a `depth: through` bore. A gable with
+    #     shelves on BOTH sides gets ONE through column pair, so two pins meet mid-panel at ~9 mm
+    #     each — plenty, but only if each has a collar to stop against. A plain peg has nothing.
+    #     `meble hardware` reports how many of the total land in through bores.
     drill:
       hole: { dia: 5, depth: 13 }           # on the 32 mm grid, 37 mm setback
 
@@ -42,6 +64,17 @@ hardware:
   - id: hinge-clip-110
     type: hinge
     name: "Concealed hinge clip 110°"
+    # /!\ THE OVERLAY IS A PURCHASING CHOICE, NOT A DRILLING ONE. The Ø35 cup and the 37 mm plate
+    #     line below are IDENTICAL for all three; only the hinge you buy differs. It is decided by
+    #     which panel the door lands on, so it is declared per fitting (`variant:`), and
+    #     `meble review` cross-checks it against that panel's role. Figures: cabinet-construction.md.
+    variants:
+      full:  { name: "full overlay (nakładany prosty)", crank: 0,
+               use: "the door covers a whole side panel" }
+      half:  { name: "half overlay (półnakładany)",     crank: 9.5,
+               use: "two doors share one divider/gable, each covering ~half of it" }
+      inset: { name: "inset (wpuszczany)",              crank: 16.5,
+               use: "the door sits flush inside the carcass" }
     drill:
       cup:   { dia: 35, depth: 12, boring: 5 }   # on the door (front)
       plate: { pattern: system32, screws: 2 }    # on the cabinet side, 37 mm setback
@@ -49,8 +82,11 @@ hardware:
   - id: slide-bb-350
     type: slide
     name: "Ball-bearing slide 350 (full extension)"
+    sold_as: pair                                 # left + right; `quantity: 1` on a fitting = 1 pair
     length: 350
     side_clearance: 12.7                          # per side -> drawer box width = internal - 25.4
+    # `pattern: system32` is SYMBOLIC — nothing expands it into holes, and we do not want it to:
+    # slides are mounted on site, so their fittings carry `drilling: none`.
     drill:
       cabinet: { pattern: system32, front_setback: 37 }
       drawer:  { pattern: system32 }
@@ -58,8 +94,11 @@ hardware:
   - id: slide-bb-500
     type: slide
     name: "Ball-bearing slide 500 (full extension)"
+    sold_as: pair                                 # left + right; `quantity: 1` on a fitting = 1 pair
     length: 500
     side_clearance: 12.7                          # per side -> drawer box width = internal - 25.4
+    # `pattern: system32` is SYMBOLIC — nothing expands it into holes, and we do not want it to:
+    # slides are mounted on site, so their fittings carry `drilling: none`.
     drill:
       cabinet: { pattern: system32, front_setback: 37 }
       drawer:  { pattern: system32 }

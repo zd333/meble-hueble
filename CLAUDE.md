@@ -77,10 +77,15 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
 - **Pick the joint by whether the screw head is ever seen.** Default to **confirmat** wherever the head
   lands on a face nobody looks at: the underside of a bottom/divider, the top face of a top panel, an
   internal gable's end joints, anything inside a sealed boxing, a carcass face against a wall. Confirmats
-  are cheaper than cam fittings, faster to assemble, need no Ø15 cam + Ø8 dowel bores (so far less to
-  type into the editor), and pull a T-joint tighter. Reach for **minifix/rafix** only when the head would
-  otherwise sit on a show face — or when the joint is meant to be taken apart repeatedly, since a
-  confirmat's Ø4 pilot strips after a few cycles.
+  are cheaper than cam fittings, faster to assemble, need no Ø20 housing bore (so far less to type into
+  the editor), and pull a T-joint tighter. Reach for a cam fitting only when the head would otherwise
+  sit on a show face — or when the joint is meant to be taken apart repeatedly, since a confirmat's Ø4
+  pilot strips after a few cycles.
+- **The cam fitting is `rafix-20`, and it is the only one.** Two holes per joint, not three: the Ø20
+  housing sits **9.5 mm** from the seam edge so its bore breaks out there and the bolt enters directly.
+  Minifix puts its Ø15 cam ~34 mm back and needs a third bore — a Ø8 channel in from the edge — which
+  is an extra hole to be charged for and an extra line to type. Do not mix the two; `minifix-15` stays
+  in the library as reference only.
 - **Panel `width`/`height` must be whole millimetres.** The CSV writes them as integers, so a half-mm
   dimension is silently rounded away in the order. Choose envelope numbers that keep every *derived*
   size whole — e.g. 736 wide rather than 735, so the two doors land on 367 and not 366.5. Hole
@@ -89,6 +94,15 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
 - `grain` default **forces orientation** (panels never rotate). `any|width|height` → CSV `Słoje` 0|2|1.
 - Carcass (top/bottom **between** sides): **`top/bottom length = width − 2×thickness`** (e.g. `W−36`).
 - Ball-bearing drawer box width = `internal − 25.4`. System-32 = **Ø5, 32 mm pitch, 37 mm front setback**.
+- **Hardware you BUY is declared on the fitting, never inferred from holes** (`meble hardware`). Three
+  fields carry it: **`variant:`** — a purchasing difference the drilling cannot express, above all hinge
+  overlay (a door on an outer side is `full`; two doors sharing a divider are `half`, and the cup and
+  plate line are IDENTICAL, so nothing else can tell them apart); **`quantity:`** — defaults to
+  `len(at)`, stated explicitly when it differs (a shelf-pin fitting's `at` is a list of shelf HEIGHTS,
+  and each shelf takes 4 pins); and **`drilling:`** — `stamped` (default, `meble fit` owns the holes),
+  `manual` (hand-derived, tagged `src:`, fit leaves them alone), or `none` (no holes by design, e.g.
+  drawer slides mounted on site). Counting hardware from drill holes is wrong twice over: a hole does
+  not know what it is for, and the count is not the quantity.
 - **Prefer bulk (multi) drilling.** Whenever holes form a regular series — a shelf-pin column, a
   System-32 row, repeated confirmats along a seam — specify **one `multi` hole** (`count` + `spacing`,
   plus `direction` for surface holes), **not N singles**. In the editor a multi hole is one entry
@@ -133,8 +147,8 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
 | Fitting               | Face hole              | Edge hole | Notes |
 |-----------------------|------------------------|-----------|-------|
 | Confirmat (l=45)      | Ø8 + countersink       | Ø4 d≈35   | default carcass joint; edge Ø4 (editor allows 4/8); ≥50 mm from end |
-| Minifix 15            | Ø15 cam + Ø8 dowel     | Ø5 bolt   | knock-down, hidden |
-| Rafix 20              | Ø20 housing (~14 deep) | Ø5 bolt   | faster, pricier |
+| **Rafix 20** (our cam) | Ø20 housing ~14 deep, axis **9.5** from the edge | Ø5 bolt d12 | **2 holes**; bore breaks out at the edge so the bolt enters — no channel |
+| Minifix 15 (not used)  | Ø15 cam + Ø8 edge channel | Ø5 bolt | 3 holes; cam sits ~34 mm back |
 | Dowel Ø8 (l=30)       | Ø8                     | Ø8        | alignment |
 | Hinge cup             | Ø35 (~12 deep) + 2 scr | —         | boring dist 3–6, center ~22.5 from door edge |
 | Shelf pin / plate     | Ø5                     | —         | on 32 mm grid, 37 mm setback |
@@ -145,8 +159,8 @@ Board 18 mm, back 3 mm HDF. Deep dive: **`docs/cabinet-construction.md`**. IKEA 
 ## Tools (run from repo root)
 
 Convenient entry point: **`task <name>`** (see `Taskfile.yml`; `task --list`). Most take a scope after
-`--`, e.g. `task pdf -- --cabinet open-900`. User-facing tasks: `list`, `review`, `test`, `csv`, `pdf`, `view`,
-`setup`. The design internals (`scaffold`, `fit`, `validate`) are `python -m meble …` commands the
+`--`, e.g. `task pdf -- --cabinet open-900`. User-facing tasks: `list`, `review`, `test`, `csv`, `pdf`,
+`hardware`, `view`, `setup`. The design internals (`scaffold`, `fit`, `validate`) are `python -m meble …` commands the
 `design-cabinet` / `cabinet-review` skills run for you during a session — not surfaced as tasks. Full CLI: 
 
 ```bash
@@ -156,6 +170,7 @@ python -m meble validate --apartment bohaterow           # schema/bounds checks
 python -m meble review   --apartment bohaterow           # domain linter (mirror, carcass math, wrong face…)
 python -m meble scaffold base --width 600 --height 720 --depth 560   # seed a new cabinet (prints YAML)
 python -m meble fit  --cabinet open-900                  # (re)stamp holes from fittings (safe/idempotent)
+python -m meble hardware --apartment bohaterow           # -> what to BUY + out/pdf/<scope>-hardware.pdf
 python -m meble csv  --set kitchen                       # -> out/csv/<board>.csv   (import to meble.pl)
 python -m meble pdf  --set kitchen                        # -> out/pdf/<set>.pdf     (manual-entry sheets)
 python -m meble view --set kitchen                       # interactive 3D viewer (opens browser)
