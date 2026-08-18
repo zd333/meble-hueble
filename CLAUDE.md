@@ -89,6 +89,15 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
 - `grain` default **forces orientation** (panels never rotate). `any|width|height` → CSV `Słoje` 0|2|1.
 - Carcass (top/bottom **between** sides): **`top/bottom length = width − 2×thickness`** (e.g. `W−36`).
 - Ball-bearing drawer box width = `internal − 25.4`. System-32 = **Ø5, 32 mm pitch, 37 mm front setback**.
+- **Hardware you BUY is declared on the fitting, never inferred from holes** (`meble hardware`). Three
+  fields carry it: **`variant:`** — a purchasing difference the drilling cannot express, above all hinge
+  overlay (a door on an outer side is `full`; two doors sharing a divider are `half`, and the cup and
+  plate line are IDENTICAL, so nothing else can tell them apart); **`quantity:`** — defaults to
+  `len(at)`, stated explicitly when it differs (a shelf-pin fitting's `at` is a list of shelf HEIGHTS,
+  and each shelf takes 4 pins); and **`drilling:`** — `stamped` (default, `meble fit` owns the holes),
+  `manual` (hand-derived, tagged `src:`, fit leaves them alone), or `none` (no holes by design, e.g.
+  drawer slides mounted on site). Counting hardware from drill holes is wrong twice over: a hole does
+  not know what it is for, and the count is not the quantity.
 - **Prefer bulk (multi) drilling.** Whenever holes form a regular series — a shelf-pin column, a
   System-32 row, repeated confirmats along a seam — specify **one `multi` hole** (`count` + `spacing`,
   plus `direction` for surface holes), **not N singles**. In the editor a multi hole is one entry
@@ -145,8 +154,8 @@ Board 18 mm, back 3 mm HDF. Deep dive: **`docs/cabinet-construction.md`**. IKEA 
 ## Tools (run from repo root)
 
 Convenient entry point: **`task <name>`** (see `Taskfile.yml`; `task --list`). Most take a scope after
-`--`, e.g. `task pdf -- --cabinet open-900`. User-facing tasks: `list`, `review`, `test`, `csv`, `pdf`, `view`,
-`setup`. The design internals (`scaffold`, `fit`, `validate`) are `python -m meble …` commands the
+`--`, e.g. `task pdf -- --cabinet open-900`. User-facing tasks: `list`, `review`, `test`, `csv`, `pdf`,
+`hardware`, `view`, `setup`. The design internals (`scaffold`, `fit`, `validate`) are `python -m meble …` commands the
 `design-cabinet` / `cabinet-review` skills run for you during a session — not surfaced as tasks. Full CLI: 
 
 ```bash
@@ -156,6 +165,7 @@ python -m meble validate --apartment bohaterow           # schema/bounds checks
 python -m meble review   --apartment bohaterow           # domain linter (mirror, carcass math, wrong face…)
 python -m meble scaffold base --width 600 --height 720 --depth 560   # seed a new cabinet (prints YAML)
 python -m meble fit  --cabinet open-900                  # (re)stamp holes from fittings (safe/idempotent)
+python -m meble hardware --apartment bohaterow           # -> what to BUY + out/pdf/<scope>-hardware.pdf
 python -m meble csv  --set kitchen                       # -> out/csv/<board>.csv   (import to meble.pl)
 python -m meble pdf  --set kitchen                        # -> out/pdf/<set>.pdf     (manual-entry sheets)
 python -m meble view --set kitchen                       # interactive 3D viewer (opens browser)

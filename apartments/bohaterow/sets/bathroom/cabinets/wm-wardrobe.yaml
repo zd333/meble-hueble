@@ -323,8 +323,8 @@ panels:
   - {face: inner, x: 638, y: 1894, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
   - {face: inner, x: 638, y: 2400, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
     # shelf pins — ONE height (z 2156), so a plain single hole per column, not a `multi`.
-  - {face: inner, x: 55, y: 2156, dia: 5, depth: 13}
-  - {face: inner, x: 638, y: 2156, dia: 5, depth: 13}
+  - {face: inner, x: 55, y: 2156, dia: 5, depth: 13, src: pins}
+  - {face: inner, x: 638, y: 2156, dia: 5, depth: 13, src: pins}
   - {face: outer, x: 98, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-l}
 - id: side-r
   name: "Right side"
@@ -344,8 +344,8 @@ panels:
   - {face: inner, x: 37, y: 1894, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 37, y: 2400, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
     # shelf pins — ONE height (z 2156), so a plain single hole per column, not a `multi`.
-  - {face: inner, x: 37, y: 2156, dia: 5, depth: 13}
-  - {face: inner, x: 620, y: 2156, dia: 5, depth: 13}
+  - {face: inner, x: 37, y: 2156, dia: 5, depth: 13, src: pins}
+  - {face: inner, x: 620, y: 2156, dia: 5, depth: 13, src: pins}
   - {face: outer, x: 77, y: 2511, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-r}
 - id: divider
   name: "Divider @1810 (bay ceiling / overhead-cabinet floor)"
@@ -579,11 +579,16 @@ assembly:
   #     on the door (panel holes above); plates screw into the mounting panel's 37 mm Ø5 setback line
   #     with euro screws (6.3×13) at z ∓16 around each cup. Both doors take the same hinge, and their
   #     drilling is a mirror pair — cup x 22.5 on door-l (edge4) vs 357.5 on door-r (edge2).
-  - {id: hg-door-l, hardware: hinge-clip-110, door: door-l, side: side-l, at: [1910, 2416]}
-  - {id: hg-door-r, hardware: hinge-clip-110, door: door-r, side: side-r, at: [1910, 2416]}
+  #     Both land on an outer side panel and cover its full 18 mm, so BOTH are FULL overlay — unlike
+  #     wc-column, whose right door shares a centre gable and needs half-overlay hinges instead.
+  #     `drilling: manual`: the cup/plate holes above are hand-derived and tagged `src:`, not stamped.
+  - {id: hg-door-l, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-l, side: side-l, at: [1910, 2416]}
+  - {id: hg-door-r, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-r, side: side-r, at: [1910, 2416]}
 
   # --- 4 × Ø5 shelf pins (2 per side panel) — no drilling of their own. ONE height, z 2156, giving
   #     equal 328 mm bays above and below. See SHELF in the header for why the spare heights went.
-  - {id: pins, hardware: shelf-pin-5, at: [2156]}
+  #     `at` is the ONE chosen shelf height, not a pin count: 4 pins for the single shelf (2 per side
+  #     panel), so `quantity` is explicit. Both bores are blind — no collar needed here.
+  - {id: pins, hardware: shelf-pin-5, drilling: manual, at: [2156], quantity: 4, shelves: [shelf]}
 
 parts: []

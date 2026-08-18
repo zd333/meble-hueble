@@ -139,3 +139,64 @@ def test_bad_seam_edge_is_an_error(proj):
     err, _ = run(proj, [mk_panel(id="a")],
                  fittings=[{"id": "f1", "through": "a", "into": "a", "seam": {"through_edge": 7}}])
     assert any("seam.through_edge must be 1..4" in e for e in err)
+
+
+# ------------------------------------------------------------------ buyable-hardware fields
+
+def test_a_fitting_that_buys_nothing_is_an_error(proj):
+    """No `at` and no `quantity` means it silently contributes zero to the shopping list — the one
+    failure that is only discovered at assembly, with the shops shut."""
+    err, _ = run(proj, [mk_panel(id="a")], fittings=[{"id": "f1", "hardware": "confirmat-7x50"}])
+    assert any("buys nothing" in e for e in err)
+
+
+def test_quantity_below_one_is_an_error(proj):
+    err, _ = run(proj, [mk_panel(id="a")],
+                 fittings=[{"id": "f1", "hardware": "confirmat-7x50", "quantity": 0}])
+    assert any("quantity must be" in e for e in err)
+
+
+def test_unknown_drilling_mode_is_an_error(proj):
+    err, _ = run(proj, [mk_panel(id="a")],
+                 fittings=[{"id": "f1", "hardware": "confirmat-7x50", "at": [1], "drilling": "later"}])
+    assert any("drilling 'later'" in e for e in err)
+
+
+def test_unknown_variant_is_an_error(proj):
+    err, _ = run(proj, [mk_panel(id="a")],
+                 fittings=[{"id": "f1", "hardware": "hinge-clip-110", "at": [1], "variant": "sideways"}])
+    assert any("variant 'sideways'" in e for e in err)
+
+
+def test_a_variant_on_hardware_with_none_declared_is_an_error(proj):
+    err, _ = run(proj, [mk_panel(id="a")],
+                 fittings=[{"id": "f1", "hardware": "confirmat-7x50", "at": [1], "variant": "full"}])
+    assert any("declares no variants" in e for e in err)
+
+
+def test_known_variant_is_accepted(proj):
+    err, _ = run(proj, [mk_panel(id="a")],
+                 fittings=[{"id": "f1", "hardware": "hinge-clip-110", "at": [1], "variant": "half"}])
+    assert err == []
+
+
+def test_drilling_none_with_holes_is_a_contradiction(proj):
+    """One of the two statements is wrong, and neither is safe to assume."""
+    p = mk_panel(id="a", holes=[mk_hole("outer", depth="through", x=10, y=10, src="sl1")])
+    err, _ = run(proj, [p], fittings=[{"id": "sl1", "hardware": "slide-bb-350",
+                                       "drilling": "none", "quantity": 1}])
+    assert any("drilling is 'none' but panels carry holes" in e for e in err)
+
+
+def test_drilling_manual_with_no_holes_warns(proj):
+    _, warn = run(proj, [mk_panel(id="a")],
+                  fittings=[{"id": "hg1", "hardware": "hinge-clip-110", "at": [1],
+                             "drilling": "manual"}])
+    assert any("no hole references it" in w for w in warn)
+
+
+def test_list_valued_panel_refs_are_resolved(proj):
+    err, _ = run(proj, [mk_panel(id="shelf-a")],
+                 fittings=[{"id": "pins", "hardware": "shelf-pin-5", "quantity": 4,
+                            "drilling": "manual", "shelves": ["shelf-a", "ghost"]}])
+    assert any("shelves panel 'ghost' not found" in e for e in err)

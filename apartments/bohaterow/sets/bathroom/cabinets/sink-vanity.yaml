@@ -680,9 +680,13 @@ assembly:
   - {id: cf-d2-bot-sl, hardware: confirmat-7x50, through: d2-bottom, into: d2-side-l, seam: {into_edge: 3}, at: [80, 234]}
   - {id: cf-d2-bot-sr, hardware: confirmat-7x50, through: d2-bottom, into: d2-side-r, seam: {into_edge: 3}, at: [80, 234]}
 
-  hardware:
-    # Documentary only — the loader reads assembly.fittings and ignores this key (same as
-    # library/parts/drawer-box-500x400.yaml). Nothing here is drilled: see SLIDES in the header.
-  - {ref: slide-bb-350, quantity: 2}     # one pair per drawer; cabinet member at y 0..350
+  # --- DRAWER SLIDES, one pair per drawer. `drilling: none` is the whole point: they are MOUNTED ON
+  #     SITE (see SLIDES in the header), so there are deliberately no holes anywhere for them and
+  #     `meble fit` leaves them alone without a warning. They still have to be BOUGHT, which is why
+  #     they are fittings now rather than the documentary `assembly.hardware:` list they used to be —
+  #     that key was ignored by the loader, so the slides were invisible to every tool.
+  #     `slide-bb-350` is `sold_as: pair`, so quantity 1 = 1 pair = 1 drawer.
+  - {id: sl-d1, hardware: slide-bb-350, drilling: none, quantity: 1, drawer: d1-bottom}
+  - {id: sl-d2, hardware: slide-bb-350, drilling: none, quantity: 1, drawer: d2-bottom}
 
 parts: []

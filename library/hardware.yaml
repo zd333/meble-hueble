@@ -35,6 +35,10 @@ hardware:
   - id: shelf-pin-5
     type: shelf-pin
     name: "Shelf pin Ø5"
+    # /!\ BUY THE COLLARED KIND wherever a pin goes into a `depth: through` bore. A gable with
+    #     shelves on BOTH sides gets ONE through column pair, so two pins meet mid-panel at ~9 mm
+    #     each — plenty, but only if each has a collar to stop against. A plain peg has nothing.
+    #     `meble hardware` reports how many of the total land in through bores.
     drill:
       hole: { dia: 5, depth: 13 }           # on the 32 mm grid, 37 mm setback
 
@@ -42,6 +46,17 @@ hardware:
   - id: hinge-clip-110
     type: hinge
     name: "Concealed hinge clip 110°"
+    # /!\ THE OVERLAY IS A PURCHASING CHOICE, NOT A DRILLING ONE. The Ø35 cup and the 37 mm plate
+    #     line below are IDENTICAL for all three; only the hinge you buy differs. It is decided by
+    #     which panel the door lands on, so it is declared per fitting (`variant:`), and
+    #     `meble review` cross-checks it against that panel's role. Figures: cabinet-construction.md.
+    variants:
+      full:  { name: "full overlay (nakładany prosty)", crank: 0,
+               use: "the door covers a whole side panel" }
+      half:  { name: "half overlay (półnakładany)",     crank: 9.5,
+               use: "two doors share one divider/gable, each covering ~half of it" }
+      inset: { name: "inset (wpuszczany)",              crank: 16.5,
+               use: "the door sits flush inside the carcass" }
     drill:
       cup:   { dia: 35, depth: 12, boring: 5 }   # on the door (front)
       plate: { pattern: system32, screws: 2 }    # on the cabinet side, 37 mm setback
@@ -49,8 +64,11 @@ hardware:
   - id: slide-bb-350
     type: slide
     name: "Ball-bearing slide 350 (full extension)"
+    sold_as: pair                                 # left + right; `quantity: 1` on a fitting = 1 pair
     length: 350
     side_clearance: 12.7                          # per side -> drawer box width = internal - 25.4
+    # `pattern: system32` is SYMBOLIC — nothing expands it into holes, and we do not want it to:
+    # slides are mounted on site, so their fittings carry `drilling: none`.
     drill:
       cabinet: { pattern: system32, front_setback: 37 }
       drawer:  { pattern: system32 }
@@ -58,8 +76,11 @@ hardware:
   - id: slide-bb-500
     type: slide
     name: "Ball-bearing slide 500 (full extension)"
+    sold_as: pair                                 # left + right; `quantity: 1` on a fitting = 1 pair
     length: 500
     side_clearance: 12.7                          # per side -> drawer box width = internal - 25.4
+    # `pattern: system32` is SYMBOLIC — nothing expands it into holes, and we do not want it to:
+    # slides are mounted on site, so their fittings carry `drilling: none`.
     drill:
       cabinet: { pattern: system32, front_setback: 37 }
       drawer:  { pattern: system32 }

@@ -283,7 +283,12 @@ def _multi_str(h) -> str:
     return f"multi ×{h.count} @ {h.spacing}mm{d}"
 
 
-def _table_drilling(c, panel: Panel, y):
+def _table_drilling(c, panel: Panel, y, stamped_srcs: set | None = None):
+    """`stamped_srcs` = fittings `meble fit` actually computes. A hole tagged with any OTHER fitting
+    is hand-derived (`drilling: manual` — hinge plates, shelf pins) and must NOT be marked `(auto)`:
+    that label tells the reader the position was machine-derived and will follow a resize, and for a
+    hand-written hole neither is true."""
+    stamped_srcs = stamped_srcs if stamped_srcs is not None else set()
     x = MARGIN + 6 * MM
     edge_holes = [h for h in panel.holes if h.is_edge]
     surf_holes = [h for h in panel.holes if h.is_surface]
@@ -293,7 +298,7 @@ def _table_drilling(c, panel: Panel, y):
         y = _row(c, x, y, ["edge", "from", "Ø", "depth", "type"],
                  [26 * MM, 22 * MM, 16 * MM, 24 * MM, 50 * MM], bold=True, color=C_DRILL)
         for h in edge_holes:
-            tag = "  (auto)" if h.src else ""
+            tag = "  (auto)" if h.src in stamped_srcs else ""
             y = _row(c, x, y, [EDGE_NAMES[h.edge_no], f"{h.frm} mm", f"{h.dia}",
                                _depth_str(h.depth), _multi_str(h) + tag],
                      [26 * MM, 22 * MM, 16 * MM, 24 * MM, 50 * MM], check=True,
@@ -308,7 +313,7 @@ def _table_drilling(c, panel: Panel, y):
         y = _row(c, x, y, ["face", "x", "y", "Ø", "depth", "type"],
                  [20 * MM, 22 * MM, 22 * MM, 16 * MM, 24 * MM, 50 * MM], bold=True, color=C_DRILL)
         for h in surf_holes:
-            tag = "  (auto)" if h.src else ""
+            tag = "  (auto)" if h.src in stamped_srcs else ""
             y = _row(c, x, y, [h.face, f"{h.x}", f"{h.y}", f"{h.dia}",
                                _depth_str(h.depth), _multi_str(h) + tag],
                      [20 * MM, 22 * MM, 22 * MM, 16 * MM, 24 * MM, 50 * MM],
@@ -322,6 +327,8 @@ def _table_drilling(c, panel: Panel, y):
 def _draw_panel_page(c, proj: Project, cab: Cabinet, panel: Panel, qty: int, idx: int, dest: str,
                      normalise: bool = True):
     c.bookmarkPage(dest)
+    stamped_srcs = {f.get("id") for f in cab.fittings
+                    if f.get("drilling", "stamped") == "stamped"}
     board = proj.board(panel.material) if panel.material else None
     thickness = proj.panel_thickness(panel)
     # Same transform the CSV uses, so this sheet describes the panel the import actually created.
@@ -369,7 +376,7 @@ def _draw_panel_page(c, proj: Project, cab: Cabinet, panel: Panel, qty: int, idx
     ty = base_y - 14 * MM
     ty = _table_size(c, panel, qty, board, thickness, ty)
     ty = _table_banding(c, proj, panel, ty)
-    ty = _table_drilling(c, panel, ty)
+    ty = _table_drilling(c, panel, ty, stamped_srcs)
 
     c.setFont(FONT, 7); c.setFillColor(C_GREY)
     c.drawCentredString(PW / 2, MARGIN - 4 * MM, f"meble · {cab.id} · panel sheet P{idx}")

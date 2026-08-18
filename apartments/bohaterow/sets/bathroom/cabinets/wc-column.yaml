@@ -157,8 +157,8 @@ panels:
   - {face: inner, x: 162, y: 1296, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
   - {face: inner, x: 162, y: 1852, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
   - {face: inner, x: 162, y: 2408, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
-  - {face: inner, x: 55, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: inner, x: 162, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
+  - {face: inner, x: 55, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
+  - {face: inner, x: 162, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
   - {face: outer, x: 9, y: 1359, dia: 8, depth: through, type: multi, count: 2, spacing: 997, direction: y, src: cf-back-l}
   - {face: outer, x: 68, y: 2515, dia: 8, depth: through, type: multi, count: 2, spacing: 81, direction: x, src: cf-top-l}
   - face: edge2
@@ -182,8 +182,8 @@ panels:
   holes:
   - {face: inner, x: 37, y: 1200, dia: 5, depth: 12, type: multi, count: 2, spacing: 125, direction: x, src: mf-div-r}
   - {face: inner, x: 37, y: 2515, dia: 5, depth: 12, type: multi, count: 2, spacing: 107, direction: x, src: mf-top-r}
-  - {face: inner, x: 37, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: inner, x: 144, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y}
+  - {face: inner, x: 37, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
+  - {face: inner, x: 144, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
   - {face: inner, x: 190, y: 1359, dia: 5, depth: 12, type: multi, count: 2, spacing: 997, direction: y, src: mf-back-r}
   - face: edge4
     from: 60
@@ -274,8 +274,8 @@ panels:
   - {face: inner, x: 144, y: 87, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 144, y: 643, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
   - {face: inner, x: 144, y: 1199, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
-  - {face: outer, x: 37, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y}
-  - {face: outer, x: 144, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y}
+  - {face: outer, x: 37, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y, src: pins}
+  - {face: outer, x: 144, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y, src: pins}
   - {face: edge3, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-gable-bot}
   - {face: edge4, from: 80, dia: 4, depth: 35, type: multi, count: 4, spacing: 380, src: cf-gable-back}
   placement: {pos: [359, 0, 1209], rot: [90, 0, -90]}
@@ -507,13 +507,21 @@ assembly:
 
   # --- doors: 3 concealed hinges each. Cups on the door (see panel holes); plates screw into the
   #     mounting panel's 37 mm Ø5 setback line with euro screws (6.3×13) at z ±16 around each cup.
-  #     door-l -> side-l, FULL overlay (18 mm).  door-r -> the GABLE, HALF overlay (8 mm, crank ~9.5).
-  #     Same drilling either way; only the hinge you buy differs. See the DOOR HANDING note up top.
-  - {id: hg-door-l, hardware: hinge-clip-110, door: door-l, side: side-l, at: [1312, 1868, 2424]}
-  - {id: hg-door-r, hardware: hinge-clip-110, door: door-r, side: gable-mid, at: [1312, 1868, 2424]}
+  # /!\ THE TWO DOORS TAKE DIFFERENT HINGES — see `variant:` below, which is now the authoritative
+  #     statement of it (it used to live only in prose, so the buy list could not see it).
+  #     door-l covers the full 18 mm of side-l -> FULL overlay. door-r covers only 8 mm of the SHARED
+  #     centre gable -> HALF overlay (crank ~9.5). The DRILLING IS THE SAME either way; only the hinge
+  #     you buy differs, which is exactly why this has to be declared and cannot be inferred from the
+  #     holes. `meble review` cross-checks it against the mounting panel's role.
+  #     `drilling: manual` = the cup and plate holes above are hand-derived and tagged `src:`; they are
+  #     NOT stampable (a hinge is not a butt joint), and `meble fit` must leave them alone in silence.
+  - {id: hg-door-l, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-l, side: side-l, at: [1312, 1868, 2424]}
+  - {id: hg-door-r, hardware: hinge-clip-110, variant: half, drilling: manual, door: door-r, side: gable-mid, at: [1312, 1868, 2424]}
 
-  # --- 16 × Ø5 fixed shelf pins (4 per shelf: front+back on each of 2 supporting panels) — no drilling
-  #     of their own; not adjustable, so just the 2 chosen heights instead of a full System-32 column.
-  - {id: pins, hardware: shelf-pin-5, at: [1630, 2068]}
+  # --- Ø5 fixed shelf pins. `at` is the two chosen SHELF HEIGHTS, not a pin count — 4 pins per shelf
+  #     (front + back on each of the 2 supporting panels) × 4 shelves = 16, so `quantity` is explicit.
+  #     Not adjustable, so 2 heights instead of a full System-32 column. The gable's bores are
+  #     `depth: through` and shared by both compartments, so those pins MUST have a collar.
+  - {id: pins, hardware: shelf-pin-5, drilling: manual, at: [1630, 2068], quantity: 16, shelves: [shelf-l, shelf-r]}
 
 parts: []

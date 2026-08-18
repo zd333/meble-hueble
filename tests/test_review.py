@@ -123,3 +123,59 @@ def test_real_project_has_no_review_errors(proj):
     from meble.model import cabinets_for_scope
     findings = review(proj, cabinets_for_scope(proj, apartment="bohaterow"))
     assert [f for f in findings if f.severity == "error"] == []
+
+
+# ------------------------------------------------------------------ buyable hardware
+
+def test_a_shelf_with_no_pin_fitting_warns(proj):
+    shelf = mk_panel(600, 400, id="sh", role="shelf", edges={1: "eb-u604-1"})
+    assert "missing-hardware" in rules(proj, [shelf])
+
+
+def test_a_shelf_listed_on_a_pin_fitting_is_satisfied(proj):
+    shelf = mk_panel(600, 400, id="sh", role="shelf", edges={1: "eb-u604-1"})
+    got = rules(proj, [shelf], fittings=[{"id": "pins", "hardware": "shelf-pin-5",
+                                          "drilling": "manual", "quantity": 4, "shelves": ["sh"]}])
+    assert "missing-hardware" not in got
+
+
+def test_a_drawer_with_no_slide_fitting_warns(proj):
+    box = mk_panel(498, 350, id="d1-bottom", role="drawer-bottom", all_edges=True)
+    assert "missing-hardware" in rules(proj, [box])
+
+
+def test_a_drawer_facade_is_not_expected_to_have_hinges(proj):
+    """`front` covers both a hinged door and a drawer facade screwed to its box, and nothing in the
+    model separates them — so the rule must not fire on the facade."""
+    facade = mk_panel(560, 150, id="facade", role="front", all_edges=True)
+    assert "missing-hardware" not in rules(proj, [facade])
+
+
+def test_full_overlay_on_a_shared_gable_warns(proj):
+    """The wc-column mistake, caught mechanically: a door covering ~8 mm of a shared centre gable
+    needs HALF overlay. Full-overlay hinges there will not let the door shut."""
+    panels = [mk_panel(id="door", role="front", all_edges=True),
+              mk_panel(id="gable", role="gable", edges={2: "eb-u604-1"})]
+    f = {"id": "hg", "hardware": "hinge-clip-110", "variant": "full", "drilling": "manual",
+         "door": "door", "side": "gable", "at": [100, 200]}
+    assert "hinge-overlay" in rules(proj, panels, fittings=[f])
+    f["variant"] = "half"
+    assert "hinge-overlay" not in rules(proj, panels, fittings=[f])
+
+
+def test_half_overlay_on_an_outer_side_warns(proj):
+    panels = [mk_panel(id="door", role="front", all_edges=True),
+              mk_panel(id="side-l", role="side-left", edges={2: "eb-u604-1"})]
+    f = {"id": "hg", "hardware": "hinge-clip-110", "variant": "half", "drilling": "manual",
+         "door": "door", "side": "side-l", "at": [100, 200]}
+    assert "hinge-overlay" in rules(proj, panels, fittings=[f])
+    f["variant"] = "full"
+    assert "hinge-overlay" not in rules(proj, panels, fittings=[f])
+
+
+def test_an_undeclared_overlay_is_not_second_guessed(proj):
+    """No `variant` means nothing to cross-check; validate is where a missing one gets caught."""
+    panels = [mk_panel(id="door", role="front", all_edges=True),
+              mk_panel(id="gable", role="gable", edges={2: "eb-u604-1"})]
+    f = {"id": "hg", "hardware": "hinge-clip-110", "door": "door", "side": "gable", "at": [100]}
+    assert "hinge-overlay" not in rules(proj, panels, fittings=[f])

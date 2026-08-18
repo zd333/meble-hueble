@@ -87,3 +87,90 @@ def test_left_and_right_sides_are_mirror_parts(proj):
         rb = R[0].edge_banding.banded_edges() & set(HEIGHT_EDGES)
         if lb and rb and lb != {2, 4}:
             assert lb != rb, f"{cab.id}: sides band the same vertical edge {lb}"
+
+
+# ------------------------------------------------------------------ buyable hardware is declared
+
+def test_every_fitting_buys_something(proj):
+    """A fitting with neither `at` nor `quantity` contributes zero to the shopping list, silently."""
+    from meble.hardware import fitting_quantity
+    for cab in proj.cabinets.values():
+        if cab.kind != "custom":
+            continue
+        for f in cab.fittings:
+            assert fitting_quantity(f) >= 1, f"{cab.id}/{f.get('id')}"
+
+
+def test_every_hinge_declares_its_overlay(proj):
+    """The drilling is identical for all three overlays, so this is the ONLY place the difference can
+    be recorded — and getting it wrong buys hinges that will not let the door shut."""
+    for cab in proj.cabinets.values():
+        if cab.kind != "custom":
+            continue
+        for f in cab.fittings:
+            hw = proj.hw(f.get("hardware"))
+            if hw and hw.raw.get("type") == "hinge":
+                assert f.get("variant"), f"{cab.id}/{f.get('id')} has no variant"
+                assert f["variant"] in (hw.raw.get("variants") or {}), f"{cab.id}/{f.get('id')}"
+
+
+def test_hinge_overlay_matches_what_the_door_lands_on(proj):
+    """A door on a shared gable/divider covers only part of it -> half overlay; on an outer side
+    panel it covers the whole thickness -> full."""
+    expected = {"gable": "half", "divider": "half", "side-left": "full", "side-right": "full"}
+    for cab in proj.cabinets.values():
+        if cab.kind != "custom":
+            continue
+        by_id = {p.id: p for p in cab.panels}
+        for f in cab.fittings:
+            hw = proj.hw(f.get("hardware"))
+            if not hw or hw.raw.get("type") != "hinge":
+                continue
+            mount = by_id.get(f.get("side"))
+            want = expected.get(mount.role) if mount else None
+            if want:
+                assert f.get("variant") == want, \
+                    f"{cab.id}/{f['id']} mounts on {mount.id} ({mount.role}) -> expected {want}"
+
+
+def test_every_shelf_and_drawer_has_its_hardware_declared(proj):
+    """Otherwise it is simply absent from the buy list, and nobody notices until assembly."""
+    want = {"shelf": "shelf-pin", "drawer-bottom": "slide"}
+    for cab in proj.cabinets.values():
+        if cab.kind != "custom":
+            continue
+        served: dict = {}
+        for f in cab.fittings:
+            hw = proj.hw(f.get("hardware"))
+            if not hw:
+                continue
+            for ref in ("door", "side", "drawer", "through", "into", "shelves"):
+                val = f.get(ref)
+                for pid in (val if isinstance(val, list) else [val] if val else []):
+                    served.setdefault(pid, set()).add(hw.raw.get("type"))
+        for p in cab.panels:
+            if p.role in want:
+                assert want[p.role] in served.get(p.id, set()), \
+                    f"{cab.id}/{p.id} ({p.role}) has no {want[p.role]} fitting"
+
+
+def test_manual_fittings_actually_have_holes(proj):
+    """`drilling: manual` claims the holes exist and are tagged. If none reference the fitting,
+    either the holes were never drawn or the tag is wrong."""
+    for cab in proj.cabinets.values():
+        if cab.kind != "custom":
+            continue
+        srcs = {h.src for p in cab.panels for h in p.holes if h.src}
+        for f in cab.fittings:
+            if f.get("drilling") == "manual":
+                assert f["id"] in srcs, f"{cab.id}/{f['id']}: no hole carries its src"
+
+
+def test_no_fitting_declares_holes_it_does_not_have(proj):
+    for cab in proj.cabinets.values():
+        if cab.kind != "custom":
+            continue
+        srcs = {h.src for p in cab.panels for h in p.holes if h.src}
+        for f in cab.fittings:
+            if f.get("drilling") == "none":
+                assert f["id"] not in srcs, f"{cab.id}/{f['id']}: says no holes but holes reference it"

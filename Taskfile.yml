@@ -55,6 +55,11 @@ tasks:
       - '{{.PY}} -m meble pdf {{.CLI_ARGS | default "--set kitchen"}} --out out/panels.pdf'
       - "open out/panels.pdf"
 
+  hardware:
+    desc: "What to BUY — confirmats, hinges (by overlay), pins, slides — and a printable PDF. Scope after --"
+    cmds:
+      - '{{.PY}} -m meble hardware {{.CLI_ARGS | default "--apartment bohaterow"}}'
+
   view:
     desc: "Open the interactive 3D viewer in the browser (orbit/zoom/pan, presets, exploded, isolate). Scope after --"
     cmds:
