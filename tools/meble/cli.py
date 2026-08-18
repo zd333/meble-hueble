@@ -124,7 +124,7 @@ def cmd_csv(args) -> int:
     proj = load_project()
     cabs = _resolve(proj, args)
     outdir = Path(args.out) if args.out else proj.root / "out" / "csv"
-    written = export_csv(proj, cabs, outdir)
+    written = export_csv(proj, cabs, outdir, normalise=not args.no_normalize)
     if not written:
         print("  (no custom panels in scope)")
     for p in written:
@@ -138,7 +138,7 @@ def cmd_pdf(args) -> int:
     cabs = _resolve(proj, args)
     label = _scope_label(args)
     out = Path(args.out) if args.out else proj.root / "out" / "pdf" / f"{label}.pdf"
-    export_pdf(proj, cabs, out, title=f"Panele — {label}")
+    export_pdf(proj, cabs, out, title=f"Panele — {label}", normalise=not args.no_normalize)
     print(f"✓ {out}")
     return 0
 
@@ -192,12 +192,17 @@ def main(argv=None) -> int:
     p.add_argument("--only", help="comma-separated fitting ids to (re)apply")
     p.set_defaults(func=cmd_fit)
 
+    _NORM_HELP = ("show panels in the design frame instead of the one the meble.pl import can "
+                  "express — for debugging only; the export will band the wrong edges")
+
     p = sub.add_parser("csv", help="export the meble.pl PRO100 CSV (per board)"); _scope_args(p)
     p.add_argument("--out", help="output directory")
+    p.add_argument("--no-normalize", action="store_true", help=_NORM_HELP)
     p.set_defaults(func=cmd_csv)
 
     p = sub.add_parser("pdf", help="export per-panel PDF spec sheets"); _scope_args(p)
     p.add_argument("--out", help="output file")
+    p.add_argument("--no-normalize", action="store_true", help=_NORM_HELP)
     p.set_defaults(func=cmd_pdf)
 
     p = sub.add_parser("view", help="build + open the interactive 3D viewer in the browser"); _scope_args(p)

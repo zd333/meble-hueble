@@ -64,6 +64,12 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   przód (front), inner → tył (back). Confirmat heads → outer; shelf-pin/System-32/hinge holes → inner.
 - **Left & right sides are MIRROR parts** (front edge = 2 on the left, 4 on the right; asymmetric holes
   mirror too) — never identical. Full table + edge cases: **`docs/conventions.md`** (read before drilling).
+- **The CSV import can only band edge 3 or edge 4** when a panel bands ONE edge of an axis — the mark is
+  a *count*, not an identity, and no token overrides it (measured against the live editor 2026-08-17).
+  So `tools/meble/normalize.py` exports such a panel turned **180°**, in the CSV and the PDF together;
+  those PDF pages carry a banner, and they will disagree with the 3D viewer about which end is "top".
+  **Author designs in the YAML frame and ignore this** — it is presentation-only, applied on the way
+  out, and never stored (a rotation in YAML would be silently undone by the next `meble fit`).
 - **Every dimension is the FINISHED size — banding is included, never added on top.** The size you type
   into the meble.pl editor is the finished element, so YAML sizes go in as-is: **never** subtract band
   thickness on banded axes, and never inflate a panel to "leave room" for the band. (Confirmed against
@@ -153,8 +159,15 @@ python -m meble fit  --cabinet open-900                  # (re)stamp holes from 
 python -m meble csv  --set kitchen                       # -> out/csv/<board>.csv   (import to meble.pl)
 python -m meble pdf  --set kitchen                        # -> out/pdf/<set>.pdf     (manual-entry sheets)
 python -m meble view --set kitchen                       # interactive 3D viewer (opens browser)
+.venv/bin/python -m pytest -q                            # or `task test` — run before you trust an export
 ```
 `--cabinet <id>`, `--set <id>`, or `--apartment <id>` select scope for most commands.
+
+**Tests (`tests/`) are the safety net — run them.** A wrong export costs a sheet of MFC and a
+re-order, so the exact bytes of both CSVs and the text of the whole PDF are locked as goldens
+(`tests/golden/`, regenerate with `tests/regen_golden.py` and **read the diff**). `meble fit`'s
+"never touch a manual hole" contract, the carcass arithmetic, every `review`/`validate` rule and the
+export-time rotation are all covered.
 
 Skills wrap these: **design-cabinet** (author/edit + scaffold + fit), **generate-order-csv**,
 **generate-panel-pdf**, **view-3d**, **validate-design**, and **cabinet-review** (independent

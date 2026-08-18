@@ -82,6 +82,21 @@ and only the banding edge differs (as in the `open-900` example).
 - **Back (HDF)** — `outer` = toward the wall. Surface-mounted, unbanded, ~3 mm.
 - **Fronts / doors (later)** — `outer` = the room-facing decorative face; hinge cups go on `inner`.
 
+## /!\ The CSV and PDF may show a panel rotated 180° from this frame
+
+Everything above describes the **YAML frame** — the one the designs, `meble fit`, `meble review` and
+the 3D viewer all use. It is the single source of truth and nothing here changes.
+
+But the meble.pl import can only ever put a single edge band on **edge 3** or **edge 4** (measured;
+see `meblepl-editor.md`). A panel that bands edge 1 or edge 2 alone is therefore exported turned
+180°, which says the same thing in a frame the importer can express. `tools/meble/normalize.py` does
+this for the **CSV and the PDF together**, and such a PDF page carries a banner saying so.
+
+So when a PDF page and the 3D viewer disagree about which end is "top", that is expected and only
+happens on banner-marked pages. **Type the PDF exactly as drawn** — it matches the panel the import
+created. The finished part is identical either way; a 180° rotation preserves width, height, grain
+and the outer/inner faces. It is a rotation, never a mirror.
+
 ## Why this is safe
 
 These rules are checked two ways: `meble review` (deterministic linter) catches the mechanical ones

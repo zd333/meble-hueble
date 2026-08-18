@@ -74,10 +74,54 @@ Nazwa (nie wpływa na rozkrój);Szerokość;Oklejanie szerokości;Wysokość;Okl
 | 7 | Ilość sztuk | quantity (blank = 1) | `panel.quantity` |
 | 8 | Słoje | grain: `0`=any / `1`=along height / `2`/blank=along width | from `panel.grain` |
 
-**Banding marks** (cols 3 & 5), per the PRO100 0/1/2 convention shown as symbols:
-- `=` → both edges of that axis banded (2)
-- `-` → one edge banded (1)
-- *(blank)* → none (0)
+**Banding marks** (cols 3 & 5) carry a **count, never an identity**:
+- `=` → both edges of that axis banded
+- any other non-empty value → **exactly one** edge banded
+- *(blank)* → none
+
+### /!\ A single band always lands on edge 3 / edge 4 — you cannot choose
+
+Measured against the live editor **2026-08-17** with a 12-row probe (one token per row, panels
+otherwise identical). `-`, `_`, `1`, `3`, `13` in col 3 and `-`, `|`, `2`, `4` in col 5 all behaved
+**identically**: col 3 banded **edge 3** (bottom), col 5 banded **edge 4** (left). The `=` control
+banded 1+3 and 2+4 correctly. meble.pl's own `meblepl_przykladowy_rozkroj.csv` only ever uses `=`
+and `-`, which is consistent with a count.
+
+So the format is **provably lossy**: 2 columns × 3 states = 9 patterns against 16 real ones.
+**"Band edge 1 only" and "band edge 3 only" are the same CSV cell**, and the importer resolves it to
+edge 3. Same for 2 vs 4 → edge 4. This is not a bug in our export and no token works around it.
+
+### The fix: export-time rotation (`tools/meble/normalize.py`)
+
+A **180° in-plane rotation** maps 1↔3 and 2↔4, so an edge-1 band becomes an edge-3 band and the CSV
+can express it. Width, height, grain direction and the `outer`/`inner` faces are all preserved — it
+is a **rotation, not a mirror**. (A mirror would also move the band to edge 3, and would swap the
+faces, putting every hole on the wrong side of the board. That distinction is the whole ballgame.)
+The panel delivered is physically identical, just described from the opposite corner.
+
+`normalize()` rotates a panel **only when it strictly helps**, so panels that were already
+expressible are untouched. Both the CSV **and** the PDF apply it, and they must stay in step: the
+CSV creates the panel and the PDF is what gets typed into it, so if only one rotated the banding
+would sit at one end and the drilling at the other. Rotated PDF pages carry a banner saying so.
+
+It runs at **export time, never in the YAML**: most holes on the affected panels are `fit`-stamped,
+and `meble fit` re-derives them in the canonical frame, so a rotation stored in YAML would be
+silently undone on the next run. The 3D viewer deliberately does not normalise — the rotation is a
+relabel, so the assembled cabinet renders identically, and nothing is typed from the viewer.
+
+**The CSV bytes do not change.** A `-` is a `-` whichever end the band is on. What changes is that
+the band the importer *will* apply becomes the one the design wants, and the PDF's drilling moves to
+match. Ordered dimensions, quantities and grain are untouched.
+
+A panel whose two axes want opposite ends (edge 1 with edge 4) cannot be fixed by any rotation.
+None exist today; if one appears, the CSV emits blank for that axis and appends
+`/!\ TICK EDGE n BY HAND` to the **Nazwa** column — the only channel that reaches the editor UI —
+and `meble csv` prints the list. A *missing* band is one click to add; a band on the *wrong* edge is
+a finished panel that is scrap.
+
+The editor's **edge numbering matches ours exactly** (1 top, 2 right, 3 bottom, 4 left) — its
+per-panel diagram is labelled, and the probe confirms it. **Drilling entered by hand from the PDF
+needs no remapping.**
 
 **Grain (`Słoje`):** `0` = doesn't matter (optimizer may orient); `1` = grain along the **height**;
 `2` or blank = grain along the **width** (first dimension). Our default **forces orientation** so panels
