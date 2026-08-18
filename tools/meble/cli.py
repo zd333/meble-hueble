@@ -5,6 +5,7 @@
   python -m meble fit           --cabinet C [--only f1,f2]
   python -m meble csv           (--set S | --cabinet C | --apartment A) [--out DIR]
   python -m meble pdf           (--set S | --cabinet C | --apartment A) [--out FILE]
+  python -m meble hardware      (--set S | --cabinet C | --apartment A) [--out FILE]
   python -m meble view          (--set S | --cabinet C | --apartment A) [--no-serve --port N --out FILE]
 """
 from __future__ import annotations
@@ -143,6 +144,29 @@ def cmd_pdf(args) -> int:
     return 0
 
 
+def cmd_hardware(args) -> int:
+    from .hardware import bill_of_materials, collared_pins
+    from .hardware_pdf import export_hardware_pdf
+    proj = load_project()
+    cabs = _resolve(proj, args)
+    label = _scope_label(args)
+    lines = bill_of_materials(proj, cabs)
+    if not lines:
+        print("  (no fittings in scope)")
+        return 1
+    collared = collared_pins(proj, cabs)
+    for l in lines:
+        unit = f" {l.sold_as}s" if l.sold_as != "piece" else ""
+        print(f"  {l.quantity:>4}{unit:>6}  {l.label}")
+    if collared:
+        print(f"\n  /!\\ {collared} of the shelf pins go into THROUGH bores (shared between two "
+              f"compartments) and must have a collar — a plain peg has nothing to stop it mid-panel.")
+    out = Path(args.out) if args.out else proj.root / "out" / "pdf" / f"{label}-hardware.pdf"
+    export_hardware_pdf(proj, lines, collared, out, title=f"Hardware — {label}")
+    print(f"\n✓ {out}")
+    return 0
+
+
 def cmd_view(args) -> int:
     from .scene import build_scene
     from .viewer import build_viewer_html, serve_and_open
@@ -204,6 +228,11 @@ def main(argv=None) -> int:
     p.add_argument("--out", help="output file")
     p.add_argument("--no-normalize", action="store_true", help=_NORM_HELP)
     p.set_defaults(func=cmd_pdf)
+
+    p = sub.add_parser("hardware", help="what to buy: confirmats, hinges, pins, slides (per board)")
+    _scope_args(p)
+    p.add_argument("--out", help="output file")
+    p.set_defaults(func=cmd_hardware)
 
     p = sub.add_parser("view", help="build + open the interactive 3D viewer in the browser"); _scope_args(p)
     p.add_argument("--out", help="output html file")

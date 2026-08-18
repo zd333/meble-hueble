@@ -7,6 +7,7 @@ from .model import Cabinet, Hole, Panel, Project
 
 EDGE_DIA = {4, 8}
 SURFACE_DIA = {3, 5, 8, 10, 15, 20, 35}
+DRILLING_MODES = {"stamped", "manual", "none"}
 
 
 def _edge_length(panel: Panel, edge: int) -> float:
@@ -74,17 +75,51 @@ def validate_cabinet(proj: Project, cab: Cabinet, err, warn) -> None:
             if h.src and h.src not in fitting_ids:
                 warn(f"{w} hole #{i}: src '{h.src}' has no matching fitting (orphan stamp)")
 
+    stamped_srcs = {h.src for p in cab.panels for h in p.holes if h.src}
+
     for f in cab.fittings:
         w = f"cabinet '{cab.id}' fitting '{f.get('id')}'"
-        if f.get("hardware") and not proj.hw(f["hardware"]):
+        hw = proj.hw(f["hardware"]) if f.get("hardware") else None
+        if f.get("hardware") and not hw:
             err(f"{w}: hardware '{f.get('hardware')}' not in library/hardware.yaml")
-        for ref in ("through", "into"):
-            if f.get(ref) and f[ref] not in panel_ids:
-                err(f"{w}: {ref} panel '{f[ref]}' not found")
+        for ref in ("through", "into", "door", "side", "drawer", "shelves"):
+            val = f.get(ref)
+            for pid in (val if isinstance(val, list) else [val] if val else []):
+                if pid not in panel_ids:
+                    err(f"{w}: {ref} panel '{pid}' not found")
         seam = f.get("seam") or {}
         for k in ("through_edge", "into_edge"):
             if k in seam and seam[k] not in (1, 2, 3, 4):
                 err(f"{w}: seam.{k} must be 1..4")
+
+        # --- how many to buy. Neither `at` nor `quantity` means the fitting counts as zero, which
+        #     would silently drop it from the shopping list — the one failure mode that costs a
+        #     second trip to the shop.
+        drilling = f.get("drilling", "stamped")
+        if drilling not in DRILLING_MODES:
+            err(f"{w}: drilling '{drilling}' must be one of {sorted(DRILLING_MODES)}")
+        if not f.get("at") and f.get("quantity") is None:
+            err(f"{w}: needs `at` (positions) or `quantity` — otherwise it buys nothing")
+        if f.get("quantity") is not None and int(f["quantity"]) < 1:
+            err(f"{w}: quantity must be >= 1")
+
+        # --- `variant` is a PURCHASING difference the drilling cannot express (hinge overlay), so it
+        #     has to resolve against the hardware's declared variants.
+        variant = f.get("variant")
+        if variant is not None and hw:
+            variants = hw.raw.get("variants") or {}
+            if not variants:
+                err(f"{w}: hardware '{f['hardware']}' declares no variants, so variant "
+                    f"'{variant}' is meaningless")
+            elif variant not in variants:
+                err(f"{w}: variant '{variant}' not in {sorted(variants)}")
+
+        # --- `drilling: none` says there are no holes. A hole tagged with this fitting contradicts
+        #     that outright, and one of the two statements is wrong.
+        if drilling == "none" and f.get("id") in stamped_srcs:
+            err(f"{w}: drilling is 'none' but panels carry holes with src '{f.get('id')}'")
+        if drilling == "manual" and f.get("id") not in stamped_srcs:
+            warn(f"{w}: drilling is 'manual' but no hole references it — were they ever drawn?")
 
 
 def validate(proj: Project, cabinets: list[Cabinet]) -> tuple[list[str], list[str]]:

@@ -13,6 +13,7 @@ from meble.fittings import _series, apply_fittings
 CONFIRMAT = {"id": "confirmat-45", "type": "confirmat",
              "drill": {"face": {"dia": 8, "depth": "through"}, "edge": {"dia": 4, "depth": 35}}}
 HINGE = {"id": "hinge-euro", "type": "hinge", "drill": {"cup": {"dia": 35, "depth": 12}}}
+SLIDE = {"id": "slide-bb-350", "type": "slide", "sold_as": "pair"}
 BOARDS = {"u604-18": {"id": "u604-18", "thickness": 18}}
 
 
@@ -35,7 +36,8 @@ def butt(at, fid="cf1", **kw):
 
 
 def apply(cab, only=None):
-    return apply_fittings(cab, {"confirmat-45": CONFIRMAT, "hinge-euro": HINGE}, BOARDS, only=only)
+    return apply_fittings(cab, {"confirmat-45": CONFIRMAT, "hinge-euro": HINGE,
+                                "slide-bb-350": SLIDE}, BOARDS, only=only)
 
 
 def holes(cab, pid):
@@ -165,3 +167,59 @@ def test_a_vertical_seam_runs_the_row_down_the_y_axis():
     (face,) = holes(cab, "a")
     assert face["x"] == 9.0 and face["y"] == 50
     assert face["direction"] == "y"
+
+
+# ------------------------------------------------------------------ fittings that opt out of stamping
+
+def test_drilling_manual_stamps_nothing_and_says_nothing():
+    """Hinge and pin holes are hand-derived on purpose. Warning about them on every run is how a
+    warning stops being read — that noise is what `drilling:` removes."""
+    f = butt([50, 200], fid="hg1")
+    f["drilling"] = "manual"
+    cab = cabinet([f])
+    applied, warnings, added = apply(cab)
+    assert applied == set() and added == 0
+    assert warnings == []
+
+
+def test_drilling_none_stamps_nothing_and_says_nothing():
+    """A drawer slide is mounted on site: no holes anywhere, by design."""
+    cab = cabinet([{"id": "sl1", "hardware": "slide-bb-350", "drilling": "none", "quantity": 1}])
+    applied, warnings, added = apply(cab)
+    assert applied == set() and added == 0
+    assert warnings == []
+
+
+def test_a_manual_fittings_hand_written_holes_survive():
+    """The holes carry `src: hg1`, but the fitting is never `applied`, so the merge must keep them."""
+    hand = {"face": "inner", "x": 37, "y": 100, "dia": 5, "depth": 13, "src": "hg1"}
+    f = butt([50], fid="hg1"); f["drilling"] = "manual"
+    cab = cabinet([f], holes_a=[hand])
+    apply(cab)
+    assert hand in holes(cab, "a")
+
+
+def test_default_is_still_stamped():
+    cab = cabinet([butt([50, 200, 350])])
+    applied, _, added = apply(cab)
+    assert applied == {"cf1"} and added == 2
+
+
+# ------------------------------------------------------------------ comment preservation
+
+def test_untouched_panels_are_not_rewritten():
+    """Assigning `p["holes"]` replaces the ruamel sequence and every comment inside it goes with it.
+    A panel `fit` did not touch must therefore not be written back at all — otherwise a run that
+    stamps nothing still eats a line of design reasoning from every cabinet."""
+    manual = {"face": "inner", "x": 37, "y": 100, "dia": 5, "depth": 13}
+    cab = cabinet([], holes_a=[manual])
+    before = holes(cab, "a")
+    apply(cab)
+    assert holes(cab, "a") is before, "the holes list was replaced despite nothing changing"
+
+
+def test_panels_that_gain_holes_are_rewritten():
+    cab = cabinet([butt([50, 200, 350])])
+    before = holes(cab, "a")
+    apply(cab)
+    assert holes(cab, "a") is not before

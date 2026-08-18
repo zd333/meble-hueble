@@ -89,9 +89,9 @@ Drilling — edge
 Drilling — surface
    face              x                           y                Ø            depth                   type
    outer             50                          1200             8            through                 multi ×2 @ 99mm x (auto)
-   inner             162                         1296             5            13 mm                   multi ×2 @ 32mm y (auto)
-   inner             162                         1852             5            13 mm                   multi ×2 @ 32mm y (auto)
-   inner             162                         2408             5            13 mm                   multi ×2 @ 32mm y (auto)
+   inner             162                         1296             5            13 mm                   multi ×2 @ 32mm y
+   inner             162                         1852             5            13 mm                   multi ×2 @ 32mm y
+   inner             162                         2408             5            13 mm                   multi ×2 @ 32mm y
    inner             55                          1630             5            13 mm                   multi ×2 @ 438mm y
    inner             162                         1630             5            13 mm                   multi ×2 @ 438mm y
    outer             9                           1359             8            through                 multi ×2 @ 997mm y (auto)
@@ -293,9 +293,9 @@ Drilling — edge
 
 Drilling — surface
     face            x                               y                 Ø            depth                   type
-    inner           37                              1178              5            13 mm                   multi ×2 @ 32mm y (auto)
-    inner           37                              622               5            13 mm                   multi ×2 @ 32mm y (auto)
-    inner           37                              66                5            13 mm                   multi ×2 @ 32mm y (auto)
+    inner           37                              1178              5            13 mm                   multi ×2 @ 32mm y
+    inner           37                              622               5            13 mm                   multi ×2 @ 32mm y
+    inner           37                              66                5            13 mm                   multi ×2 @ 32mm y
     outer           144                             438               5            through                 multi ×2 @ 438mm y
     outer           37                              438               5            through                 multi ×2 @ 438mm y
 
@@ -672,8 +672,8 @@ Drilling — surface
    face              x                            y                 Ø             depth               type
    outer             98                           1819              8             through             multi ×3 @ 250mm x (auto)
    outer             9                            176               8             through             multi ×5 @ 550mm y (auto)
-   inner             638                          1894              5             13 mm               multi ×2 @ 32mm y (auto)
-   inner             638                          2400              5             13 mm               multi ×2 @ 32mm y (auto)
+   inner             638                          1894              5             13 mm               multi ×2 @ 32mm y
+   inner             638                          2400              5             13 mm               multi ×2 @ 32mm y
    inner             55                           2156              5             13 mm               single
    inner             638                          2156              5             13 mm               single
    outer             98                           2511              8             through             multi ×3 @ 250mm x (auto)
@@ -723,8 +723,8 @@ Drilling — surface
    face              x                            y                 Ø             depth               type
    outer             77                           1819              8             through             multi ×3 @ 250mm x (auto)
    outer             666                          176               8             through             multi ×5 @ 550mm y (auto)
-   inner             37                           1894              5             13 mm               multi ×2 @ 32mm y (auto)
-   inner             37                           2400              5             13 mm               multi ×2 @ 32mm y (auto)
+   inner             37                           1894              5             13 mm               multi ×2 @ 32mm y
+   inner             37                           2400              5             13 mm               multi ×2 @ 32mm y
    inner             37                           2156              5             13 mm               single
    inner             620                          2156              5             13 mm               single
    outer             77                           2511              8             through             multi ×3 @ 250mm x (auto)

@@ -60,3 +60,11 @@ def test_csv_is_semicolon_separated_with_crlf_and_trailing_separator(proj, tmp_p
             assert ln.endswith(";\r") or ln.endswith(";"), f"row lost its trailing ';': {ln!r}"
         for ln in lines[1:]:
             assert len(ln.rstrip("\r").split(";")) == 9, f"row has wrong column count: {ln!r}"
+
+
+def test_hardware_matches_golden(proj):
+    """What you buy is as order-critical as what you cut. A design change that moves the shopping
+    list must show up as a reviewable diff, not as a surprise at the counter."""
+    from regen_golden import render_bom
+    cabs = cabinets_for_scope(proj, apartment="bohaterow")
+    assert render_bom(proj, cabs) == read_golden("hardware.txt")
