@@ -64,6 +64,12 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   przód (front), inner → tył (back). Confirmat heads → outer; shelf-pin/System-32/hinge holes → inner.
 - **Left & right sides are MIRROR parts** (front edge = 2 on the left, 4 on the right; asymmetric holes
   mirror too) — never identical. Full table + edge cases: **`docs/conventions.md`** (read before drilling).
+- **The CSV import can only band edge 3 or edge 4** when a panel bands ONE edge of an axis — the mark is
+  a *count*, not an identity, and no token overrides it (measured against the live editor 2026-08-17).
+  So `tools/meble/normalize.py` exports such a panel turned **180°**, in the CSV and the PDF together;
+  those PDF pages carry a banner, and they will disagree with the 3D viewer about which end is "top".
+  **Author designs in the YAML frame and ignore this** — it is presentation-only, applied on the way
+  out, and never stored (a rotation in YAML would be silently undone by the next `meble fit`).
 - **Every dimension is the FINISHED size — banding is included, never added on top.** The size you type
   into the meble.pl editor is the finished element, so YAML sizes go in as-is: **never** subtract band
   thickness on banded axes, and never inflate a panel to "leave room" for the band. (Confirmed against
@@ -114,12 +120,13 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   by hand later if you need them (depth stop + a shelf-pin jig).
 - **The half sheet is 2800 × 1032 — narrower, NOT shorter.** It is the full 2800 × 2070 sheet ripped down
   its length, so it takes a full-height 2520 mm gable just as happily. Never assume the smaller format
-  means smaller panels: writing it down as 2070 × 1032 once barred every tall panel from it and cost a
-  whole sheet in the order plan. `meble pack` reads both formats from `library/materials.yaml`.
-- **Which decor a hidden panel rides is not "put it on the cheap board".** The useful move is whichever
-  one gets a decor *under* a whole-sheet boundary, and that direction flips with the design — the same
-  panel has been correct on both boards in this project. Mark genuinely-never-seen panels
-  `decor_optional:` and let `meble pack --balance` decide; never mark one whose face you can see.
+  means smaller panels: writing it down as 2070 × 1032 once barred every tall panel from it.
+- **We do NOT work out how many sheets to buy.** meble.pl will sell a part sheet and their optimiser
+  never matched our predictions, so a local estimate was worse than none — it invited confident
+  decisions from numbers that turned out wrong. Send the panel list, take their quote. (`meble pack`
+  and `decor_optional` existed for this and were removed 2026-08-18.)
+- **Which decor a hidden panel rides is still a real choice, just not an arithmetic one.** Decide it on
+  looks and on what offcuts you actually have; never move a panel whose face you can see.
 
 ## Quick-reference drill table (supplier convention — verify before first order)
 
@@ -138,7 +145,7 @@ Board 18 mm, back 3 mm HDF. Deep dive: **`docs/cabinet-construction.md`**. IKEA 
 ## Tools (run from repo root)
 
 Convenient entry point: **`task <name>`** (see `Taskfile.yml`; `task --list`). Most take a scope after
-`--`, e.g. `task pdf -- --cabinet open-900`. User-facing tasks: `list`, `review`, `pack`, `csv`, `pdf`, `view`,
+`--`, e.g. `task pdf -- --cabinet open-900`. User-facing tasks: `list`, `review`, `test`, `csv`, `pdf`, `view`,
 `setup`. The design internals (`scaffold`, `fit`, `validate`) are `python -m meble …` commands the
 `design-cabinet` / `cabinet-review` skills run for you during a session — not surfaced as tasks. Full CLI: 
 
@@ -149,12 +156,18 @@ python -m meble validate --apartment bohaterow           # schema/bounds checks
 python -m meble review   --apartment bohaterow           # domain linter (mirror, carcass math, wrong face…)
 python -m meble scaffold base --width 600 --height 720 --depth 560   # seed a new cabinet (prints YAML)
 python -m meble fit  --cabinet open-900                  # (re)stamp holes from fittings (safe/idempotent)
-python -m meble pack --apartment bohaterow --balance     # how many sheets to buy + the order split
 python -m meble csv  --set kitchen                       # -> out/csv/<board>.csv   (import to meble.pl)
 python -m meble pdf  --set kitchen                        # -> out/pdf/<set>.pdf     (manual-entry sheets)
 python -m meble view --set kitchen                       # interactive 3D viewer (opens browser)
+.venv/bin/python -m pytest -q                            # or `task test` — run before you trust an export
 ```
 `--cabinet <id>`, `--set <id>`, or `--apartment <id>` select scope for most commands.
+
+**Tests (`tests/`) are the safety net — run them.** A wrong export costs a sheet of MFC and a
+re-order, so the exact bytes of both CSVs and the text of the whole PDF are locked as goldens
+(`tests/golden/`, regenerate with `tests/regen_golden.py` and **read the diff**). `meble fit`'s
+"never touch a manual hole" contract, the carcass arithmetic, every `review`/`validate` rule and the
+export-time rotation are all covered.
 
 Skills wrap these: **design-cabinet** (author/edit + scaffold + fit), **generate-order-csv**,
 **generate-panel-pdf**, **view-3d**, **validate-design**, and **cabinet-review** (independent

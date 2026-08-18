@@ -4,7 +4,6 @@
   python -m meble scaffold KIND --width W --height H --depth D [--id ID --name N --material M --edgeband E]
   python -m meble fit           --cabinet C [--only f1,f2]
   python -m meble csv           (--set S | --cabinet C | --apartment A) [--out DIR]
-  python -m meble pack          (--set S | --cabinet C | --apartment A) [--sheets f1,f2 --stamp]
   python -m meble pdf           (--set S | --cabinet C | --apartment A) [--out FILE]
   python -m meble view          (--set S | --cabinet C | --apartment A) [--no-serve --port N --out FILE]
 """
@@ -125,7 +124,7 @@ def cmd_csv(args) -> int:
     proj = load_project()
     cabs = _resolve(proj, args)
     outdir = Path(args.out) if args.out else proj.root / "out" / "csv"
-    written = export_csv(proj, cabs, outdir)
+    written = export_csv(proj, cabs, outdir, normalise=not args.no_normalize)
     if not written:
         print("  (no custom panels in scope)")
     for p in written:
@@ -139,46 +138,8 @@ def cmd_pdf(args) -> int:
     cabs = _resolve(proj, args)
     label = _scope_label(args)
     out = Path(args.out) if args.out else proj.root / "out" / "pdf" / f"{label}.pdf"
-    export_pdf(proj, cabs, out, title=f"Panele — {label}")
+    export_pdf(proj, cabs, out, title=f"Panele — {label}", normalise=not args.no_normalize)
     print(f"✓ {out}")
-    return 0
-
-
-def cmd_pack(args) -> int:
-    from .packing import plan, stamp_markers
-    proj = load_project()
-    cabs = _resolve(proj, args)
-    sheet_ids = args.sheets.split(",") if args.sheets else None
-    orders, moves = plan(proj, cabs, sheet_ids=sheet_ids, rebalance=args.balance)
-    if not orders:
-        print("  (no custom panels in scope)")
-        return 1
-
-    if moves:
-        print("Rebalanced — these decor-optional panels move to their alternative board:")
-        for cab, pid, alt in moves:
-            print(f"    {cab}/{pid} -> {alt}")
-        print("  (this is a recommendation; edit `material:` in the YAML to adopt it)\n")
-
-    purchased = sum(o.purchased for o in orders)
-    panel_area = sum(o.area for o in orders)
-    print(f"Order split — {_scope_label(args)}\n")
-    for o in orders:
-        fills = " / ".join(f"{s.fill:.0f}%" for s in o.packed)
-        print(f"  order {o.number}  {o.board:<10} {len(o.packed)} × {o.sheet.name}")
-        print(f"           {len(o.pieces):>3} boards   {o.area:5.2f} m² of panel   fill {fills}")
-        for p in sorted(o.pieces, key=lambda p: (p.cab, p.pid)):
-            print(f"             {p.cab}/{p.pid}  {p.w:.0f} × {p.h:.0f}")
-    print(f"\n  purchased {purchased:.2f} m²   panel {panel_area:.2f} m²   "
-          f"utilisation {panel_area / purchased * 100:.0f}%")
-
-    if args.stamp:
-        changed = stamp_markers(proj, orders)
-        for cab, pid, old, new in changed:
-            print(f"  {cab}/{pid}: {old!r} -> {new!r}")
-        print(f"\n✓ stamped {len(changed)} panel name(s)")
-    else:
-        print("\n  (re-run with --stamp to write these markers into the panel names)")
     return 0
 
 
@@ -231,21 +192,18 @@ def main(argv=None) -> int:
     p.add_argument("--only", help="comma-separated fitting ids to (re)apply")
     p.set_defaults(func=cmd_fit)
 
+    _NORM_HELP = ("show panels in the design frame instead of the one the meble.pl import can "
+                  "express — for debugging only; the export will band the wrong edges")
+
     p = sub.add_parser("csv", help="export the meble.pl PRO100 CSV (per board)"); _scope_args(p)
     p.add_argument("--out", help="output directory")
+    p.add_argument("--no-normalize", action="store_true", help=_NORM_HELP)
     p.set_defaults(func=cmd_csv)
 
     p = sub.add_parser("pdf", help="export per-panel PDF spec sheets"); _scope_args(p)
     p.add_argument("--out", help="output file")
+    p.add_argument("--no-normalize", action="store_true", help=_NORM_HELP)
     p.set_defaults(func=cmd_pdf)
-
-    p = sub.add_parser("pack", help="recommend how to split the order across whole sheets"); _scope_args(p)
-    p.add_argument("--sheets", help="comma-separated sheet format ids to consider (default: all)")
-    p.add_argument("--balance", action="store_true",
-                   help="also try moving `decor_optional` panels to their alternative board")
-    p.add_argument("--stamp", action="store_true",
-                   help="write the resulting [order N · …] markers into the panel names")
-    p.set_defaults(func=cmd_pack)
 
     p = sub.add_parser("view", help="build + open the interactive 3D viewer in the browser"); _scope_args(p)
     p.add_argument("--out", help="output html file")

@@ -1,0 +1,2106 @@
+Panele — bohaterow
+Click a row to jump to its panel sheet.
+
+P1. wc-column / Left side 199×2524 mm ×1                                                →
+P2. wc-column / Right side 199×2524 mm ×1                                               →
+P3. wc-column / Divider @1200 (upper cabinet bottom) 700×199 mm ×1                      →
+P4. wc-column / Top panel 700×181 mm ×1                                                 →
+P5. wc-column / Centre gable (vertical) 181×1297 mm ×1                                  →
+P6. wc-column / Left-compartment shelf 339×176 mm ×2                                    →
+P7. wc-column / Right-compartment shelf 339×176 mm ×2                                   →
+P8. wc-column / Back (upper cabinet) 700×1315 mm ×1                                     →
+P9. wc-column / Front cover (WC boxing) 736×1209 mm ×1                                  →
+P10. wc-column / Spacer behind cover 550×1191 mm ×1                                     →
+P11. wc-column / Door left 367×1308 mm ×1                                               →
+P12. wc-column / Door right 367×1308 mm ×1                                              →
+P13. wm-wardrobe / Left side 675×2520 mm ×1                                             →
+P14. wm-wardrobe / Right side 675×2520 mm ×1                                            →
+P15. wm-wardrobe / Divider @1810 (bay ceiling / overhead-cabinet floor) 726×657 mm ×1   →
+P16. wm-wardrobe / Top panel 726×657 mm ×1                                              →
+P17. wm-wardrobe / Back (full height) 726×2470 mm ×1                                    →
+P18. wm-wardrobe / Overhead shelf 724×652 mm ×1                                         →
+P19. wm-wardrobe / Door left 380×706 mm ×1                                              →
+P20. wm-wardrobe / Door right 380×706 mm ×1                                             →
+P21. sink-vanity / Left side 450×480 mm ×1                                              →
+P22. sink-vanity / Right side 450×480 mm ×1                                             →
+P23. sink-vanity / Bottom panel 524×450 mm ×1                                           →
+P24. sink-vanity / Top-front stretcher 524×100 mm ×1                                    →
+P25. sink-vanity / Back rail / wall cleat 524×100 mm ×2                                 →
+P26. sink-vanity / Bottom drawer facade 560×150 mm ×1                                   →
+P27. sink-vanity / Top drawer facade 560×321 mm ×1                                      →
+P28. sink-vanity / Bottom drawer — bottom 498×350 mm ×1                                 →
+P29. sink-vanity / Bottom drawer — front (internal) 498×100 mm ×1                       →
+P30. sink-vanity / Bottom drawer — back 498×100 mm ×1                                   →
+P31. sink-vanity / Bottom drawer — left side 314×100 mm ×1                              →
+P32. sink-vanity / Bottom drawer — right side 314×100 mm ×1                             →
+P33. sink-vanity / Top drawer — bottom 498×350 mm ×1                                    →
+P34. sink-vanity / Top drawer — front (internal) 498×150 mm ×1                          →
+P35. sink-vanity / Top drawer — back 498×100 mm ×1                                      →
+P36. sink-vanity / Top drawer — left side 314×150 mm ×1                                 →
+P37. sink-vanity / Top drawer — right side 314×150 mm ×1                                →
+P38. open-900 / Left side 600×400 mm ×1                                                 →
+P39. open-900 / Right side 600×400 mm ×1                                                →
+P40. open-900 / Bottom panel 864×600 mm ×1                                              →
+Panele — bohaterow
+Click a row to jump to its panel sheet.
+
+P41. open-900 / Top panel 864×600 mm ×1                       →
+P42. open-900 / Back stretcher (horizontal) 864×150 mm ×1     →
+P43. open-900 / Back stretcher (vertical) 100×364 mm ×2       →
+P44. mounting-panels / Mounting panel 87×1000 87×1000 mm ×3   →
+P1. Left side                                                                                                    Bathroom WC column · wc-column/side-l
+
+
+                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                            1                                                                                         1
+
+
+
+
+                                  h 2524                                                                                    h 2524
+                                            42                                                                                        42
+
+
+
+
+                                            3                                                                                         3
+
+                                           w 199                                                                                     w 199
+             Cabinet FRONT edge = right edge (2). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                       height                        thickness                 qty                    grain
+   199 mm                      2524 mm                       18 mm                     1                      1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                    banded                    band model                                         thick.
+   1 top                   yes                       ABS U604 ST9 1mm                                   1 mm
+   2 right                 yes                       ABS U604 ST9 1mm                                   1 mm
+   3 bottom                yes                       ABS U604 ST9 1mm                                   1 mm
+   4 left                  yes                       ABS U604 ST9 1mm                                   1 mm
+
+
+Drilling — edge
+   edge                    from                       Ø           depth                type
+   2 right                 60 mm                      4           35 mm                multi ×2 @ 280mm (auto)
+
+Drilling — surface
+   face              x                           y                Ø            depth                   type
+   outer             50                          1200             8            through                 multi ×2 @ 99mm x (auto)
+   inner             162                         1296             5            13 mm                   multi ×2 @ 32mm y (auto)
+   inner             162                         1852             5            13 mm                   multi ×2 @ 32mm y (auto)
+   inner             162                         2408             5            13 mm                   multi ×2 @ 32mm y (auto)
+   inner             55                          1630             5            13 mm                   multi ×2 @ 438mm y
+   inner             162                         1630             5            13 mm                   multi ×2 @ 438mm y
+   outer             9                           1359             8            through                 multi ×2 @ 997mm y (auto)
+   outer             68                          2515             8            through                 multi ×2 @ 81mm x (auto)
+
+
+
+
+                                                                  meble · wc-column · panel sheet P1
+P2. Right side                                                                                                   Bathroom WC column · wc-column/side-r
+
+
+                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                            1                                                                                         1
+
+
+
+
+                                  h 2524                                                                                    h 2524
+                                            42                                                                                        42
+
+
+
+
+                                            3                                                                                         3
+
+                                           w 199                                                                                     w 199
+             Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                       height                        thickness                 qty                    grain
+   199 mm                      2524 mm                       18 mm                     1                      1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                    banded                    band model                                         thick.
+   1 top                   yes                       ABS U604 ST9 1mm                                   1 mm
+   2 right                 yes                       ABS U604 ST9 1mm                                   1 mm
+   3 bottom                yes                       ABS U604 ST9 1mm                                   1 mm
+   4 left                  yes                       ABS U604 ST9 1mm                                   1 mm
+
+
+Drilling — edge
+   edge                    from                       Ø           depth                type
+   4 left                  60 mm                      4           35 mm                multi ×2 @ 280mm (auto)
+
+Drilling — surface
+   face              x                           y                Ø            depth                   type
+   inner             37                          1200             5            12 mm                   multi ×2 @ 125mm x (auto)
+   inner             37                          2515             5            12 mm                   multi ×2 @ 107mm x (auto)
+   inner             37                          1630             5            13 mm                   multi ×2 @ 438mm y
+   inner             144                         1630             5            13 mm                   multi ×2 @ 438mm y
+   inner             190                         1359             5            12 mm                   multi ×2 @ 997mm y (auto)
+
+
+
+
+                                                                  meble · wc-column · panel sheet P2
+P3. Divider @1200 (upper cabinet bottom)                                                                           Bathroom WC column · wc-column/divider
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                              OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                            1                                                                                          1
+
+
+   h 199                                                                                      h 199
+           4                                                               2                          4                                                 2
+
+
+
+                                            3                                                                                          3
+
+                                          w 700                                                                                      w 700
+               Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                         height                     thickness                qty                       grain
+     700 mm                        199 mm                     18 mm                    1                         0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                      banded                band model                                            thick.
+     1 top                     —
+     2 right                   —
+     3 bottom                  yes                   ABS U604 ST9 1mm                                      1 mm
+     4 left                    —
+
+
+Drilling — edge
+     edge                      from                   Ø           depth                type
+     2 right                   50 mm                  4           35 mm                multi ×2 @ 99mm (auto)
+     4 left                    37 mm                  8           30 mm                multi ×2 @ 125mm (auto)
+     3 bottom                  100 mm                 8           30 mm                multi ×2 @ 500mm (auto)
+
+Drilling — surface
+     face                x                      y                 Ø            depth                      type
+     inner               34                     37                15           13 mm                      multi ×2 @ 125mm y (auto)
+     inner               100                    34                15           13 mm                      multi ×2 @ 500mm x (auto)
+     outer               350                    50                8            through                    multi ×2 @ 81mm y (auto)
+     outer               100                    190.0             8            through                    multi ×2 @ 500mm x (auto)
+
+
+
+
+                                                                  meble · wc-column · panel sheet P3
+P4. Top panel                                                                                                Bathroom WC column · wc-column/top-panel
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                              OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                            1                                                                                          1
+
+
+   h 181                                                                                      h 181
+           4                                                               2                          4                                                 2
+
+
+                                            3                                                                                          3
+
+                                          w 700                                                                                      w 700
+               Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                         height                     thickness                qty                       grain
+     700 mm                        181 mm                     18 mm                    1                         0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                      banded                band model                                            thick.
+     1 top                     —
+     2 right                   —
+     3 bottom                  yes                   ABS U604 ST9 1mm                                      1 mm
+     4 left                    —
+
+
+Drilling — edge
+     edge                      from                   Ø           depth                type
+     4 left                    37 mm                  8           30 mm                multi ×2 @ 107mm (auto)
+     1 top                     100 mm                 4           35 mm                multi ×3 @ 250mm (auto)
+     2 right                   50 mm                  4           35 mm                multi ×2 @ 81mm (auto)
+
+Drilling — surface
+     face                x                      y                 Ø            depth                      type
+     outer               34                     37                15           13 mm                      multi ×2 @ 107mm y (auto)
+
+
+
+
+                                                                  meble · wc-column · panel sheet P4
+P5. Centre gable (vertical)                                                                                   Bathroom WC column · wc-column/gable-mid
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                         OUTER · editor: przód (front)                                                                    INNER · editor: tył (back)
+
+                                                1                                                                                          1
+
+
+
+
+                                h 1297                                                                                        h 1297
+                                            4       2                                                                                  4       2
+
+
+
+
+                                                3                                                                                          3
+
+                                            w 181                                                                                      w 181
+                                         Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+    width                     height                             thickness                 qty                    grain
+    181 mm                    1297 mm                            18 mm                     1                      1 — along height
+    board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+    edge                  banded                         band model                                         thick.
+    1 top                 —
+    2 right               —
+    3 bottom              —
+    4 left                yes                            ABS U604 ST9 1mm                                   1 mm
+
+
+Drilling — edge
+    edge                  from                            Ø           depth                type
+    1 top                 50 mm                           4           35 mm                multi ×2 @ 81mm (auto)
+    2 right               77 mm                           4           35 mm                multi ×4 @ 380mm (auto)
+
+Drilling — surface
+    face            x                               y                 Ø            depth                   type
+    inner           37                              1178              5            13 mm                   multi ×2 @ 32mm y (auto)
+    inner           37                              622               5            13 mm                   multi ×2 @ 32mm y (auto)
+    inner           37                              66                5            13 mm                   multi ×2 @ 32mm y (auto)
+    outer           144                             438               5            through                 multi ×2 @ 438mm y
+    outer           37                              438               5            through                 multi ×2 @ 438mm y
+
+
+
+
+                                                                      meble · wc-column · panel sheet P5
+P6. Left-compartment shelf                                                                                   Bathroom WC column · wc-column/shelf-l
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                            OUTER · editor: przód (front)                                                        INNER · editor: tył (back)
+
+                                           1                                                                                 1
+
+
+
+
+   h 176                                                                                h 176
+           4                                                            2                       4                                                  2
+
+
+
+
+                                           3                                                                                 3
+
+                                        w 339                                                                              w 339
+               Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                        height                    thickness             qty                  grain
+     339 mm                       176 mm                    18 mm                 2                    0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                     banded            band model                                          thick.
+     1 top                    —
+     2 right                  —
+     3 bottom                 yes               ABS U604 ST9 1mm                                    1 mm
+     4 left                   —
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                              meble · wc-column · panel sheet P6
+P7. Right-compartment shelf                                                                                  Bathroom WC column · wc-column/shelf-r
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                            OUTER · editor: przód (front)                                                        INNER · editor: tył (back)
+
+                                           1                                                                                 1
+
+
+
+
+   h 176                                                                                h 176
+           4                                                            2                       4                                                  2
+
+
+
+
+                                           3                                                                                 3
+
+                                        w 339                                                                              w 339
+               Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                        height                    thickness             qty                  grain
+     339 mm                       176 mm                    18 mm                 2                    0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                     banded            band model                                          thick.
+     1 top                    —
+     2 right                  —
+     3 bottom                 yes               ABS U604 ST9 1mm                                    1 mm
+     4 left                   —
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                              meble · wc-column · panel sheet P7
+P8. Back (upper cabinet)                                                                               Bathroom WC column · wc-column/back-upper
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                             OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                           1                                                                                         1
+
+
+
+
+                    h 1315                                                                                      h 1315
+                              4                          2                                                               4                        2
+
+
+
+
+                                           3                                                                                         3
+
+                                         w 700                                                                                     w 700
+                                     Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+    width                         height                     thickness                qty                    grain
+    700 mm                        1315 mm                    18 mm                    1                      0 — any
+    board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+    edge                      banded                band model                                         thick.
+    1 top                     —
+    2 right                   —
+    3 bottom                  yes                   ABS U604 ST9 1mm                                   1 mm
+    4 left                    —
+
+
+Drilling — edge
+    edge                      from                   Ø           depth                type
+    2 right                   168 mm                 8           30 mm                multi ×2 @ 997mm (auto)
+    4 left                    168 mm                 4           35 mm                multi ×2 @ 997mm (auto)
+    1 top                     100 mm                 4           35 mm                multi ×2 @ 500mm (auto)
+
+Drilling — surface
+    face              x                        y                 Ø            depth                   type
+    inner             666                      168               15           13 mm                   multi ×2 @ 997mm y (auto)
+    outer             350                      95                8            through                 multi ×4 @ 380mm y (auto)
+    outer             100                      9                 8            through                 multi ×3 @ 250mm x (auto)
+
+
+
+
+                                                                 meble · wc-column · panel sheet P8
+P9. Front cover (WC boxing)                                                                                             Bathroom WC column · wc-column/cover
+
+
+                             OUTER · editor: przód (front)                                                                    INNER · editor: tył (back)
+
+                                            1                                                                                             1
+
+
+
+
+                h 1209                                                                                         h 1209
+                             4                              2                                                             4                                2
+
+
+
+
+                                            3                                                                                             3
+
+                                          w 736                                                                                         w 736
+                                       Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                           height                       thickness               qty                   grain
+   736 mm                          1209 mm                      18 mm                   1                     1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                          banded              band model                                         thick.
+   1 top                         yes                 ABS U604 ST9 2mm                                   2 mm
+   2 right                       yes                 ABS U604 ST9 2mm                                   2 mm
+   3 bottom                      yes                 ABS U604 ST9 2mm                                   2 mm
+   4 left                        yes                 ABS U604 ST9 2mm                                   2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face                  x                      y                 Ø             depth                  type
+   inner                 118                    1200              5             12 mm                  multi ×2 @ 500mm x (auto)
+   outer                 9.0                    60                8             through                multi ×2 @ 280mm y (auto)
+   outer                 727.0                  60                8             through                multi ×2 @ 280mm y (auto)
+
+
+
+
+                                                                  meble · wc-column · panel sheet P9
+P10. Spacer behind cover                                                                            Bathroom WC column · wc-column/cover-spacer
+
+
+                            OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                            1                                                                                       1
+
+
+
+
+                   h 1191                                                                                      h 1191
+                               4                      2                                                                  4                     2
+
+
+
+
+                                            3                                                                                       3
+
+                                        w 550                                                                                     w 550
+                                     Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                           height                   thickness                 qty                grain
+   550 mm                          1191 mm                  18 mm                     1                  0 — any
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                      banded             band model                                            thick.
+   1 top                     —
+   2 right                   —
+   3 bottom                  yes                ABS U604 ST9 1mm                                      1 mm
+   4 left                    —
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   — none —
+
+
+
+
+                                                                meble · wc-column · panel sheet P10
+P11. Door left                                                                                                 Bathroom WC column · wc-column/door-l
+
+
+                      OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                           1                                                                                      1
+
+
+
+
+                         h 1308                                                                                    h 1308
+                                    4                2                                                                      4           2
+
+
+
+
+                                           3                                                                                      3
+
+                                        w 367                                                                                   w 367
+                                    Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                          height                   thickness                  qty                 grain
+   367 mm                         1308 mm                  18 mm                      1                   1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                  banded                    band model                                         thick.
+   1 top                 yes                       ABS U604 ST9 2mm                                   2 mm
+   2 right               yes                       ABS U604 ST9 2mm                                   2 mm
+   3 bottom              yes                       ABS U604 ST9 2mm                                   2 mm
+   4 left                yes                       ABS U604 ST9 2mm                                   2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face           x                            y                Ø             depth                type
+   inner          22.5                         100              35            12 mm                multi ×3 @ 556mm y
+
+
+
+
+                                                                meble · wc-column · panel sheet P11
+P12. Door right                                                                                                Bathroom WC column · wc-column/door-r
+
+
+                      OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                           1                                                                                      1
+
+
+
+
+                         h 1308                                                                                    h 1308
+                                    4                2                                                                      4           2
+
+
+
+
+                                           3                                                                                      3
+
+                                        w 367                                                                                   w 367
+                                    Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                          height                   thickness                  qty                 grain
+   367 mm                         1308 mm                  18 mm                      1                   1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                  banded                    band model                                         thick.
+   1 top                 yes                       ABS U604 ST9 2mm                                   2 mm
+   2 right               yes                       ABS U604 ST9 2mm                                   2 mm
+   3 bottom              yes                       ABS U604 ST9 2mm                                   2 mm
+   4 left                yes                       ABS U604 ST9 2mm                                   2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face           x                            y                Ø             depth                type
+   inner          22.5                         100              35            12 mm                multi ×3 @ 556mm y
+
+
+
+
+                                                                meble · wc-column · panel sheet P12
+P13. Left side                                                                     Bathroom laundry column (washer + dryer) · wm-wardrobe/side-l
+
+
+                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                              1                                                                                      1
+
+
+
+
+                            h 2520                                                                                     h 2520
+                                       4              2                                                                         4           2
+
+
+
+
+                                              3                                                                                      3
+
+                                           w 675                                                                                    w 675
+             Cabinet FRONT edge = right edge (2). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                             height                   thickness                   qty                 grain
+   675 mm                            2520 mm                  18 mm                       1                   1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                    banded                     band model                                           thick.
+   1 top                   yes                        ABS U604 ST9 1mm                                     1 mm
+   2 right                 yes                        ABS U604 ST9 1mm                                     1 mm
+   3 bottom                yes                        ABS U604 ST9 1mm                                     1 mm
+   4 left                  yes                        ABS U604 ST9 1mm                                     1 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face              x                            y                 Ø             depth               type
+   outer             98                           1819              8             through             multi ×3 @ 250mm x (auto)
+   outer             9                            176               8             through             multi ×5 @ 550mm y (auto)
+   inner             638                          1894              5             13 mm               multi ×2 @ 32mm y (auto)
+   inner             638                          2400              5             13 mm               multi ×2 @ 32mm y (auto)
+   inner             55                           2156              5             13 mm               single
+   inner             638                          2156              5             13 mm               single
+   outer             98                           2511              8             through             multi ×3 @ 250mm x (auto)
+
+
+
+
+                                                                   meble · wm-wardrobe · panel sheet P13
+P14. Right side                                                                    Bathroom laundry column (washer + dryer) · wm-wardrobe/side-r
+
+
+                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                              1                                                                                      1
+
+
+
+
+                            h 2520                                                                                     h 2520
+                                       4              2                                                                         4           2
+
+
+
+
+                                              3                                                                                      3
+
+                                           w 675                                                                                    w 675
+             Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                             height                   thickness                   qty                 grain
+   675 mm                            2520 mm                  18 mm                       1                   1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                    banded                     band model                                           thick.
+   1 top                   yes                        ABS U604 ST9 1mm                                     1 mm
+   2 right                 yes                        ABS U604 ST9 1mm                                     1 mm
+   3 bottom                yes                        ABS U604 ST9 1mm                                     1 mm
+   4 left                  yes                        ABS U604 ST9 1mm                                     1 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face              x                            y                 Ø             depth               type
+   outer             77                           1819              8             through             multi ×3 @ 250mm x (auto)
+   outer             666                          176               8             through             multi ×5 @ 550mm y (auto)
+   inner             37                           1894              5             13 mm               multi ×2 @ 32mm y (auto)
+   inner             37                           2400              5             13 mm               multi ×2 @ 32mm y (auto)
+   inner             37                           2156              5             13 mm               single
+   inner             620                          2156              5             13 mm               single
+   outer             77                           2511              8             through             multi ×3 @ 250mm x (auto)
+
+
+
+
+                                                                   meble · wm-wardrobe · panel sheet P14
+P15. Divider @1810 (bay ceiling / overhead-cabinet
+                                    Bathroom laundry columnfloor)
+                                                            (washer + dryer) · wm-wardrobe/divider
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                           OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
+
+                                          1                                                                                   1
+
+
+
+
+      h 657                                                                              h 657
+              4                                                      2                           4                                                2
+
+
+
+
+                                          3                                                                                   3
+
+                                       w 726                                                                                w 726
+              Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+    width                        height                    thickness             qty                    grain
+    726 mm                       657 mm                    18 mm                 1                      0 — any
+    board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+    edge                     banded            band model                                            thick.
+    1 top                    —
+    2 right                  —
+    3 bottom                 yes               ABS U604 ST9 1mm                                      1 mm
+    4 left                   —
+
+
+Drilling — edge
+    edge                     from               Ø            depth               type
+    2 right                  77 mm              4            35 mm               multi ×3 @ 250mm (auto)
+    4 left                   77 mm              4            35 mm               multi ×3 @ 250mm (auto)
+    1 top                    126 mm             4            35 mm               multi ×3 @ 237mm (auto)
+
+Drilling — surface
+    — none —
+
+
+
+
+                                                            meble · wm-wardrobe · panel sheet P15
+P16. Top panel                                                           Bathroom laundry column (washer + dryer) · wm-wardrobe/top-panel
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                           OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
+
+                                          1                                                                                   1
+
+
+
+
+      h 657                                                                              h 657
+              4                                                      2                           4                                                2
+
+
+
+
+                                          3                                                                                   3
+
+                                       w 726                                                                                w 726
+              Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+    width                        height                    thickness             qty                    grain
+    726 mm                       657 mm                    18 mm                 1                      0 — any
+    board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+    edge                     banded            band model                                            thick.
+    1 top                    —
+    2 right                  —
+    3 bottom                 yes               ABS U604 ST9 1mm                                      1 mm
+    4 left                   —
+
+
+Drilling — edge
+    edge                     from               Ø            depth               type
+    2 right                  77 mm              4            35 mm               multi ×3 @ 250mm (auto)
+    4 left                   77 mm              4            35 mm               multi ×3 @ 250mm (auto)
+    1 top                    126 mm             4            35 mm               multi ×3 @ 237mm (auto)
+
+Drilling — surface
+    — none —
+
+
+
+
+                                                            meble · wm-wardrobe · panel sheet P16
+P17. Back (full height)                                                         Bathroom laundry column (washer + dryer) · wm-wardrobe/back
+
+
+                      OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                          1                                                                                      1
+
+
+
+
+                        h 2470                                                                                    h 2470
+                                  4               2                                                                        4           2
+
+
+
+
+                                          3                                                                                      3
+
+                                      w 726                                                                                    w 726
+                                   Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                         height                   thickness                   qty                 grain
+   726 mm                        2470 mm                  18 mm                       1                   1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                 banded                    band model                                           thick.
+   1 top                yes                       ABS U604 ST9 1mm                                     1 mm
+   2 right              —
+   3 bottom             yes                       ABS U604 ST9 1mm                                     1 mm
+   4 left               —
+
+
+Drilling — edge
+   edge                 from                       Ø            depth                 type
+   2 right              126 mm                     4            35 mm                 multi ×5 @ 550mm (auto)
+   4 left               126 mm                     4            35 mm                 multi ×5 @ 550mm (auto)
+
+Drilling — surface
+   face           x                           y                 Ø             depth               type
+   outer          126                         1769              8             through             multi ×3 @ 237mm x (auto)
+   outer          126                         2461              8             through             multi ×3 @ 237mm x (auto)
+
+
+
+
+                                                               meble · wm-wardrobe · panel sheet P17
+P18. Overhead shelf                                                          Bathroom laundry column (washer + dryer) · wm-wardrobe/shelf
+
+
+                           OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
+
+                                         1                                                                                    1
+
+
+
+
+    h 652                                                                                h 652
+            4                                                       2                            4                                               2
+
+
+
+
+                                         3                                                                                    3
+
+                                       w 724                                                                                w 724
+                Cabinet FRONT edge = top edge (1). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                        height                     thickness              qty                   grain
+   724 mm                       652 mm                     18 mm                  1                     0 — any
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                      banded            band model                                            thick.
+   1 top                     yes               ABS U604 ST9 1mm                                      1 mm
+   2 right                   yes               ABS U604 ST9 1mm                                      1 mm
+   3 bottom                  yes               ABS U604 ST9 1mm                                      1 mm
+   4 left                    yes               ABS U604 ST9 1mm                                      1 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   — none —
+
+
+
+
+                                                            meble · wm-wardrobe · panel sheet P18
+P19. Door left                                                              Bathroom laundry column (washer + dryer) · wm-wardrobe/door-l
+
+
+                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                        1                                                                                         1
+
+
+
+
+                  h 706                                                                                       h 706
+                           4                         2                                                                4                        2
+
+
+
+
+                                        3                                                                                         3
+
+                                      w 380                                                                                     w 380
+                                  Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                       height                     thickness                 qty                 grain
+   380 mm                      706 mm                     18 mm                     1                   1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                    banded               band model                                           thick.
+   1 top                   yes                  ABS U604 ST9 2mm                                     2 mm
+   2 right                 yes                  ABS U604 ST9 2mm                                     2 mm
+   3 bottom                yes                  ABS U604 ST9 2mm                                     2 mm
+   4 left                  yes                  ABS U604 ST9 2mm                                     2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face             x                       y                 Ø             depth                type
+   inner            22.5                    100               35            12 mm                multi ×2 @ 506mm y
+
+
+
+
+                                                             meble · wm-wardrobe · panel sheet P19
+P20. Door right                                                             Bathroom laundry column (washer + dryer) · wm-wardrobe/door-r
+
+
+                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                        1                                                                                         1
+
+
+
+
+                  h 706                                                                                       h 706
+                           4                         2                                                                4                        2
+
+
+
+
+                                        3                                                                                         3
+
+                                      w 380                                                                                     w 380
+                                  Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                       height                     thickness                 qty                 grain
+   380 mm                      706 mm                     18 mm                     1                   1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                    banded               band model                                           thick.
+   1 top                   yes                  ABS U604 ST9 2mm                                     2 mm
+   2 right                 yes                  ABS U604 ST9 2mm                                     2 mm
+   3 bottom                yes                  ABS U604 ST9 2mm                                     2 mm
+   4 left                  yes                  ABS U604 ST9 2mm                                     2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face             x                       y                 Ø             depth                type
+   inner            357.5                   100               35            12 mm                multi ×2 @ 506mm y
+
+
+
+
+                                                             meble · wm-wardrobe · panel sheet P20
+P21. Left side                                                                                Bathroom sink vanity (wall-hung basin) · sink-vanity/side-l
+
+
+                                 OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                               1                                                                                         1
+
+
+
+
+            h 480                                                                                     h 480
+                      4                                                 2                                       4                                         2
+
+
+
+
+                                               3                                                                                         3
+
+                                             w 450                                                                                      w 450
+                    Cabinet FRONT edge = right edge (2). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                              height                     thickness                qty                        grain
+   450 mm                             480 mm                     18 mm                    1                          1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                           banded               band model                                              thick.
+   1 top                          yes                  ABS U604 ST9 1mm                                        1 mm
+   2 right                        yes                  ABS U604 ST9 1mm                                        1 mm
+   3 bottom                       yes                  ABS U604 ST9 1mm                                        1 mm
+   4 left                         yes                  ABS U604 ST9 1mm                                        1 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face                     x                      y                Ø             depth                       type
+   inner                    50                     9                5             12 mm                       multi ×3 @ 175mm x (auto)
+   inner                    441                    405              5             12 mm                       multi ×2 @ 50mm y (auto)
+
+
+
+
+                                                                    meble · sink-vanity · panel sheet P21
+P22. Right side                                                                               Bathroom sink vanity (wall-hung basin) · sink-vanity/side-r
+
+
+                                 OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                               1                                                                                         1
+
+
+
+
+            h 480                                                                                     h 480
+                      4                                                 2                                       4                                         2
+
+
+
+
+                                               3                                                                                         3
+
+                                             w 450                                                                                      w 450
+                    Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                              height                     thickness                qty                        grain
+   450 mm                             480 mm                     18 mm                    1                          1 — along height
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                           banded               band model                                              thick.
+   1 top                          yes                  ABS U604 ST9 1mm                                        1 mm
+   2 right                        yes                  ABS U604 ST9 1mm                                        1 mm
+   3 bottom                       yes                  ABS U604 ST9 1mm                                        1 mm
+   4 left                         yes                  ABS U604 ST9 1mm                                        1 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face                     x                      y                Ø             depth                       type
+   inner                    50                     9                5             12 mm                       multi ×3 @ 175mm x (auto)
+   inner                    9                      405              5             12 mm                       multi ×2 @ 50mm y (auto)
+
+
+
+
+                                                                    meble · sink-vanity · panel sheet P22
+P23. Bottom panel                                                                      Bathroom sink vanity (wall-hung basin) · sink-vanity/bottom
+
+
+                            OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
+
+                                          1                                                                                           1
+
+
+
+
+   h 450                                                                                     h 450
+           4                                                             2                           4                                                 2
+
+
+
+
+                                          3                                                                                           3
+
+                                        w 524                                                                                       w 524
+               Cabinet FRONT edge = top edge (1). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                         height                     thickness                 qty                       grain
+   524 mm                        450 mm                     18 mm                     1                         0 — any
+   board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                      banded                band model                                             thick.
+   1 top                     yes                   ABS U604 ST9 1mm                                       1 mm
+   2 right                   —
+   3 bottom                  yes                   ABS U604 ST9 1mm                                       1 mm
+   4 left                    —
+
+
+Drilling — edge
+   edge                      from                   Ø           depth                 type
+   4 left                    50 mm                  8           30 mm                 multi ×3 @ 175mm (auto)
+   2 right                   50 mm                  8           30 mm                 multi ×3 @ 175mm (auto)
+
+Drilling — surface
+   face                x                      y                 Ø             depth                      type
+   inner               34                     50                15            13 mm                      multi ×3 @ 175mm y (auto)
+   inner               490                    50                15            13 mm                      multi ×3 @ 175mm y (auto)
+
+
+
+
+                                                                meble · sink-vanity · panel sheet P23
+P24. Top-front stretcher                                                            Bathroom sink vanity (wall-hung basin) · sink-vanity/rail-top
+
+
+                         OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
+
+                                       1                                                                                           1
+
+   h 100                                                                                  h 100
+           4                                                           2                          4                                                 2
+
+                                       3                                                                                           3
+
+                                     w 524                                                                                       w 524
+                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                     thickness                 qty                       grain
+     524 mm                   100 mm                     18 mm                     1                         0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                             thick.
+     1 top                yes                   ABS U604 ST9 1mm                                       1 mm
+     2 right              —
+     3 bottom             yes                   ABS U604 ST9 1mm                                       1 mm
+     4 left               —
+
+
+Drilling — edge
+     edge                 from                   Ø           depth                 type
+     4 left               25 mm                  8           30 mm                 multi ×2 @ 50mm (auto)
+     2 right              25 mm                  8           30 mm                 multi ×2 @ 50mm (auto)
+
+Drilling — surface
+     face           x                      y                 Ø             depth                      type
+     inner          34                     25                15            13 mm                      multi ×2 @ 50mm y (auto)
+     inner          490                    25                15            13 mm                      multi ×2 @ 50mm y (auto)
+
+
+
+
+                                                             meble · sink-vanity · panel sheet P24
+P25. Back rail / wall cleat                                                    Bathroom sink vanity (wall-hung basin) · sink-vanity/rail-back
+
+
+                       OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
+
+                                      1                                                                                      1
+
+   h 100                                                                              h 100
+           4                                                        2                         4                                             2
+
+                                      3                                                                                      3
+
+                                   w 524                                                                                 w 524
+                               Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                   height                    thickness                qty                  grain
+     524 mm                  100 mm                    18 mm                    2                    0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                banded            band model                                             thick.
+     1 top               yes               ABS U604 ST9 1mm                                       1 mm
+     2 right             —
+     3 bottom            yes               ABS U604 ST9 1mm                                       1 mm
+     4 left              —
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                          meble · sink-vanity · panel sheet P25
+P26. Bottom drawer facade                                                   Bathroom sink vanity (wall-hung basin) · sink-vanity/facade-bot
+
+
+                       OUTER · editor: przód (front)                                                         INNER · editor: tył (back)
+
+                                     1                                                                                       1
+
+
+   h 150                                                                              h 150
+           4                                                        2                         4                                           2
+
+
+                                     3                                                                                       3
+
+                                   w 560                                                                                w 560
+                               Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                  height                     thickness                qty                  grain
+     560 mm                 150 mm                     18 mm                    1                    1 — along height
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                banded            band model                                             thick.
+     1 top               yes               ABS U604 ST9 2mm                                       2 mm
+     2 right             yes               ABS U604 ST9 2mm                                       2 mm
+     3 bottom            yes               ABS U604 ST9 2mm                                       2 mm
+     4 left              yes               ABS U604 ST9 2mm                                       2 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                          meble · sink-vanity · panel sheet P26
+P27. Top drawer facade                                                      Bathroom sink vanity (wall-hung basin) · sink-vanity/facade-top
+
+
+                       OUTER · editor: przód (front)                                                         INNER · editor: tył (back)
+
+                                     1                                                                                       1
+
+
+
+
+   h 321                                                                              h 321
+           4                                                        2                         4                                           2
+
+
+
+
+                                     3                                                                                       3
+
+                                   w 560                                                                                w 560
+                               Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                  height                     thickness                qty                  grain
+     560 mm                 321 mm                     18 mm                    1                    1 — along height
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                banded            band model                                             thick.
+     1 top               yes               ABS U604 ST9 2mm                                       2 mm
+     2 right             yes               ABS U604 ST9 2mm                                       2 mm
+     3 bottom            yes               ABS U604 ST9 2mm                                       2 mm
+     4 left              yes               ABS U604 ST9 2mm                                       2 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                          meble · sink-vanity · panel sheet P27
+P28. Bottom drawer — bottom                                                     Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-bottom
+
+
+                        OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
+
+                                      1                                                                                           1
+
+
+
+
+   h 350                                                                                 h 350
+           4                                                           2                         4                                                 2
+
+
+
+
+                                      3                                                                                           3
+
+                                    w 498                                                                                       w 498
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                   height                     thickness                  qty                      grain
+     498 mm                  350 mm                     18 mm                      1                        0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                            thick.
+     1 top                yes                   ABS U604 ST9 1mm                                      1 mm
+     2 right              yes                   ABS U604 ST9 1mm                                      1 mm
+     3 bottom             yes                   ABS U604 ST9 1mm                                      1 mm
+     4 left               yes                   ABS U604 ST9 1mm                                      1 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face           x                     y                  Ø             depth                     type
+     outer          9                     98                 8             through                   multi ×2 @ 154mm y (auto)
+     outer          489                   98                 8             through                   multi ×2 @ 154mm y (auto)
+     outer          125                   341.0              8             through                   multi ×2 @ 248mm x (auto)
+     outer          125                   9.0                8             through                   multi ×2 @ 248mm x (auto)
+
+
+
+
+                                                             meble · sink-vanity · panel sheet P28
+P29. Bottom drawer — front (internal)                                              Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-front
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
+
+                                       1                                                                                           1
+
+   h 100                                                                                  h 100
+           4                                                           2                          4                                                 2
+
+                                       3                                                                                           3
+
+                                    w 498                                                                                        w 498
+                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                    thickness                  qty                       grain
+     498 mm                   100 mm                    18 mm                      1                         0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                             thick.
+     1 top                —
+     2 right              yes                   ABS U604 ST9 1mm                                       1 mm
+     3 bottom             yes                   ABS U604 ST9 1mm                                       1 mm
+     4 left               yes                   ABS U604 ST9 1mm                                       1 mm
+
+
+Drilling — edge
+     edge                 from                   Ø           depth                 type
+     1 top                125 mm                 4           35 mm                 multi ×2 @ 248mm (auto)
+
+Drilling — surface
+     face           x                      y                 Ø             depth                      type
+     outer          489.0                  50                8             through                    single (auto)
+     outer          9.0                    50                8             through                    single (auto)
+
+
+
+
+                                                             meble · sink-vanity · panel sheet P29
+P30. Bottom drawer — back                                                          Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-back
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
+
+                                       1                                                                                           1
+
+   h 100                                                                                  h 100
+           4                                                           2                          4                                                 2
+
+                                       3                                                                                           3
+
+                                    w 498                                                                                        w 498
+                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                    thickness                  qty                       grain
+     498 mm                   100 mm                    18 mm                      1                         0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                             thick.
+     1 top                —
+     2 right              yes                   ABS U604 ST9 1mm                                       1 mm
+     3 bottom             yes                   ABS U604 ST9 1mm                                       1 mm
+     4 left               yes                   ABS U604 ST9 1mm                                       1 mm
+
+
+Drilling — edge
+     edge                 from                   Ø           depth                 type
+     1 top                125 mm                 4           35 mm                 multi ×2 @ 248mm (auto)
+
+Drilling — surface
+     face           x                      y                 Ø             depth                      type
+     outer          9.0                    50                8             through                    single (auto)
+     outer          489.0                  50                8             through                    single (auto)
+
+
+
+
+                                                             meble · sink-vanity · panel sheet P30
+P31. Bottom drawer — left side                                                  Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-side-l
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
+
+                                      1                                                                                       1
+
+
+
+   h 100                                                                                h 100
+           4                                                         2                          4                                             2
+
+
+
+                                      3                                                                                       3
+
+                                    w 314                                                                                  w 314
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                   height                     thickness                qty                   grain
+     314 mm                  100 mm                     18 mm                    1                     0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                banded             band model                                              thick.
+     1 top               —
+     2 right             —
+     3 bottom            yes                ABS U604 ST9 1mm                                        1 mm
+     4 left              —
+
+
+Drilling — edge
+     edge                from                Ø             depth                 type
+     1 top               80 mm               4             35 mm                 multi ×2 @ 154mm (auto)
+     4 left              50 mm               4             35 mm                 single (auto)
+     2 right             50 mm               4             35 mm                 single (auto)
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                           meble · sink-vanity · panel sheet P31
+P32. Bottom drawer — right side                                                Bathroom sink vanity (wall-hung basin) · sink-vanity/d1-side-r
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
+
+                                      1                                                                                       1
+
+
+
+   h 100                                                                                h 100
+           4                                                         2                          4                                             2
+
+
+
+                                      3                                                                                       3
+
+                                    w 314                                                                                  w 314
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                   height                     thickness                qty                   grain
+     314 mm                  100 mm                     18 mm                    1                     0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                banded             band model                                              thick.
+     1 top               —
+     2 right             —
+     3 bottom            yes                ABS U604 ST9 1mm                                        1 mm
+     4 left              —
+
+
+Drilling — edge
+     edge                from                Ø             depth                 type
+     1 top               80 mm               4             35 mm                 multi ×2 @ 154mm (auto)
+     2 right             50 mm               4             35 mm                 single (auto)
+     4 left              50 mm               4             35 mm                 single (auto)
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                           meble · sink-vanity · panel sheet P32
+P33. Top drawer — bottom                                                        Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-bottom
+
+
+                        OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
+
+                                      1                                                                                           1
+
+
+
+
+   h 350                                                                                 h 350
+           4                                                           2                         4                                                 2
+
+
+
+
+                                      3                                                                                           3
+
+                                    w 498                                                                                       w 498
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                   height                     thickness                  qty                      grain
+     498 mm                  350 mm                     18 mm                      1                        0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                            thick.
+     1 top                yes                   ABS U604 ST9 1mm                                      1 mm
+     2 right              yes                   ABS U604 ST9 1mm                                      1 mm
+     3 bottom             yes                   ABS U604 ST9 1mm                                      1 mm
+     4 left               yes                   ABS U604 ST9 1mm                                      1 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face           x                     y                  Ø             depth                     type
+     outer          9                     98                 8             through                   multi ×2 @ 154mm y (auto)
+     outer          489                   98                 8             through                   multi ×2 @ 154mm y (auto)
+     outer          125                   341.0              8             through                   multi ×2 @ 248mm x (auto)
+     outer          125                   9.0                8             through                   multi ×2 @ 248mm x (auto)
+
+
+
+
+                                                             meble · sink-vanity · panel sheet P33
+P34. Top drawer — front (internal)                                                 Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-front
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
+
+                                       1                                                                                           1
+
+
+
+   h 150                                                                                  h 150
+           4                                                           2                          4                                                 2
+
+
+
+                                       3                                                                                           3
+
+                                    w 498                                                                                        w 498
+                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                    thickness                  qty                       grain
+     498 mm                   150 mm                    18 mm                      1                         0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                             thick.
+     1 top                —
+     2 right              yes                   ABS U604 ST9 1mm                                       1 mm
+     3 bottom             yes                   ABS U604 ST9 1mm                                       1 mm
+     4 left               yes                   ABS U604 ST9 1mm                                       1 mm
+
+
+Drilling — edge
+     edge                 from                   Ø           depth                 type
+     1 top                125 mm                 4           35 mm                 multi ×2 @ 248mm (auto)
+
+Drilling — surface
+     face           x                      y                 Ø             depth                      type
+     outer          489.0                  75                8             through                    single (auto)
+     outer          9.0                    75                8             through                    single (auto)
+
+
+
+
+                                                             meble · sink-vanity · panel sheet P34
+P35. Top drawer — back                                                             Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-back
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
+
+                                       1                                                                                           1
+
+   h 100                                                                                  h 100
+           4                                                           2                          4                                                 2
+
+                                       3                                                                                           3
+
+                                    w 498                                                                                        w 498
+                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                    thickness                  qty                       grain
+     498 mm                   100 mm                    18 mm                      1                         0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                             thick.
+     1 top                —
+     2 right              yes                   ABS U604 ST9 1mm                                       1 mm
+     3 bottom             yes                   ABS U604 ST9 1mm                                       1 mm
+     4 left               yes                   ABS U604 ST9 1mm                                       1 mm
+
+
+Drilling — edge
+     edge                 from                   Ø           depth                 type
+     1 top                125 mm                 4           35 mm                 multi ×2 @ 248mm (auto)
+
+Drilling — surface
+     face           x                      y                 Ø             depth                      type
+     outer          9.0                    50                8             through                    single (auto)
+     outer          489.0                  50                8             through                    single (auto)
+
+
+
+
+                                                             meble · sink-vanity · panel sheet P35
+P36. Top drawer — left side                                                     Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-side-l
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
+
+                                      1                                                                                       1
+
+
+
+
+   h 150                                                                                h 150
+           4                                                         2                          4                                             2
+
+
+
+
+                                      3                                                                                       3
+
+                                    w 314                                                                                  w 314
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                   height                     thickness                qty                   grain
+     314 mm                  150 mm                     18 mm                    1                     0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                banded             band model                                              thick.
+     1 top               —
+     2 right             —
+     3 bottom            yes                ABS U604 ST9 1mm                                        1 mm
+     4 left              —
+
+
+Drilling — edge
+     edge                from                Ø             depth                 type
+     1 top               80 mm               4             35 mm                 multi ×2 @ 154mm (auto)
+     4 left              75 mm               4             35 mm                 single (auto)
+     2 right             100 mm              4             35 mm                 single (auto)
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                           meble · sink-vanity · panel sheet P36
+P37. Top drawer — right side                                                   Bathroom sink vanity (wall-hung basin) · sink-vanity/d2-side-r
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
+
+                                      1                                                                                       1
+
+
+
+
+   h 150                                                                                h 150
+           4                                                         2                          4                                             2
+
+
+
+
+                                      3                                                                                       3
+
+                                    w 314                                                                                  w 314
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                   height                     thickness                qty                   grain
+     314 mm                  150 mm                     18 mm                    1                     0 — any
+     board: Egger Zieleń eukaliptusowa U604 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                banded             band model                                              thick.
+     1 top               —
+     2 right             —
+     3 bottom            yes                ABS U604 ST9 1mm                                        1 mm
+     4 left              —
+
+
+Drilling — edge
+     edge                from                Ø             depth                 type
+     1 top               80 mm               4             35 mm                 multi ×2 @ 154mm (auto)
+     2 right             75 mm               4             35 mm                 single (auto)
+     4 left              100 mm              4             35 mm                 single (auto)
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                           meble · sink-vanity · panel sheet P37
+P38. Left side                                                                                                     Kitchen open unit 900 · open-900/side-l
+
+
+                            OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                          1                                                                                          1
+
+
+
+
+   h 400                                                                                    h 400
+           4                                                              2                         4                                                  2
+
+
+
+
+                                          3                                                                                          3
+
+                                        w 600                                                                                      w 600
+               Cabinet FRONT edge = right edge (2). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                       height                      thickness                qty                      grain
+     600 mm                      400 mm                      18 mm                    1                        0 — any
+     board: Egger Czerń aksamitna U899 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                    banded                 band model                                           thick.
+     1 top                   yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+     2 right                 yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+     3 bottom                yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+     4 left                  yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face              x                      y                  Ø            depth                     type
+     outer             50                     9.0                8            through                   multi ×3 @ 250mm x (auto)
+     outer             50                     391.0              8            through                   multi ×3 @ 250mm x (auto)
+
+
+
+
+                                                                 meble · open-900 · panel sheet P38
+P39. Right side                                                                                                    Kitchen open unit 900 · open-900/side-r
+
+
+                            OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                          1                                                                                          1
+
+
+
+
+   h 400                                                                                    h 400
+           4                                                              2                         4                                                  2
+
+
+
+
+                                          3                                                                                          3
+
+                                        w 600                                                                                      w 600
+               Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                       height                      thickness                qty                      grain
+     600 mm                      400 mm                      18 mm                    1                        0 — any
+     board: Egger Czerń aksamitna U899 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                    banded                 band model                                           thick.
+     1 top                   yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+     2 right                 yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+     3 bottom                yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+     4 left                  yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face              x                      y                  Ø            depth                     type
+     outer             50                     9.0                8            through                   multi ×3 @ 250mm x (auto)
+     outer             50                     391.0              8            through                   multi ×3 @ 250mm x (auto)
+
+
+
+
+                                                                 meble · open-900 · panel sheet P39
+P40. Bottom panel                                                                                            Kitchen open unit 900 · open-900/bottom
+
+
+                          OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
+
+                                         1                                                                                   1
+
+
+
+
+   h 600                                                                                h 600
+           4                                                          2                         4                                                2
+
+
+
+
+                                         3                                                                                   3
+
+                                      w 864                                                                                w 864
+               Cabinet FRONT edge = top edge (1). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                      height                    thickness              qty                   grain
+     864 mm                     600 mm                    18 mm                  1                     0 — any
+     board: Egger Czerń aksamitna U899 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                   banded            band model                                            thick.
+     1 top                  yes               ABS Czerń aksamitna U899 ST9 23×0.8 mm                1 mm
+     2 right                —
+     3 bottom               yes               ABS Czerń aksamitna U899 ST9 23×0.8 mm                1 mm
+     4 left                 —
+
+
+Drilling — edge
+     edge                   from               Ø            depth                type
+     4 left                 50 mm              4            35 mm                multi ×3 @ 250mm (auto)
+     2 right                50 mm              4            35 mm                multi ×3 @ 250mm (auto)
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                             meble · open-900 · panel sheet P40
+P41. Top panel                                                                                                 Kitchen open unit 900 · open-900/top
+
+
+                          OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
+
+                                         1                                                                                   1
+
+
+
+
+   h 600                                                                                h 600
+           4                                                          2                         4                                               2
+
+
+
+
+                                         3                                                                                   3
+
+                                      w 864                                                                                w 864
+               Cabinet FRONT edge = top edge (1). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                      height                    thickness              qty                   grain
+     864 mm                     600 mm                    18 mm                  1                     0 — any
+     board: Egger Czerń aksamitna U899 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                   banded            band model                                            thick.
+     1 top                  yes               ABS Czerń aksamitna U899 ST9 23×0.8 mm                1 mm
+     2 right                —
+     3 bottom               yes               ABS Czerń aksamitna U899 ST9 23×0.8 mm                1 mm
+     4 left                 —
+
+
+Drilling — edge
+     edge                   from               Ø            depth                type
+     4 left                 50 mm              4            35 mm                multi ×3 @ 250mm (auto)
+     2 right                50 mm              4            35 mm                multi ×3 @ 250mm (auto)
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                             meble · open-900 · panel sheet P41
+P42. Back stretcher (horizontal)                                                                    Kitchen open unit 900 · open-900/rail-back-h
+
+
+                       OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
+
+                                     1                                                                                       1
+
+   h 150                                                                              h 150
+           4                                                        2                         4                                              2
+
+                                     3                                                                                       3
+
+                                   w 864                                                                                 w 864
+                               Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                  height                     thickness                qty                  grain
+     864 mm                 150 mm                     18 mm                    1                    0 — any
+     board: Egger Czerń aksamitna U899 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge               banded             band model                                             thick.
+     1 top              —
+     2 right            —
+     3 bottom           yes                ABS Czerń aksamitna U899 ST9 23×0.8 mm                 1 mm
+     4 left             —
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                          meble · open-900 · panel sheet P42
+P43. Back stretcher (vertical)                                                                       Kitchen open unit 900 · open-900/rail-back-v
+
+
+                     OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
+
+                                        1                                                                                      1
+
+
+
+
+                       h 364                                                                                    h 364
+                                 4           2                                                                          4           2
+
+
+
+
+                                        3                                                                                      3
+
+                                     w 100                                                                                  w 100
+                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                       height                   thickness                 qty                grain
+   100 mm                      364 mm                   18 mm                     2                  0 — any
+   board: Egger Czerń aksamitna U899 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge               banded                 band model                                           thick.
+   1 top              —
+   2 right            yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+   3 bottom           —
+   4 left             yes                    ABS Czerń aksamitna U899 ST9 23×0.8 mm               1 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   — none —
+
+
+
+
+                                                            meble · open-900 · panel sheet P43
+P44. Mounting panel 87×1000                                                         Kitchen mounting panels · mounting-panels/mount-panel
+
+
+                     OUTER · editor: przód (front)                                                         INNER · editor: tył (back)
+
+                                      1                                                                                    1
+
+
+
+
+                            h 1000                                                                               h 1000
+                                     4 2                                                                                  4 2
+
+
+
+
+                                      3                                                                                    3
+
+                                     w 87                                                                                 w 87
+                             Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                  height                     thickness                qty                grain
+   87 mm                  1000 mm                    18 mm                    3                  0 — any
+   board: Egger Czerń aksamitna U899 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge               banded                band model                                        thick.
+   1 top              —
+   2 right            —
+   3 bottom           —
+   4 left             —
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   — none —
+
+
+
+
+                                                     meble · mounting-panels · panel sheet P44
+

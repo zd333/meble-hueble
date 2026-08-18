@@ -18,6 +18,10 @@ python -m meble pdf --apartment bohaterow  # everything
 ```
 
 ## Notes
+- **Pages marked "SHOWN ROTATED 180°" are correct — type them exactly as drawn.** The meble.pl import
+  can only band edge 3 / edge 4, so a panel banding edge 1 or 2 alone is exported turned 180°; the CSV
+  applies the identical rotation, so the sheet matches the panel the import created. Such a page will
+  disagree with the 3D viewer about which end is "top", which is expected. See `docs/conventions.md`.
 - Reads only the panels (the source of truth). If you changed fittings, run `python -m meble fit
   --cabinet <id>` first so stamped holes appear; auto-stamped holes are marked `(auto)` on the sheet.
 - Holes drawn green = surface, red = edge; hollow circle = drill-through.

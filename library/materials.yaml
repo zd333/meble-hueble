@@ -81,27 +81,12 @@ boards:
     grain_directional: false
     color: "#FAFAF7"
 
-# Stock sheet formats meble.pl sells. meble.pl charges for WHOLE sheets and ONE ORDER CARRIES ONE
-# FORMAT, so the panel list has to be split by decor *and* by format — that split is what
-# `meble pack` computes. See docs/ordering-split.md.
+# NOTE ON STOCK SHEET FORMATS — kept as a fact about the material, not as data any tool reads.
+# meble.pl sells 2800 × 2070 (full) and 2800 × 1032 (half). We no longer model them: they will sell
+# a part sheet, and their cutting optimiser never matched our predictions, so a local estimate was
+# worse than no estimate. Ask them for the quote.
 #
-# `length` is the GRAIN AXIS. Both formats are 2800 long because the half IS the full sheet ripped
-# down its length (1032 = 2070/2 less the saw kerf), so a half sheet takes a full-height 2500 mm
-# gable just as happily as a full sheet does — it is narrower, not shorter. Do not assume a smaller
-# format means shorter panels.
-sheets:
-  - id: full
-    name: "Full sheet 2800 × 2070"
-    length: 2800
-    width: 2070
-
-  - id: half
-    name: "Half sheet 2800 × 1032"
-    length: 2800
-    width: 1032
-
-# Allowances used when test-packing. Deliberately pessimistic: we only ever want to prove a list
-# FITS, never to produce a cutting layout (meble.pl owns nesting).
-packing:
-  kerf: 5     # mm of blade lost around every panel
-  trim: 10    # mm taken off each sheet edge before anything is cut
+# The one thing worth remembering: **the half sheet is narrower, NOT shorter.** It is the full sheet
+# ripped down its length (1032 = 2070/2 less the kerf), so it takes a full-height 2520 mm gable just
+# as happily as a full sheet does. Writing it down as 2070 × 1032 once barred every tall panel from
+# it and cost a whole sheet in the order plan.

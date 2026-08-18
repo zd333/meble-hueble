@@ -1,10 +1,15 @@
-# Generated, disposable artifacts (rebuilt from YAML on demand)
+# Generated, disposable artifacts (rebuilt from YAML on demand).
+# Both forms: sibling worktrees SYMLINK these to the main checkout, and a trailing-slash
+# pattern does not match a symlink — so `git add -A` would happily commit the link.
 out/
+out
 
 # Python
 __pycache__/
+__pycache__
 *.py[cod]
 .venv/
+.venv
 venv/
 *.egg-info/
 .pytest_cache/

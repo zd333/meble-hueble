@@ -23,5 +23,23 @@ python -m meble csv --apartment bohaterow  # everything in an apartment
 2. Import the matching `out/csv/<board>.csv` under that board.
 3. Use `generate-panel-pdf` to fill in banding + drilling by hand for each panel.
 
-Details of the format (columns, banding symbols, `Słoje` codes) are in `docs/meblepl-editor.md`.
+## /!\ Some panels export rotated 180° — this is deliberate
+
+When a panel bands ONE edge of an axis, the import always puts that band on **edge 3** (width axis) or
+**edge 4** (height axis). The mark is a count, not an identity, and nothing overrides it. So a panel
+banding edge 1 or 2 alone is exported turned 180° (`tools/meble/normalize.py`), which says the same
+thing in a frame the importer can express.
+
+The **PDF applies the same rotation** and marks those pages with a banner — so the two always agree,
+and the user should type each sheet exactly as drawn. Such a page will disagree with the 3D viewer
+about which end is "top"; that is expected. The finished panel is identical either way.
+
+**Never "fix" this by rotating the YAML** — `meble fit` re-derives stamped holes in the canonical
+frame and would silently undo it, leaving banding and drilling contradicting each other.
+
+If `meble csv` prints a `TICK EDGE n BY HAND` warning, that panel's two axes want opposite ends and no
+rotation can fix it; relay the list to the user so they tick those boxes. It should normally be empty.
+
+Details of the format (columns, banding symbols, `Słoje` codes) and the measurement behind the
+edge-3/edge-4 rule are in `docs/meblepl-editor.md`. Run `task test` after touching the exporters.
 Run from the repo root with the venv active and `PYTHONPATH=tools`.

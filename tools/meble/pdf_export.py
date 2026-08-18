@@ -21,18 +21,34 @@ from reportlab.pdfgen import canvas
 
 from .model import (BAND_COLOR_DEFAULT, Cabinet, DIA_COLORS, DIA_COLOR_DEFAULT, Panel, Project,
                     band_color_map)
+from .normalize import ROT, normalize
 
 MM = 72.0 / 25.4
 PW, PH = A4
 MARGIN = 15 * MM
 EDGE_NAMES = {1: "1 top", 2: "2 right", 3: "3 bottom", 4: "4 left"}
+
+#: Shown on a page whose panel `normalize` turned 180°. Pre-wrapped: reportlab does not wrap, and a
+#: warning that runs off the paper is not a warning. test_render.py checks these fit the text column.
+ROTATED_BANNER = [
+    "/!\\  SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.",
+    "The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is",
+    "described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show",
+    "it the other way up; that is expected, and the finished panel is identical either way.",
+]
 # which local edge faces the cabinet front, per role (for orientation labels)
-_FRONT_EDGE_DESC = {"side-left": "right edge (2)", "side-right": "left edge (4)",
-                    "bottom": "top edge (1)", "top": "top edge (1)", "shelf": "top edge (1)"}
+_FRONT_EDGE = {"side-left": 2, "side-right": 4, "bottom": 1, "top": 1, "shelf": 1}
+_EDGE_WORD = {1: "top", 2: "right", 3: "bottom", 4: "left"}
 
 
-def _front_desc(role: str):
-    return _FRONT_EDGE_DESC.get(role)
+def _front_desc(role: str, rotated: bool = False):
+    """'right edge (2)' etc. Follows the rotation, or it would contradict the diagram beside it."""
+    edge = _FRONT_EDGE.get(role)
+    if edge is None:
+        return None
+    if rotated:
+        edge = ROT[edge]
+    return f"{_EDGE_WORD[edge]} edge ({edge})"
 
 # ---- fonts (Polish-capable TTF; base-14 Helvetica can't render ł/ś/ż) ----
 FONT = "Helvetica"
@@ -303,10 +319,15 @@ def _table_drilling(c, panel: Panel, y):
     return y
 
 
-def _draw_panel_page(c, proj: Project, cab: Cabinet, panel: Panel, qty: int, idx: int, dest: str):
+def _draw_panel_page(c, proj: Project, cab: Cabinet, panel: Panel, qty: int, idx: int, dest: str,
+                     normalise: bool = True):
     c.bookmarkPage(dest)
     board = proj.board(panel.material) if panel.material else None
     thickness = proj.panel_thickness(panel)
+    # Same transform the CSV uses, so this sheet describes the panel the import actually created.
+    rotated = False
+    if normalise:
+        panel, rotated = normalize(panel)
 
     y = PH - MARGIN
     c.setFont(FONT_BOLD, 14)
@@ -316,7 +337,16 @@ def _draw_panel_page(c, proj: Project, cab: Cabinet, panel: Panel, qty: int, idx
     c.setStrokeColor(C_GREY); c.line(MARGIN, y - 6 * MM, PW - MARGIN, y - 6 * MM)
     c.setStrokeColor(colors.black)
 
-    area_top = y - 12 * MM
+    if rotated:
+        c.setFillColor(colors.HexColor("#B71C1C"))
+        line_y = y - 10.5 * MM
+        for i, line in enumerate(ROTATED_BANNER):
+            c.setFont(FONT_BOLD if i == 0 else FONT, 7.5)
+            c.drawString(MARGIN, line_y, line)
+            line_y -= 3.4 * MM
+        c.setFillColor(colors.black)
+
+    area_top = y - (19 * MM if rotated else 12 * MM)
     area_h = 75 * MM
     half = (PW - 2 * MARGIN - 10 * MM) / 2
     scale = min((half - 12 * MM) / max(panel.width, 1), (area_h - 14 * MM) / max(panel.height, 1))
@@ -328,7 +358,7 @@ def _draw_panel_page(c, proj: Project, cab: Cabinet, panel: Panel, qty: int, idx
     _diagram(c, panel, "inner", scale, bx, base_y, "INNER  ·  editor: tył (back)")
 
     # orientation note (single panel frame; outer/inner = which face the drill enters)
-    fd = _front_desc(panel.role)
+    fd = _front_desc(panel.role, rotated)
     note = "Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side)."
     if fd:
         note = f"Cabinet FRONT edge = {fd}.   " + note
@@ -369,7 +399,8 @@ def _draw_index(c, title: str, entries: list):
     c.showPage()
 
 
-def export_pdf(proj: Project, cabinets: list[Cabinet], out_path: Path, title: str = "Panels") -> Path:
+def export_pdf(proj: Project, cabinets: list[Cabinet], out_path: Path, title: str = "Panels",
+               normalise: bool = True) -> Path:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     if not _register_fonts():
         print("  warn: no Unicode TTF found — Polish characters may not render (install Arial/DejaVu).")
@@ -394,7 +425,7 @@ def export_pdf(proj: Project, cabinets: list[Cabinet], out_path: Path, title: st
 
     _draw_index(c, title, entries)
     for idx, dest, cab, panel, qty in entries:
-        _draw_panel_page(c, proj, cab, panel, qty, idx, dest)
+        _draw_panel_page(c, proj, cab, panel, qty, idx, dest, normalise=normalise)
 
     c.save()
     return out_path
