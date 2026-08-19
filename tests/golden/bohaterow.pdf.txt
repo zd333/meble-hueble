@@ -1,26 +1,26 @@
 Panele — bohaterow
 Click a row to jump to its panel sheet.
 
-P1. wc-column / Left side 199×2524 mm ×1                                                →
-P2. wc-column / Right side 199×2524 mm ×1                                               →
+P1. wc-column / Left side 199×2500 mm ×1                                                →
+P2. wc-column / Right side 199×2500 mm ×1                                               →
 P3. wc-column / Divider @1200 (upper cabinet bottom) 700×199 mm ×1                      →
 P4. wc-column / Top panel 700×181 mm ×1                                                 →
-P5. wc-column / Centre gable (vertical) 181×1297 mm ×1                                  →
+P5. wc-column / Centre gable (vertical) 181×1273 mm ×1                                  →
 P6. wc-column / Left-compartment shelf 339×176 mm ×2                                    →
 P7. wc-column / Right-compartment shelf 339×176 mm ×2                                   →
-P8. wc-column / Back (upper cabinet) 700×1315 mm ×1                                     →
+P8. wc-column / Back (upper cabinet) 700×1291 mm ×1                                     →
 P9. wc-column / Front cover (WC boxing) 736×1209 mm ×1                                  →
 P10. wc-column / Spacer behind cover 550×1191 mm ×1                                     →
-P11. wc-column / Door left 367×1308 mm ×1                                               →
-P12. wc-column / Door right 367×1308 mm ×1                                              →
-P13. wm-wardrobe / Left side 675×2520 mm ×1                                             →
-P14. wm-wardrobe / Right side 675×2520 mm ×1                                            →
+P11. wc-column / Door left 367×1284 mm ×1                                               →
+P12. wc-column / Door right 367×1284 mm ×1                                              →
+P13. wm-wardrobe / Left side 675×2500 mm ×1                                             →
+P14. wm-wardrobe / Right side 675×2500 mm ×1                                            →
 P15. wm-wardrobe / Divider @1810 (bay ceiling / overhead-cabinet floor) 726×657 mm ×1   →
 P16. wm-wardrobe / Top panel 726×657 mm ×1                                              →
-P17. wm-wardrobe / Back (full height) 726×2470 mm ×1                                    →
+P17. wm-wardrobe / Back (full height) 726×2450 mm ×1                                    →
 P18. wm-wardrobe / Overhead shelf 724×652 mm ×1                                         →
-P19. wm-wardrobe / Door left 380×706 mm ×1                                              →
-P20. wm-wardrobe / Door right 380×706 mm ×1                                             →
+P19. wm-wardrobe / Door left 380×686 mm ×1                                              →
+P20. wm-wardrobe / Door right 380×686 mm ×1                                             →
 P21. sink-vanity / Left side 450×480 mm ×1                                              →
 P22. sink-vanity / Right side 450×480 mm ×1                                             →
 P23. sink-vanity / Bottom panel 524×450 mm ×1                                           →
@@ -58,7 +58,7 @@ P44. mounting-panels / Mounting panel 87×1000 87×1000 mm ×3   →
 
 
 
-                                  h 2524                                                                                    h 2524
+                                  h 2500                                                                                    h 2500
                                             42                                                                                        42
 
 
@@ -71,7 +71,7 @@ P44. mounting-panels / Mounting panel 87×1000 87×1000 mm ×3   →
 
 Size & material
    width                       height                        thickness                 qty                    grain
-   199 mm                      2524 mm                       18 mm                     1                      1 — along height
+   199 mm                      2500 mm                       18 mm                     1                      1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -90,12 +90,12 @@ Drilling — surface
    face              x                           y                Ø            depth                   type
    outer             50                          1200             8            through                 multi ×2 @ 99mm x (auto)
    inner             162                         1296             5            13 mm                   multi ×2 @ 32mm y
-   inner             162                         1852             5            13 mm                   multi ×2 @ 32mm y
-   inner             162                         2408             5            13 mm                   multi ×2 @ 32mm y
-   inner             55                          1630             5            13 mm                   multi ×2 @ 438mm y
-   inner             162                         1630             5            13 mm                   multi ×2 @ 438mm y
-   outer             9                           1359             8            through                 multi ×2 @ 997mm y (auto)
-   outer             68                          2515             8            through                 multi ×2 @ 81mm x (auto)
+   inner             162                         1840             5            13 mm                   multi ×2 @ 32mm y
+   inner             162                         2384             5            13 mm                   multi ×2 @ 32mm y
+   inner             55                          1621             5            13 mm                   multi ×2 @ 430mm y
+   inner             162                         1621             5            13 mm                   multi ×2 @ 430mm y
+   outer             9                           1359             8            through                 multi ×2 @ 991mm y (auto)
+   outer             68                          2491             8            through                 multi ×2 @ 81mm x (auto)
 
 
 
@@ -111,7 +111,7 @@ Drilling — surface
 
 
 
-                                  h 2524                                                                                    h 2524
+                                  h 2500                                                                                    h 2500
                                             42                                                                                        42
 
 
@@ -124,7 +124,7 @@ Drilling — surface
 
 Size & material
    width                       height                        thickness                 qty                    grain
-   199 mm                      2524 mm                       18 mm                     1                      1 — along height
+   199 mm                      2500 mm                       18 mm                     1                      1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -142,10 +142,10 @@ Drilling — edge
 Drilling — surface
    face              x                           y                Ø            depth                   type
    inner             37                          1200             5            12 mm                   multi ×2 @ 125mm x
-   inner             37                          2515             5            12 mm                   multi ×2 @ 107mm x
-   inner             37                          1630             5            13 mm                   multi ×2 @ 438mm y
-   inner             144                         1630             5            13 mm                   multi ×2 @ 438mm y
-   inner             190                         1359             5            12 mm                   multi ×2 @ 997mm y
+   inner             37                          2491             5            12 mm                   multi ×2 @ 107mm x
+   inner             37                          1621             5            13 mm                   multi ×2 @ 430mm y
+   inner             144                         1621             5            13 mm                   multi ×2 @ 430mm y
+   inner             190                         1359             5            12 mm                   multi ×2 @ 991mm y
 
 
 
@@ -259,7 +259,7 @@ it the other way up; that is expected, and the finished panel is identical eithe
 
 
 
-                                h 1297                                                                                        h 1297
+                                h 1273                                                                                        h 1273
                                             4       2                                                                                  4       2
 
 
@@ -272,7 +272,7 @@ it the other way up; that is expected, and the finished panel is identical eithe
 
 Size & material
     width                     height                             thickness                 qty                    grain
-    181 mm                    1297 mm                            18 mm                     1                      1 — along height
+    181 mm                    1273 mm                            18 mm                     1                      1 — along height
     board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -286,15 +286,15 @@ Edge banding · covering: long edges (editor: kryjące długie)
 Drilling — edge
     edge                  from                            Ø           depth                type
     1 top                 50 mm                           4           35 mm                multi ×2 @ 81mm (auto)
-    2 right               77 mm                           4           35 mm                multi ×4 @ 380mm (auto)
+    2 right               80 mm                           4           35 mm                multi ×4 @ 371mm (auto)
 
 Drilling — surface
     face            x                               y                 Ø            depth                   type
-    inner           37                              1178              5            13 mm                   multi ×2 @ 32mm y
-    inner           37                              622               5            13 mm                   multi ×2 @ 32mm y
+    inner           37                              1154              5            13 mm                   multi ×2 @ 32mm y
+    inner           37                              610               5            13 mm                   multi ×2 @ 32mm y
     inner           37                              66                5            13 mm                   multi ×2 @ 32mm y
-    outer           144                             438               5            through                 multi ×2 @ 438mm y
-    outer           37                              438               5            through                 multi ×2 @ 438mm y
+    outer           144                             431               5            through                 multi ×2 @ 430mm y
+    outer           37                              431               5            through                 multi ×2 @ 430mm y
 
 
 
@@ -407,8 +407,8 @@ it the other way up; that is expected, and the finished panel is identical eithe
 
 
 
-                    h 1315                                                                                      h 1315
-                              4                          2                                                               4                        2
+                    h 1291                                                                                      h 1291
+                             4                           2                                                               4                        2
 
 
 
@@ -420,7 +420,7 @@ it the other way up; that is expected, and the finished panel is identical eithe
 
 Size & material
     width                         height                     thickness                qty                    grain
-    700 mm                        1315 mm                    18 mm                    1                      0 — any
+    700 mm                        1291 mm                    18 mm                    1                      0 — any
     board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -433,14 +433,14 @@ Edge banding · covering: long edges (editor: kryjące długie)
 
 Drilling — edge
     edge                      from                   Ø           depth                type
-    4 left                    168 mm                 4           35 mm                multi ×2 @ 997mm (auto)
+    4 left                    150 mm                 4           35 mm                multi ×2 @ 991mm (auto)
     1 top                     100 mm                 4           35 mm                multi ×2 @ 500mm (auto)
 
 Drilling — surface
-    face              x                        y                 Ø            depth                   type
-    inner             690.5                    168               20           14 mm                   multi ×2 @ 997mm y
-    outer             350                      95                8            through                 multi ×4 @ 380mm y (auto)
-    outer             100                      9                 8            through                 multi ×3 @ 250mm x (auto)
+    face               x                       y                 Ø            depth                   type
+    inner              690.5                   150               20           14 mm                   multi ×2 @ 991mm y
+    outer              350                     98                8            through                 multi ×4 @ 371mm y (auto)
+    outer              100                     9                 8            through                 multi ×3 @ 250mm x (auto)
 
 
 
@@ -547,20 +547,20 @@ Drilling — surface
 
 
 
-                         h 1308                                                                                    h 1308
-                                    4                2                                                                      4           2
+                         h 1284                                                                                    h 1284
+                                   4                 2                                                                      4           2
 
 
 
 
                                            3                                                                                      3
 
-                                        w 367                                                                                   w 367
+                                       w 367                                                                                    w 367
                                     Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
    width                          height                   thickness                  qty                 grain
-   367 mm                         1308 mm                  18 mm                      1                   1 — along height
+   367 mm                         1284 mm                  18 mm                      1                   1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -576,7 +576,7 @@ Drilling — edge
 
 Drilling — surface
    face           x                            y                Ø             depth                type
-   inner          22.5                         100              35            12 mm                multi ×3 @ 556mm y
+   inner          22.5                         100              35            12 mm                multi ×3 @ 544mm y
 
 
 
@@ -592,20 +592,20 @@ Drilling — surface
 
 
 
-                         h 1308                                                                                    h 1308
-                                    4                2                                                                      4           2
+                         h 1284                                                                                    h 1284
+                                   4                 2                                                                      4           2
 
 
 
 
                                            3                                                                                      3
 
-                                        w 367                                                                                   w 367
+                                       w 367                                                                                    w 367
                                     Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
    width                          height                   thickness                  qty                 grain
-   367 mm                         1308 mm                  18 mm                      1                   1 — along height
+   367 mm                         1284 mm                  18 mm                      1                   1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -621,7 +621,7 @@ Drilling — edge
 
 Drilling — surface
    face           x                            y                Ø             depth                type
-   inner          22.5                         100              35            12 mm                multi ×3 @ 556mm y
+   inner          22.5                         100              35            12 mm                multi ×3 @ 544mm y
 
 
 
@@ -637,7 +637,7 @@ Drilling — surface
 
 
 
-                            h 2520                                                                                     h 2520
+                            h 2500                                                                                     h 2500
                                        4              2                                                                         4           2
 
 
@@ -650,7 +650,7 @@ Drilling — surface
 
 Size & material
    width                             height                   thickness                   qty                 grain
-   675 mm                            2520 mm                  18 mm                       1                   1 — along height
+   675 mm                            2500 mm                  18 mm                       1                   1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -669,10 +669,10 @@ Drilling — surface
    outer             98                           1819              8             through             multi ×3 @ 250mm x (auto)
    outer             9                            176               8             through             multi ×5 @ 550mm y (auto)
    inner             638                          1894              5             13 mm               multi ×2 @ 32mm y
-   inner             638                          2400              5             13 mm               multi ×2 @ 32mm y
-   inner             55                           2156              5             13 mm               single
-   inner             638                          2156              5             13 mm               single
-   outer             98                           2511              8             through             multi ×3 @ 250mm x (auto)
+   inner             638                          2380              5             13 mm               multi ×2 @ 32mm y
+   inner             55                           2146              5             13 mm               single
+   inner             638                          2146              5             13 mm               single
+   outer             98                           2491              8             through             multi ×3 @ 250mm x (auto)
 
 
 
@@ -688,7 +688,7 @@ Drilling — surface
 
 
 
-                            h 2520                                                                                     h 2520
+                            h 2500                                                                                     h 2500
                                        4              2                                                                         4           2
 
 
@@ -701,7 +701,7 @@ Drilling — surface
 
 Size & material
    width                             height                   thickness                   qty                 grain
-   675 mm                            2520 mm                  18 mm                       1                   1 — along height
+   675 mm                            2500 mm                  18 mm                       1                   1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -720,10 +720,10 @@ Drilling — surface
    outer             77                           1819              8             through             multi ×3 @ 250mm x (auto)
    outer             666                          176               8             through             multi ×5 @ 550mm y (auto)
    inner             37                           1894              5             13 mm               multi ×2 @ 32mm y
-   inner             37                           2400              5             13 mm               multi ×2 @ 32mm y
-   inner             37                           2156              5             13 mm               single
-   inner             620                          2156              5             13 mm               single
-   outer             77                           2511              8             through             multi ×3 @ 250mm x (auto)
+   inner             37                           2380              5             13 mm               multi ×2 @ 32mm y
+   inner             37                           2146              5             13 mm               single
+   inner             620                          2146              5             13 mm               single
+   outer             77                           2491              8             through             multi ×3 @ 250mm x (auto)
 
 
 
@@ -841,7 +841,7 @@ Drilling — surface
 
 
 
-                        h 2470                                                                                    h 2470
+                        h 2450                                                                                    h 2450
                                   4               2                                                                        4           2
 
 
@@ -854,7 +854,7 @@ Drilling — surface
 
 Size & material
    width                         height                   thickness                   qty                 grain
-   726 mm                        2470 mm                  18 mm                       1                   1 — along height
+   726 mm                        2450 mm                  18 mm                       1                   1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -873,7 +873,7 @@ Drilling — edge
 Drilling — surface
    face           x                           y                 Ø             depth               type
    outer          126                         1769              8             through             multi ×3 @ 237mm x (auto)
-   outer          126                         2461              8             through             multi ×3 @ 237mm x (auto)
+   outer          126                         2441              8             through             multi ×3 @ 237mm x (auto)
 
 
 
@@ -923,96 +923,96 @@ Drilling — surface
 
 
                                                             meble · wm-wardrobe · panel sheet P18
-P19. Door left                                                              Bathroom laundry column (washer + dryer) · wm-wardrobe/door-l
+P19. Door left                                                                Bathroom laundry column (washer + dryer) · wm-wardrobe/door-l
 
 
-                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+                          OUTER · editor: przód (front)                                                                    INNER · editor: tył (back)
 
-                                        1                                                                                         1
-
-
-
-
-                  h 706                                                                                       h 706
-                           4                         2                                                                4                        2
+                                         1                                                                                             1
 
 
 
 
-                                        3                                                                                         3
+                  h 686                                                                                        h 686
+                          4                            2                                                               4                                2
 
-                                      w 380                                                                                     w 380
-                                  Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+
+
+                                         3                                                                                             3
+
+                                       w 380                                                                                         w 380
+                                    Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                       height                     thickness                 qty                 grain
-   380 mm                      706 mm                     18 mm                     1                   1 — along height
+   width                        height                     thickness                 qty                  grain
+   380 mm                       686 mm                     18 mm                     1                    1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-   edge                    banded               band model                                           thick.
-   1 top                   yes                  ABS U604 ST9 2mm                                     2 mm
-   2 right                 yes                  ABS U604 ST9 2mm                                     2 mm
-   3 bottom                yes                  ABS U604 ST9 2mm                                     2 mm
-   4 left                  yes                  ABS U604 ST9 2mm                                     2 mm
+   edge                       banded             band model                                           thick.
+   1 top                      yes                ABS U604 ST9 2mm                                     2 mm
+   2 right                    yes                ABS U604 ST9 2mm                                     2 mm
+   3 bottom                   yes                ABS U604 ST9 2mm                                     2 mm
+   4 left                     yes                ABS U604 ST9 2mm                                     2 mm
 
 
 Drilling — edge
    — none —
 
 Drilling — surface
-   face             x                       y                 Ø             depth                type
-   inner            22.5                    100               35            12 mm                multi ×2 @ 506mm y
+   face              x                       y                 Ø             depth                 type
+   inner             22.5                    100               35            12 mm                 multi ×2 @ 486mm y
 
 
 
 
-                                                             meble · wm-wardrobe · panel sheet P19
-P20. Door right                                                             Bathroom laundry column (washer + dryer) · wm-wardrobe/door-r
+                                                              meble · wm-wardrobe · panel sheet P19
+P20. Door right                                                               Bathroom laundry column (washer + dryer) · wm-wardrobe/door-r
 
 
-                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+                          OUTER · editor: przód (front)                                                                    INNER · editor: tył (back)
 
-                                        1                                                                                         1
-
-
-
-
-                  h 706                                                                                       h 706
-                           4                         2                                                                4                        2
+                                         1                                                                                             1
 
 
 
 
-                                        3                                                                                         3
+                  h 686                                                                                        h 686
+                          4                            2                                                               4                                2
 
-                                      w 380                                                                                     w 380
-                                  Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+
+
+                                         3                                                                                             3
+
+                                       w 380                                                                                         w 380
+                                    Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                       height                     thickness                 qty                 grain
-   380 mm                      706 mm                     18 mm                     1                   1 — along height
+   width                        height                     thickness                 qty                  grain
+   380 mm                       686 mm                     18 mm                     1                    1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-   edge                    banded               band model                                           thick.
-   1 top                   yes                  ABS U604 ST9 2mm                                     2 mm
-   2 right                 yes                  ABS U604 ST9 2mm                                     2 mm
-   3 bottom                yes                  ABS U604 ST9 2mm                                     2 mm
-   4 left                  yes                  ABS U604 ST9 2mm                                     2 mm
+   edge                       banded             band model                                           thick.
+   1 top                      yes                ABS U604 ST9 2mm                                     2 mm
+   2 right                    yes                ABS U604 ST9 2mm                                     2 mm
+   3 bottom                   yes                ABS U604 ST9 2mm                                     2 mm
+   4 left                     yes                ABS U604 ST9 2mm                                     2 mm
 
 
 Drilling — edge
    — none —
 
 Drilling — surface
-   face             x                       y                 Ø             depth                type
-   inner            357.5                   100               35            12 mm                multi ×2 @ 506mm y
+   face              x                       y                 Ø             depth                 type
+   inner             357.5                   100               35            12 mm                 multi ×2 @ 486mm y
 
 
 
 
-                                                             meble · wm-wardrobe · panel sheet P20
+                                                              meble · wm-wardrobe · panel sheet P20
 P21. Left side                                                                                Bathroom sink vanity (wall-hung basin) · sink-vanity/side-l
 
 

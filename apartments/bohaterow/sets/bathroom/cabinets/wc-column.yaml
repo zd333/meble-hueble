@@ -1,6 +1,13 @@
 # Bathroom WC column — boxes in the concealed toilet frame (bottom) + a closed shelf cabinet (top).
 #
 # DIMENSIONS ARE SITE-MEASURED (2026-08-08): 736 W × 199 D × 2524 H, divider centre at 1200.
+# /!\ BUILT HEIGHT IS 2500, NOT THE MEASURED 2524 (changed 2026-08-18). meble.pl will CUT a panel
+#     longer than 2500 but will NOT DRILL it, and both side panels are drilled all over. The 24 mm
+#     came off the UPPER CABINET — the cover height 1209 is set by the installed WC frame and the
+#     divider sits on it, so neither could give.
+#     CONSEQUENCE: THE UNIT NOW FINISHES 24 mm BELOW THE CEILING. That gap is visible. Close it with
+#     a scribe strip, or accept it — but decide before ordering, because a filler is easier to cut
+#     from an offcut of the same board than to buy later.
 # 736 rather than 735 so every derived number lands on a whole millimetre — the CSV export rounds to
 # integers, so a half-mm panel would be silently lost in the order.
 # Still open before ordering: the U604 decor name/texture in library/materials.yaml is a placeholder,
@@ -17,16 +24,17 @@
 #             -> gable depth = D − 18 = 181;  shelf depth = 181 − 5 (door clearance) = 176
 #             keep the 37 mm front setback:  side-l's front hole column = x D − 37 = 162;
 #             side-r's = x 37;  the gable's = x 181 − 37 = 144 (its own frame is only 181 deep)
-#   H = 2524  side height                                cover height 1209 (= WC frame + margin)
+#   H = 2500  side height (capped by the supplier's 2500 drilling limit; site measure was 2524)
+#             cover height 1209 (= WC frame + margin) — FIXED, everything above absorbs any change
 #             divider centre = cover − 9 (its top face sits flush with the cover's top edge)
-#             door height = H − cover − 3 − 4 = 1308 (3 mm reveal above the cover, 4 mm below the top)
-#             gable height = H − 18 − cover = 1297        top panel occupies the last 18
+#             door height = H − cover − 3 − 4 = 1284 (3 mm reveal above the cover, 4 mm below the top)
+#             gable height = H − 18 − cover = 1273        top panel occupies the last 18
 #
 # After editing: `python -m meble fit --cabinet wc-column`, then `validate` + `review`. NOTE the
 # rafix, hinge-plate, shelf-pin and gable-confirmat holes are HAND-WRITTEN (fit cannot stamp
 # cam hardware or mid-face T-joints yet) — they will NOT move on their own. Update them by hand.
 #
-# ENVELOPE  736 W × 199 D × 2524 H   (carcass 199 deep; the fronts add 18 in front of it -> 217 total)
+# ENVELOPE  736 W × 199 D × 2500 H   (carcass 199 deep; the fronts add 18 in front of it -> 217 total)
 # Coordinates below are the CABINET frame: x = width (0..736 left->right), y = depth (0 = FRONT,
 # 199 = wall), z = height (0 = floor).
 #
@@ -36,15 +44,15 @@
 #                    between the cover's back face and the cistern frame. Height = floor to the divider's
 #                    UNDERSIDE. Banded on its bottom edge only (floor water); everything else is hidden.
 #   z 1191 .. 1209   divider  (700×199) — centre line at 1200, TOP face flush with the cover's top edge
-#   z 1209 .. 2524   18 mm back (700×1315) at y 181..199 — runs PAST the top panel to the cabinet top so
+#   z 1209 .. 2500   18 mm back (700×1291) at y 181..199 — runs PAST the top panel to the cabinet top so
 #                    the top panel does not cut it (see NO OVERHEAD SCREWS)
-#   z 1209 .. 2506   upper cabinet, 1297 clear, closed at the rear by that back, split
+#   z 1209 .. 2482   upper cabinet, 1273 clear, closed at the rear by that back, split
 #                    by a centre gable (x 359..377) into 2 compartments;
 #                    each gets 2 FIXED shelves on Ø5 pins (not adjustable — a fixed pin costs the same to
 #                    drill as a column of them, so skip the adjustability once positions are settled)
-#   z 1212 .. 2520   2 doors (367×1308), 3 mm reveal above the cover and 4 mm below the unit top, so
+#   z 1212 .. 2496   2 doors (367×1284), 3 mm reveal above the cover and 4 mm below the unit top, so
 #                    the doors can never rub the ceiling
-#   z 2506 .. 2524   top panel (700×181) — 181 not 199, to let the back run past it to the top
+#   z 2482 .. 2500   top panel (700×181) — 181 not 199, to let the back run past it to the top
 #
 # WIDTH
 #   sides 18 + 700 internal + 18 = 736.  Doors 367 + 2 gap + 367 = 736.
@@ -76,15 +84,15 @@
 #   Log the measured positions here once known.
 #
 # HINGES: 3 per door, plate pair (Ø5 ×2, 32 mm apart, centred on the cup) at the 37 mm front-setback
-# line. Cups at door y 100 / 656 / 1212 -> cabinet z 1312 / 1868 / 2424. door-l's plates -> side-l;
+# line. Cups at door y 100 / 644 / 1188 -> cabinet z 1312 / 1856 / 2400. door-l's plates -> side-l;
 # door-r's -> the GABLE's inner face.
 #   /!\ THE TWO DOORS TAKE DIFFERENT HINGES. door-l covers the full 18 mm of side-l -> FULL overlay.
 #       door-r covers only 8 mm of the shared centre gable -> HALF overlay (crank ~9.5 mm). The DRILLING
 #       is identical either way (cup Ø35 centred 22.5 from the hinge edge, plates on the 37 mm line), so
 #       this is a purchasing note, not an order change.
 #
-# SHELVES: 2 per compartment, FIXED (not adjustable) on Ø5 pins at z 1630 / 2068 (evenly thirds the 1297
-# clear height into ~420 bays) — both front (x162/x37) and back support per shelf, no full System-32
+# SHELVES: 2 per compartment, FIXED (not adjustable) on Ø5 pins at z 1621 / 2051 (evenly thirds the 1273
+# clear height into ~412 bays) — both front (x162/x37) and back support per shelf, no full System-32
 # column. side-r carries pins only (no hinges); the gable carries pins on BOTH faces (one set per
 # compartment) plus its own hinge-plate holes on the inner face.
 #
@@ -131,7 +139,7 @@ construction: mixed          # LEFT side is confirmat throughout — it sits in 
                              # rafix where a head would show (carcass corners, seen from outside);
                              # confirmat where it would not — the cover's bottom row and the centre
                              # gable's two end joints. See CLAUDE.md on picking the joint.
-dimensions: {width: 736, height: 2524, depth: 199}   # carcass depth; fronts sit at y −18..0
+dimensions: {width: 736, height: 2500, depth: 199}   # carcass depth; fronts sit at y −18..0
 position: {x: 0, y: 0, z: 0, rotation: 0}
 defaults: {material: u604-18, edgeband: eb-u604-1}
 back: {type: surface}        # 18 mm inset back on the UPPER section only (see header); the lower
@@ -145,7 +153,7 @@ panels:
   element_type: panel
   role: side-left             # outer faces left; edge2 = cabinet FRONT, edge4 = wall. X: 0 = wall, 199 = front
   width: 199                  # depth
-  height: 2524
+  height: 2500
   grain: height               # emboss runs vertically
   edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
   holes:
@@ -155,12 +163,12 @@ panels:
     # divider @1200 — mid-height, so `meble fit` can't stamp it (see the fitting note); hand-written.
   - {face: outer, x: 50, y: 1200, dia: 8, depth: through, type: multi, count: 2, spacing: 99, direction: x, src: cf-div-l}
   - {face: inner, x: 162, y: 1296, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
-  - {face: inner, x: 162, y: 1852, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
-  - {face: inner, x: 162, y: 2408, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
-  - {face: inner, x: 55, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
-  - {face: inner, x: 162, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
-  - {face: outer, x: 9, y: 1359, dia: 8, depth: through, type: multi, count: 2, spacing: 997, direction: y, src: cf-back-l}
-  - {face: outer, x: 68, y: 2515, dia: 8, depth: through, type: multi, count: 2, spacing: 81, direction: x, src: cf-top-l}
+  - {face: inner, x: 162, y: 1840, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
+  - {face: inner, x: 162, y: 2384, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
+  - {face: inner, x: 55, y: 1621, dia: 5, depth: 13, type: multi, count: 2, spacing: 430, direction: y, src: pins}
+  - {face: inner, x: 162, y: 1621, dia: 5, depth: 13, type: multi, count: 2, spacing: 430, direction: y, src: pins}
+  - {face: outer, x: 9, y: 1359, dia: 8, depth: through, type: multi, count: 2, spacing: 991, direction: y, src: cf-back-l}
+  - {face: outer, x: 68, y: 2491, dia: 8, depth: through, type: multi, count: 2, spacing: 81, direction: x, src: cf-top-l}
   - face: edge2
     from: 60
     dia: 4
@@ -176,15 +184,15 @@ panels:
                               # No hinges: door-r hangs off the centre gable, so this panel only carries
                               # structural rafix + the right compartment's fixed shelf pins.
   width: 199
-  height: 2524
+  height: 2500
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-1, glue_type: long}
   holes:
   - {face: inner, x: 37, y: 1200, dia: 5, depth: 12, type: multi, count: 2, spacing: 125, direction: x, src: rx-div-r}
-  - {face: inner, x: 37, y: 2515, dia: 5, depth: 12, type: multi, count: 2, spacing: 107, direction: x, src: rx-top-r}
-  - {face: inner, x: 37, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
-  - {face: inner, x: 144, y: 1630, dia: 5, depth: 13, type: multi, count: 2, spacing: 438, direction: y, src: pins}
-  - {face: inner, x: 190, y: 1359, dia: 5, depth: 12, type: multi, count: 2, spacing: 997, direction: y, src: rx-back-r}
+  - {face: inner, x: 37, y: 2491, dia: 5, depth: 12, type: multi, count: 2, spacing: 107, direction: x, src: rx-top-r}
+  - {face: inner, x: 37, y: 1621, dia: 5, depth: 13, type: multi, count: 2, spacing: 430, direction: y, src: pins}
+  - {face: inner, x: 144, y: 1621, dia: 5, depth: 13, type: multi, count: 2, spacing: 430, direction: y, src: pins}
+  - {face: inner, x: 190, y: 1359, dia: 5, depth: 12, type: multi, count: 2, spacing: 991, direction: y, src: rx-back-r}
   - face: edge4
     from: 60
     dia: 4
@@ -244,7 +252,7 @@ panels:
   - {face: outer, x: 690.5, y: 37, dia: 20, depth: 14, type: multi, count: 2, spacing: 107, direction: y, src: rx-top-r}
   - {face: edge3, from: 100, dia: 4, depth: 35, type: multi, count: 3, spacing: 250, src: cf-top-back}
   - {face: edge4, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-top-l}
-  placement: {pos: [18, 0, 2506]}
+  placement: {pos: [18, 0, 2482]}
     # placement is REQUIRED now that this panel is 181 deep rather than the full 199. The viewer's
     # auto-placement for role `top` hardcodes the CABINET depth (tools/meble/scene.py: `size = (W-2t,
     # D, t)`), so without an explicit pos it would draw a 199-deep panel and hide the fact that the
@@ -260,7 +268,7 @@ panels:
                                # depth (0 = against the BACK panel, 181 = front, so edge2 is FRONT),
                                # height = vertical (edge1 = top).
   width: 181                   # depth — 199 carcass LESS the 18 mm back panel, which it butts against
-  height: 1297                 # 2506 − 1209, the upper cabinet's clear height
+  height: 1273                 # 2482 − 1209, the upper cabinet's clear height
   grain: height
   edge_banding: {edges: {2: eb-u604-1}, glue_type: long}   # only the FRONT edge is visible (doors open);
                                                            # top/bottom sit against top-panel/divider,
@@ -270,12 +278,12 @@ panels:
     # NB local y is 0 at THIS panel's own bottom (cabinet z 1209), not cabinet z -> y = cabinet_z − 1209.
     # x 144 = 37 mm in from the front edge (this panel is 181 deep, so 181 − 37).
   - {face: inner, x: 144, y: 87, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
-  - {face: inner, x: 144, y: 643, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
-  - {face: inner, x: 144, y: 1199, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
-  - {face: outer, x: 37, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y, src: pins}
-  - {face: outer, x: 144, y: 421, dia: 5, depth: through, type: multi, count: 2, spacing: 438, direction: y, src: pins}
+  - {face: inner, x: 144, y: 631, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
+  - {face: inner, x: 144, y: 1175, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
+  - {face: outer, x: 37, y: 412, dia: 5, depth: through, type: multi, count: 2, spacing: 430, direction: y, src: pins}
+  - {face: outer, x: 144, y: 412, dia: 5, depth: through, type: multi, count: 2, spacing: 430, direction: y, src: pins}
   - {face: edge3, from: 50, dia: 4, depth: 35, type: multi, count: 2, spacing: 81, src: cf-gable-bot}
-  - {face: edge4, from: 80, dia: 4, depth: 35, type: multi, count: 4, spacing: 380, src: cf-gable-back}
+  - {face: edge4, from: 80, dia: 4, depth: 35, type: multi, count: 4, spacing: 371, src: cf-gable-back}
   placement: {pos: [359, 0, 1209], rot: [90, 0, -90]}
 
 - id: shelf-l
@@ -288,7 +296,7 @@ panels:
   grain: any
   edge_banding: {edges: {1: eb-u604-1}, glue_type: long}
   holes: []                   # rests on 4 × Ø5 fixed pins (side-l + gable outer); z = 1630 / 2068
-  placement: {pos: [19, 5, 1630], step: [0, 0, 438]}   # both shelves of the run, 438 apart (viz only)
+  placement: {pos: [19, 5, 1621], step: [0, 0, 430]}   # both shelves of the run, 438 apart (viz only)
 
 - id: shelf-r
   name: "Right-compartment shelf"
@@ -300,7 +308,7 @@ panels:
   grain: any
   edge_banding: {edges: {1: eb-u604-1}, glue_type: long}
   holes: []                   # rests on 4 × Ø5 fixed pins (gable inner + side-r); z = 1630 / 2068
-  placement: {pos: [378, 5, 1630], step: [0, 0, 438]}
+  placement: {pos: [378, 5, 1621], step: [0, 0, 430]}
 
 - id: back-upper
   name: "Back (upper cabinet)"
@@ -319,7 +327,7 @@ panels:
   # (white carcass interior, a common and cheaper choice), not a free hidden swap. Its edges stay unbanded
   # either way — they are all butted — so a contrasting core never shows.
   width: 700                  # 736 − 2×18, same span as the divider/top panel
-  height: 1315                # 2524 − 1209: the divider's top up to the CABINET TOP, not the top panel's
+  height: 1291                # 2500 − 1209: the divider's top up to the CABINET TOP, not the top panel's
                               # underside. Running past the top panel instead of being cut by it is what
                               # lets the top panel be fixed to the back FROM BEHIND rather than by a
                               # confirmat driven down through it — see NO OVERHEAD SCREWS in the header.
@@ -332,10 +340,10 @@ panels:
     # rafix to both sides: ONE Ø20 housing 9.5 mm in from each end, no edge channel. Housings on the
     # INNER face (toward the shelves) so they can be turned during assembly — the outer face is against
     # the wall and unreachable once up.
-  - {face: inner, x: 9.5, y: 150, dia: 20, depth: 14, type: multi, count: 2, spacing: 997, direction: y, src: rx-back-r}
-  - {face: edge2, from: 150, dia: 4, depth: 35, type: multi, count: 2, spacing: 997, src: cf-back-l}
-  - {face: outer, x: 350, y: 80, dia: 8, depth: through, type: multi, count: 4, spacing: 380, direction: y, src: cf-gable-back}
-  - {face: outer, x: 100, y: 1306, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-back}
+  - {face: inner, x: 9.5, y: 150, dia: 20, depth: 14, type: multi, count: 2, spacing: 991, direction: y, src: rx-back-r}
+  - {face: edge2, from: 150, dia: 4, depth: 35, type: multi, count: 2, spacing: 991, src: cf-back-l}
+  - {face: outer, x: 350, y: 80, dia: 8, depth: through, type: multi, count: 4, spacing: 371, direction: y, src: cf-gable-back}
+  - {face: outer, x: 100, y: 1282, dia: 8, depth: through, type: multi, count: 3, spacing: 250, direction: x, src: cf-top-back}
   - face: edge3
     from: 100
     dia: 4
@@ -406,14 +414,14 @@ panels:
   element_type: panel
   role: front                 # hinges on edge4 (its LEFT edge, on side-l) — FULL overlay, 18 mm
   width: 367
-  height: 1308                # 4 mm trimmed off the TOP so the door can never rub the ceiling; the
+  height: 1284                # 4 mm trimmed off the TOP so the door can never rub the ceiling; the
                               # bottom edge and every hole stay exactly where they were
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-2, glue_type: long}
   holes:
     # 3 × Ø35 hinge cups, centre 22.5 from the HINGE edge (edge4 = left) -> 5 mm boring distance.
     # cabinet z = 1312 / 1868 / 2424, matching the plate pairs on side-l's 37 mm column.
-  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 3, spacing: 556, direction: y}
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 3, spacing: 544, direction: y}
   placement: {pos: [0, -18, 1212], rot: [90, 0, 0]}
 
 - id: door-r
@@ -424,13 +432,13 @@ panels:
                               # covers only 8 mm of it, so these are HALF-overlay hinges. Handle/free
                               # edge is edge2 (right), next to the sink.
   width: 367
-  height: 1308                # 4 mm trimmed off the TOP — see door-l
+  height: 1284                # 4 mm trimmed off the TOP — see door-l
   grain: height
   edge_banding: {all_edges: true, band: eb-u604-2, glue_type: long}
   holes:
     # 3 × Ø35 hinge cups, centre 22.5 from the HINGE edge (edge4 = left, toward the gable) -> 5 mm
     # boring distance. cabinet z = 1312 / 1868 / 2424, matching the plates on the gable's inner face.
-  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 3, spacing: 556, direction: y}
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 3, spacing: 544, direction: y}
   placement: {pos: [369, -18, 1212], rot: [90, 0, 0]}
 
 assembly:
@@ -466,12 +474,12 @@ assembly:
   #     FOUR screws, and the top one at 1220 is deliberately ABOVE the top hinge cup at gable-y 1215:
   #     this gable carries door-r, and with its top edge now unfixed the rear line is the only thing
   #     stopping the top-front corner walking forward under door load.
-  - {id: cf-gable-back, hardware: confirmat-7x50, through: back-upper, into: gable-mid, seam: {through_face: outer, into_edge: 4}, at: [80, 460, 840, 1220]}
+  - {id: cf-gable-back, hardware: confirmat-7x50, through: back-upper, into: gable-mid, seam: {through_face: outer, into_edge: 4}, at: [80, 451, 822, 1193]}
 
   # --- back panel: rafix to both sides (housings in the back, bolts into the sides' inner faces at their
   #     x 9 / x 190). Confirmat is not an option here — the screw would have to pass through a side
   #     panel's VISIBLE outer face. `at` = height above the back's own bottom edge (cabinet z − 1209).
-  - {id: rx-back-r, hardware: rafix-20, drilling: manual, through: back-upper, into: side-r, seam: {through_edge: 4, into_face: inner}, at: [150, 1147]}
+  - {id: rx-back-r, hardware: rafix-20, drilling: manual, through: back-upper, into: side-r, seam: {through_edge: 4, into_face: inner}, at: [150, 1141]}
 
   # --- LEFT SIDE IS CONFIRMAT THROUGHOUT. side-l ends up in the corner against the wall, so its outer
   #     face is never seen and there is no reason to pay for cams there (CLAUDE.md: pick the joint by
@@ -491,7 +499,7 @@ assembly:
   #     behind, head countersunk flush on the back's wall face. Mid-face T-joint, so hand-written.
   - {id: cf-top-back, hardware: confirmat-7x50, through: back-upper, into: top-panel, seam: {through_face: outer, into_edge: 3}, at: [100, 350, 600]}
   - {id: cf-div-l, hardware: confirmat-7x50, through: side-l, into: divider, seam: {into_edge: 4}, at: [50, 149]}
-  - {id: cf-back-l, hardware: confirmat-7x50, through: side-l, into: back-upper, seam: {into_edge: 2}, at: [150, 1147]}
+  - {id: cf-back-l, hardware: confirmat-7x50, through: side-l, into: back-upper, seam: {into_edge: 2}, at: [150, 1141]}
 
   # --- back panel tied to the divider (below) and top panel (above) — this is what gives the upper box
   #     its stiffness, since the back is now fixed on all four edges. Heads land on the divider's
@@ -514,13 +522,13 @@ assembly:
   #     holes. `meble review` cross-checks it against the mounting panel's role.
   #     `drilling: manual` = the cup and plate holes above are hand-derived and tagged `src:`; they are
   #     NOT stampable (a hinge is not a butt joint), and `meble fit` must leave them alone in silence.
-  - {id: hg-door-l, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-l, side: side-l, at: [1312, 1868, 2424]}
-  - {id: hg-door-r, hardware: hinge-clip-110, variant: half, drilling: manual, door: door-r, side: gable-mid, at: [1312, 1868, 2424]}
+  - {id: hg-door-l, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-l, side: side-l, at: [1312, 1856, 2400]}
+  - {id: hg-door-r, hardware: hinge-clip-110, variant: half, drilling: manual, door: door-r, side: gable-mid, at: [1312, 1856, 2400]}
 
   # --- Ø5 fixed shelf pins. `at` is the two chosen SHELF HEIGHTS, not a pin count — 4 pins per shelf
   #     (front + back on each of the 2 supporting panels) × 4 shelves = 16, so `quantity` is explicit.
   #     Not adjustable, so 2 heights instead of a full System-32 column. The gable's bores are
   #     `depth: through` and shared by both compartments, so those pins MUST have a collar.
-  - {id: pins, hardware: shelf-pin-5, drilling: manual, at: [1630, 2068], quantity: 16, shelves: [shelf-l, shelf-r]}
+  - {id: pins, hardware: shelf-pin-5, drilling: manual, at: [1621, 2051], quantity: 16, shelves: [shelf-l, shelf-r]}
 
 parts: []

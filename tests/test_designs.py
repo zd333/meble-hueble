@@ -174,3 +174,19 @@ def test_no_fitting_declares_holes_it_does_not_have(proj):
         for f in cab.fittings:
             if f.get("drilling") == "none":
                 assert f["id"] not in srcs, f"{cab.id}/{f['id']}: says no holes but holes reference it"
+
+
+# ------------------------------------------------------------------ supplier limits
+
+#: meble.pl will CUT a panel longer than this but will not DRILL it (told to us 2026-08-18 while
+#: entering the order). A panel over the limit with holes on it cannot be ordered as drawn: either it
+#: shrinks, or its holes come off and get drilled by hand.
+MAX_DRILLED_LENGTH = 2500
+
+
+def test_no_drilled_panel_exceeds_the_suppliers_drilling_limit(real_panels):
+    over = [f"{c.id}/{p.id} {int(p.width)}×{int(p.height)} ({len(p.holes)} holes)"
+            for c, p, _ in real_panels
+            if p.holes and max(p.width, p.height) > MAX_DRILLED_LENGTH]
+    assert over == [], (
+        f"meble.pl will not drill a panel longer than {MAX_DRILLED_LENGTH} mm: {over}")
