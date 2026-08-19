@@ -104,8 +104,9 @@ hardware:
       cup:   { dia: 35, depth: 12, boring: 5 }   # on the door (front)
       plate: { pattern: system32, screws: 2 }    # on the cabinet side, 37 mm setback
     components:
-      - { id: hinge, name: "arm + Ø35 cup", per_variant: true }
-      - { id: plate, name: "mounting plate (prowadnik)" }
+      - { id: hinge,  name: "arm + Ø35 cup", per_variant: true }
+      - { id: plate,  name: "mounting plate (prowadnik)" }
+      - { id: screws, name: "euro screws for the plate (2 per hinge)" }
     # Blum sells these as TWO article numbers. The plate fits all three overlays, so only the hinge
     # is variant-specific. Buying hinges without plates hangs no doors at all.
     sourcing:
@@ -124,13 +125,19 @@ hardware:
         price: 7.37
         checked: 2026-08-18
         note: "meble.pl files half overlay under `drzwi bliźniacze` (twin doors)"
+      # /!\ THE PLATE MUST MATCH THE DRILLING. Our plate holes are Ø5 on the 37 mm line, which is the
+      #     System-32 pattern for EURO screws — so the plate has to be the `z EURO` variant. The
+      #     `bez EURO` one (173L6100) is fixed with 4×16 chipboard screws instead: its own page says
+      #     "mocowanie: na wkręty do płyty wiórowej", and a 4 mm screw in a Ø5 bore has almost
+      #     nothing to bite. That wrong SKU was recorded here on 2026-08-18 and corrected 2026-08-20.
       - vendor: centrum.meble.pl
         covers: [plate]
-        sku: 173L6100
-        name: "Blum prowadnik krzyżakowy CLIP, dyst. 0 mm, regul. wysokości, bez Euro"
-        price: 0.76
-        checked: 2026-08-18
-        note: "fits nakładane / bliźniacze / wpuszczane alike; h=0 unless you want to trim the gap"
+        sku: 173L8100
+        name: "Blum prowadnik krzyżakowy CLIP, dyst. 0 mm, regul. wysokości, Z EURO"
+        checked: 2026-08-20
+        note: "Ø5 × 11.5 hole at 37 mm — matches our drilling. h=0 unless you want to trim the gap.
+          Fits nakładane / bliźniacze / wpuszczane alike. PRICE NOT RECORDED: the listing shows
+          121 zł, which is a bulk pack (500 pcs), not a unit price — confirm in the basket."
       - vendor: centrum.meble.pl
         covers: [hinge]
         variant: full

@@ -186,18 +186,21 @@ def test_hardware_with_no_components_declared_is_one_part(proj):
     assert [c["id"] for c in components_of(proj.hw("confirmat-7x50"))] == ["item"]
 
 
-def test_a_hinge_is_two_parts(proj):
-    """The arm and the mounting plate. Blum sells them as two article numbers."""
-    assert [c["id"] for c in components_of(proj.hw(HINGE_HW))] == ["hinge", "plate"]
+def test_a_hinge_is_three_parts(proj):
+    """Arm+cup, mounting plate, and the euro screws the plate mounts onto. Blum sells all three
+    separately, which is why hanging a door needs three lines on the basket and not one."""
+    assert [c["id"] for c in components_of(proj.hw(HINGE_HW))] == ["hinge", "plate", "screws"]
 
 
 def test_each_hinge_variant_resolves_to_its_own_sku_plus_a_shared_plate(proj):
-    full, _ = resolve_sourcing(proj, mk_line(HINGE_HW, "full", 7), vendor="centrum.meble.pl")
-    half, _ = resolve_sourcing(proj, mk_line(HINGE_HW, "half", 3), vendor="centrum.meble.pl")
-    assert [b.sku for b in full] == ["71T3550", "173L6100"]
-    assert [b.sku for b in half] == ["71T3650", "173L6100"]
+    full, missing_f = resolve_sourcing(proj, mk_line(HINGE_HW, "full", 7), vendor="centrum.meble.pl")
+    half, missing_h = resolve_sourcing(proj, mk_line(HINGE_HW, "half", 3), vendor="centrum.meble.pl")
+    assert [b.sku for b in full] == ["71T3550", "173L8100"]
+    assert [b.sku for b in half] == ["71T3650", "173L8100"]
     # the plate fits all three overlays, so it is NOT variant-specific
     assert full[1].sku == half[1].sku
+    # the euro screws are still unsourced, and the gap report must keep saying so
+    assert missing_f == missing_h and len(missing_f) == 1
 
 
 def test_quantity_flows_to_every_component(proj):
@@ -228,7 +231,7 @@ def test_a_bundle_offering_covers_several_components_in_one_line(proj):
         buys, missing = resolve_sourcing(proj, mk_line(HINGE_HW, "full", 5), vendor="bundler")
         assert len(buys) == 1 and buys[0].sku == "SET-1"
         assert buys[0].bundled_with == ("plate",)
-        assert missing == []
+        assert missing == ["euro screws for the plate (2 per hinge)"]
     finally:
         hw.raw["sourcing"] = original
 
@@ -279,3 +282,30 @@ def test_stale_prices_are_flagged(proj):
     assert is_stale("2020-01-01", dt.date(2026, 8, 18))
     assert not is_stale("2026-08-18", dt.date(2026, 8, 18))
     assert not is_stale("", dt.date(2026, 8, 18))       # undated: not stale, just unpriced
+
+
+def test_the_sourced_hinge_plate_matches_the_drilling(proj):
+    """A mounting plate comes in two fixings and they are NOT interchangeable.
+
+    Our plate holes are Ø5 on the 37 mm line — the System-32 pattern, which is for EURO screws. The
+    `bez EURO` plate is fixed with 4×16 chipboard screws instead, and a 4 mm screw in a Ø5 bore has
+    almost nothing to bite. Both variants are stocked, differ by one digit in the part number
+    (173L6100 vs 173L8100), and look identical in a listing — 173L6100 was recorded here for two
+    days before the mismatch was spotted.
+    """
+    hw = proj.hw("hinge-clip-110")
+    assert hw.raw["drill"]["plate"]["pattern"] == "system32", "plate drilling is no longer Ø5/37 mm"
+    plates = [s for s in hw.raw["sourcing"] if "plate" in (s.get("covers") or [])]
+    assert plates, "no mounting plate is sourced at all — 10 hinges would hang zero doors"
+    for s in plates:
+        name = s.get("name", "").lower()
+        assert "bez euro" not in name, (
+            f"{s.get('sku')} is the chipboard-screw plate; Ø5 System-32 holes need the EURO variant")
+        assert "euro" in name, f"{s.get('sku')}: cannot tell which fixing this plate uses"
+
+
+def test_the_hinge_declares_the_screws_that_hold_its_plate(proj):
+    """The euro screws are a third part, bought separately — the plate mounts onto ones already
+    driven. Without them declared they are simply absent from the buy list."""
+    hw = proj.hw("hinge-clip-110")
+    assert "screws" in [c["id"] for c in hw.raw["components"]]

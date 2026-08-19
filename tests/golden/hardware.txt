@@ -9,9 +9,11 @@ collared-pins    -         8
 -- sourcing (centrum.meble.pl) --
 confirmat-7x50   -      NO SUPPLIER RECORDED
 hinge-clip-110   full   hinge    71T3550       5.71 2026-08-18
-hinge-clip-110   full   plate    173L6100      0.76 2026-08-18
+hinge-clip-110   full   plate    173L8100         - 2026-08-20
+hinge-clip-110   full   NO SUPPLIER RECORDED
 hinge-clip-110   half   hinge    71T3650       7.37 2026-08-18
-hinge-clip-110   half   plate    173L6100      0.76 2026-08-18
+hinge-clip-110   half   plate    173L8100         - 2026-08-20
+hinge-clip-110   half   NO SUPPLIER RECORDED
 rafix-20         -      NO SUPPLIER RECORDED
 rafix-20         -      NO SUPPLIER RECORDED
 shelf-pin-5      -      NO SUPPLIER RECORDED
