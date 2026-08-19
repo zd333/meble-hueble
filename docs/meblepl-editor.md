@@ -30,19 +30,27 @@ format. Source: user's description of the live editor + the two provided PRO100 
    - **"Rodzaj klejenia"** radio — **"kryjące długie"** (default) or **"kryjące krótkie"**: which edges'
      band is the *covering* one at the corners (matters mostly for 2 mm band, to hide joints). Default
      "długie" = the long edges' band covers.
-5. **Drilling** — two independent groups:
-   - **Edge drilling** (per hole): edge number (1–4); distance from 0 (always from **left/bottom**);
-     bore Ø **4 or 8 mm**; depth **2–35 mm** (1 mm step); type **single | multi**; if multi → number of
-     holes + distance between them.
+5. **Drilling** — two independent groups, in this order on screen (the PDF sheet matches it):
    - **Surface drilling** (per hole): surface **back | front** (we model these as **inner | outer** — see
      `conventions.md`: outer → front/przód, inner → back/tył); **x, y** (from **left, bottom**); bore Ø
      **3 / 5 / 8 / 10 / 15 / 20 / 35 mm**; depth **2–15 mm** (1 mm step) **or drill-through**; type
      **single | multi**; if multi → number of holes + distance + direction (**X or Y axis**).
+   - **Edge drilling** (per hole): edge number (1–4); distance from 0 (always from **left/bottom**);
+     bore Ø **4 or 8 mm**; depth **2–35 mm** (1 mm step); type **single | multi**; if multi → number of
+     holes + distance between them.
 
-   **Prefer `multi` for regular series.** A `multi` hole is a *single editor entry* that produces a whole
-   evenly-spaced row/column (shelf-pin columns, System-32 rows, repeated confirmats). Using it instead of
-   N `single` holes drastically cuts manual entry and can be cheaper. Always collapse an evenly-spaced run
-   into one `multi`; only use `single` for irregular positions.
+   Each group numbers its own rows from 1, which is why the PDF restarts numbering per section.
+
+   **Prefer `multi` for regular series — but only up to 140 mm apart.** A `multi` hole is a *single
+   editor entry* that produces a whole evenly-spaced row/column (shelf-pin columns, System-32 rows,
+   repeated confirmats), so it cuts manual entry sharply.
+
+   /!\ **THE EDITOR REJECTS A `multi` WHOSE SPACING EXCEEDS 140 mm** (measured 2026-08-19 while
+   entering an order). Anything wider has to be typed as individual holes. Keep the run as one `multi`
+   in the YAML — that is the design intent, and the drilling is identical either way —
+   `tools/meble/normalize.py: expand_wide_multis` splits it into the individual entries on the PDF.
+   Today that turns 70 of 94 runs into singles, +114 rows to type; the ones that survive are the
+   32 mm hinge/System-32 pitches and a few short confirmat pairs.
 6. **Grooving** — out of scope for now; reserved (`grooving: []`). Adding it later must not reshape
    existing structures.
 
@@ -129,7 +137,9 @@ are never rotated → emit `2` unless the panel says otherwise (`grain: height` 
 
 Notes:
 - The import carries **dimensions, quantity, grain, and the coarse per-axis banding marks** only. The
-  rich per-edge banding, the band model, drilling, and grooving are entered **manually** — that's what
-  the PDF spec sheet is for.
+  band **model and thickness**, the drilling, and grooving are entered **manually** — that's what the
+  PDF spec sheet is for. Note the band thickness in particular: the CSV says nothing about it and the
+  editor defaults to **0.8 mm**, while this project uses 1 mm on carcasses and **2 mm on every visible
+  front**. The PDF prints the model and thickness per panel for exactly that check.
 - One CSV **per board** (the editor groups panels under a board model).
 - Example files: `example.csv` (header + 2 rows) and `meblepl_przykladowy_rozkroj.csv` (a real list).

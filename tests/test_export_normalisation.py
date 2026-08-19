@@ -89,7 +89,12 @@ def test_pdf_and_csv_describe_the_same_orientation(proj, tmp_path):
     text = pdf_text(export_pdf(proj, [cab], tmp_path / "wc.pdf", title="t"))
     page = next(p for p in text.split("\f") if "Centre gable" in p and "Drilling" in p)
     assert "SHOWN ROTATED" in page
-    assert "4 left" in page and "yes" in page
+    # BOTH halves must show the rotation, or the band ends up at one end and the drilling at the
+    # other. The banding line names the edges it is on; the drilling table moves with it — the
+    # gable's confirmat row goes edge 3 -> 1 and its cup column edge 4 -> 2.
+    assert "on 4 left" in page, "the band did not follow the rotation"
+    assert "1 top" in page and "2 right" in page, "the drilling did not follow the rotation"
+    assert "2 mm" not in page.split("Drilling")[0], "gable takes the 1 mm band, not a front's 2 mm"
 
 
 def test_a_panel_that_was_already_expressible_is_untouched_in_the_pdf(proj, tmp_path):

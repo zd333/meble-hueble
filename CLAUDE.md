@@ -116,12 +116,14 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   for a loose part, several for a bundle. `meble hardware` resolves per vendor and **reports any
   component nothing covers**, because 10 hinges with no plates hangs zero doors. Prices there are
   indicative and carry a `checked:` date; they are never a quote (same lesson as `meble pack`).
-- **Prefer bulk (multi) drilling.** Whenever holes form a regular series — a shelf-pin column, a
-  System-32 row, repeated confirmats along a seam — specify **one `multi` hole** (`count` + `spacing`,
-  plus `direction` for surface holes), **not N singles**. In the editor a multi hole is one entry
-  instead of N, so it's far less manual typing and can be cheaper. `meble fit` already collapses
-  evenly-spaced fitting screws into a multi hole — do the same when adding holes by hand. Only fall back
-  to singles for genuinely irregular positions.
+- **Prefer bulk (multi) drilling — but the editor rejects a run spaced over 140 mm.** Whenever holes
+  form a regular series — a shelf-pin column, a System-32 row, repeated confirmats along a seam —
+  specify **one `multi` hole** (`count` + `spacing`, plus `direction` for surface holes), **not N
+  singles**: in the editor a multi is one entry instead of N. Keep writing them as `multi` even when
+  the spacing is wide, because that IS the intent and the drilling is identical;
+  `normalize.expand_wide_multis` splits anything over 140 mm into individual entries **on the PDF
+  only**, so the sheet shows exactly what you can type. `meble fit` collapses evenly-spaced fitting
+  screws for you — do the same by hand. Only use singles for genuinely irregular positions.
 - **A gable/divider with shelves on BOTH sides gets ONE `depth: through` pin column pair, not two
   opposing blind ones.** Two Ø5 × 13 bores facing each other in an 18 mm panel add up to 26 mm: they
   meet in the middle and you get a ragged, drill-wandered through-hole whether you asked for one or not.

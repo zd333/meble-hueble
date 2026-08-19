@@ -38,7 +38,8 @@ def test_pdf_carries_the_numbers_a_person_types(proj, tmp_path):
     text = pdf_text(export_pdf(proj, [cab], tmp_path / "o.pdf", title="t"))
     assert "864" in text and "600" in text        # bottom panel size
     assert "OUTER" in text and "INNER" in text     # which face the drill enters
-    assert "3 bottom" in text                      # banding table uses editor edge names
+    assert "Drilling — surface" in text            # the editor's own section order
+    assert "Edge banding" in text                  # which band to fit (not in the CSV)
 
 
 def test_pdf_page_count_matches_the_csv_row_count(proj, real_panels, tmp_path):
@@ -77,3 +78,43 @@ def test_viewer_html_is_self_contained(proj, root):
     html = build_viewer_html(scene, root / "viewer" / "template.html")
     assert "<html" in html.lower()
     assert "open-900" in html
+
+
+# ------------------------------------------------------------------ sheet layout matches the editor
+
+def test_surface_drilling_comes_before_edge_drilling(proj, tmp_path):
+    """The editor presents surface first; a sheet in the other order makes you hunt up and down."""
+    text = pdf_text(export_pdf(proj, [proj.cabinet("wm-wardrobe")], tmp_path / "o.pdf", title="t"))
+    page = next(p for p in text.split("\f") if "Drilling — surface" in p)
+    assert page.index("Drilling — surface") < page.index("Drilling — edge")
+
+
+def test_hole_rows_are_numbered_from_one_in_each_section(proj, tmp_path):
+    text = pdf_text(export_pdf(proj, [proj.cabinet("wc-column")], tmp_path / "o.pdf", title="t"))
+    page = next(p for p in text.split("\f") if "Drilling — surface" in p and "Drilling — edge" in p)
+    surf, edge = page.split("Drilling — edge")
+    for section in (surf.split("Drilling — surface")[1], edge):
+        rows = [ln for ln in section.splitlines()
+                if ln.strip() and ln.split()[0].isdigit()]
+        if rows:
+            assert [int(r.split()[0]) for r in rows] == list(range(1, len(rows) + 1))
+
+
+def test_the_per_edge_banding_table_is_gone_but_the_band_survives(proj, tmp_path):
+    """Which edges are banded is on the diagram and in the CSV. WHICH BAND is in neither — the CSV
+    carries no model or thickness, and the editor defaults to 0.8 mm while the fronts need 2 mm."""
+    text = pdf_text(export_pdf(proj, [proj.cabinet("wc-column")], tmp_path / "o.pdf", title="t"))
+    page = next(p for p in text.split("\f") if "Front cover" in p and "Edge banding" in p)
+    assert "band model" not in page, "the four-row banding table is still there"
+    assert "2 mm" in page, "the 2 mm band thickness must survive — it is order-critical"
+
+
+def test_no_sheet_shows_a_run_the_editor_would_reject(proj, tmp_path):
+    """A `multi ×N @ Xmm` row with X over the limit cannot be typed in at all."""
+    import re
+    from meble.normalize import MAX_MULTI_SPACING
+    cabs = cabinets_for_scope(proj, apartment="bohaterow")
+    text = pdf_text(export_pdf(proj, cabs, tmp_path / "b.pdf", title="t"))
+    wide = [int(m) for m in re.findall(r"multi ×\d+ @ (\d+)mm", text)
+            if int(m) > MAX_MULTI_SPACING]
+    assert wide == [], f"sheet offers runs the editor rejects: {sorted(set(wide))}"

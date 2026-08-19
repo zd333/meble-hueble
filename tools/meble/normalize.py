@@ -119,3 +119,41 @@ def normalize(panel: Panel) -> tuple[Panel, bool]:
     if should_rotate(panel):
         return rotate_panel(panel), True
     return panel, False
+
+
+# ---------------------------------------------------------------------------- editor entry limits
+
+#: The editor refuses a `multi` (repeated) hole whose spacing exceeds this — told to us 2026-08-19
+#: while entering an order. Anything wider has to be typed as individual holes.
+MAX_MULTI_SPACING = 140
+
+
+def expand_wide_multis(holes: list[Hole]) -> list[Hole]:
+    """Split every `multi` hole the editor will not accept into individual singles.
+
+    A `multi` is one editor entry that produces a whole evenly-spaced run, which is why CLAUDE.md
+    prefers it — but only up to `MAX_MULTI_SPACING`. Beyond that the editor rejects it, so the run
+    has to be typed hole by hole.
+
+    Presentation only, like the 180° rotation above: the YAML keeps the run as one `multi`, because
+    that IS the design intent and the physical drilling is identical either way. Expanding here means
+    the sheet shows exactly the entries you can make, and `meble fit` can still collapse a series
+    into one hole without having to know the editor's limits.
+    """
+    out: list[Hole] = []
+    for h in holes:
+        if h.type != "multi" or not h.spacing or h.spacing <= MAX_MULTI_SPACING:
+            out.append(h)
+            continue
+        if h.is_edge:
+            for pos in h.edge_positions():
+                one = copy.deepcopy(h)
+                one.type, one.frm, one.count, one.spacing = "single", pos, None, None
+                out.append(one)
+        else:
+            for x, y in h.surface_positions():
+                one = copy.deepcopy(h)
+                one.type, one.x, one.y = "single", x, y
+                one.count = one.spacing = one.direction = None
+                out.append(one)
+    return out

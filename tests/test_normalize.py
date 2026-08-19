@@ -253,3 +253,72 @@ def test_no_real_panel_is_left_unexpressible_after_normalising(real_panels):
 def test_the_expected_number_of_real_panels_rotate(real_panels):
     rotated = [f"{c.id}/{p.id}" for c, p, _ in real_panels if normalize(p)[1]]
     assert len(rotated) == 16, rotated
+
+
+# ------------------------------------------------------------------ the editor's multi-hole limit
+
+from meble.normalize import MAX_MULTI_SPACING, expand_wide_multis  # noqa: E402
+
+
+def test_a_narrow_run_stays_one_entry():
+    """That is the whole value of `multi`: one line to type instead of N."""
+    h = mk_hole("inner", dia=5, depth=13, x=37, y=100, type="multi", count=4, spacing=32,
+                direction="y")
+    assert expand_wide_multis([h]) == [h]
+
+
+def test_a_run_exactly_at_the_limit_is_still_allowed():
+    h = mk_hole("inner", x=37, y=100, type="multi", count=3, spacing=MAX_MULTI_SPACING,
+                direction="y")
+    assert len(expand_wide_multis([h])) == 1
+
+
+def test_a_wide_surface_run_becomes_individual_holes():
+    h = mk_hole("outer", dia=8, depth="through", x=98, y=1819, type="multi", count=3,
+                spacing=250, direction="x")
+    out = expand_wide_multis([h])
+    assert [(o.x, o.y) for o in out] == [(98, 1819), (348, 1819), (598, 1819)]
+    assert all(o.type == "single" for o in out)
+    assert all(o.count is None and o.spacing is None and o.direction is None for o in out)
+
+
+def test_a_wide_edge_run_becomes_individual_holes():
+    h = mk_hole("edge2", dia=4, depth=35, frm=126, type="multi", count=3, spacing=237)
+    out = expand_wide_multis([h])
+    assert [o.frm for o in out] == [126, 363, 600]
+    assert all(o.type == "single" and o.count is None for o in out)
+
+
+def test_expansion_preserves_everything_except_the_run():
+    h = mk_hole("inner", dia=5, depth=13, x=37, y=100, type="multi", count=2, spacing=500,
+                direction="y", src="pins")
+    for o in expand_wide_multis([h]):
+        assert (o.face, o.dia, o.depth, o.src) == ("inner", 5, 13, "pins")
+
+
+def test_expansion_never_moves_a_single_hole():
+    h = mk_hole("outer", dia=8, depth="through", x=50, y=60)
+    assert expand_wide_multis([h]) == [h]
+
+
+def test_the_expanded_holes_sit_exactly_where_the_run_did(real_panels):
+    """The physical drilling must be identical — only the number of editor entries changes."""
+    for cab, panel, _ in real_panels:
+        before = sorted((h.face, tuple(h.surface_positions()) if h.is_surface
+                         else tuple(h.edge_positions())) for h in panel.holes)
+        after: list = []
+        for h in expand_wide_multis(panel.holes):
+            after.extend((h.face, p) for p in
+                         (h.surface_positions() if h.is_surface else h.edge_positions()))
+        flat_before: list = []
+        for face, pts in before:
+            flat_before.extend((face, p) for p in pts)
+        assert sorted(map(str, flat_before)) == sorted(map(str, after)), f"{cab.id}/{panel.id}"
+
+
+def test_no_real_panel_keeps_a_run_the_editor_would_reject(real_panels):
+    """After expansion every remaining `multi` must be inside the editor's limit."""
+    for cab, panel, _ in real_panels:
+        for h in expand_wide_multis(panel.holes):
+            if h.type == "multi":
+                assert h.spacing <= MAX_MULTI_SPACING, f"{cab.id}/{panel.id}: @{h.spacing}"

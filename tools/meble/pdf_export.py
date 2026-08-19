@@ -21,7 +21,7 @@ from reportlab.pdfgen import canvas
 
 from .model import (BAND_COLOR_DEFAULT, Cabinet, DIA_COLORS, DIA_COLOR_DEFAULT, Panel, Project,
                     band_color_map)
-from .normalize import ROT, normalize
+from .normalize import ROT, expand_wide_multis, normalize
 
 MM = 72.0 / 25.4
 PW, PH = A4
@@ -253,27 +253,51 @@ def _table_size(c, panel: Panel, qty, board, thickness, y):
     return y - 7 * MM
 
 
-def _table_banding(c, proj: Project, panel: Panel, y):
-    x = MARGIN + 6 * MM
+def _band_note(c, proj: Project, panel: Panel, y):
+    """ONE line, not a table.
+
+    Which edges are banded is on the diagram above (coloured) and comes in on the CSV, so listing the
+    four edges again was noise. What neither shows is WHICH BAND: the CSV carries no band model or
+    thickness at all, and the editor defaults to 0.8 mm — while the visible fronts here take 2 mm and
+    everything else 1 mm. Get that wrong and the panel is remade, so the model and thickness stay.
+    No panel in this project mixes band models, which is what lets this collapse to one line.
+    """
     eb = panel.edge_banding
-    glue = ("long edges (editor: kryjące długie)" if eb.glue_type == "long"
-            else "short edges (editor: kryjące krótkie)")
-    y = _heading(c, MARGIN, y, f"Edge banding   ·   covering: {glue}", C_BAND)
-    y = _row(c, x, y, ["edge", "banded", "band model", "thick."],
-             [26 * MM, 20 * MM, 60 * MM, 22 * MM], bold=True, color=C_BAND)
+    ids = {eb.band_for(e) for e in (1, 2, 3, 4)} - {None}
+    if not ids:
+        c.setFont(FONT, 8); c.setFillColor(C_GREY)
+        c.drawString(MARGIN, y, "Edge banding:  none on this panel")
+        c.setFillColor(colors.black)
+        return y - 7 * MM
+
+    x = MARGIN + 6 * MM
+    glue = "kryjące długie" if eb.glue_type == "long" else "kryjące krótkie"
+    edges_of: dict = {}
     for e in (1, 2, 3, 4):
-        band_id = eb.band_for(e)
-        if band_id:
-            band = proj.edgeband(band_id)
-            model = band.name if band else band_id
-            th = f"{band.thickness:g} mm" if band else ""
-            y = _row(c, x, y, [EDGE_NAMES[e], "yes", model, th],
-                     [26 * MM, 20 * MM, 60 * MM, 22 * MM], check=True, swatch=_band_color(band_id),
-                     color=C_BAND)
-        else:
-            y = _row(c, x, y, [EDGE_NAMES[e], "—", "", ""],
-                     [26 * MM, 20 * MM, 60 * MM, 22 * MM], check=True, color=C_BAND)
-    return y - 4 * MM
+        b = eb.band_for(e)
+        if b:
+            edges_of.setdefault(b, []).append(EDGE_NAMES[e])
+    y = _heading(c, MARGIN, y, "Edge banding", C_BAND)
+    for band_id in sorted(ids):
+        band = proj.edgeband(band_id)
+        th = f"{band.thickness:g} mm" if band else "?"
+        _swatch(c, x - 11 * MM, y - 1 * MM, _band_color(band_id), s=4 * MM)
+        _checkbox(c, x - 6 * MM, y - 0.5 * MM)
+        # Big enough to read at arm's length while typing: this is the check that catches a 1 mm band
+        # fitted where a 2 mm one belongs, which no other sheet or file can catch.
+        c.setFont(FONT_BOLD, 10); c.setFillColor(C_BAND)
+        c.drawString(x, y, f"{band.name if band else band_id}")
+        w = c.stringWidth(f"{band.name if band else band_id}", FONT_BOLD, 10)
+        c.drawString(x + w + 4 * MM, y, f"·  {th} thick")
+        c.setFillColor(colors.black)
+        y -= 4.6 * MM
+        c.setFont(FONT, 8); c.setFillColor(C_GREY)
+        c.drawString(x, y, f"on {', '.join(edges_of.get(band_id, []))}"
+                           f"   ·   glue: {glue}   ·   swatch matches the diagram above "
+                           f"(a legend colour, not the real decor)")
+        c.setFillColor(colors.black)
+        y -= 5.4 * MM
+    return y - 3 * MM
 
 
 def _multi_str(h) -> str:
@@ -287,36 +311,46 @@ def _table_drilling(c, panel: Panel, y, stamped_srcs: set | None = None):
     """`stamped_srcs` = fittings `meble fit` actually computes. A hole tagged with any OTHER fitting
     is hand-derived (`drilling: manual` — hinge plates, shelf pins) and must NOT be marked `(auto)`:
     that label tells the reader the position was machine-derived and will follow a resize, and for a
-    hand-written hole neither is true."""
+    hand-written hole neither is true.
+
+    SURFACE FIRST, then edge — the order the editor presents them, so you can work straight down the
+    page without hunting. Rows are numbered from 1 within EACH section independently, matching the
+    editor's own per-group numbering, so "surface 7" is unambiguous when you lose your place.
+
+    Holes are run through `expand_wide_multis` first: the editor rejects a repeated hole spaced more
+    than MAX_MULTI_SPACING apart, so those appear here as the individual entries you actually type.
+    """
     stamped_srcs = stamped_srcs if stamped_srcs is not None else set()
     x = MARGIN + 6 * MM
-    edge_holes = [h for h in panel.holes if h.is_edge]
-    surf_holes = [h for h in panel.holes if h.is_surface]
+    holes = expand_wide_multis(panel.holes)
+    surf_holes = [h for h in holes if h.is_surface]
+    edge_holes = [h for h in holes if h.is_edge]
 
-    y = _heading(c, MARGIN, y, "Drilling — edge", C_DRILL)
-    if edge_holes:
-        y = _row(c, x, y, ["edge", "from", "Ø", "depth", "type"],
-                 [26 * MM, 22 * MM, 16 * MM, 24 * MM, 50 * MM], bold=True, color=C_DRILL)
-        for h in edge_holes:
+    SURF_W = [10 * MM, 20 * MM, 22 * MM, 22 * MM, 16 * MM, 24 * MM, 42 * MM]
+    EDGE_W = [10 * MM, 26 * MM, 22 * MM, 16 * MM, 24 * MM, 42 * MM]
+
+    y = _heading(c, MARGIN, y, "Drilling — surface", C_DRILL)
+    if surf_holes:
+        y = _row(c, x, y, ["#", "face", "x", "y", "Ø", "depth", "type"], SURF_W,
+                 bold=True, color=C_DRILL)
+        for i, h in enumerate(surf_holes, 1):
             tag = "  (auto)" if h.src in stamped_srcs else ""
-            y = _row(c, x, y, [EDGE_NAMES[h.edge_no], f"{h.frm} mm", f"{h.dia}",
-                               _depth_str(h.depth), _multi_str(h) + tag],
-                     [26 * MM, 22 * MM, 16 * MM, 24 * MM, 50 * MM], check=True,
-                     swatch=_dia_color(h.dia), color=C_DRILL)
+            y = _row(c, x, y, [i, h.face, f"{h.x:g}", f"{h.y:g}", f"{h.dia:g}",
+                               _depth_str(h.depth), _multi_str(h) + tag], SURF_W,
+                     check=True, swatch=_dia_color(h.dia), color=C_DRILL)
     else:
         c.setFont(FONT, 8); c.setFillColor(C_DRILL); c.drawString(x, y, "— none —")
         c.setFillColor(colors.black); y -= 5.2 * MM
 
     y -= 2 * MM
-    y = _heading(c, MARGIN, y, "Drilling — surface", C_DRILL)
-    if surf_holes:
-        y = _row(c, x, y, ["face", "x", "y", "Ø", "depth", "type"],
-                 [20 * MM, 22 * MM, 22 * MM, 16 * MM, 24 * MM, 50 * MM], bold=True, color=C_DRILL)
-        for h in surf_holes:
+    y = _heading(c, MARGIN, y, "Drilling — edge", C_DRILL)
+    if edge_holes:
+        y = _row(c, x, y, ["#", "edge", "from", "Ø", "depth", "type"], EDGE_W,
+                 bold=True, color=C_DRILL)
+        for i, h in enumerate(edge_holes, 1):
             tag = "  (auto)" if h.src in stamped_srcs else ""
-            y = _row(c, x, y, [h.face, f"{h.x}", f"{h.y}", f"{h.dia}",
-                               _depth_str(h.depth), _multi_str(h) + tag],
-                     [20 * MM, 22 * MM, 22 * MM, 16 * MM, 24 * MM, 50 * MM],
+            y = _row(c, x, y, [i, EDGE_NAMES[h.edge_no], f"{h.frm:g} mm", f"{h.dia:g}",
+                               _depth_str(h.depth), _multi_str(h) + tag], EDGE_W,
                      check=True, swatch=_dia_color(h.dia), color=C_DRILL)
     else:
         c.setFont(FONT, 8); c.setFillColor(C_DRILL); c.drawString(x, y, "— none —")
@@ -375,7 +409,7 @@ def _draw_panel_page(c, proj: Project, cab: Cabinet, panel: Panel, qty: int, idx
 
     ty = base_y - 14 * MM
     ty = _table_size(c, panel, qty, board, thickness, ty)
-    ty = _table_banding(c, proj, panel, ty)
+    ty = _band_note(c, proj, panel, ty)
     ty = _table_drilling(c, panel, ty, stamped_srcs)
 
     c.setFont(FONT, 7); c.setFillColor(C_GREY)
