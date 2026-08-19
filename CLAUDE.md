@@ -86,6 +86,13 @@ Full field reference: **`docs/schema.md`**. Editor fields + CSV format: **`docs/
   Minifix puts its Ø15 cam ~34 mm back and needs a third bore — a Ø8 channel in from the edge — which
   is an extra hole to be charged for and an extra line to type. Do not mix the two; `minifix-15` stays
   in the library as reference only.
+- **meble.pl will CUT a panel longer than 2500 mm but will NOT DRILL it** (told to us 2026-08-18 while
+  entering an order). So a tall side panel is only orderable as drawn if it carries no holes — and a
+  carcass side always carries holes. Both bathroom columns were shortened for this: `wc-column`
+  2524 → 2500 and `wm-wardrobe` 2520 → 2500. **Take the height off the part of the cabinet that is
+  free to move**, never off a dimension something physical sets: the WC cover is fixed by the cistern
+  frame and the laundry bay by the appliance stack, so in both cases the loss came out of the cabinet
+  ABOVE. `tests/test_designs.py` enforces the limit, so a future design cannot quietly re-cross it.
 - **Panel `width`/`height` must be whole millimetres.** The CSV writes them as integers, so a half-mm
   dimension is silently rounded away in the order. Choose envelope numbers that keep every *derived*
   size whole — e.g. 736 wide rather than 735, so the two doors land on 367 and not 366.5. Hole
