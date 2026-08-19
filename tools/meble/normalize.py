@@ -123,37 +123,41 @@ def normalize(panel: Panel) -> tuple[Panel, bool]:
 
 # ---------------------------------------------------------------------------- editor entry limits
 
-#: The editor refuses a `multi` (repeated) hole whose spacing exceeds this — told to us 2026-08-19
-#: while entering an order. Anything wider has to be typed as individual holes.
-MAX_MULTI_SPACING = 140
+#: The editor refuses a SURFACE `multi` (repeated) hole whose spacing exceeds this — measured on the
+#: live editor 2026-08-19. EDGE drilling was retested 2026-08-19 and accepts wider spacing, so the
+#: rule is scoped to surface holes only.
+#:
+#: /!\ THIS IS NOT DOCUMENTED ANYWHERE. meble.pl publishes no technical limits for the online editor:
+#:     not on /uslugi/nawiercanie-otworow/ (which lists only bore diameters and the 12-38 mm edge
+#:     thickness), not in /na-wymiar/szczegoly-techniczne/, not under /pomoc/, and not on the machine
+#:     page. Every constraint in this file was found by trying it. So when one of them bites, TEST
+#:     WHICH GROUP IT APPLIES TO before encoding it — this constant was briefly applied to edge holes
+#:     as well, on an assumption that turned out to be wrong.
+MAX_SURFACE_MULTI_SPACING = 140
 
 
 def expand_wide_multis(holes: list[Hole]) -> list[Hole]:
-    """Split every `multi` hole the editor will not accept into individual singles.
+    """Split every SURFACE `multi` the editor will not accept into individual singles.
 
     A `multi` is one editor entry that produces a whole evenly-spaced run, which is why CLAUDE.md
-    prefers it — but only up to `MAX_MULTI_SPACING`. Beyond that the editor rejects it, so the run
-    has to be typed hole by hole.
+    prefers it — but the surface-drilling form rejects one spaced more than
+    `MAX_SURFACE_MULTI_SPACING` apart, so those have to be typed hole by hole. Edge drilling has no
+    such limit (retested on the live editor), and its runs are left alone.
 
     Presentation only, like the 180° rotation above: the YAML keeps the run as one `multi`, because
     that IS the design intent and the physical drilling is identical either way. Expanding here means
     the sheet shows exactly the entries you can make, and `meble fit` can still collapse a series
-    into one hole without having to know the editor's limits.
+    into one hole without having to know the editor's form validation.
     """
     out: list[Hole] = []
     for h in holes:
-        if h.type != "multi" or not h.spacing or h.spacing <= MAX_MULTI_SPACING:
+        wide = (h.type == "multi" and h.spacing and h.spacing > MAX_SURFACE_MULTI_SPACING)
+        if not (wide and h.is_surface):
             out.append(h)
             continue
-        if h.is_edge:
-            for pos in h.edge_positions():
-                one = copy.deepcopy(h)
-                one.type, one.frm, one.count, one.spacing = "single", pos, None, None
-                out.append(one)
-        else:
-            for x, y in h.surface_positions():
-                one = copy.deepcopy(h)
-                one.type, one.x, one.y = "single", x, y
-                one.count = one.spacing = one.direction = None
-                out.append(one)
+        for x, y in h.surface_positions():
+            one = copy.deepcopy(h)
+            one.type, one.x, one.y = "single", x, y
+            one.count = one.spacing = one.direction = None
+            out.append(one)
     return out

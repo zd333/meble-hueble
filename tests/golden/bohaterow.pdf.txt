@@ -48,30 +48,30 @@ P41. open-900 / Top panel 864×600 mm ×1                       →
 P42. open-900 / Back stretcher (horizontal) 864×150 mm ×1     →
 P43. open-900 / Back stretcher (vertical) 100×364 mm ×2       →
 P44. mounting-panels / Mounting panel 87×1000 87×1000 mm ×3   →
-P1. Left side                                                                                                Bathroom WC column · wc-column/side-l
+P1. Left side                                                                                           Bathroom WC column · wc-column/side-l
 
 
-                       OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
+                       OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
 
-                                           1                                                                                    1
-
-
-
-
-                                h 2500                                                                                h 2500
-                                           42                                                                                   42
+                                           1                                                                                   1
 
 
 
 
-                                           3                                                                                    3
+                                h 2500                                                                               h 2500
+                                           42                                                                                  42
 
-                                          w 199                                                                                w 199
+
+
+
+                                           3                                                                                   3
+
+                                          w 199                                                                               w 199
            Cabinet FRONT edge = right edge (2). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                    height                         thickness             qty                  grain
-   199 mm                   2500 mm                        18 mm                 1                    1 — along height
+   width                    height                         thickness             qty                 grain
+   199 mm                   2500 mm                        18 mm                 1                   1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding
@@ -79,52 +79,51 @@ Edge banding
    on 1 top, 2 right, 3 bottom, 4 left · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-   #       face             x                     y                    Ø             depth               type
-   1       outer            50                    1200                 8             through             multi ×2 @ 99mm x (auto)
-   2       inner            162                   1296                 5             13 mm               multi ×2 @ 32mm y
-   3       inner            162                   1840                 5             13 mm               multi ×2 @ 32mm y
-   4       inner            162                   2384                 5             13 mm               multi ×2 @ 32mm y
-   5       inner            55                    1621                 5             13 mm               single
-   6       inner            55                    2051                 5             13 mm               single
-   7       inner            162                   1621                 5             13 mm               single
-   8       inner            162                   2051                 5             13 mm               single
-   9       outer            9                     1359                 8             through             single (auto)
-   10      outer            9                     2350                 8             through             single (auto)
-   11      outer            68                    2491                 8             through             multi ×2 @ 81mm x (auto)
+   #       face             x                     y                    Ø             depth              type
+   1       outer            50                    1200                 8             through            multi ×2 @ 99mm x (auto)
+   2       inner            162                   1296                 5             13 mm              multi ×2 @ 32mm y
+   3       inner            162                   1840                 5             13 mm              multi ×2 @ 32mm y
+   4       inner            162                   2384                 5             13 mm              multi ×2 @ 32mm y
+   5       inner            55                    1621                 5             13 mm              single
+   6       inner            55                    2051                 5             13 mm              single
+   7       inner            162                   1621                 5             13 mm              single
+   8       inner            162                   2051                 5             13 mm              single
+   9       outer            9                     1359                 8             through            single (auto)
+   10      outer            9                     2350                 8             through            single (auto)
+   11      outer            68                    2491                 8             through            multi ×2 @ 81mm x (auto)
 
 Drilling — edge
    #       edge                          from          Ø               depth                 type
-   1       2 right                       60 mm         4               35 mm                 single (auto)
-   2       2 right                       340 mm        4               35 mm                 single (auto)
+   1       2 right                       60 mm         4               35 mm                 multi ×2 @ 280mm (auto)
 
 
 
 
                                                              meble · wc-column · panel sheet P1
-P2. Right side                                                                                               Bathroom WC column · wc-column/side-r
+P2. Right side                                                                                          Bathroom WC column · wc-column/side-r
 
 
-                       OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
+                       OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
 
-                                           1                                                                                     1
-
-
-
-
-                                h 2500                                                                                 h 2500
-                                           42                                                                                    42
+                                           1                                                                                   1
 
 
 
 
-                                           3                                                                                     3
+                                h 2500                                                                               h 2500
+                                           42                                                                                  42
 
-                                          w 199                                                                                 w 199
+
+
+
+                                           3                                                                                   3
+
+                                          w 199                                                                               w 199
             Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                    height                         thickness             qty                  grain
-   199 mm                   2500 mm                        18 mm                 1                    1 — along height
+   width                    height                         thickness             qty                 grain
+   199 mm                   2500 mm                        18 mm                 1                   1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding
@@ -132,20 +131,19 @@ Edge banding
    on 1 top, 2 right, 3 bottom, 4 left · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-   #       face             x                     y                    Ø             depth               type
-   1       inner            37                    1200                 5             12 mm               multi ×2 @ 125mm x
-   2       inner            37                    2491                 5             12 mm               multi ×2 @ 107mm x
-   3       inner            37                    1621                 5             13 mm               single
-   4       inner            37                    2051                 5             13 mm               single
-   5       inner            144                   1621                 5             13 mm               single
-   6       inner            144                   2051                 5             13 mm               single
-   7       inner            190                   1359                 5             12 mm               single
-   8       inner            190                   2350                 5             12 mm               single
+   #       face             x                     y                    Ø             depth              type
+   1       inner            37                    1200                 5             12 mm              multi ×2 @ 125mm x
+   2       inner            37                    2491                 5             12 mm              multi ×2 @ 107mm x
+   3       inner            37                    1621                 5             13 mm              single
+   4       inner            37                    2051                 5             13 mm              single
+   5       inner            144                   1621                 5             13 mm              single
+   6       inner            144                   2051                 5             13 mm              single
+   7       inner            190                   1359                 5             12 mm              single
+   8       inner            190                   2350                 5             12 mm              single
 
 Drilling — edge
    #       edge                          from          Ø               depth                 type
-   1       4 left                        60 mm         4               35 mm                 single (auto)
-   2       4 left                        340 mm        4               35 mm                 single (auto)
+   1       4 left                        60 mm         4               35 mm                 multi ×2 @ 280mm (auto)
 
 
 
@@ -198,29 +196,29 @@ Drilling — edge
 
 
                                                                   meble · wc-column · panel sheet P3
-P4. Top panel                                                                                               Bathroom WC column · wc-column/top-panel
+P4. Top panel                                                                                              Bathroom WC column · wc-column/top-panel
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                            OUTER · editor: przód (front)                                                              INNER · editor: tył (back)
+                            OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
 
-                                          1                                                                                        1
+                                          1                                                                                       1
 
 
    h 181                                                                                    h 181
-           4                                                                2                        4                                              2
+           4                                                                2                        4                                             2
 
 
-                                          3                                                                                        3
+                                          3                                                                                       3
 
-                                        w 700                                                                                    w 700
+                                        w 700                                                                                   w 700
                Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-     width                       height                         thickness             qty                    grain
-     700 mm                      181 mm                         18 mm                 1                      0 — any
+     width                       height                         thickness             qty                   grain
+     700 mm                      181 mm                         18 mm                 1                     0 — any
      board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding
@@ -228,47 +226,45 @@ Edge banding
      on 3 bottom · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-     #          face             x                  y                       Ø             depth                 type
-     1          outer            9.5                37                      20            14 mm                 multi ×2 @ 107mm y
+     #          face             x                  y                       Ø             depth                type
+     1          outer            9.5                37                      20            14 mm                multi ×2 @ 107mm y
 
 Drilling — edge
      #          edge                   from                 Ø               depth                   type
-     1          1 top                  100 mm               4               35 mm                   single (auto)
-     2          1 top                  350 mm               4               35 mm                   single (auto)
-     3          1 top                  600 mm               4               35 mm                   single (auto)
-     4          2 right                50 mm                4               35 mm                   multi ×2 @ 81mm (auto)
+     1          1 top                  100 mm               4               35 mm                   multi ×3 @ 250mm (auto)
+     2          2 right                50 mm                4               35 mm                   multi ×2 @ 81mm (auto)
 
 
 
 
                                                                   meble · wc-column · panel sheet P4
-P5. Centre gable (vertical)                                                                                 Bathroom WC column · wc-column/gable-mid
+P5. Centre gable (vertical)                                                                                Bathroom WC column · wc-column/gable-mid
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                        OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
+                        OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
 
-                                              1                                                                                         1
-
-
-
-
-                              h 1273                                                                                       h 1273
-                                          4       2                                                                                 4       2
+                                              1                                                                                        1
 
 
 
 
-                                              3                                                                                         3
+                              h 1273                                                                                      h 1273
+                                          4       2                                                                                4       2
 
-                                          w 181                                                                                     w 181
+
+
+
+                                              3                                                                                        3
+
+                                          w 181                                                                                    w 181
                                        Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-    width                    height                              thickness              qty                  grain
-    181 mm                   1273 mm                             18 mm                  1                    1 — along height
+    width                    height                              thickness              qty                 grain
+    181 mm                   1273 mm                             18 mm                  1                   1 — along height
     board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding
@@ -276,22 +272,19 @@ Edge banding
     on 4 left · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-    #       face             x                         y                     Ø              depth               type
-    1       inner            37                        1154                  5              13 mm               multi ×2 @ 32mm y
-    2       inner            37                        610                   5              13 mm               multi ×2 @ 32mm y
-    3       inner            37                        66                    5              13 mm               multi ×2 @ 32mm y
-    4       outer            144                       431                   5              through             single
-    5       outer            144                       861                   5              through             single
-    6       outer            37                        431                   5              through             single
-    7       outer            37                        861                   5              through             single
+    #       face             x                         y                     Ø              depth              type
+    1       inner            37                        1154                  5              13 mm              multi ×2 @ 32mm y
+    2       inner            37                        610                   5              13 mm              multi ×2 @ 32mm y
+    3       inner            37                        66                    5              13 mm              multi ×2 @ 32mm y
+    4       outer            144                       431                   5              through            single
+    5       outer            144                       861                   5              through            single
+    6       outer            37                        431                   5              through            single
+    7       outer            37                        861                   5              through            single
 
 Drilling — edge
     #       edge                         from                Ø               depth                  type
     1       1 top                        50 mm               4               35 mm                  multi ×2 @ 81mm (auto)
-    2       2 right                      80 mm               4               35 mm                  single (auto)
-    3       2 right                      451 mm              4               35 mm                  single (auto)
-    4       2 right                      822 mm              4               35 mm                  single (auto)
-    5       2 right                      1193 mm             4               35 mm                  single (auto)
+    2       2 right                      80 mm               4               35 mm                  multi ×4 @ 371mm (auto)
 
 
 
@@ -389,22 +382,22 @@ Drilling — edge
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                              OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+                              OUTER · editor: przód (front)                                                              INNER · editor: tył (back)
 
-                                            1                                                                                         1
-
-
-
-
-                     h 1291                                                                                      h 1291
-                              4                            2                                                              4                        2
+                                            1                                                                                        1
 
 
 
 
-                                            3                                                                                         3
+                     h 1291                                                                                     h 1291
+                              4                            2                                                             4                        2
 
-                                           w 700                                                                                    w 700
+
+
+
+                                            3                                                                                        3
+
+                                           w 700                                                                                   w 700
                                        Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
@@ -417,23 +410,21 @@ Edge banding
     on 3 bottom · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-    #       face                   x                   y                       Ø             depth               type
-    1       inner                  690.5               150                     20            14 mm               single
-    2       inner                  690.5               1141                    20            14 mm               single
-    3       outer                  350                 98                      8             through             single (auto)
-    4       outer                  350                 469                     8             through             single (auto)
-    5       outer                  350                 840                     8             through             single (auto)
-    6       outer                  350                 1211                    8             through             single (auto)
-    7       outer                  100                 9                       8             through             single (auto)
-    8       outer                  350                 9                       8             through             single (auto)
-    9       outer                  600                 9                       8             through             single (auto)
+    #       face                   x                   y                       Ø             depth              type
+    1       inner                  690.5               150                     20            14 mm              single
+    2       inner                  690.5               1141                    20            14 mm              single
+    3       outer                  350                 98                      8             through            single (auto)
+    4       outer                  350                 469                     8             through            single (auto)
+    5       outer                  350                 840                     8             through            single (auto)
+    6       outer                  350                 1211                    8             through            single (auto)
+    7       outer                  100                 9                       8             through            single (auto)
+    8       outer                  350                 9                       8             through            single (auto)
+    9       outer                  600                 9                       8             through            single (auto)
 
 Drilling — edge
     #       edge                         from                  Ø               depth                 type
-    1       4 left                       150 mm                4               35 mm                 single (auto)
-    2       4 left                       1141 mm               4               35 mm                 single (auto)
-    3       1 top                        100 mm                4               35 mm                 single (auto)
-    4       1 top                        600 mm                4               35 mm                 single (auto)
+    1       4 left                       150 mm                4               35 mm                 multi ×2 @ 991mm (auto)
+    2       1 top                        100 mm                4               35 mm                 multi ×2 @ 500mm (auto)
 
 
 
@@ -761,15 +752,9 @@ Drilling — surface
 
 Drilling — edge
     #               edge                from                  Ø                depth               type
-    1               2 right             77 mm                 4                35 mm               single (auto)
-    2               2 right             327 mm                4                35 mm               single (auto)
-    3               2 right             577 mm                4                35 mm               single (auto)
-    4               4 left              77 mm                 4                35 mm               single (auto)
-    5               4 left              327 mm                4                35 mm               single (auto)
-    6               4 left              577 mm                4                35 mm               single (auto)
-    7               1 top               126 mm                4                35 mm               single (auto)
-    8               1 top               363 mm                4                35 mm               single (auto)
-    9               1 top               600 mm                4                35 mm               single (auto)
+    1               2 right             77 mm                 4                35 mm               multi ×3 @ 250mm (auto)
+    2               4 left              77 mm                 4                35 mm               multi ×3 @ 250mm (auto)
+    3               1 top               126 mm                4                35 mm               multi ×3 @ 237mm (auto)
 
 
 
@@ -813,15 +798,9 @@ Drilling — surface
 
 Drilling — edge
     #               edge                from                  Ø                depth               type
-    1               2 right             77 mm                 4                35 mm               single (auto)
-    2               2 right             327 mm                4                35 mm               single (auto)
-    3               2 right             577 mm                4                35 mm               single (auto)
-    4               4 left              77 mm                 4                35 mm               single (auto)
-    5               4 left              327 mm                4                35 mm               single (auto)
-    6               4 left              577 mm                4                35 mm               single (auto)
-    7               1 top               126 mm                4                35 mm               single (auto)
-    8               1 top               363 mm                4                35 mm               single (auto)
-    9               1 top               600 mm                4                35 mm               single (auto)
+    1               2 right             77 mm                 4                35 mm               multi ×3 @ 250mm (auto)
+    2               4 left              77 mm                 4                35 mm               multi ×3 @ 250mm (auto)
+    3               1 top               126 mm                4                35 mm               multi ×3 @ 237mm (auto)
 
 
 
@@ -830,27 +809,27 @@ Drilling — edge
 P17. Back (full height)                                                           Bathroom laundry column (washer + dryer) · wm-wardrobe/back
 
 
-                     OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
+                     OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
 
                                           1                                                                                       1
 
 
 
 
-                       h 2450                                                                                       h 2450
-                                    4            2                                                                           4           2
+                       h 2450                                                                                      h 2450
+                                    4            2                                                                          4           2
 
 
 
 
                                           3                                                                                       3
 
-                                         w 726                                                                                   w 726
+                                         w 726                                                                                  w 726
                                     Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                        height                        thickness              qty                  grain
-   726 mm                       2450 mm                       18 mm                  1                    1 — along height
+   width                        height                        thickness              qty                 grain
+   726 mm                       2450 mm                       18 mm                  1                   1 — along height
    board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding
@@ -858,26 +837,18 @@ Edge banding
    on 1 top, 3 bottom · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-   #       face                 x                    y                    Ø              depth               type
-   1       outer                126                  1769                 8              through             single (auto)
-   2       outer                363                  1769                 8              through             single (auto)
-   3       outer                600                  1769                 8              through             single (auto)
-   4       outer                126                  2441                 8              through             single (auto)
-   5       outer                363                  2441                 8              through             single (auto)
-   6       outer                600                  2441                 8              through             single (auto)
+   #       face                 x                    y                    Ø              depth              type
+   1       outer                126                  1769                 8              through            single (auto)
+   2       outer                363                  1769                 8              through            single (auto)
+   3       outer                600                  1769                 8              through            single (auto)
+   4       outer                126                  2441                 8              through            single (auto)
+   5       outer                363                  2441                 8              through            single (auto)
+   6       outer                600                  2441                 8              through            single (auto)
 
 Drilling — edge
    #       edge                         from              Ø               depth                  type
-   1       2 right                      126 mm            4               35 mm                  single (auto)
-   2       2 right                      676 mm            4               35 mm                  single (auto)
-   3       2 right                      1226 mm           4               35 mm                  single (auto)
-   4       2 right                      1776 mm           4               35 mm                  single (auto)
-   5       2 right                      2326 mm           4               35 mm                  single (auto)
-   6       4 left                       126 mm            4               35 mm                  single (auto)
-   7       4 left                       676 mm            4               35 mm                  single (auto)
-   8       4 left                       1226 mm           4               35 mm                  single (auto)
-   9       4 left                       1776 mm           4               35 mm                  single (auto)
-   10      4 left                       2326 mm           4               35 mm                  single (auto)
+   1       2 right                      126 mm            4               35 mm                  multi ×5 @ 550mm (auto)
+   2       4 left                       126 mm            4               35 mm                  multi ×5 @ 550mm (auto)
 
 
 
@@ -1341,21 +1312,21 @@ Drilling — edge
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                        OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+                        OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
 
-                                      1                                                                                          1
+                                      1                                                                                         1
 
    h 100                                                                                  h 100
-           4                                                            2                          4                                              2
+           4                                                            2                          4                                             2
 
-                                      3                                                                                          3
+                                      3                                                                                         3
 
-                                    w 498                                                                                      w 498
+                                    w 498                                                                                     w 498
                                  Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-     width                   height                         thickness               qty                    grain
-     498 mm                  100 mm                         18 mm                   1                      0 — any
+     width                   height                         thickness               qty                   grain
+     498 mm                  100 mm                         18 mm                   1                     0 — any
      board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding
@@ -1363,14 +1334,13 @@ Edge banding
      on 2 right, 3 bottom, 4 left · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-     #         face          x                   y                      Ø               depth                 type
-     1         outer         489                 50                     8               through               single (auto)
-     2         outer         9                   50                     8               through               single (auto)
+     #         face          x                   y                      Ø               depth                type
+     1         outer         489                 50                     8               through              single (auto)
+     2         outer         9                   50                     8               through              single (auto)
 
 Drilling — edge
      #         edge                from                 Ø               depth                     type
-     1         1 top               125 mm               4               35 mm                     single (auto)
-     2         1 top               373 mm               4               35 mm                     single (auto)
+     1         1 top               125 mm               4               35 mm                     multi ×2 @ 248mm (auto)
 
 
 
@@ -1382,21 +1352,21 @@ Drilling — edge
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                        OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+                        OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
 
-                                      1                                                                                          1
+                                      1                                                                                         1
 
    h 100                                                                                  h 100
-           4                                                            2                          4                                              2
+           4                                                            2                          4                                             2
 
-                                      3                                                                                          3
+                                      3                                                                                         3
 
-                                    w 498                                                                                      w 498
+                                    w 498                                                                                     w 498
                                  Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-     width                   height                         thickness               qty                    grain
-     498 mm                  100 mm                         18 mm                   1                      0 — any
+     width                   height                         thickness               qty                   grain
+     498 mm                  100 mm                         18 mm                   1                     0 — any
      board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding
@@ -1404,14 +1374,13 @@ Edge banding
      on 2 right, 3 bottom, 4 left · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-     #         face          x                   y                      Ø               depth                 type
-     1         outer         9                   50                     8               through               single (auto)
-     2         outer         489                 50                     8               through               single (auto)
+     #         face          x                   y                      Ø               depth                type
+     1         outer         9                   50                     8               through              single (auto)
+     2         outer         489                 50                     8               through              single (auto)
 
 Drilling — edge
      #         edge                from                 Ø               depth                     type
-     1         1 top               125 mm               4               35 mm                     single (auto)
-     2         1 top               373 mm               4               35 mm                     single (auto)
+     1         1 top               125 mm               4               35 mm                     multi ×2 @ 248mm (auto)
 
 
 
@@ -1453,10 +1422,9 @@ Drilling — surface
 
 Drilling — edge
      #         edge                from                  Ø               depth                     type
-     1         1 top               80 mm                 4               35 mm                     single (auto)
-     2         1 top               234 mm                4               35 mm                     single (auto)
-     3         4 left              50 mm                 4               35 mm                     single (auto)
-     4         2 right             50 mm                 4               35 mm                     single (auto)
+     1         1 top               80 mm                 4               35 mm                     multi ×2 @ 154mm (auto)
+     2         4 left              50 mm                 4               35 mm                     single (auto)
+     3         2 right             50 mm                 4               35 mm                     single (auto)
 
 
 
@@ -1498,10 +1466,9 @@ Drilling — surface
 
 Drilling — edge
      #         edge                from                  Ø               depth                     type
-     1         1 top               80 mm                 4               35 mm                     single (auto)
-     2         1 top               234 mm                4               35 mm                     single (auto)
-     3         2 right             50 mm                 4               35 mm                     single (auto)
-     4         4 left              50 mm                 4               35 mm                     single (auto)
+     1         1 top               80 mm                 4               35 mm                     multi ×2 @ 154mm (auto)
+     2         2 right             50 mm                 4               35 mm                     single (auto)
+     3         4 left              50 mm                 4               35 mm                     single (auto)
 
 
 
@@ -1561,25 +1528,25 @@ Drilling — edge
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                        OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+                        OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
 
-                                      1                                                                                          1
+                                      1                                                                                         1
 
 
 
    h 150                                                                                  h 150
-           4                                                            2                          4                                              2
+           4                                                            2                          4                                             2
 
 
 
-                                      3                                                                                          3
+                                      3                                                                                         3
 
-                                    w 498                                                                                      w 498
+                                    w 498                                                                                     w 498
                                  Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-     width                   height                         thickness               qty                    grain
-     498 mm                  150 mm                         18 mm                   1                      0 — any
+     width                   height                         thickness               qty                   grain
+     498 mm                  150 mm                         18 mm                   1                     0 — any
      board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding
@@ -1587,14 +1554,13 @@ Edge banding
      on 2 right, 3 bottom, 4 left · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-     #         face          x                   y                      Ø               depth                 type
-     1         outer         489                 75                     8               through               single (auto)
-     2         outer         9                   75                     8               through               single (auto)
+     #         face          x                   y                      Ø               depth                type
+     1         outer         489                 75                     8               through              single (auto)
+     2         outer         9                   75                     8               through              single (auto)
 
 Drilling — edge
      #         edge                from                 Ø               depth                     type
-     1         1 top               125 mm               4               35 mm                     single (auto)
-     2         1 top               373 mm               4               35 mm                     single (auto)
+     1         1 top               125 mm               4               35 mm                     multi ×2 @ 248mm (auto)
 
 
 
@@ -1606,21 +1572,21 @@ Drilling — edge
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                        OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+                        OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
 
-                                      1                                                                                          1
+                                      1                                                                                         1
 
    h 100                                                                                  h 100
-           4                                                            2                          4                                              2
+           4                                                            2                          4                                             2
 
-                                      3                                                                                          3
+                                      3                                                                                         3
 
-                                    w 498                                                                                      w 498
+                                    w 498                                                                                     w 498
                                  Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-     width                   height                         thickness               qty                    grain
-     498 mm                  100 mm                         18 mm                   1                      0 — any
+     width                   height                         thickness               qty                   grain
+     498 mm                  100 mm                         18 mm                   1                     0 — any
      board: Egger Zieleń eukaliptusowa U604 ST9
 
 Edge banding
@@ -1628,14 +1594,13 @@ Edge banding
      on 2 right, 3 bottom, 4 left · glue: kryjące długie · swatch matches the diagram above (a legend colour, not the real decor)
 
 Drilling — surface
-     #         face          x                   y                      Ø               depth                 type
-     1         outer         9                   50                     8               through               single (auto)
-     2         outer         489                 50                     8               through               single (auto)
+     #         face          x                   y                      Ø               depth                type
+     1         outer         9                   50                     8               through              single (auto)
+     2         outer         489                 50                     8               through              single (auto)
 
 Drilling — edge
      #         edge                from                 Ø               depth                     type
-     1         1 top               125 mm               4               35 mm                     single (auto)
-     2         1 top               373 mm               4               35 mm                     single (auto)
+     1         1 top               125 mm               4               35 mm                     multi ×2 @ 248mm (auto)
 
 
 
@@ -1679,10 +1644,9 @@ Drilling — surface
 
 Drilling — edge
      #         edge                from                  Ø               depth                     type
-     1         1 top               80 mm                 4               35 mm                     single (auto)
-     2         1 top               234 mm                4               35 mm                     single (auto)
-     3         4 left              75 mm                 4               35 mm                     single (auto)
-     4         2 right             100 mm                4               35 mm                     single (auto)
+     1         1 top               80 mm                 4               35 mm                     multi ×2 @ 154mm (auto)
+     2         4 left              75 mm                 4               35 mm                     single (auto)
+     3         2 right             100 mm                4               35 mm                     single (auto)
 
 
 
@@ -1726,10 +1690,9 @@ Drilling — surface
 
 Drilling — edge
      #         edge                from                  Ø               depth                     type
-     1         1 top               80 mm                 4               35 mm                     single (auto)
-     2         1 top               234 mm                4               35 mm                     single (auto)
-     3         2 right             75 mm                 4               35 mm                     single (auto)
-     4         4 left              100 mm                4               35 mm                     single (auto)
+     1         1 top               80 mm                 4               35 mm                     multi ×2 @ 154mm (auto)
+     2         2 right             75 mm                 4               35 mm                     single (auto)
+     3         4 left              100 mm                4               35 mm                     single (auto)
 
 
 
@@ -1827,30 +1790,30 @@ Drilling — edge
 
 
                                                              meble · open-900 · panel sheet P39
-P40. Bottom panel                                                                                                 Kitchen open unit 900 · open-900/bottom
+P40. Bottom panel                                                                                            Kitchen open unit 900 · open-900/bottom
 
 
-                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+                          OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
 
-                                        1                                                                                         1
+                                        1                                                                                       1
 
 
 
 
    h 600                                                                                  h 600
-           4                                                              2                        4                                                  2
+           4                                                              2                        4                                             2
 
 
 
 
-                                        3                                                                                         3
+                                        3                                                                                       3
 
-                                      w 864                                                                                     w 864
+                                      w 864                                                                                   w 864
                Cabinet FRONT edge = top edge (1). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-     width                     height                         thickness             qty                    grain
-     864 mm                    600 mm                         18 mm                 1                      0 — any
+     width                     height                         thickness             qty                   grain
+     864 mm                    600 mm                         18 mm                 1                     0 — any
      board: Egger Czerń aksamitna U899 ST9
 
 Edge banding
@@ -1862,41 +1825,37 @@ Drilling — surface
 
 Drilling — edge
      #         edge                 from                  Ø               depth                   type
-     1         4 left               50 mm                 4               35 mm                   single (auto)
-     2         4 left               300 mm                4               35 mm                   single (auto)
-     3         4 left               550 mm                4               35 mm                   single (auto)
-     4         2 right              50 mm                 4               35 mm                   single (auto)
-     5         2 right              300 mm                4               35 mm                   single (auto)
-     6         2 right              550 mm                4               35 mm                   single (auto)
+     1         4 left               50 mm                 4               35 mm                   multi ×3 @ 250mm (auto)
+     2         2 right              50 mm                 4               35 mm                   multi ×3 @ 250mm (auto)
 
 
 
 
                                                                 meble · open-900 · panel sheet P40
-P41. Top panel                                                                                                     Kitchen open unit 900 · open-900/top
+P41. Top panel                                                                                                    Kitchen open unit 900 · open-900/top
 
 
-                          OUTER · editor: przód (front)                                                              INNER · editor: tył (back)
+                          OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
 
-                                        1                                                                                        1
+                                        1                                                                                       1
 
 
 
 
    h 600                                                                                  h 600
-           4                                                              2                        4                                                2
+           4                                                              2                        4                                               2
 
 
 
 
-                                        3                                                                                        3
+                                        3                                                                                       3
 
-                                      w 864                                                                                    w 864
+                                      w 864                                                                                   w 864
                Cabinet FRONT edge = top edge (1). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-     width                     height                         thickness             qty                    grain
-     864 mm                    600 mm                         18 mm                 1                      0 — any
+     width                     height                         thickness             qty                   grain
+     864 mm                    600 mm                         18 mm                 1                     0 — any
      board: Egger Czerń aksamitna U899 ST9
 
 Edge banding
@@ -1908,12 +1867,8 @@ Drilling — surface
 
 Drilling — edge
      #         edge                 from                  Ø               depth                   type
-     1         4 left               50 mm                 4               35 mm                   single (auto)
-     2         4 left               300 mm                4               35 mm                   single (auto)
-     3         4 left               550 mm                4               35 mm                   single (auto)
-     4         2 right              50 mm                 4               35 mm                   single (auto)
-     5         2 right              300 mm                4               35 mm                   single (auto)
-     6         2 right              550 mm                4               35 mm                   single (auto)
+     1         4 left               50 mm                 4               35 mm                   multi ×3 @ 250mm (auto)
+     2         2 right              50 mm                 4               35 mm                   multi ×3 @ 250mm (auto)
 
 
 

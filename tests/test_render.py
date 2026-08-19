@@ -109,12 +109,17 @@ def test_the_per_edge_banding_table_is_gone_but_the_band_survives(proj, tmp_path
     assert "2 mm" in page, "the 2 mm band thickness must survive — it is order-critical"
 
 
-def test_no_sheet_shows_a_run_the_editor_would_reject(proj, tmp_path):
-    """A `multi ×N @ Xmm` row with X over the limit cannot be typed in at all."""
+def test_no_surface_row_offers_a_run_the_editor_would_reject(proj, tmp_path):
+    """A surface `multi ×N @ Xmm` over the limit cannot be typed in at all. Edge rows are exempt —
+    that group has no spacing limit, so splitting them would only add work."""
     import re
-    from meble.normalize import MAX_MULTI_SPACING
+    from meble.normalize import MAX_SURFACE_MULTI_SPACING
     cabs = cabinets_for_scope(proj, apartment="bohaterow")
     text = pdf_text(export_pdf(proj, cabs, tmp_path / "b.pdf", title="t"))
-    wide = [int(m) for m in re.findall(r"multi ×\d+ @ (\d+)mm", text)
-            if int(m) > MAX_MULTI_SPACING]
-    assert wide == [], f"sheet offers runs the editor rejects: {sorted(set(wide))}"
+    for page in text.split("\f"):
+        if "Drilling — surface" not in page:
+            continue
+        surface = page.split("Drilling — surface")[1].split("Drilling — edge")[0]
+        wide = [int(m) for m in re.findall(r"multi ×\d+ @ (\d+)mm", surface)
+                if int(m) > MAX_SURFACE_MULTI_SPACING]
+        assert wide == [], f"surface rows offer runs the editor rejects: {sorted(set(wide))}"

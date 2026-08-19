@@ -317,8 +317,9 @@ def _table_drilling(c, panel: Panel, y, stamped_srcs: set | None = None):
     page without hunting. Rows are numbered from 1 within EACH section independently, matching the
     editor's own per-group numbering, so "surface 7" is unambiguous when you lose your place.
 
-    Holes are run through `expand_wide_multis` first: the editor rejects a repeated hole spaced more
-    than MAX_MULTI_SPACING apart, so those appear here as the individual entries you actually type.
+    Holes are run through `expand_wide_multis` first: the SURFACE form rejects a repeated hole spaced
+    more than MAX_SURFACE_MULTI_SPACING apart, so those appear here as the individual entries you
+    actually type. Edge runs have no such limit and stay as one row.
     """
     stamped_srcs = stamped_srcs if stamped_srcs is not None else set()
     x = MARGIN + 6 * MM

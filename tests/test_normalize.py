@@ -257,7 +257,7 @@ def test_the_expected_number_of_real_panels_rotate(real_panels):
 
 # ------------------------------------------------------------------ the editor's multi-hole limit
 
-from meble.normalize import MAX_MULTI_SPACING, expand_wide_multis  # noqa: E402
+from meble.normalize import MAX_SURFACE_MULTI_SPACING, expand_wide_multis  # noqa: E402
 
 
 def test_a_narrow_run_stays_one_entry():
@@ -268,7 +268,7 @@ def test_a_narrow_run_stays_one_entry():
 
 
 def test_a_run_exactly_at_the_limit_is_still_allowed():
-    h = mk_hole("inner", x=37, y=100, type="multi", count=3, spacing=MAX_MULTI_SPACING,
+    h = mk_hole("inner", x=37, y=100, type="multi", count=3, spacing=MAX_SURFACE_MULTI_SPACING,
                 direction="y")
     assert len(expand_wide_multis([h])) == 1
 
@@ -282,11 +282,12 @@ def test_a_wide_surface_run_becomes_individual_holes():
     assert all(o.count is None and o.spacing is None and o.direction is None for o in out)
 
 
-def test_a_wide_edge_run_becomes_individual_holes():
+def test_a_wide_EDGE_run_is_left_alone():
+    """Edge drilling has no spacing limit — retested on the live editor 2026-08-19 after this rule
+    was briefly applied to both groups on an assumption. Splitting these would add rows to type for
+    no reason."""
     h = mk_hole("edge2", dia=4, depth=35, frm=126, type="multi", count=3, spacing=237)
-    out = expand_wide_multis([h])
-    assert [o.frm for o in out] == [126, 363, 600]
-    assert all(o.type == "single" and o.count is None for o in out)
+    assert expand_wide_multis([h]) == [h]
 
 
 def test_expansion_preserves_everything_except_the_run():
@@ -316,9 +317,16 @@ def test_the_expanded_holes_sit_exactly_where_the_run_did(real_panels):
         assert sorted(map(str, flat_before)) == sorted(map(str, after)), f"{cab.id}/{panel.id}"
 
 
-def test_no_real_panel_keeps_a_run_the_editor_would_reject(real_panels):
-    """After expansion every remaining `multi` must be inside the editor's limit."""
+def test_no_real_panel_keeps_a_surface_run_the_editor_would_reject(real_panels):
+    """After expansion every remaining SURFACE `multi` must be inside the limit. Edge runs may be
+    any spacing and several real ones are."""
+    wide_edges = 0
     for cab, panel, _ in real_panels:
         for h in expand_wide_multis(panel.holes):
-            if h.type == "multi":
-                assert h.spacing <= MAX_MULTI_SPACING, f"{cab.id}/{panel.id}: @{h.spacing}"
+            if h.type != "multi":
+                continue
+            if h.is_surface:
+                assert h.spacing <= MAX_SURFACE_MULTI_SPACING, f"{cab.id}/{panel.id}: @{h.spacing}"
+            elif h.spacing > MAX_SURFACE_MULTI_SPACING:
+                wide_edges += 1
+    assert wide_edges > 0, "expected some wide edge runs to survive — otherwise this proves nothing"

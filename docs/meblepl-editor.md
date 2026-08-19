@@ -45,12 +45,12 @@ format. Source: user's description of the live editor + the two provided PRO100 
    editor entry* that produces a whole evenly-spaced row/column (shelf-pin columns, System-32 rows,
    repeated confirmats), so it cuts manual entry sharply.
 
-   /!\ **THE EDITOR REJECTS A `multi` WHOSE SPACING EXCEEDS 140 mm** (measured 2026-08-19 while
-   entering an order). Anything wider has to be typed as individual holes. Keep the run as one `multi`
-   in the YAML — that is the design intent, and the drilling is identical either way —
-   `tools/meble/normalize.py: expand_wide_multis` splits it into the individual entries on the PDF.
-   Today that turns 70 of 94 runs into singles, +114 rows to type; the ones that survive are the
-   32 mm hinge/System-32 pitches and a few short confirmat pairs.
+   /!\ **THE SURFACE FORM REJECTS A `multi` WHOSE SPACING EXCEEDS 140 mm** (measured 2026-08-19).
+   **EDGE drilling has no such limit** — retested the same day, after the rule was briefly applied to
+   both groups on an assumption that turned out wrong. Keep the run as one `multi` in the YAML either
+   way — that is the design intent, and the drilling is identical —
+   `tools/meble/normalize.py: expand_wide_multis` splits only the surface ones on the PDF. Today that
+   is +69 rows to type; edge runs stay as one entry however far apart they are.
 6. **Grooving** — out of scope for now; reserved (`grooving: []`). Adding it later must not reshape
    existing structures.
 
