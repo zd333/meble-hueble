@@ -60,7 +60,9 @@ format. Source: user's description of the live editor + the two provided PRO100 
 - Edges: **1 top, 2 right, 3 bottom, 4 left**.
 - Edge-hole "distance from 0": from **left** for top/bottom edges (1, 3); from **bottom** for left/right
   edges (2, 4).
-- Surface holes: **x** from left, **y** from bottom; face = **outer**/**inner** (editor: front/back).
+- Surface holes: **x** from left, **y** from bottom; face = **outer**/**inner** in the YAML. The PDF's
+  drilling table prints these as **przód** (outer) / **tył** (inner) — the editor's own dropdown
+  words, so nothing needs translating while typing. Each panel diagram prints both names.
 
 ## PRO100 CSV import format (dimensions only)
 

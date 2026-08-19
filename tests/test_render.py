@@ -123,3 +123,29 @@ def test_no_surface_row_offers_a_run_the_editor_would_reject(proj, tmp_path):
         wide = [int(m) for m in re.findall(r"multi ×\d+ @ (\d+)mm", surface)
                 if int(m) > MAX_SURFACE_MULTI_SPACING]
         assert wide == [], f"surface rows offer runs the editor rejects: {sorted(set(wide))}"
+
+
+def test_the_drill_side_is_named_the_way_the_editor_names_it(proj, tmp_path):
+    """`przód` / `tył` are the words in the editor's own dropdown, so the sheet needs no translating
+    while you type. The YAML keeps saying outer/inner — see conventions.md, where front/back is
+    avoided because it collides with the cabinet's front DIRECTION — so this mapping lives only at
+    the point of data entry, and each diagram prints both names."""
+    from meble.pdf_export import FACE_NAMES
+    assert FACE_NAMES == {"outer": "przód", "inner": "tył"}
+    cabs = cabinets_for_scope(proj, apartment="bohaterow")
+    text = pdf_text(export_pdf(proj, cabs, tmp_path / "b.pdf", title="t"))
+    for page in text.split("\f"):
+        if "Drilling — surface" not in page:
+            continue
+        surface = page.split("Drilling — surface")[1].split("Drilling — edge")[0]
+        rows = [ln.split() for ln in surface.splitlines()
+                if ln.strip() and ln.split()[0].isdigit()]
+        for r in rows:
+            assert r[1] in ("przód", "tył"), f"drill side not in the editor's words: {r[1]}"
+
+
+def test_the_diagram_still_prints_both_names_for_each_face(proj, tmp_path):
+    """The Polish label in the table is only safe because the picture above says which face it is."""
+    text = pdf_text(export_pdf(proj, [proj.cabinet("open-900")], tmp_path / "o.pdf", title="t"))
+    assert "przód" in text and "tył" in text
+    assert "OUTER" in text and "INNER" in text

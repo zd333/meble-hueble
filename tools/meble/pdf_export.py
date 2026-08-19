@@ -27,6 +27,11 @@ MM = 72.0 / 25.4
 PW, PH = A4
 MARGIN = 15 * MM
 EDGE_NAMES = {1: "1 top", 2: "2 right", 3: "3 bottom", 4: "4 left"}
+#: The drilling table names the drill side the way the EDITOR does, so the value on the sheet is the
+#: one you pick from its dropdown — no translating while you type. `conventions.md` keeps calling them
+#: outer/inner in the YAML on purpose (front/back collides with the cabinet's front DIRECTION); this
+#: mapping exists only at the point of data entry, and the diagram above prints both names.
+FACE_NAMES = {"outer": "przód", "inner": "tył"}
 
 #: Shown on a page whose panel `normalize` turned 180°. Pre-wrapped: reportlab does not wrap, and a
 #: warning that runs off the paper is not a warning. test_render.py checks these fit the text column.
@@ -332,11 +337,11 @@ def _table_drilling(c, panel: Panel, y, stamped_srcs: set | None = None):
 
     y = _heading(c, MARGIN, y, "Drilling — surface", C_DRILL)
     if surf_holes:
-        y = _row(c, x, y, ["#", "face", "x", "y", "Ø", "depth", "type"], SURF_W,
+        y = _row(c, x, y, ["#", "płaszcz.", "x", "y", "Ø", "depth", "type"], SURF_W,
                  bold=True, color=C_DRILL)
         for i, h in enumerate(surf_holes, 1):
             tag = "  (auto)" if h.src in stamped_srcs else ""
-            y = _row(c, x, y, [i, h.face, f"{h.x:g}", f"{h.y:g}", f"{h.dia:g}",
+            y = _row(c, x, y, [i, FACE_NAMES.get(h.face, h.face), f"{h.x:g}", f"{h.y:g}", f"{h.dia:g}",
                                _depth_str(h.depth), _multi_str(h) + tag], SURF_W,
                      check=True, swatch=_dia_color(h.dia), color=C_DRILL)
     else:
