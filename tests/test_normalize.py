@@ -252,4 +252,4 @@ def test_no_real_panel_is_left_unexpressible_after_normalising(real_panels):
 
 def test_the_expected_number_of_real_panels_rotate(real_panels):
     rotated = [f"{c.id}/{p.id}" for c, p, _ in real_panels if normalize(p)[1]]
-    assert len(rotated) == 16, rotated
+    assert len(rotated) == 44, rotated

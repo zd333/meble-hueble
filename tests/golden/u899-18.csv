@@ -6,3 +6,8 @@ open-900 Top panel;864;=;600;;18.00;1;0;
 open-900 Back stretcher (horizontal);864;-;150;;18.00;1;0;
 open-900 Back stretcher (vertical);100;;364;=;18.00;2;0;
 mounting-panels Mounting panel 87×1000;87;;1000;;18.00;3;0;
+lr-plinth Plinth, left wall;2700;-;80;;18.00;1;0;
+lr-plinth Plinth return at the line end;242;-;80;=;18.00;1;0;
+lr-plinth Plinth, bench 1;1438;-;80;;18.00;1;0;
+lr-plinth Plinth, bench 2;1420;-;80;=;18.00;1;0;
+lr-plinth Plinth return at the radiator end;272;-;80;-;18.00;1;0;

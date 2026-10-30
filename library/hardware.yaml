@@ -163,3 +163,56 @@ hardware:
     drill:
       cabinet: { pattern: system32, front_setback: 37 }
       drawer:  { pattern: system32 }
+
+  # ---- LIVING ROOM additions (2026-10-21) --------------------------------------------------------------
+  - id: hinge-alu-frame
+    type: hinge
+    name: "Concealed hinge for narrow aluminium frames (glass doors)"
+    # The CUP lives in the aluminium profile and is drilled by the frame maker (Topal) to our spec —
+    # Topal requires the cups >= 65 mm from the door edge; we use 100. On OUR side it is an ordinary
+    # CLIP plate on the 37 mm line, so the carcass drilling is the same as for hinge-clip-110.
+    # Push-to-open (no handles): Blum sells a spring-less overlay version for TIP-ON — 70T950A.TL per
+    # the Polish shops seen 2026-10-21 (71T950A is the sprung overlay one). Confirm the exact article
+    # with Topal before buying: it must match THEIR profile's cup.
+    variants:
+      full: { name: "overlay (nakładany)", crank: 0, use: "the door covers a whole side panel" }
+    drill:
+      plate: { pattern: system32, screws: 2 }    # on the cabinet side, 37 mm setback
+    components:
+      - { id: hinge, name: "alu-frame arm + cup", per_variant: true }
+      - { id: plate, name: "mounting plate (prowadnik)" }
+    sourcing: []                                 # TODO buy together with the Topal doors
+
+  - id: tip-on
+    type: push-latch
+    name: "Blum TIP-ON push-to-open unit + adapter plate"
+    # One per handle-free door. Screwed on site behind the door's free edge — no supplier drilling, so
+    # every fitting using it is `drilling: none`. Pair it with SPRING-LESS hinges (a sprung hinge pulls
+    # the door shut against the latch).
+    drill: {}
+    components:
+      - { id: unit, name: "TIP-ON unit" }
+      - { id: plate, name: "adapter / straight plate" }
+    sourcing: []                                 # TODO SKU (meble.pl sells Blum)
+
+
+  - id: plinth-leg
+    type: leg
+    name: "Adjustable cabinet leg ~80 mm + plinth clip"
+    # Kitchen-style plastic leg under each carcass corner and mid-span; the 80 mm plinth board clips
+    # onto them. Mounted on site, so `drilling: none`.
+    drill: {}
+    components:
+      - { id: leg, name: "adjustable leg" }
+      - { id: clip, name: "plinth clip" }
+    sourcing: []                                 # TODO SKU
+
+  - id: plinth-corner
+    type: bracket
+    name: "Plinth corner: steel angle bracket ~40×40 + 4 short screws"
+    # Joins two clip-on plinth boards at a corner from BEHIND (nothing shows on the face). Screwed on
+    # site into the boards' backs, so `drilling: none`. One per corner is enough at 80 mm high.
+    drill: {}
+    components:
+      - { id: bracket, name: "angle bracket (kątownik) + screws" }
+    sourcing: []                                 # TODO SKU

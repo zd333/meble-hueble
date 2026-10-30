@@ -1,0 +1,5 @@
+id: living
+name: "Living room"
+room: living
+cabinets: [lr-bench-1, lr-bench-2, lr-bench-top, lr-tower, lr-vitrine, lr-line, lr-plinth]
+layout: {}   # positions live on the cabinets, in the room frame described in each header
