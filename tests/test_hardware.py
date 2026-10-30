@@ -130,12 +130,16 @@ def test_a_through_hole_that_is_not_a_pin_is_not_counted(proj):
 # ------------------------------------------------------------------ against the real designs
 
 EXPECTED = {
-    ("confirmat-7x50", None): 85,
-    ("hinge-clip-110", "full"): 7,
-    ("hinge-clip-110", "half"): 3,
-    ("rafix-20", None): 18,
-    ("shelf-pin-5", None): 20,
+    ("confirmat-7x50", None): 164,
+    ("hinge-alu-frame", "full"): 12,     # living room: the Topal glass doors (plates only are ours)
+    ("hinge-clip-110", "full"): 27,
+    ("hinge-clip-110", "half"): 7,
+    ("plinth-corner", None): 3,
+    ("plinth-leg", None): 28,
+    ("rafix-20", None): 84,
+    ("shelf-pin-5", None): 24,
     ("slide-bb-350", None): 2,
+    ("tip-on", None): 17,
 }
 
 
@@ -152,7 +156,8 @@ def test_the_two_hinge_types_are_never_merged(proj):
     assert len(hinges) == 2, "the two overlays collapsed into one line"
     assert sorted(l.variant for l in hinges) == ["full", "half"]
     half = next(l for l in hinges if l.variant == "half")
-    assert list(half.per_cabinet) == ["wc-column"], "only wc-column shares a gable between two doors"
+    assert sorted(half.per_cabinet) == ["lr-line", "wc-column"], \
+        "only wc-column and lr-line hang a door on a gable shared with the next bay"
 
 
 def test_the_real_collared_pin_count(proj):

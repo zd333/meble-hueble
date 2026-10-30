@@ -1,0 +1,182 @@
+# ===================================================================================================
+# lr-bench-2 — window bench, unit 2 of 2
+#
+# Living room, layout F2 (approved 2026-10-21). Board: Egger U750 ST9 Szary Taupe (u750-18).
+# GENERATED once from the PRELIMINARY measurements by a scaffold script (gen_living.py); edit freely.
+# /!\ Re-derive every number after the final on-site measurements — hand-written holes do not follow
+#     a resize. Stamped confirmats (`drilling: stamped`) are restamped by `meble fit --set living`.
+# World frame: origin = inner corner (window wall × left wall); x along the window wall, y negative
+# into the room, z up. Plinth 80 (adjustable legs + clip-on board, see lr-plinth).
+#
+# Bench 350 deep in total: doors y −350..−332, carcass −332..−23, HDF −23..−20. It stands 20 mm OFF the
+# wall because its top (z 472..490) would otherwise hit the sill nose (20 thick, 20 proud, top at 490).
+# The seat itself is lr-bench-top, laid over this carcass AND the sill (seat surface 508).
+# Two units of 1420 so no panel passes meble.pl's 2500 mm drilling limit; a gable at mid-span carries
+# the seat. Doors: soft-close, NOT push-open (heels would pop them) — open them by the bottom edge over
+# the recessed plinth.
+# ===================================================================================================
+
+id: lr-bench-2
+name: "Living — window bench unit 2"
+kind: custom
+category: base
+construction: confirmat
+dimensions: {width: 1420, height: 490, depth: 312}
+position: {x: 1720, y: -332, z: 0, rotation: 0}
+defaults: {material: u750-18, edgeband: eb-u750-1}
+back: {type: surface}
+plinth: {}
+
+panels:
+
+- id: side-l
+  name: "Left side"
+  element_type: panel
+  role: side-left
+  width: 309
+  height: 410
+  grain: any
+  edge_banding: {edges: {2: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 272, y: 86, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
+  - {face: inner, x: 272, y: 292, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-l}
+  - face: outer
+    x: 50
+    y: 401.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 104.5
+    direction: x
+    src: cf-top-l
+  - face: outer
+    x: 50
+    y: 9.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 104.5
+    direction: x
+    src: cf-bot-l
+  placement: {pos: [0, 0, 80]}
+
+- id: side-r
+  name: "Right side"
+  element_type: panel
+  role: side-right
+  width: 309
+  height: 410
+  grain: any
+  edge_banding: {edges: {4: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 50, y: 401, dia: 5, depth: 12, type: multi, count: 2, spacing: 209, direction: x, src: rf-top-r}
+  - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 2, spacing: 209, direction: x, src: rf-bottom-r}
+  - {face: inner, x: 37, y: 86, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
+  - {face: inner, x: 37, y: 292, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-r}
+  placement: {pos: [1402, 0, 80]}
+
+- id: bottom
+  name: "Bottom"
+  element_type: panel
+  role: bottom
+  width: 1384
+  height: 309
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 1374.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 209, direction: y, src: rf-bottom-r}
+  - {face: outer, x: 692, y: 50, dia: 8, depth: through, type: multi, count: 3, spacing: 104.5, direction: y, src: cf-gable-bot}
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 104.5
+    src: cf-bot-l
+  placement: {pos: [18, 0, 80]}
+
+- id: top
+  name: "Top"
+  element_type: panel
+  role: top
+  width: 1384
+  height: 309
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 1374.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 209, direction: y, src: rf-top-r}
+  - {face: inner, x: 692, y: 50, dia: 8, depth: through, type: multi, count: 3, spacing: 104.5, direction: y, src: cf-gable-top}
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 104.5
+    src: cf-top-l
+  placement: {pos: [18, 0, 472]}
+
+- id: back
+  name: "Back (HDF)"
+  element_type: panel
+  role: back
+  material: hdf-3
+  width: 1420
+  height: 410
+  grain: any
+  edge_banding: {}
+  holes: []
+  placement: {pos: [0, 309, 80]}
+
+- id: gable
+  name: "Gable @710.0"
+  element_type: panel
+  role: gable
+  width: 309
+  height: 374
+  grain: any
+  edge_banding: {edges: {4: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: edge1, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 104.5, src: cf-gable-top}
+  - {face: edge3, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 104.5, src: cf-gable-bot}
+  placement: {pos: [701, 0, 98], rot: [90, 0, 90]}
+
+- id: door-l
+  name: "Door left"
+  element_type: panel
+  role: front
+  width: 706
+  height: 406
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 206, direction: y}
+  placement: {pos: [2, -18, 82]}
+
+- id: door-r
+  name: "Door right"
+  element_type: panel
+  role: front
+  width: 706
+  height: 406
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 683.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 206, direction: y}
+  placement: {pos: [712, -18, 82]}
+
+assembly:
+  fittings:
+  - {id: cf-top-l, hardware: confirmat-7x50, through: side-l, into: top, seam: {through_edge: 1, into_edge: 4}, at: [50, 154.5, 259]}
+  - {id: cf-bot-l, hardware: confirmat-7x50, through: side-l, into: bottom, seam: {through_edge: 3, into_edge: 4}, at: [50, 154.5, 259]}
+  - {id: rf-top-r, hardware: rafix-20, drilling: manual, through: top, into: side-r, at: [50, 259]}
+  - {id: rf-bottom-r, hardware: rafix-20, drilling: manual, through: bottom, into: side-r, at: [50, 259]}
+  - {id: cf-gable-top, hardware: confirmat-7x50, drilling: manual, through: top, into: gable, at: [50, 154.5, 259]}
+  - {id: cf-gable-bot, hardware: confirmat-7x50, drilling: manual, through: bottom, into: gable, at: [50, 154.5, 259]}
+  - {id: hg-door-l, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-l, side: side-l, at: [182, 388]}
+  - {id: hg-door-r, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-r, side: side-r, at: [182, 388]}
+
+parts: []

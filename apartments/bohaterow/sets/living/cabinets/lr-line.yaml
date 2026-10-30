@@ -1,0 +1,415 @@
+# ===================================================================================================
+# lr-line — low line, 1800 × 300, z 80..1250 (+ oak top to 1272)
+#
+# Living room, layout F2 (approved 2026-10-21). Board: Egger U750 ST9 Szary Taupe (u750-18).
+# GENERATED once from the PRELIMINARY measurements by a scaffold script (gen_living.py); edit freely.
+# /!\ Re-derive every number after the final on-site measurements — hand-written holes do not follow
+#     a resize. Stamped confirmats (`drilling: stamped`) are restamped by `meble fit --set living`.
+# World frame: origin = inner corner (window wall × left wall); x along the window wall, y negative
+# into the room, z up. Plinth 80 (adjustable legs + clip-on board, see lr-plinth).
+#
+# World y −3050..−1250: it ends 350 mm before the outer corner (crooked corner + the socket ~200 from
+# it stays free). Three 600 bays on two gables; rows 80..490 and 490..870 U750 doors, 870..1250 IKEA
+# HEDEVIKEN oak doors (bought, element_type front). IKEA BESTÅ 180×42 oak top ripped to 320 (bought,
+# element_type countertop). Shelves at 490 and 870 in every bay, on rafix; bay 2 uses a different rafix
+# spacing (80/217 vs 50/247) so the bolts on the two faces of a gable never meet inside it.
+# /!\ TODO: the IKEA oak doors' hinge positions are not published — measure one door, then add their
+#     hinge fittings and plate holes (row 870..1250).
+# ===================================================================================================
+
+id: lr-line
+name: "Living — low line 3 × 600"
+kind: custom
+category: base
+construction: confirmat
+dimensions: {width: 1800, height: 1250, depth: 300}
+position: {x: 300, y: -3050, z: 0, rotation: 90}
+defaults: {material: u750-18, edgeband: eb-u750-1}
+back: {type: surface}
+plinth: {}
+
+panels:
+
+- id: side-l
+  name: "Left side"
+  element_type: panel
+  role: side-left
+  width: 297
+  height: 1170
+  grain: any
+  edge_banding: {edges: {2: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 50, y: 1161, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-top-l}
+  - {face: inner, x: 50, y: 9, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-bottom-l}
+  - {face: inner, x: 50, y: 401, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-b1-490-l}
+  - {face: inner, x: 50, y: 781, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-b1-870-l}
+  - {face: inner, x: 260, y: 86, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b1-1}
+  - {face: inner, x: 260, y: 292, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b1-1}
+  - {face: inner, x: 260, y: 496, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b1-2}
+  - {face: inner, x: 260, y: 672, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b1-2}
+  placement: {pos: [0, 0, 80]}
+
+- id: side-r
+  name: "Right side"
+  element_type: panel
+  role: side-right
+  width: 297
+  height: 1170
+  grain: any
+  edge_banding: {edges: {4: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 50, y: 401, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-b3-490-r}
+  - {face: inner, x: 50, y: 781, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-b3-870-r}
+  - {face: inner, x: 37, y: 86, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b3-1}
+  - {face: inner, x: 37, y: 292, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b3-1}
+  - {face: inner, x: 37, y: 496, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b3-2}
+  - {face: inner, x: 37, y: 672, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b3-2}
+  - face: outer
+    x: 50
+    y: 1161.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 98.5
+    direction: x
+    src: cf-top-r
+  - face: outer
+    x: 50
+    y: 9.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 98.5
+    direction: x
+    src: cf-bot-r
+  placement: {pos: [1782, 0, 80]}
+
+- id: bottom
+  name: "Bottom"
+  element_type: panel
+  role: bottom
+  width: 1764
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-bottom-l}
+  - {face: outer, x: 582, y: 50, dia: 8, depth: through, type: multi, count: 3, spacing: 98.5, direction: y, src: cf-gable-1-bot}
+  - {face: outer, x: 1182, y: 50, dia: 8, depth: through, type: multi, count: 3, spacing: 98.5, direction: y, src: cf-gable-2-bot}
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 98.5
+    src: cf-bot-r
+  placement: {pos: [18, 0, 80]}
+
+- id: top
+  name: "Top"
+  element_type: panel
+  role: top
+  width: 1764
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-top-l}
+  - {face: inner, x: 582, y: 50, dia: 8, depth: through, type: multi, count: 3, spacing: 98.5, direction: y, src: cf-gable-1-top}
+  - {face: inner, x: 1182, y: 50, dia: 8, depth: through, type: multi, count: 3, spacing: 98.5, direction: y, src: cf-gable-2-top}
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 98.5
+    src: cf-top-r
+  placement: {pos: [18, 0, 1232]}
+
+- id: back
+  name: "Back (HDF)"
+  element_type: panel
+  role: back
+  material: hdf-3
+  width: 1800
+  height: 1170
+  grain: any
+  edge_banding: {}
+  holes: []
+  placement: {pos: [0, 297, 80]}
+
+- id: gable-1
+  name: "Gable @600"
+  element_type: panel
+  role: gable
+  width: 297
+  height: 1134
+  grain: any
+  edge_banding: {edges: {4: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: edge1, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 98.5, src: cf-gable-1-top}
+  - {face: edge3, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 98.5, src: cf-gable-1-bot}
+  - {face: inner, x: 50, y: 383, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-b1-490-r}
+  - {face: inner, x: 50, y: 763, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-b1-870-r}
+  - {face: outer, x: 80, y: 383, dia: 5, depth: 12, type: multi, count: 2, spacing: 137, direction: x, src: rf-sh-b2-490-l}
+  - {face: outer, x: 80, y: 763, dia: 5, depth: 12, type: multi, count: 2, spacing: 137, direction: x, src: rf-sh-b2-870-l}
+  - {face: outer, x: 37, y: 68, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b2-1}
+  - {face: outer, x: 37, y: 274, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b2-1}
+  - {face: outer, x: 37, y: 478, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b2-2}
+  - {face: outer, x: 37, y: 654, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-door-b2-2}
+  placement: {pos: [591, 0, 98], rot: [90, 0, 90]}
+
+- id: gable-2
+  name: "Gable @1200"
+  element_type: panel
+  role: gable
+  width: 297
+  height: 1134
+  grain: any
+  edge_banding: {edges: {4: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: edge1, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 98.5, src: cf-gable-2-top}
+  - {face: edge3, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 98.5, src: cf-gable-2-bot}
+  - {face: inner, x: 80, y: 383, dia: 5, depth: 12, type: multi, count: 2, spacing: 137, direction: x, src: rf-sh-b2-490-r}
+  - {face: inner, x: 80, y: 763, dia: 5, depth: 12, type: multi, count: 2, spacing: 137, direction: x, src: rf-sh-b2-870-r}
+  - {face: outer, x: 50, y: 383, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-b3-490-l}
+  - {face: outer, x: 50, y: 763, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-b3-870-l}
+  placement: {pos: [1191, 0, 98], rot: [90, 0, 90]}
+
+- id: sh-b1-490
+  name: "Shelf bay 1 @490"
+  element_type: panel
+  role: divider
+  width: 573
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-b1-490-l}
+  - {face: outer, x: 563.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-b1-490-r}
+  placement: {pos: [18, 0, 472]}
+
+- id: sh-b1-870
+  name: "Shelf bay 1 @870"
+  element_type: panel
+  role: divider
+  width: 573
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-b1-870-l}
+  - {face: outer, x: 563.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-b1-870-r}
+  placement: {pos: [18, 0, 852]}
+
+- id: sh-b2-490
+  name: "Shelf bay 2 @490"
+  element_type: panel
+  role: divider
+  width: 582
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 80, dia: 20, depth: 14, type: multi, count: 2, spacing: 137, direction: y, src: rf-sh-b2-490-l}
+  - {face: outer, x: 572.5, y: 80, dia: 20, depth: 14, type: multi, count: 2, spacing: 137, direction: y, src: rf-sh-b2-490-r}
+  placement: {pos: [609, 0, 472]}
+
+- id: sh-b2-870
+  name: "Shelf bay 2 @870"
+  element_type: panel
+  role: divider
+  width: 582
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 80, dia: 20, depth: 14, type: multi, count: 2, spacing: 137, direction: y, src: rf-sh-b2-870-l}
+  - {face: outer, x: 572.5, y: 80, dia: 20, depth: 14, type: multi, count: 2, spacing: 137, direction: y, src: rf-sh-b2-870-r}
+  placement: {pos: [609, 0, 852]}
+
+- id: sh-b3-490
+  name: "Shelf bay 3 @490"
+  element_type: panel
+  role: divider
+  width: 573
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-b3-490-l}
+  - {face: outer, x: 563.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-b3-490-r}
+  placement: {pos: [1209, 0, 472]}
+
+- id: sh-b3-870
+  name: "Shelf bay 3 @870"
+  element_type: panel
+  role: divider
+  width: 573
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-b3-870-l}
+  - {face: outer, x: 563.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-b3-870-r}
+  placement: {pos: [1209, 0, 852]}
+
+- id: door-b1-1
+  name: "Door bay 1 bottom"
+  element_type: panel
+  role: front
+  width: 596
+  height: 406
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 206, direction: y}
+  placement: {pos: [2, -18, 82]}
+
+- id: door-b1-2
+  name: "Door bay 1 middle"
+  element_type: panel
+  role: front
+  width: 596
+  height: 376
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 176, direction: y}
+  placement: {pos: [2, -18, 492]}
+
+- id: oak-b1
+  name: "IKEA HEDEVIKEN oak door bay 1"
+  element_type: front
+  role: front
+  material: ikea-hedeviken-oak
+  width: 596
+  height: 377
+  thickness: 17
+  grain: width
+  edge_banding: {}
+  holes: []
+  placement: {pos: [2, -17, 872]}
+
+- id: door-b2-1
+  name: "Door bay 2 bottom"
+  element_type: panel
+  role: front
+  width: 596
+  height: 406
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 206, direction: y}
+  placement: {pos: [602, -18, 82]}
+
+- id: door-b2-2
+  name: "Door bay 2 middle"
+  element_type: panel
+  role: front
+  width: 596
+  height: 376
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 176, direction: y}
+  placement: {pos: [602, -18, 492]}
+
+- id: oak-b2
+  name: "IKEA HEDEVIKEN oak door bay 2"
+  element_type: front
+  role: front
+  material: ikea-hedeviken-oak
+  width: 596
+  height: 377
+  thickness: 17
+  grain: width
+  edge_banding: {}
+  holes: []
+  placement: {pos: [602, -17, 872]}
+
+- id: door-b3-1
+  name: "Door bay 3 bottom"
+  element_type: panel
+  role: front
+  width: 596
+  height: 406
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 573.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 206, direction: y}
+  placement: {pos: [1202, -18, 82]}
+
+- id: door-b3-2
+  name: "Door bay 3 middle"
+  element_type: panel
+  role: front
+  width: 596
+  height: 376
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 573.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 176, direction: y}
+  placement: {pos: [1202, -18, 492]}
+
+- id: oak-b3
+  name: "IKEA HEDEVIKEN oak door bay 3"
+  element_type: front
+  role: front
+  material: ikea-hedeviken-oak
+  width: 596
+  height: 377
+  thickness: 17
+  grain: width
+  edge_banding: {}
+  holes: []
+  placement: {pos: [1202, -17, 872]}
+
+- id: oak-top
+  name: "IKEA BESTÅ oak top 180×42, ripped to 320"
+  element_type: countertop
+  role: worktop
+  material: ikea-besta-top-oak
+  width: 1800
+  height: 320
+  thickness: 22
+  grain: width
+  edge_banding: {}
+  holes: []
+  placement: {pos: [0, -20, 1250], rot: [0, 0, 0]}
+
+assembly:
+  fittings:
+  - {id: rf-top-l, hardware: rafix-20, drilling: manual, through: top, into: side-l, at: [50, 247]}
+  - {id: rf-bottom-l, hardware: rafix-20, drilling: manual, through: bottom, into: side-l, at: [50, 247]}
+  - {id: cf-top-r, hardware: confirmat-7x50, through: side-r, into: top, seam: {through_edge: 1, into_edge: 2}, at: [50, 148.5, 247]}
+  - {id: cf-bot-r, hardware: confirmat-7x50, through: side-r, into: bottom, seam: {through_edge: 3, into_edge: 2}, at: [50, 148.5, 247]}
+  - {id: cf-gable-1-top, hardware: confirmat-7x50, drilling: manual, through: top, into: gable-1, at: [50, 148.5, 247]}
+  - {id: cf-gable-1-bot, hardware: confirmat-7x50, drilling: manual, through: bottom, into: gable-1, at: [50, 148.5, 247]}
+  - {id: cf-gable-2-top, hardware: confirmat-7x50, drilling: manual, through: top, into: gable-2, at: [50, 148.5, 247]}
+  - {id: cf-gable-2-bot, hardware: confirmat-7x50, drilling: manual, through: bottom, into: gable-2, at: [50, 148.5, 247]}
+  - {id: rf-sh-b1-490-l, hardware: rafix-20, drilling: manual, through: sh-b1-490, into: side-l, at: [50, 247]}
+  - {id: rf-sh-b1-490-r, hardware: rafix-20, drilling: manual, through: sh-b1-490, into: gable-1, at: [50, 247]}
+  - {id: rf-sh-b1-870-l, hardware: rafix-20, drilling: manual, through: sh-b1-870, into: side-l, at: [50, 247]}
+  - {id: rf-sh-b1-870-r, hardware: rafix-20, drilling: manual, through: sh-b1-870, into: gable-1, at: [50, 247]}
+  - {id: rf-sh-b2-490-l, hardware: rafix-20, drilling: manual, through: sh-b2-490, into: gable-1, at: [80, 217]}
+  - {id: rf-sh-b2-490-r, hardware: rafix-20, drilling: manual, through: sh-b2-490, into: gable-2, at: [80, 217]}
+  - {id: rf-sh-b2-870-l, hardware: rafix-20, drilling: manual, through: sh-b2-870, into: gable-1, at: [80, 217]}
+  - {id: rf-sh-b2-870-r, hardware: rafix-20, drilling: manual, through: sh-b2-870, into: gable-2, at: [80, 217]}
+  - {id: rf-sh-b3-490-l, hardware: rafix-20, drilling: manual, through: sh-b3-490, into: gable-2, at: [50, 247]}
+  - {id: rf-sh-b3-490-r, hardware: rafix-20, drilling: manual, through: sh-b3-490, into: side-r, at: [50, 247]}
+  - {id: rf-sh-b3-870-l, hardware: rafix-20, drilling: manual, through: sh-b3-870, into: gable-2, at: [50, 247]}
+  - {id: rf-sh-b3-870-r, hardware: rafix-20, drilling: manual, through: sh-b3-870, into: side-r, at: [50, 247]}
+  - {id: hg-door-b1-1, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-b1-1, side: side-l, at: [182, 388]}
+  - {id: hg-door-b1-2, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-b1-2, side: side-l, at: [592, 768]}
+  - {id: hg-door-b2-1, hardware: hinge-clip-110, variant: half, drilling: manual, door: door-b2-1, side: gable-1, at: [182, 388]}
+  - {id: hg-door-b2-2, hardware: hinge-clip-110, variant: half, drilling: manual, door: door-b2-2, side: gable-1, at: [592, 768]}
+  - {id: hg-door-b3-1, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-b3-1, side: side-r, at: [182, 388]}
+  - {id: hg-door-b3-2, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-b3-2, side: side-r, at: [592, 768]}
+  - {id: tipon, hardware: tip-on, drilling: none, quantity: 9}
+
+parts: []

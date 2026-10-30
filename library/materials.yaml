@@ -72,6 +72,49 @@ boards:
                                  # this board is `grain: any` — none of them sits next to another in view.
     color: "#37332F"             # viewer approximation only
 
+  - id: u750-18
+    name: "Egger Szary Taupe U750 ST9"
+    vendor: Egger
+    # THE LIVING-ROOM BOARD (chosen 2026-10-21 from samples held against a PAX shelf). The PAX / kitchen
+    # fronts are Egger U717 Dakar Grey, which centrum.meble.pl does not sell; U750 is the same warm
+    # grey-beige family, a shade lighter and paler. Beat U201 Pebble Grey, which reads cooler and greyer
+    # beside the PAX and the oak floor. meble.pl stocks it in 18 and 36 mm; the design uses 18 only.
+    decor_code: U750
+    texture: ST9
+    thickness: 18
+    grain_directional: false     # uni decor
+    color: "#C9BFB0"             # viewer approximation only
+
+  # ---- BOUGHT-IN FRONTS / TOPS (living room). These are NOT cut by meble.pl: the panels that use them
+  #      carry `element_type: front` / `countertop`, which the CSV and the panel PDF skip. They are here
+  #      only so the 3D viewer can draw them and the fittings that hang them can reference a real panel.
+  - id: ikea-hedeviken-oak
+    name: "IKEA HEDEVIKEN door, oak veneer (bought ready-made)"
+    vendor: IKEA
+    decor_code: HEDEVIKEN-OAK      # 60x38 door/drawer front 004.917.05, 596 x 377 x 17
+    texture: veneer
+    thickness: 17
+    grain_directional: true
+    color: "#C8A06A"
+
+  - id: ikea-besta-top-oak
+    name: "IKEA BESTA top panel, oak veneer (bought ready-made)"
+    vendor: IKEA
+    decor_code: BESTA-TOP-OAK      # 180x42 004.729.19, ripped to the line depth on site
+    texture: veneer
+    thickness: 22
+    grain_directional: true
+    color: "#C8A06A"
+
+  - id: topal-f1-inox-glass
+    name: "Topal F1 Inox aluminium frame + clear tempered glass (bought made-to-measure)"
+    vendor: Topal
+    decor_code: F1-INOX            # topal.com.pl configurator; cups drilled by Topal to our spec
+    texture: glass
+    thickness: 20
+    grain_directional: false
+    color: "#AFC3CC"
+
   - id: hdf-3
     name: "White HDF 3mm (back)"
     vendor: generic

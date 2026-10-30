@@ -45,7 +45,7 @@ def test_pdf_page_count_matches_the_csv_row_count(proj, real_panels, tmp_path):
     """One page per ordered panel — the PDF and the CSV must describe the same order."""
     cabs = cabinets_for_scope(proj, apartment="bohaterow")
     text = pdf_text(export_pdf(proj, cabs, tmp_path / "b.pdf", title="t"))
-    assert text.count("panel sheet P") == len(real_panels) == 44
+    assert text.count("panel sheet P") == len(real_panels) == 108
 
 
 def test_pdf_handles_a_single_cabinet_scope(proj, tmp_path):
@@ -77,3 +77,35 @@ def test_viewer_html_is_self_contained(proj, root):
     html = build_viewer_html(scene, root / "viewer" / "template.html")
     assert "<html" in html.lower()
     assert "open-900" in html
+
+
+def _one_side_cabinet(rotation):
+    from meble.model import Cabinet
+    return Cabinet.from_dict({
+        "id": "rot-test", "name": "rotation test", "kind": "custom", "category": "tall",
+        "dimensions": {"width": 600, "height": 400, "depth": 300},
+        "position": {"x": 300, "y": -600, "z": 0, "rotation": rotation},
+        "defaults": {"material": "u604-18", "edgeband": "eb-u604-1"},
+        "panels": [{"id": "side-l", "name": "Left side", "role": "side-left", "width": 300,
+                    "height": 400, "placement": {"pos": [0, 0, 0]},
+                    "holes": [{"face": "outer", "x": 50, "y": 9, "dia": 8, "depth": "through"}]}],
+    })
+
+
+def test_scene_rotation_turns_a_cabinet_onto_a_side_wall(proj):
+    """`position.rotation: 90` turns the unit CCW about its origin: its local Y (front → wall) ends up
+    along world −X, its width along world +Y — a unit standing on a LEFT wall, facing into the room."""
+    flat = build_scene(proj, [_one_side_cabinet(0)])["objects"][0]
+    turned = build_scene(proj, [_one_side_cabinet(90)])
+    box = turned["objects"][0]
+    assert flat["size"] == [18, 300, 400] and flat["center"] == [309, -450, 200]
+    assert box["size"] == [300, 18, 400]
+    assert box["center"] == [150, -591, 200]          # (300 − 150, −600 + 9)
+    hole = turned["holes"][0]
+    assert abs(hole["dir"][0]) < 1e-9 and abs(abs(hole["dir"][1]) - 1) < 1e-9   # drilled across Y now
+
+
+def test_scene_rotation_rejects_non_quarter_turns(proj):
+    import pytest
+    with pytest.raises(ValueError):
+        build_scene(proj, [_one_side_cabinet(45)])

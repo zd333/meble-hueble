@@ -248,12 +248,50 @@ def _box(name, size, center, color, **meta) -> dict:
     return obj
 
 
+def _cabinet_rotation(cab: Cabinet) -> int:
+    """`position.rotation` in degrees about the vertical axis through the cabinet origin. Only quarter
+    turns are meaningful for boxes (a cabinet stands against a wall), so anything else is an error."""
+    r = float((cab.position or {}).get("rotation", 0) or 0) % 360
+    if r % 90:
+        raise ValueError(f"{cab.id}: position.rotation must be a multiple of 90, got {r}")
+    return int(r)
+
+
+def _rotate_records(boxes: list, holes: list, bands: list, origin: tuple, deg: int) -> None:
+    """Turn everything one cabinet produced by `deg` (CCW seen from above) about the vertical axis
+    through `origin`, in place. A cabinet is authored in its own frame (X = width, Y = 0 at the front
+    → wall), so a unit on a side wall is written exactly like one on the back wall and only this
+    final turn puts it in the room. Points rotate about the origin; directions just rotate; a box's
+    X/Y extents swap on a quarter turn."""
+    c, s = {90: (0, 1), 180: (-1, 0), 270: (0, -1)}[deg]
+    ox, oy = origin[0], origin[1]
+
+    def pt(p):
+        dx, dy = p[0] - ox, p[1] - oy
+        return [round(ox + c * dx - s * dy, 2), round(oy + s * dx + c * dy, 2), p[2]]
+
+    def vec(v):
+        return [round(c * v[0] - s * v[1], 4), round(s * v[0] + c * v[1], 4), v[2]]
+
+    for b in boxes:
+        b["center"] = pt(b["center"])
+        if deg in (90, 270):
+            b["size"] = [b["size"][1], b["size"][0], b["size"][2]]
+    for h in holes:
+        h["start"], h["dir"] = pt(h["start"]), vec(h["dir"])
+    for b in bands:
+        b["face_center"], b["normal"], b["along"] = pt(b["face_center"]), vec(b["normal"]), vec(b["along"])
+
+
 def _custom_boxes(proj: Project, cab: Cabinet, holes_out: list | None = None,
                   bands_out: list | None = None, band_colors: dict | None = None) -> list[dict]:
     W = float(cab.dimensions.get("width", 0))
     D = float(cab.dimensions.get("depth", 0))
     H = float(cab.dimensions.get("height", 0))
     ox, oy, oz = _cabinet_origin(cab)
+    deg = _cabinet_rotation(cab)
+    h0 = len(holes_out) if holes_out is not None else 0
+    b0 = len(bands_out) if bands_out is not None else 0
     boxes: list[dict] = []
 
     for p in cab.panels:
@@ -304,6 +342,9 @@ def _custom_boxes(proj: Project, cab: Cabinet, holes_out: list | None = None,
             if bands_out is not None:
                 bands_out += _panel_bands(proj, p, t, tuple(size), tuple(c), cab.id,
                                           band_colors or {}, owner=nm)
+    if deg:
+        _rotate_records(boxes, holes_out[h0:] if holes_out is not None else [],
+                        bands_out[b0:] if bands_out is not None else [], (ox, oy, oz), deg)
     return boxes
 
 

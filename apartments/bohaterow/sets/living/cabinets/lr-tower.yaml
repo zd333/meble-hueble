@@ -1,0 +1,277 @@
+# ===================================================================================================
+# lr-tower — corner column at the window, 350 × 300, z 80..2390
+#
+# Living room, layout F2 (approved 2026-10-21). Board: Egger U750 ST9 Szary Taupe (u750-18).
+# GENERATED once from the PRELIMINARY measurements by a scaffold script (gen_living.py); edit freely.
+# /!\ Re-derive every number after the final on-site measurements — hand-written holes do not follow
+#     a resize. Stamped confirmats (`drilling: stamped`) are restamped by `meble fit --set living`.
+# World frame: origin = inner corner (window wall × left wall); x along the window wall, y negative
+# into the room, z up. Plinth 80 (adjustable legs + clip-on board, see lr-plinth).
+#
+# Turned onto the left wall (rotation 90): local x 0 = the side toward the vitrine (world y −350),
+# x 350 = against the CONCRETE window wall (world y 0) — screw it to the concrete through side-r.
+# Rows: 80..490 HIDING PLACE (closed by the bench end in front and the vitrine beside it) under a LOOSE
+# lift-out shelf on 4 pins, with a loose insert on it so the niche floor is level with the seat
+# (508); 508..1250 two rows of books (fixed shelf at 870); 1250..2390 Topal glass
+# doors 756 + 376, hinged on the VITRINE side so they never swing over someone sitting on the bench.
+# Every fixed shelf on rafix-20 (spans 314 — no sag).
+# ===================================================================================================
+
+id: lr-tower
+name: "Living — corner column (books + glass, hiding place)"
+kind: custom
+category: tall
+construction: confirmat
+dimensions: {width: 350, height: 2390, depth: 300}
+position: {x: 300, y: -350, z: 0, rotation: 90}
+defaults: {material: u750-18, edgeband: eb-u750-1}
+back: {type: surface}
+plinth: {}
+
+panels:
+
+- id: side-l
+  name: "Left side"
+  element_type: panel
+  role: side-left
+  width: 297
+  height: 2310
+  grain: any
+  edge_banding: {edges: {2: eb-u750-1, 1: eb-u750-1, 3: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 37, y: 467, dia: 5, depth: 13, type: multi, count: 2, spacing: 223, direction: x, src: pins-lid}
+  - {face: inner, x: 50, y: 781, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-870-l}
+  - {face: inner, x: 50, y: 1161, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-1250-l}
+  - {face: inner, x: 50, y: 1921, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-2010-l}
+  - {face: inner, x: 260, y: 1256, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-glass-1}
+  - {face: inner, x: 260, y: 1812, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-glass-1}
+  - {face: inner, x: 260, y: 2016, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-glass-2}
+  - {face: inner, x: 260, y: 2192, dia: 5, depth: 13, type: multi, count: 2, spacing: 32, direction: y, src: hg-glass-2}
+  - face: outer
+    x: 50
+    y: 2301.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 98.5
+    direction: x
+    src: cf-top-l
+  - face: outer
+    x: 50
+    y: 9.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 98.5
+    direction: x
+    src: cf-bot-l
+  placement: {pos: [0, 0, 80]}
+
+- id: side-r
+  name: "Right side"
+  element_type: panel
+  role: side-right
+  width: 297
+  height: 2310
+  grain: any
+  edge_banding: {edges: {4: eb-u750-1, 1: eb-u750-1, 3: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 37, y: 467, dia: 5, depth: 13, type: multi, count: 2, spacing: 223, direction: x, src: pins-lid}
+  - {face: inner, x: 50, y: 781, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-870-r}
+  - {face: inner, x: 50, y: 1161, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-1250-r}
+  - {face: inner, x: 50, y: 1921, dia: 5, depth: 12, type: multi, count: 2, spacing: 197, direction: x, src: rf-sh-2010-r}
+  - face: outer
+    x: 50
+    y: 2301.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 98.5
+    direction: x
+    src: cf-top-r
+  - face: outer
+    x: 50
+    y: 9.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 98.5
+    direction: x
+    src: cf-bot-r
+  placement: {pos: [332, 0, 80]}
+
+- id: bottom
+  name: "Bottom"
+  element_type: panel
+  role: bottom
+  width: 314
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 98.5
+    src: cf-bot-l
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 98.5
+    src: cf-bot-r
+  placement: {pos: [18, 0, 80]}
+
+- id: top
+  name: "Top"
+  element_type: panel
+  role: top
+  width: 314
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 98.5
+    src: cf-top-l
+  - face: edge2
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 98.5
+    src: cf-top-r
+  placement: {pos: [18, 0, 2372]}
+
+- id: back
+  name: "Back (HDF)"
+  element_type: panel
+  role: back
+  material: hdf-3
+  width: 350
+  height: 2310
+  grain: any
+  edge_banding: {}
+  holes: []
+  placement: {pos: [0, 297, 80]}
+
+- id: lid
+  name: "Hiding-place lid (lift-out shelf)"
+  element_type: panel
+  role: shelf
+  width: 312
+  height: 295
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  holes: []
+  placement: {pos: [19, 1, 472]}
+
+- id: insert
+  name: "Seat-level insert (loose, lies on the lid)"
+  element_type: panel
+  role: shelf
+  width: 312
+  height: 295
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  holes: []
+  placement: {pos: [19, 1, 490]}
+
+- id: sh-870
+  name: "Book shelf @870"
+  element_type: panel
+  role: divider
+  width: 314
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-870-l}
+  - {face: outer, x: 304.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-870-r}
+  placement: {pos: [18, 0, 852]}
+
+- id: sh-1250
+  name: "Shelf @1250 (glass floor)"
+  element_type: panel
+  role: divider
+  width: 314
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-1250-l}
+  - {face: outer, x: 304.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-1250-r}
+  placement: {pos: [18, 0, 1232]}
+
+- id: sh-2010
+  name: "Shelf @2010 (behind the glass joint)"
+  element_type: panel
+  role: divider
+  width: 314
+  height: 297
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-2010-l}
+  - {face: outer, x: 304.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 197, direction: y, src: rf-sh-2010-r}
+  placement: {pos: [18, 0, 1992]}
+
+- id: glass-1
+  name: "Topal glass door 756"
+  element_type: front
+  role: front
+  material: topal-f1-inox-glass
+  width: 346
+  height: 756
+  thickness: 20
+  grain: any
+  edge_banding: {}
+  holes: []
+  placement: {pos: [2, -20, 1252]}
+
+- id: glass-2
+  name: "Topal glass door 376"
+  element_type: front
+  role: front
+  material: topal-f1-inox-glass
+  width: 346
+  height: 376
+  thickness: 20
+  grain: any
+  edge_banding: {}
+  holes: []
+  placement: {pos: [2, -20, 2012]}
+
+assembly:
+  fittings:
+  - {id: cf-top-l, hardware: confirmat-7x50, through: side-l, into: top, seam: {through_edge: 1, into_edge: 4}, at: [50, 148.5, 247]}
+  - {id: cf-bot-l, hardware: confirmat-7x50, through: side-l, into: bottom, seam: {through_edge: 3, into_edge: 4}, at: [50, 148.5, 247]}
+  - {id: cf-top-r, hardware: confirmat-7x50, through: side-r, into: top, seam: {through_edge: 1, into_edge: 2}, at: [50, 148.5, 247]}
+  - {id: cf-bot-r, hardware: confirmat-7x50, through: side-r, into: bottom, seam: {through_edge: 3, into_edge: 2}, at: [50, 148.5, 247]}
+  - {id: pins-lid, hardware: shelf-pin-5, drilling: manual, at: [467], quantity: 4, shelves: [lid, insert]}
+  - {id: rf-sh-870-l, hardware: rafix-20, drilling: manual, through: sh-870, into: side-l, at: [50, 247]}
+  - {id: rf-sh-870-r, hardware: rafix-20, drilling: manual, through: sh-870, into: side-r, at: [50, 247]}
+  - {id: rf-sh-1250-l, hardware: rafix-20, drilling: manual, through: sh-1250, into: side-l, at: [50, 247]}
+  - {id: rf-sh-1250-r, hardware: rafix-20, drilling: manual, through: sh-1250, into: side-r, at: [50, 247]}
+  - {id: rf-sh-2010-l, hardware: rafix-20, drilling: manual, through: sh-2010, into: side-l, at: [50, 247]}
+  - {id: rf-sh-2010-r, hardware: rafix-20, drilling: manual, through: sh-2010, into: side-r, at: [50, 247]}
+  - {id: hg-glass-1, hardware: hinge-alu-frame, variant: full, drilling: manual, door: glass-1, side: side-l, at: [1352, 1908]}
+  - {id: hg-glass-2, hardware: hinge-alu-frame, variant: full, drilling: manual, door: glass-2, side: side-l, at: [2112, 2288]}
+  - {id: tipon, hardware: tip-on, drilling: none, quantity: 2}
+
+parts: []

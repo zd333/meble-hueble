@@ -1,0 +1,95 @@
+# ===================================================================================================
+# lr-plinth — clip-on plinth boards, U899 black, 80 high, set back 40
+#
+# Living room, layout F2 (approved 2026-10-21). Board: Egger U750 ST9 Szary Taupe (u750-18).
+# GENERATED once from the PRELIMINARY measurements by a scaffold script (gen_living.py); edit freely.
+# /!\ Re-derive every number after the final on-site measurements — hand-written holes do not follow
+#     a resize. Stamped confirmats (`drilling: stamped`) are restamped by `meble fit --set living`.
+# World frame: origin = inner corner (window wall × left wall); x along the window wall, y negative
+# into the room, z up. Plinth 80 (adjustable legs + clip-on board, see lr-plinth).
+#
+# Dark like the kitchen (u899-18) so it reads as a shadow line. Boards clip onto the adjustable legs
+# (fitting `legs`): no supplier drilling. Left wall: one board at x 242..260 (40 behind the unit fronts
+# at 300) from the line end to the bench; bench: two boards at y −310 (40 behind the bench doors) and a
+# return at the radiator end; a return at the line end facing the outer corner.
+# No supplier drilling at all: every board CLIPS onto the legs (the clip screws to the board's back on
+# site), so a board stays removable for cleaning or levelling. The three corners (line end, inner corner
+# by the tower — pl-left butts into the face of pl-bench-1 — and the radiator end) get a steel angle
+# bracket screwed to the backs of both boards (fitting `corners`). The straight joint between the two
+# bench boards needs nothing: a clipped leg sits close to each board end.
+# ===================================================================================================
+
+id: lr-plinth
+name: "Living — plinth boards (80, on adjustable legs)"
+kind: custom
+category: base
+construction: confirmat
+dimensions: {width: 3100, height: 80, depth: 3050}
+position: {x: 0, y: 0, z: 0, rotation: 0}
+defaults: {material: u899-18, edgeband: eb-u899-1}
+back: {type: surface}
+plinth: {}
+
+panels:
+
+- id: pl-left
+  name: "Plinth, left wall"
+  element_type: panel
+  role: plinth
+  width: 2700
+  height: 80
+  grain: any
+  edge_banding: {edges: {3: eb-u899-1}, glue_type: long}
+  holes: []
+  placement: {pos: [242, -3010, 0], rot: [90, 0, 90]}
+
+- id: pl-end
+  name: "Plinth return at the line end"
+  element_type: panel
+  role: plinth
+  width: 242
+  height: 80
+  grain: any
+  edge_banding: {edges: {2: eb-u899-1, 3: eb-u899-1, 4: eb-u899-1}, glue_type: long}
+  holes: []
+  placement: {pos: [0, -3010, 0], rot: [90, 0, 0]}
+
+- id: pl-bench-1
+  name: "Plinth, bench 1"
+  element_type: panel
+  role: plinth
+  width: 1438
+  height: 80
+  grain: any
+  edge_banding: {edges: {3: eb-u899-1}, glue_type: long}
+  holes: []
+  placement: {pos: [242, -310, 0], rot: [90, 0, 0]}
+
+- id: pl-bench-2
+  name: "Plinth, bench 2"
+  element_type: panel
+  role: plinth
+  width: 1420
+  height: 80
+  grain: any
+  edge_banding: {edges: {2: eb-u899-1, 3: eb-u899-1, 4: eb-u899-1}, glue_type: long}
+  holes: []
+  placement: {pos: [1680, -310, 0], rot: [90, 0, 0]}
+
+- id: pl-bench-end
+  name: "Plinth return at the radiator end"
+  element_type: panel
+  role: plinth
+  width: 272
+  height: 80
+  grain: any
+  edge_banding: {edges: {3: eb-u899-1, 4: eb-u899-1}, glue_type: long}
+  holes: []
+  placement: {pos: [3082, -292, 0], rot: [90, 0, 90]}
+
+assembly:
+  fittings:
+  - {id: legs, hardware: plinth-leg, drilling: none, quantity: 28}
+  - {id: corners, hardware: plinth-corner, drilling: none, quantity: 3}
+
+parts: []

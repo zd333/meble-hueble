@@ -24,7 +24,7 @@ def _export_csvs(proj, tmp: Path) -> dict[str, str]:
 
 def test_csv_matches_golden(proj, tmp_path):
     got = _export_csvs(proj, tmp_path)
-    assert sorted(got) == ["u604-18.csv", "u899-18.csv"], "board grouping changed"
+    assert sorted(got) == ["hdf-3.csv", "u604-18.csv", "u750-18.csv", "u899-18.csv"], "board grouping changed"
     for name, text in got.items():
         assert text == read_golden(name), f"{name} changed — is the new output what you want ordered?"
 

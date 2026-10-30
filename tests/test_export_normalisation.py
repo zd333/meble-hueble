@@ -56,7 +56,7 @@ def test_pdf_marks_exactly_the_rotated_panels(proj, real_panels, tmp_path):
     expected = sum(1 for _, p, _ in real_panels if normalize(p)[1])
     cabs = cabinets_for_scope(proj, apartment="bohaterow")
     text = pdf_text(export_pdf(proj, cabs, tmp_path / "b.pdf", title="t"))
-    assert text.count("SHOWN ROTATED") == expected == 16
+    assert text.count("SHOWN ROTATED") == expected == 44
 
 
 def test_no_rotation_banner_when_normalisation_is_off(proj, tmp_path):
