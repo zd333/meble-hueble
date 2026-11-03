@@ -144,6 +144,7 @@ failure.
     edges: { 2: eb-w1100-1 }# per-edge: key 1=top 2=right 3=bottom 4=left; value = band id (or true)
     glue_type: long        # long ("kryjące długie", default) | short
   holes: []                # see Hole; explicit; stamped holes carry `src`
+  notches: []              # corner cut-outs, see Notch
   grooving: []             # reserved; structures must not reshape when this is filled in later
   placement:               # optional, FOR VIZ ONLY (not order-relevant)
     pos: [0, 0, 0]         # min-corner in cabinet local frame (x=width, y=depth, z=height)
@@ -176,6 +177,23 @@ Two shapes by `face`:
   and the tag is just the audit trail the buy list and `review` read. Either way `fit` only ever
   replaces holes belonging to a fitting it actually re-stamped, so a hand-written hole is never lost —
   and a hole with no `src` at all is never touched by anything.
+
+### Notch (`panel.notches[]`)
+A rectangle cut out of one corner — e.g. a shelf that runs past a post or a hinge strip. meble.pl
+cuts it; the CSV cannot carry it, so it is typed in by hand from the PDF, which draws it on both faces
+and lists it in a "Notches" table (only on panels that have one).
+```yaml
+- { corner: bottom-left, width: 17, height: 102 }
+```
+- `corner`: `top-left` | `top-right` | `bottom-left` | `bottom-right` (edges 1/4, 1/2, 3/4, 3/2 meet
+  there). Same panel frame as everything else: origin bottom-left, edge 1 = top.
+- `width` runs along X (the edge 1/3 direction), `height` along Y (edge 2/4). Both must be smaller than
+  the panel, and two notches must not overlap or touch (touching ones take a whole edge away).
+- `validate` rejects a hole in, or breaking into, the cut-away corner — on either face or on the
+  notched part of an edge.
+- The export-time 180° rotation (see `meblepl-editor.md`) moves a notch to the opposite corner with
+  the same sizes, so the PDF still matches the panel the CSV created.
+- The 3D viewer draws the notched outline, and edge bands stop where the notch begins.
 
 ## Cabinet (`cabinets/<c>.yaml`)
 ```yaml

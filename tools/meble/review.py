@@ -20,10 +20,11 @@ VERTICAL_EDGES = {2, 4}
 # which face points toward the cavity, per role — default is "inner"; a `top` panel is the one
 # exception, since its OUTER face is the one facing down into the cabinet (docs/conventions.md,
 # "Horizontals: which face is up"). Roles with BOTH faces facing a cavity (an internal divider with a
-# compartment on each side, or a shelf) have no visible face at all, so the wrong-face heuristic — which
-# assumes "outer" means "visible exterior" — doesn't apply; skip them outright.
+# compartment on each side, a shelf, or a fixed shelf on rafix — `divider`) have no visible face at
+# all, so the wrong-face heuristic — which assumes "outer" means "visible exterior" — doesn't apply;
+# skip them outright.
 CAVITY_FACE = {"top": "outer"}
-NO_VISIBLE_FACE_ROLES = {"gable", "shelf"}
+NO_VISIBLE_FACE_ROLES = {"gable", "shelf", "divider"}
 
 # Roles that must have a hardware fitting or they silently vanish from the shopping list.
 # NOT `front`: it covers both a hinged door and a drawer facade screwed to its box from inside, and

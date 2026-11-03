@@ -1,0 +1,5 @@
+id: entryway
+name: "Entryway"
+room: entryway
+cabinets: [ew-wardrobe]
+layout: {}   # the wardrobe fills the niche; positions live on the cabinet, in the frame described in its header

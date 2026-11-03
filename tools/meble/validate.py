@@ -3,11 +3,15 @@ this is where we catch broken refs, out-of-bounds holes, illegal value sets, and
 """
 from __future__ import annotations
 
-from .model import Cabinet, Hole, Panel, Project
+from itertools import combinations
+
+from .model import CORNERS, Cabinet, Hole, Notch, Panel, Project
 
 EDGE_DIA = {4, 8}
 SURFACE_DIA = {3, 5, 8, 10, 15, 20, 35}
 DRILLING_MODES = {"stamped", "manual", "none"}
+#: meble.pl refuses to band a smaller part (blocking editor error, seen 2026-11-03), short × long side.
+MIN_BANDED = (59.6, 199.6)
 
 
 def _edge_length(panel: Panel, edge: int) -> float:
@@ -47,6 +51,39 @@ def _check_hole(panel: Panel, h: Hole, err, warn, where: str) -> None:
         err(f"{where}: bad face '{h.face}' (expected edge1..4 | outer | inner)")
 
 
+def _check_notches(panel: Panel, err, where: str) -> None:
+    """A notch must be a real corner cut, smaller than the panel, and must not take a hole with it."""
+    ok: list[tuple[int, Notch]] = []
+    for i, n in enumerate(panel.notches):
+        w = f"{where} notch #{i}"
+        if n.corner not in CORNERS:
+            err(f"{w}: corner '{n.corner}' must be one of {sorted(CORNERS)}"); continue
+        if not (0 < n.width < panel.width and 0 < n.height < panel.height):
+            err(f"{w}: {n.width}×{n.height} must be > 0 and smaller than the panel "
+                f"{panel.width}×{panel.height}"); continue
+        ok.append((i, n))
+
+    # Touching counts: two notches that meet take a whole edge away, and the outline doubles back.
+    rects = [(i, n.rect(panel.width, panel.height)) for i, n in ok]
+    for (i, a), (j, b) in combinations(rects, 2):
+        if a[0] <= b[2] and b[0] <= a[2] and a[1] <= b[3] and b[1] <= a[3]:
+            err(f"{where}: notches #{i} and #{j} overlap or meet")
+
+    # A hole in (or breaking into) the cut-away corner is drilled into air.
+    for k, h in enumerate(panel.holes):
+        r = (h.dia or 0) / 2
+        for i, (x1, y1, x2, y2) in rects:
+            if h.is_surface:
+                hit = [p for p in h.surface_positions() if x1 - r < p[0] < x2 + r and y1 - r < p[1] < y2 + r]
+            elif h.is_edge and h.edge_no in CORNERS[panel.notches[i].corner]:
+                lo, hi = (x1, x2) if h.edge_no in (1, 3) else (y1, y2)
+                hit = [p for p in h.edge_positions() if lo - r < p < hi + r]
+            else:
+                hit = []
+            if hit:
+                err(f"{where} hole #{k}: at {hit[0]} it is in the cut-away corner of notch #{i}")
+
+
 def validate_cabinet(proj: Project, cab: Cabinet, err, warn) -> None:
     if cab.kind == "readymade":
         dims = cab.raw.get("dimensions") or {}
@@ -61,6 +98,10 @@ def validate_cabinet(proj: Project, cab: Cabinet, err, warn) -> None:
         w = f"cabinet '{cab.id}' panel '{p.id}'"
         if not (p.width > 0 and p.height > 0):
             err(f"{w}: width/height must be > 0")
+        if p.edge_banding.banded_edges() and any(
+                d < m for d, m in zip(sorted((p.width, p.height)), MIN_BANDED)):
+            err(f"{w}: {p.width}×{p.height} is banded but smaller than meble.pl's smallest banded part "
+                f"{MIN_BANDED[0]}×{MIN_BANDED[1]} — the editor refuses it")
         if p.material and not proj.board(p.material):
             err(f"{w}: material '{p.material}' not in library/materials.yaml")
         if not p.material:
@@ -70,10 +111,19 @@ def validate_cabinet(proj: Project, cab: Cabinet, err, warn) -> None:
                 err(f"{w}: banding edge '{edge}' must be 1..4")
             if isinstance(band, str) and not proj.edgeband(band):
                 err(f"{w}: edge band '{band}' not in library/edgebands.yaml")
+        if p.edge_banding.band and not proj.edgeband(p.edge_banding.band):
+            err(f"{w}: edge band '{p.edge_banding.band}' not in library/edgebands.yaml")
+        # The CSV only says "banded"; the band model reaches the order through the PDF. Without one the
+        # sheet prints the edge as unbanded while the import bands it.
+        unnamed = [e for e in sorted(p.edge_banding.banded_edges()) if not p.edge_banding.band_for(e)]
+        if unnamed:
+            err(f"{w}: edges {unnamed} are banded but name no band model — add `band:` "
+                f"(cabinet defaults.edgeband is not applied)")
         for i, h in enumerate(p.holes):
             _check_hole(p, h, err, warn, f"{w} hole #{i}")
             if h.src and h.src not in fitting_ids:
                 warn(f"{w} hole #{i}: src '{h.src}' has no matching fitting (orphan stamp)")
+        _check_notches(p, err, w)
 
     stamped_srcs = {h.src for p in cab.panels for h in p.holes if h.src}
 

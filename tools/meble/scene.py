@@ -11,7 +11,7 @@ import json
 import math
 from pathlib import Path
 
-from .model import BAND_COLOR_DEFAULT, Cabinet, Panel, Project, band_color_map, dia_color
+from .model import BAND_COLOR_DEFAULT, CORNERS, Cabinet, Panel, Project, band_color_map, dia_color
 
 DEFAULT_COLOR = [0.85, 0.85, 0.83]
 
@@ -176,6 +176,11 @@ def _panel_bands(proj: Project, panel: Panel, t: float, size: tuple, center: tup
         perp_lo, perp_hi = (4, 2) if e in (1, 3) else (3, 1)
         s0 = 0.0 if e in covering else band_thickness(perp_lo)
         s1 = run if e in covering else run - band_thickness(perp_hi)
+        for n in panel.notches:                        # a notch takes its end of the edge away
+            if e in CORNERS.get(n.corner, ()):
+                cut = n.width if e in (1, 3) else n.height
+                at_start = n.corner.endswith("left") if e in (1, 3) else n.corner.startswith("bottom")
+                s0, s1 = (max(s0, cut), s1) if at_start else (s0, min(s1, run - cut))
         length = s1 - s0
         if length <= 0:
             continue
@@ -228,6 +233,31 @@ def _panel_holes(panel: Panel, t: float, size: tuple, center: tuple, cab_id: str
     return recs
 
 
+def _panel_outline(panel: Panel, t: float, size: tuple, center: tuple) -> dict:
+    """A notched panel can't be a box: give the viewer its outline (world points on the inner face,
+    walking the corners) and the vector through its thickness, to extrude. {} for a plain panel."""
+    if not panel.notches:
+        return {}
+    W, H = panel.width, panel.height
+    notch = {n.corner: n for n in panel.notches}
+    local = []
+    for name, (x, y) in (("bottom-left", (0, 0)), ("bottom-right", (W, 0)),
+                         ("top-right", (W, H)), ("top-left", (0, H))):
+        n = notch.get(name)
+        if not n:
+            local.append((x, y)); continue
+        x1, y1, x2, y2 = n.rect(W, H)
+        ix, iy = (x2 if x == 0 else x1), (y2 if y == 0 else y1)
+        # arrive along the previous edge, step round the notch, leave along the next edge
+        steps = [(x, iy), (ix, iy), (ix, y)] if name in ("bottom-left", "top-right") \
+            else [(ix, y), (ix, iy), (x, iy)]
+        local += steps
+    r = _panel_matrix(panel)
+    origin = _local_origin(r, (W, H, t), tuple(center[i] - size[i] / 2 for i in range(3)))
+    return {"outline": [[round(v, 2) for v in _to_world(r, origin, (u, v, 0.0))] for u, v in local],
+            "extrude": [round(v, 4) for v in _dir_world(r, (0.0, 0.0, t))]}
+
+
 def _rgb(hex_color: str | None) -> list[float]:
     if not hex_color or not hex_color.startswith("#") or len(hex_color) != 7:
         return list(DEFAULT_COLOR)
@@ -277,6 +307,8 @@ def _rotate_records(boxes: list, holes: list, bands: list, origin: tuple, deg: i
         b["center"] = pt(b["center"])
         if deg in (90, 270):
             b["size"] = [b["size"][1], b["size"][0], b["size"][2]]
+        if "outline" in b:
+            b["outline"], b["extrude"] = [pt(p) for p in b["outline"]], vec(b["extrude"])
     for h in holes:
         h["start"], h["dir"] = pt(h["start"]), vec(h["dir"])
     for b in bands:
@@ -336,7 +368,8 @@ def _custom_boxes(proj: Project, cab: Cabinet, holes_out: list | None = None,
                               instance=(i + 1 if count > 1 else None),
                               instances=(count if count > 1 else None),
                               cut=[round(p.width, 1), round(p.height, 1), round(t, 1)],
-                              material=(board.name if board else p.material)))
+                              material=(board.name if board else p.material),
+                              **_panel_outline(p, t, tuple(size), c)))
             if holes_out is not None and p.holes:
                 holes_out += _panel_holes(p, t, tuple(size), tuple(c), cab.id, owner=nm)
             if bands_out is not None:

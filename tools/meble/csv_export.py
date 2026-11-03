@@ -1,7 +1,7 @@
 """Export the panel list to the centrum.meble.pl PRO100 CSV (dimensions + grain + coarse banding).
 
 One CSV per board model (the editor groups panels under a board). The rich per-edge banding, band
-model, drilling and grooving are entered manually from the PDF spec sheet — the CSV carries only what
+model, drilling, notches and grooving are entered manually from the PDF spec sheet — the CSV carries only what
 the import accepts. We never produce a cutting layout (meble.pl owns nesting).
 
 Banding is written through `normalize`: the import can only ever put a single band on edge 3 or

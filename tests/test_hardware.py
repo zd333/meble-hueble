@@ -134,10 +134,11 @@ EXPECTED = {
     ("hinge-alu-frame", "full"): 12,     # living room: the Topal glass doors (plates only are ours)
     ("hinge-clip-110", "full"): 27,
     ("hinge-clip-110", "half"): 7,
+    ("hinge-clip-110", "inset"): 12,     # entryway: doors flush with the outer strips
     ("plinth-corner", None): 3,
     ("plinth-leg", None): 28,
-    ("rafix-20", None): 84,
-    ("shelf-pin-5", None): 24,
+    ("rafix-20", None): 113,
+    ("shelf-pin-5", None): 27,
     ("slide-bb-350", None): 2,
     ("tip-on", None): 17,
 }
@@ -149,12 +150,12 @@ def test_the_real_bill_of_materials(proj):
     assert got == EXPECTED
 
 
-def test_the_two_hinge_types_are_never_merged(proj):
+def test_the_hinge_overlays_are_never_merged(proj):
     """Stated separately from the table above because it is the whole point of the feature."""
     cabs = cabinets_for_scope(proj, apartment="bohaterow")
     hinges = [l for l in bill_of_materials(proj, cabs) if l.hardware == "hinge-clip-110"]
-    assert len(hinges) == 2, "the two overlays collapsed into one line"
-    assert sorted(l.variant for l in hinges) == ["full", "half"]
+    assert len(hinges) == 3, "the overlays collapsed into fewer lines"
+    assert sorted(l.variant for l in hinges) == ["full", "half", "inset"]
     half = next(l for l in hinges if l.variant == "half")
     assert sorted(half.per_cabinet) == ["lr-line", "wc-column"], \
         "only wc-column and lr-line hang a door on a gable shared with the next bay"

@@ -40,6 +40,10 @@ from .model import HEIGHT_EDGES, WIDTH_EDGES, Hole, Panel
 #: edge's LENGTH is unchanged by the rotation — which is why `_rotate_hole` can use one `L`.
 ROT = {1: 3, 2: 4, 3: 1, 4: 2}
 
+#: The same rotation for notch corners. Notch sizes run along X and Y, so they stay as they are.
+ROT_CORNER = {"top-left": "bottom-right", "bottom-right": "top-left",
+              "top-right": "bottom-left", "bottom-left": "top-right"}
+
 #: The edge the importer picks when a banding cell says "one edge". Not configurable — measured.
 SINGLE_EDGE_IMPORTS_AS = {WIDTH_EDGES: 3, HEIGHT_EDGES: 4}
 
@@ -111,6 +115,8 @@ def rotate_panel(panel: Panel) -> Panel:
     out = copy.deepcopy(panel)
     out.edge_banding.edges = {ROT[e]: v for e, v in panel.edge_banding.edges.items()}
     out.holes = [_rotate_hole(h, panel.width, panel.height) for h in panel.holes]
+    for n in out.notches:
+        n.corner = ROT_CORNER[n.corner]
     return out
 
 

@@ -191,6 +191,30 @@ class Hole:
         return pts
 
 
+#: A panel corner, named by its position; the value is the two edges that meet there.
+CORNERS = {"top-left": (1, 4), "top-right": (1, 2), "bottom-right": (3, 2), "bottom-left": (3, 4)}
+
+
+@dataclass
+class Notch:
+    """A rectangle cut out of one corner. meble.pl cuts it; it is typed in by hand from the PDF.
+
+    `width` runs along X (the edge-1/3 direction), `height` along Y (edge 2/4), in the panel frame."""
+    corner: str
+    width: float
+    height: float
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "Notch":
+        return cls(corner=d.get("corner", ""), width=d.get("width", 0), height=d.get("height", 0))
+
+    def rect(self, panel_width: float, panel_height: float) -> tuple[float, float, float, float]:
+        """(x1, y1, x2, y2) of the cut-away area, from the panel's bottom-left."""
+        x1 = 0 if self.corner.endswith("left") else panel_width - self.width
+        y1 = 0 if self.corner.startswith("bottom") else panel_height - self.height
+        return x1, y1, x1 + self.width, y1 + self.height
+
+
 @dataclass
 class Panel:
     id: str
@@ -205,6 +229,7 @@ class Panel:
     grain: Optional[str] = None
     edge_banding: EdgeBanding = field(default_factory=EdgeBanding)
     holes: list[Hole] = field(default_factory=list)
+    notches: list[Notch] = field(default_factory=list)
     grooving: list = field(default_factory=list)
     placement: dict = field(default_factory=dict)
 
@@ -219,6 +244,7 @@ class Panel:
             grain=d.get("grain"),
             edge_banding=EdgeBanding.from_dict(d.get("edge_banding")),
             holes=[Hole.from_dict(h) for h in (d.get("holes") or [])],
+            notches=[Notch.from_dict(n) for n in (d.get("notches") or [])],
             grooving=list(d.get("grooving") or []),
             placement=dict(d.get("placement") or {}),
         )
