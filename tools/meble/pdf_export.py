@@ -19,8 +19,8 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
-from .model import (BAND_COLOR_DEFAULT, Cabinet, DIA_COLORS, DIA_COLOR_DEFAULT, Panel, Project,
-                    band_color_map)
+from .model import (BAND_COLOR_DEFAULT, CORNERS, Cabinet, DIA_COLORS, DIA_COLOR_DEFAULT, Panel,
+                    Project, band_color_map)
 from .normalize import ROT, normalize
 
 MM = 72.0 / 25.4
@@ -86,6 +86,7 @@ def _register_fonts() -> bool:
 C_DIM = colors.HexColor("#00695C")     # size & material section
 C_BAND = colors.HexColor("#6A1B9A")    # edge-banding section
 C_DRILL = colors.HexColor("#BF360C")   # drilling sections
+C_CUT = colors.HexColor("#37474F")     # notches
 C_GREY = colors.HexColor("#9E9E9E")
 
 # bore-diameter palette lives in model.py — shared with the 3D viewer (same colour on paper and screen)
@@ -165,6 +166,20 @@ def _diagram(c, panel: Panel, surface: str, scale: float, ox: float, oy: float, 
         if band_id:
             c.setStrokeColor(_band_color(band_id))
             c.line(x1, y1, x2, y2)
+
+    # notches: blank out the cut-away corner (and the band stroke over it), then draw its two new edges
+    pad = 2.5
+    for n in panel.notches:
+        x1, y1, x2, y2 = n.rect(panel.width, panel.height)
+        left, bottom = x1 == 0, y1 == 0
+        L, R = ox + x1 * scale - (pad if left else 0), ox + x2 * scale + (0 if left else pad)
+        B, T = oy + y1 * scale - (pad if bottom else 0), oy + y2 * scale + (0 if bottom else pad)
+        c.setFillColor(colors.white)
+        c.rect(L, B, R - L, T - B, stroke=0, fill=1)
+        ix, iy = ox + (x2 if left else x1) * scale, oy + (y2 if bottom else y1) * scale
+        c.setStrokeColor(colors.HexColor("#616161")); c.setLineWidth(0.8)
+        c.line(ix, oy + y1 * scale, ix, oy + y2 * scale)
+        c.line(ox + x1 * scale, iy, ox + x2 * scale, iy)
 
     # labels
     c.setFillColor(colors.black)
@@ -324,6 +339,21 @@ def _table_drilling(c, panel: Panel, y, stamped_srcs: set | None = None):
     return y
 
 
+def _table_notches(c, panel: Panel, y):
+    """Only on panels that have notches, so every other page (and the goldens) stays as it was."""
+    x = MARGIN + 6 * MM
+    widths = [30 * MM, 26 * MM, 34 * MM, 34 * MM]
+    y -= 2 * MM
+    y = _heading(c, MARGIN, y, "Notches — corner cut-outs, entered by hand", C_CUT)
+    y = _row(c, x, y, ["corner", "edges", "along width (X)", "along height (Y)"], widths, bold=True,
+             color=C_CUT)
+    for n in panel.notches:
+        a, b = CORNERS[n.corner]
+        y = _row(c, x, y, [n.corner, f"{a} & {b}", f"{n.width:g} mm", f"{n.height:g} mm"], widths,
+                 check=True, color=C_CUT)
+    return y
+
+
 def _draw_panel_page(c, proj: Project, cab: Cabinet, panel: Panel, qty: int, idx: int, dest: str,
                      normalise: bool = True):
     c.bookmarkPage(dest)
@@ -377,6 +407,8 @@ def _draw_panel_page(c, proj: Project, cab: Cabinet, panel: Panel, qty: int, idx
     ty = _table_size(c, panel, qty, board, thickness, ty)
     ty = _table_banding(c, proj, panel, ty)
     ty = _table_drilling(c, panel, ty, stamped_srcs)
+    if panel.notches:
+        ty = _table_notches(c, panel, ty)
 
     c.setFont(FONT, 7); c.setFillColor(C_GREY)
     c.drawCentredString(PW / 2, MARGIN - 4 * MM, f"meble · {cab.id} · panel sheet P{idx}")
@@ -397,8 +429,9 @@ def _draw_index(c, title: str, entries: list):
     for idx, dest, cab, panel, qty in entries:
         if y < MARGIN + 10 * MM:
             c.showPage(); header(); y = PH - MARGIN - 18 * MM; c.setFont(FONT, 9)
+        notched = f"   · {len(panel.notches)} notch(es)" if panel.notches else ""
         c.drawString(MARGIN, y, f"P{idx}.  {cab.id} / {panel.name}   "
-                                f"{int(panel.width)}×{int(panel.height)} mm   ×{qty}")
+                                f"{int(panel.width)}×{int(panel.height)} mm   ×{qty}{notched}")
         c.linkAbsolute("", dest, (MARGIN - 1 * MM, y - 1.5 * MM, PW - MARGIN, y + 4 * MM))
         c.setFillColor(colors.HexColor("#1565C0")); c.drawRightString(PW - MARGIN, y, "→")
         c.setFillColor(colors.black)

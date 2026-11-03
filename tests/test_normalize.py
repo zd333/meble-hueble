@@ -13,7 +13,7 @@ from __future__ import annotations
 import itertools
 
 import pytest
-from conftest import mk_hole, mk_panel
+from conftest import mk_hole, mk_notch, mk_panel
 
 from meble.model import HEIGHT_EDGES, WIDTH_EDGES
 from meble.normalize import (ROT, SINGLE_EDGE_IMPORTS_AS, axis_ok, normalize, rotate_panel,
@@ -79,6 +79,19 @@ def test_grooving_refuses_rather_than_guessing():
     p.grooving = [{"edge": 1, "depth": 8}]
     with pytest.raises(NotImplementedError):
         rotate_panel(p)
+
+
+
+def test_notches_move_to_the_opposite_corner():
+    """Same rule as the holes: a 180° turn, so a corner goes diagonally across, sizes unchanged.
+    A notch left in place would be cut into the wrong corner of a panel the CSV turned round."""
+    p = mk_panel(1050, 875, edges={1: "eb-u604-1"},
+                 notches=[mk_notch("bottom-left", 17, 102), mk_notch("top-right", 30, 40)])
+    r = rotate_panel(p)
+    assert [(n.corner, n.width, n.height) for n in r.notches] == \
+           [("top-right", 17, 102), ("bottom-left", 30, 40)]
+    assert [n.corner for n in p.notches] == ["bottom-left", "top-right"]   # input untouched
+    assert [n.corner for n in rotate_panel(r).notches] == ["bottom-left", "top-right"]
 
 
 # ------------------------------------------------------------------ faces: rotation, not mirror

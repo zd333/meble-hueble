@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from conftest import mk_hole, mk_panel
 
-from meble.model import EdgeBanding, Hole, Panel
+from meble.model import EdgeBanding, Hole, Notch, Panel
 
 
 # ------------------------------------------------------------------ edge banding
@@ -94,3 +94,21 @@ def test_real_project_loads_every_cabinet_in_every_set(proj):
         for fs in apt.sets.values():
             for cid in fs.cabinet_ids:
                 assert proj.cabinet(cid) is not None, f"{fs.id} references missing cabinet {cid}"
+
+
+# ------------------------------------------------------------------ notches
+
+def test_notches_load_from_yaml_shape():
+    p = Panel.from_dict({"id": "s", "width": 1050, "height": 875,
+                         "notches": [{"corner": "bottom-left", "width": 17, "height": 102}]})
+    (n,) = p.notches
+    assert (n.corner, n.width, n.height) == ("bottom-left", 17, 102)
+
+
+def test_notch_rect_sits_in_its_corner():
+    """Exact values: this rectangle is what the PDF draws and what validate checks holes against."""
+    p = mk_panel(1050, 875)
+    rects = {c: Notch(corner=c, width=17, height=102).rect(p.width, p.height)
+             for c in ("bottom-left", "bottom-right", "top-left", "top-right")}
+    assert rects == {"bottom-left": (0, 0, 17, 102), "bottom-right": (1033, 0, 1050, 102),
+                     "top-left": (0, 773, 17, 875), "top-right": (1033, 773, 1050, 875)}

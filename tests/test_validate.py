@@ -6,7 +6,7 @@ the machine does not have, a band that does not exist.
 from __future__ import annotations
 
 import pytest
-from conftest import mk_cabinet, mk_hole, mk_panel
+from conftest import mk_cabinet, mk_hole, mk_notch, mk_panel
 
 from meble.validate import validate, validate_cabinet
 
@@ -200,3 +200,70 @@ def test_list_valued_panel_refs_are_resolved(proj):
                  fittings=[{"id": "pins", "hardware": "shelf-pin-5", "quantity": 4,
                             "drilling": "manual", "shelves": ["shelf-a", "ghost"]}])
     assert any("shelves panel 'ghost' not found" in e for e in err)
+
+
+# ------------------------------------------------------------------ notches
+
+def test_notch_in_a_corner_is_clean(proj):
+    err, warn = run(proj, [mk_panel(1050, 875, notches=[mk_notch("bottom-left"), mk_notch("bottom-right")],
+                                    holes=[mk_hole("outer", depth="through", x=500, y=50)])])
+    assert err == [] and warn == []
+
+
+def test_notch_with_unknown_corner_is_an_error(proj):
+    err, _ = run(proj, [mk_panel(notches=[mk_notch("front-left")])])
+    assert any("corner 'front-left'" in e for e in err)
+
+
+def test_notch_as_big_as_the_panel_is_an_error(proj):
+    err, _ = run(proj, [mk_panel(600, 400, notches=[mk_notch(width=600, height=50)])])
+    assert any("smaller than the panel" in e for e in err)
+
+
+def test_overlapping_notches_are_an_error(proj):
+    err, _ = run(proj, [mk_panel(600, 400, notches=[mk_notch("top-left", 400, 50),
+                                                    mk_notch("top-right", 300, 80)])])
+    assert any("overlap" in e for e in err)
+
+
+def test_notches_that_meet_are_an_error(proj):
+    """They take edge 4 away entirely; the outline the viewer extrudes would double back on itself."""
+    err, _ = run(proj, [mk_panel(1000, 400, notches=[mk_notch("bottom-left", 600, 100),
+                                                     mk_notch("top-left", 600, 300)])])
+    assert any("overlap or meet" in e for e in err)
+
+
+def test_surface_hole_in_the_cut_away_corner_is_an_error(proj):
+    err, _ = run(proj, [mk_panel(1050, 875, notches=[mk_notch("bottom-left")],
+                                 holes=[mk_hole("inner", dia=5, depth=13, x=10, y=50)])])
+    assert any("cut-away corner" in e for e in err)
+
+
+def test_surface_hole_breaking_into_the_notch_is_an_error(proj):
+    """Centre outside the notch, bore crossing into it: the edge of the hole is open."""
+    err, _ = run(proj, [mk_panel(1050, 875, notches=[mk_notch("bottom-left")],
+                                 holes=[mk_hole("outer", dia=20, depth=13, x=24, y=50)])])
+    assert any("cut-away corner" in e for e in err)
+
+
+def test_edge_hole_in_the_cut_away_part_of_its_edge_is_an_error(proj):
+    err, _ = run(proj, [mk_panel(1050, 875, notches=[mk_notch("bottom-left")],
+                                 holes=[mk_hole("edge4", dia=8, depth=30, frm=50)])])
+    assert any("cut-away corner" in e for e in err)
+
+
+def test_edge_hole_on_an_edge_the_notch_does_not_touch_is_fine(proj):
+    err, _ = run(proj, [mk_panel(1050, 875, notches=[mk_notch("bottom-left")],
+                                 holes=[mk_hole("edge2", dia=8, depth=30, frm=50)])])
+    assert err == []
+
+
+def test_banded_edge_without_a_band_model_is_an_error(proj):
+    """The CSV bands it; the PDF, which carries the band model, would print it as unbanded."""
+    p = mk_panel(all_edges=True)
+    p.edge_banding.band = None
+    err, _ = run(proj, [p])
+    assert any("name no band model" in e for e in err)
+    p.edge_banding.band = "eb-nope"
+    err, _ = run(proj, [p])
+    assert any("'eb-nope' not in library" in e for e in err)

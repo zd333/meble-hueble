@@ -22,7 +22,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
-from meble.model import Cabinet, EdgeBanding, Hole, Panel, load_project  # noqa: E402
+from meble.model import Cabinet, EdgeBanding, Hole, Notch, Panel, load_project  # noqa: E402
 
 GOLDEN = Path(__file__).parent / "golden"
 
@@ -55,7 +55,7 @@ def real_panels(proj):
 
 def mk_panel(width: float = 600, height: float = 400, *, id="p", name=None, edges=None,
              all_edges=False, holes=(), grain: Any = None, material: Any = "u604-18",
-             thickness: Any = 18, quantity=1, role="", element_type="panel") -> Panel:
+             thickness: Any = 18, quantity=1, role="", element_type="panel", notches=()) -> Panel:
     """A panel with just enough filled in to exercise one rule.
 
     `edges` is the plain {edge_no: band_id} mapping the YAML uses.
@@ -66,7 +66,7 @@ def mk_panel(width: float = 600, height: float = 400, *, id="p", name=None, edge
         grain=grain,
         edge_banding=EdgeBanding(all_edges=all_edges, band="eb-u604-1",
                                  edges=dict(edges or {}), glue_type="long"),
-        holes=list(holes),
+        holes=list(holes), notches=list(notches),
     )
 
 
@@ -74,6 +74,10 @@ def mk_hole(face="outer", *, dia=8, depth: Any = 13, type="single", frm=None, x=
             count=None, spacing=None, direction=None, src=None) -> Hole:
     return Hole(face=face, dia=dia, depth=depth, type=type, frm=frm, x=x, y=y,
                 count=count, spacing=spacing, direction=direction, src=src)
+
+
+def mk_notch(corner="top-left", width=17, height=102) -> Notch:
+    return Notch(corner=corner, width=width, height=height)
 
 
 def mk_cabinet(panels, *, id="cab", name="Cab", defaults=None, fittings=()) -> Cabinet:

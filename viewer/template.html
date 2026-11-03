@@ -151,12 +151,33 @@ const group = new THREE.Group();
 scene.add(group);
 const bbox = new THREE.Box3();
 
+// A notched panel is not a box: extrude its outline (world points on one face) through its thickness.
+// Built centred on the mesh like a BoxGeometry, so explode / isolate / labels treat both the same. The
+// axis swap can turn the triangles inside out, so these meshes render both sides.
+function notchedGeometry(o, c) {
+  const pts = o.outline.map(toThree), ext = toThree(o.extrude);
+  const a = ext.findIndex(v => Math.abs(v) > 1e-6);           // the thickness axis
+  const [p, q] = [0, 1, 2].filter(i => i !== a);
+  const shape = new THREE.Shape(pts.map(v => new THREE.Vector2(v[p] - c[p], v[q] - c[q])));
+  const g = new THREE.ExtrudeGeometry(shape, { depth: Math.abs(ext[a]), bevelEnabled: false });
+  const base = pts[0][a] - c[a] + Math.min(0, ext[a]);
+  const pos = g.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const v = [0, 0, 0];
+    v[p] = pos.getX(i); v[q] = pos.getY(i); v[a] = pos.getZ(i) + base;
+    pos.setXYZ(i, v[0], v[1], v[2]);
+  }
+  g.computeVertexNormals();
+  return g;
+}
+
 SCENE.objects.forEach((o, i) => {
   const s = toThree(o.size).map(Math.abs);
   const c = toThree(o.center);
-  const geom = new THREE.BoxGeometry(s[0], s[1], s[2]);
+  const geom = o.outline ? notchedGeometry(o, c) : new THREE.BoxGeometry(s[0], s[1], s[2]);
   const col = new THREE.Color(o.color ? o.color[0] : .8, o.color ? o.color[1] : .8, o.color ? o.color[2] : .8);
-  const mat = new THREE.MeshStandardMaterial({ color: col, roughness: 0.65, metalness: 0.0 });
+  const mat = new THREE.MeshStandardMaterial({ color: col, roughness: 0.65, metalness: 0.0,
+                                               side: o.outline ? THREE.DoubleSide : THREE.FrontSide });
   const mesh = new THREE.Mesh(geom, mat);
   mesh.position.set(c[0], c[1], c[2]);
   mesh.userData = { o, baseColor: col.clone(), home: mesh.position.clone(), size: s };

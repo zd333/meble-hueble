@@ -45,6 +45,10 @@ format. Source: user's description of the live editor + the two provided PRO100 
    into one `multi`; only use `single` for irregular positions.
 6. **Grooving** — out of scope for now; reserved (`grooving: []`). Adding it later must not reshape
    existing structures.
+7. **Notches** (corner cut-outs, `panel.notches`) — meble.pl cuts them, entered by hand. The PDF gives
+   the corner, the two edges that meet there, and the size along X and along Y. The editor's own field
+   names and order are **not recorded yet**: write them down here the first time one is entered, and
+   reorder the PDF's "Notches" table to match.
 
 ## Coordinate conventions (mirrored in our YAML)
 
@@ -129,7 +133,7 @@ are never rotated → emit `2` unless the panel says otherwise (`grain: height` 
 
 Notes:
 - The import carries **dimensions, quantity, grain, and the coarse per-axis banding marks** only. The
-  rich per-edge banding, the band model, drilling, and grooving are entered **manually** — that's what
+  rich per-edge banding, the band model, drilling, notches and grooving are entered **manually** — that's what
   the PDF spec sheet is for.
 - One CSV **per board** (the editor groups panels under a board model).
 - Example files: `example.csv` (header + 2 rows) and `meblepl_przykladowy_rozkroj.csv` (a real list).

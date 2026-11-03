@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import math
 
-from conftest import pdf_text
+from conftest import mk_cabinet, mk_notch, mk_panel, pdf_text
 
 from meble.model import cabinets_for_scope
 from meble.pdf_export import EDGE_NAMES, export_pdf
@@ -109,3 +109,33 @@ def test_scene_rotation_rejects_non_quarter_turns(proj):
     import pytest
     with pytest.raises(ValueError):
         build_scene(proj, [_one_side_cabinet(45)])
+
+
+def test_pdf_lists_notches_only_where_there_are_some(proj, tmp_path):
+    """Notches are typed in by hand, so the numbers must be on the sheet. Panels without one get no
+    section at all, which is also what keeps every existing golden unchanged."""
+    cab = mk_cabinet([mk_panel(1050, 875, id="shelf", notches=[mk_notch("bottom-left", 17, 102)]),
+                      mk_panel(600, 400, id="plain")])
+    text = pdf_text(export_pdf(proj, [cab], tmp_path / "n.pdf", title="t"))
+    assert text.count("Notches") == 1
+    assert "bottom-left" in text and "3&4" in text.replace(" ", "") and "17 mm" in text and "102 mm" in text
+    assert "1 notch(es)" in text
+
+
+def test_scene_draws_a_notched_shelf_as_its_outline(proj):
+    """The stop shelves are the point of the entryway design; a full box would hide the notch.
+    Shelf frame: edge 1 = front (y 0), edge 4 = left, so top-left is the front-left corner."""
+    p = mk_panel(1050, 875, id="s", role="shelf", all_edges=True,
+                 notches=[mk_notch("top-left", 17, 102)])
+    p.placement = {"pos": [5, 0, 1862]}
+    scene = build_scene(proj, [mk_cabinet([p])])
+    (box,) = scene["objects"]
+    xy = [(x, y) for x, y, _ in box["outline"]]
+    # in order: corners walked round, the notch stepped around at the front-left
+    assert xy == [(5, 875), (1055, 875), (1055, 0), (22, 0), (22, 102), (5, 102)]
+    assert {z for _, _, z in box["outline"]} in ({1862}, {1880})
+    assert sorted(map(abs, box["extrude"])) == [0, 0, 18]
+    bands = {b["edge"]: b["length"] for b in scene["bands"]}
+    # the notch takes its end of both edges; edge 4 also loses 1 mm where it butts the covering band
+    assert bands[1] == 1050 - 17 and bands[4] == 875 - 102 - 1
+    assert "outline" not in build_scene(proj, [mk_cabinet([mk_panel(id="plain")])])["objects"][0]

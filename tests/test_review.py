@@ -78,9 +78,9 @@ def test_a_top_panel_inverts_the_cavity_face(proj):
     assert "wrong-face" in rules(proj, [on_inner])
 
 
-def test_gable_and_shelf_are_exempt_from_the_face_rule(proj):
+def test_gable_shelf_and_divider_are_exempt_from_the_face_rule(proj):
     """Both faces front a cavity, so 'outer' carries no meaning — flagging them is noise."""
-    for role in ("gable", "shelf"):
+    for role in ("gable", "shelf", "divider"):
         p = mk_panel(600, 400, role=role, edges={1: "eb-u604-1", 2: "eb-u604-1"},
                      holes=[mk_hole("outer", dia=5, depth=13, x=37, y=100)])
         assert "wrong-face" not in rules(proj, [p]), role
