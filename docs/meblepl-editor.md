@@ -23,6 +23,11 @@ format. Source: user's description of the live editor + the two provided PRO100 
    (width is always width). The cutting engine does not rotate them.
 3. **Quantity**.
 4. **Edge banding:**
+   - **Smallest part it will band: 59.6 × 199.6 mm** (short × long side, either orientation) — the editor
+     blocks the panel otherwise (seen 2026-11-03 on a 2400 × 50). `meble validate` enforces it.
+   - Not banding-related, a **non-blocking** cutting warning: for that 2400 × 50 strip the editor
+     recommended **100 × 2400**. The exact rule (ratio? fixed table?) is not known; narrow long strips
+     such as the 80 × 2428 entryway outer strips get it. It is advice about cut accuracy, not a refusal.
    - "Band all edges" checkbox. If off, choose edges by number: **1 = top, 2 = right, 3 = bottom,
      4 = left**.
    - "Use different edge bands" checkbox. If on, a band per edge; if off, one band for the panel.

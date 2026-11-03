@@ -52,7 +52,7 @@ P45. ew-wardrobe / Shelf 1880 (door stop) 1050×880 mm ×1 · 2 notch(es)   →
 P46. ew-wardrobe / Shelf 1355 (door stop) 672×880 mm ×1 · 1 notch(es)    →
 P47. ew-wardrobe / Shelf behind the coats 360×280 mm ×3                  →
 P48. ew-wardrobe / Shelf behind the vacuums 459×520 mm ×2                →
-P49. ew-wardrobe / Doorstep (glued to the floor) 200×40 mm ×1            →
+P49. ew-wardrobe / Doorstep (glued to the floor) 200×60 mm ×1            →
 P50. ew-wardrobe / Cleat 1880 left 775×60 mm ×1                          →
 P51. ew-wardrobe / Cleat 1880 right 775×60 mm ×1                         →
 P52. ew-wardrobe / Cleat 1355 right 775×60 mm ×1                         →
@@ -2392,8 +2392,12 @@ Drilling — surface
 
                                      1                                                                                       1
 
-   h 40                                                                               h 40
+
+
+   h 60                                                                               h 60
           4                                                         2                         4                                             2
+
+
 
                                      3                                                                                       3
 
@@ -2402,7 +2406,7 @@ Drilling — surface
 
 Size & material
      width                  height                     thickness                qty                  grain
-     200 mm                 40 mm                      18 mm                    1                    0 — any
+     200 mm                 60 mm                      18 mm                    1                    0 — any
      board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)

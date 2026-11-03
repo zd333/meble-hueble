@@ -215,9 +215,9 @@ panels:
 - id: doorstep
   name: "Doorstep (glued to the floor)"
   element_type: panel
-  role: spacer                # lies flat behind the doors' meeting corners; the lower doors overlap it 8
-  width: 200
-  height: 40
+  role: spacer                # lies flat behind the doors' meeting corners; the lower doors overlap it 8.
+  width: 200                  # 200 × 60 is meble.pl's smallest banded part (59.6 × 199.6); hang the R10
+  height: 60                  # at least 65 back from the doors so its head clears it
   grain: any
   edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
   placement: {pos: [430, 0, 0]}

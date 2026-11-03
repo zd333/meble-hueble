@@ -267,3 +267,14 @@ def test_banded_edge_without_a_band_model_is_an_error(proj):
     p.edge_banding.band = "eb-nope"
     err, _ = run(proj, [p])
     assert any("'eb-nope' not in library" in e for e in err)
+
+
+def test_banded_part_below_the_supplier_minimum_is_an_error(proj):
+    """meble.pl's editor blocks banding anything under 59.6 × 199.6, whichever way round."""
+    for w, h in ((200, 40), (40, 200), (190, 150)):       # short side, or long side, too small
+        err, _ = run(proj, [mk_panel(w, h, all_edges=True)])
+        assert any("smallest banded part" in e for e in err), (w, h)
+    err, _ = run(proj, [mk_panel(200, 60, all_edges=True)])
+    assert not any("smallest banded part" in e for e in err)
+    err, _ = run(proj, [mk_panel(200, 40)])                      # unbanded: the saw does not care
+    assert not any("smallest banded part" in e for e in err)

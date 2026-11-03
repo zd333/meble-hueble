@@ -10,6 +10,8 @@ from .model import CORNERS, Cabinet, Hole, Notch, Panel, Project
 EDGE_DIA = {4, 8}
 SURFACE_DIA = {3, 5, 8, 10, 15, 20, 35}
 DRILLING_MODES = {"stamped", "manual", "none"}
+#: meble.pl refuses to band a smaller part (blocking editor error, seen 2026-11-03), short × long side.
+MIN_BANDED = (59.6, 199.6)
 
 
 def _edge_length(panel: Panel, edge: int) -> float:
@@ -96,6 +98,10 @@ def validate_cabinet(proj: Project, cab: Cabinet, err, warn) -> None:
         w = f"cabinet '{cab.id}' panel '{p.id}'"
         if not (p.width > 0 and p.height > 0):
             err(f"{w}: width/height must be > 0")
+        if p.edge_banding.banded_edges() and any(
+                d < m for d, m in zip(sorted((p.width, p.height)), MIN_BANDED)):
+            err(f"{w}: {p.width}×{p.height} is banded but smaller than meble.pl's smallest banded part "
+                f"{MIN_BANDED[0]}×{MIN_BANDED[1]} — the editor refuses it")
         if p.material and not proj.board(p.material):
             err(f"{w}: material '{p.material}' not in library/materials.yaml")
         if not p.material:
