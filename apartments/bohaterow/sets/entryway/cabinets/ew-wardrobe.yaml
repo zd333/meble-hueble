@@ -1,0 +1,335 @@
+# ===================================================================================================
+# ew-wardrobe — entryway niche wardrobe, 1060 × 885 × 2530 (plan page draft 20, agreed 2026-11-02)
+#
+# Board: Egger U750 ST9 Szary Taupe (u750-18), as in the living room. Every edge banded: 1 mm inside,
+# 2 mm on what you see and touch (doors, outer strips, top strip).
+# /!\ Width and depth are still APPROXIMATE (height 2530 is measured). Re-derive every number after
+#     measuring width front/back at each shelf height and depth left/right — ALL holes here are
+#     hand-written (`drilling: manual`) and do not follow a resize.
+# NO CARCASS. Frame: origin = the niche's front-left corner on the floor; x along the niche (0 = left
+# wall, 1060 = right wall), y into the niche (0 = hall wall plane = back face of the doors, 885 = back
+# wall), z up. Doors and outer strips sit in front of the wall plane, at y −18..0.
+#
+# - L-frame per side: outer strip 80 on the hall wall + hinge strip 18 × 100 inside the niche, 5 rafix
+#   each. Housing on the WALL side of the hinge strip (tightened on the floor before the L goes up),
+#   bolt in the back of the outer strip, so nothing shows. 2 mm off the floor and off the niche wall.
+#   The top strip stands on the outer strips and is GLUED (MS polymer) to them and to the hall wall:
+#   no dowels — with 3 mm to the ceiling there is no room to lower it onto them.
+# - Boards stop 5 short of the side walls and 5 short of the back wall (y 880). Shelves lie on single
+#   18 × 60 wall cleats (13 mm bearing) and are rafixed to the partition / short board; the 1355 shelf's
+#   partition end rests on 3 Ø5 pins (its rafix to the short board fixes it). The 1355 and
+#   1880 shelves run to the doors' back face, NOTCHED around the hinge strips: their front edges are
+#   the door stops. The 1880 shelf sits on the partition's top edge (rafix housings in the partition).
+# - Doors inset, flush with the outer strips, split in the middle of the 1880 shelf edge. INSET hinges:
+#   cup 22.5 from the hinge edge, plate holes 37 behind the door's back face (= the hinge strip's
+#   front edge), ±16 around the cup. A flat doorstep on the floor stops the bottoms of the lower doors.
+# - Hinge strips and cleats have their own roles (`hinge-strip`, `cleat`): they are not carcass sides,
+#   and the side-panel rules (full overlay, mirror banding) do not apply to them. Frames via `rot`:
+#   [90, 0, -90] = outer face toward the left wall, [90, 0, 90] = toward the right wall.
+#
+# ASSEMBLY ORDER (each rafix closes along its bolt: the panel with the housing must move ONTO the bolt):
+#   1. Cleats on the walls, level.   2. Coat shelves onto their cleats.
+#   3. Partition stood ~15 right of its place, pushed LEFT onto the coat shelves; angle bracket at its
+#      top to the back wall, so it cannot move front-to-back.
+#   4. Vacuum-lane back shelves pushed LEFT onto the partition's bolts.   5. Short board pushed LEFT
+#      onto those shelves.   6. Pins in; shelf 1355 dropped onto them, the short board's housings and
+#      the right cleat.   7. Shelf 1880 dropped onto the partition top and both cleats.
+#   8. Each L-frame, rafix tightened on the floor, slid in from the hall THROUGH the shelf notches;
+#      shim plumb 2 off the wall, screw through the hinge strip ≥50 from the plaster corner.
+#   9. Top strip glued.   10. Doors; set the shelf/partition front edges at y 0 — they are the stops.
+#   11. Doorstep glued last, against the closed lower doors.
+# ===================================================================================================
+
+id: ew-wardrobe
+name: "Entryway — niche wardrobe"
+kind: custom
+category: wardrobe
+construction: rafix
+dimensions: {width: 1060, height: 2530, depth: 885}
+position: {x: 0, y: 0, z: 0, rotation: 0}
+defaults: {material: u750-18, edgeband: eb-u750-1}
+back: {}
+plinth: {}
+
+panels:
+
+# ---- L-frames + top strip ---------------------------------------------------------------------------
+
+- id: outer-l
+  name: "Outer strip left"
+  element_type: panel
+  role: front                 # on the hall wall; outer = the face you see, inner = against the wall
+  width: 80
+  height: 2428
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 71, y: 100, dia: 5, depth: 12, type: multi, count: 5, spacing: 557, direction: y, src: rf-l}
+  placement: {pos: [-60, -18, 2]}
+
+- id: outer-r
+  name: "Outer strip right"
+  element_type: panel
+  role: front
+  width: 80
+  height: 2428
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 9, y: 100, dia: 5, depth: 12, type: multi, count: 5, spacing: 557, direction: y, src: rf-r}
+  placement: {pos: [1040, -18, 2]}
+
+- id: top-strip
+  name: "Top strip"
+  element_type: panel
+  role: front                 # 3 under the ceiling; glued, no dowels (no room to lower it onto them)
+  width: 1180
+  height: 97
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  placement: {pos: [-60, -18, 2430]}
+
+- id: hinge-l
+  name: "Hinge strip left"
+  element_type: panel
+  role: hinge-strip           # x 0 = rear end (y 100), x 100 = front edge (y 0, edge 2); outer = wall side
+  width: 100
+  height: 2428
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  holes:
+  - {face: outer, x: 90.5, y: 100, dia: 20, depth: 14, type: multi, count: 5, spacing: 557, direction: y, src: rf-l}
+  - {face: inner, x: 63, y: 92, dia: 5, depth: 13, type: multi, count: 4, spacing: 553, direction: y, src: hg-low-l}
+  - {face: inner, x: 63, y: 124, dia: 5, depth: 13, type: multi, count: 4, spacing: 553, direction: y, src: hg-low-l}
+  - {face: inner, x: 63, y: 1955, dia: 5, depth: 13, type: multi, count: 2, spacing: 354, direction: y, src: hg-up-l}
+  - {face: inner, x: 63, y: 1987, dia: 5, depth: 13, type: multi, count: 2, spacing: 354, direction: y, src: hg-up-l}
+  placement: {pos: [2, 0, 2], rot: [90, 0, -90]}
+
+- id: hinge-r
+  name: "Hinge strip right"
+  element_type: panel
+  role: hinge-strip           # x 0 = front edge (y 0, edge 4), x 100 = rear end; outer = wall side
+  width: 100
+  height: 2428
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 100, dia: 20, depth: 14, type: multi, count: 5, spacing: 557, direction: y, src: rf-r}
+  - {face: inner, x: 37, y: 92, dia: 5, depth: 13, type: multi, count: 4, spacing: 553, direction: y, src: hg-low-r}
+  - {face: inner, x: 37, y: 124, dia: 5, depth: 13, type: multi, count: 4, spacing: 553, direction: y, src: hg-low-r}
+  - {face: inner, x: 37, y: 1955, dia: 5, depth: 13, type: multi, count: 2, spacing: 354, direction: y, src: hg-up-r}
+  - {face: inner, x: 37, y: 1987, dia: 5, depth: 13, type: multi, count: 2, spacing: 354, direction: y, src: hg-up-r}
+  placement: {pos: [1040, 0, 2], rot: [90, 0, 90]}
+
+# ---- boards standing on the floor (x = depth from the front, outer = the +x / right face) -------------
+
+- id: partition
+  name: "Partition"
+  element_type: panel
+  role: gable                 # coat lane x 0..365 | vacuum lane x 383..1060; front edge = left door stop
+  width: 880
+  height: 1862
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  holes:
+  - {face: outer, x: 50, y: 1852.5, dia: 20, depth: 14, type: multi, count: 3, spacing: 390, direction: x, src: rf-1880}
+  - {face: outer, x: 50, y: 1334, dia: 5, depth: 13, type: multi, count: 3, spacing: 375, direction: x, src: pins-1355}
+  - {face: outer, x: 410, y: 441, dia: 5, depth: 12, type: multi, count: 2, spacing: 450, direction: y, src: rf-vac-part}
+  - {face: outer, x: 800, y: 441, dia: 5, depth: 12, type: multi, count: 2, spacing: 450, direction: y, src: rf-vac-part}
+  - {face: inner, x: 650, y: 891, dia: 5, depth: 12, type: multi, count: 3, spacing: 320, direction: y, src: rf-coats}
+  - {face: inner, x: 830, y: 891, dia: 5, depth: 12, type: multi, count: 3, spacing: 320, direction: y, src: rf-coats}
+  placement: {pos: [365, 0, 0], rot: [90, 0, 90]}
+
+- id: short-board
+  name: "Short board behind the H12"
+  element_type: panel
+  role: gable                 # x 0 = y 360; inner = the face toward the shelves behind the vacuums
+  width: 520
+  height: 1337
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  holes:
+  - {face: inner, x: 90, y: 1327.5, dia: 20, depth: 14, type: multi, count: 2, spacing: 350, direction: x, src: rf-1355-short}
+  - {face: inner, x: 50, y: 441, dia: 5, depth: 12, type: multi, count: 2, spacing: 450, direction: y, src: rf-vac-short}
+  - {face: inner, x: 440, y: 441, dia: 5, depth: 12, type: multi, count: 2, spacing: 450, direction: y, src: rf-vac-short}
+  placement: {pos: [842, 360, 0], rot: [90, 0, 90]}
+
+# ---- fixed shelves: edge 1 = front, edge 4 = left, y from the BACK edge, outer = the underside ------
+
+- id: shelf-1880
+  name: "Shelf 1880 (door stop)"
+  element_type: panel
+  role: divider               # fixed: rafixed to the partition (role shelf = loose, on pins)
+  width: 1050
+  height: 880
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  notches:
+  - {corner: top-left, width: 17, height: 102}     # around the left hinge strip, 2 mm clearance
+  - {corner: top-right, width: 17, height: 102}
+  holes:
+  - {face: outer, x: 369, y: 50, dia: 5, depth: 12, type: multi, count: 3, spacing: 390, direction: y, src: rf-1880}
+  placement: {pos: [5, 0, 1862]}
+
+- id: shelf-1355
+  name: "Shelf 1355 (door stop)"
+  element_type: panel
+  role: divider
+  width: 672
+  height: 880
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  notches:
+  - {corner: top-right, width: 17, height: 102}
+  holes:
+  - {face: outer, x: 468, y: 80, dia: 5, depth: 12, type: multi, count: 2, spacing: 350, direction: y, src: rf-1355-short}
+  placement: {pos: [383, 0, 1337]}
+
+- id: shelf-coats
+  name: "Shelf behind the coats"
+  element_type: panel
+  role: divider
+  width: 360
+  height: 280
+  quantity: 3                 # tops at 900 · 1220 · 1540
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  holes:
+  - {face: outer, x: 350.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 180, direction: y, src: rf-coats}
+  placement: {pos: [5, 600, 882], step: [0, 0, 320]}
+
+- id: shelf-vac
+  name: "Shelf behind the vacuums"
+  element_type: panel
+  role: divider
+  width: 459
+  height: 520
+  quantity: 2                 # tops at 450 · 900, between the partition and the short board
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  holes:
+  - {face: outer, x: 9.5, y: 80, dia: 20, depth: 14, type: multi, count: 2, spacing: 390, direction: y, src: rf-vac-part}
+  - {face: outer, x: 449.5, y: 80, dia: 20, depth: 14, type: multi, count: 2, spacing: 390, direction: y, src: rf-vac-short}
+  placement: {pos: [383, 360, 432], step: [0, 0, 450]}
+
+- id: doorstep
+  name: "Doorstep (glued to the floor)"
+  element_type: panel
+  role: spacer                # lies flat behind the doors' meeting corners; the lower doors overlap it 8
+  width: 200
+  height: 40
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  placement: {pos: [430, 0, 0]}
+
+# ---- wall cleats, 18 × 60, screwed to the wall on site (no factory holes) -------------------------------
+
+- id: cleat-1880-l
+  name: "Cleat 1880 left"
+  element_type: panel
+  role: cleat
+  width: 775
+  height: 60
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  placement: {pos: [0, 105, 1802], rot: [90, 0, -90]}
+
+- id: cleat-1880-r
+  name: "Cleat 1880 right"
+  element_type: panel
+  role: cleat
+  width: 775
+  height: 60
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  placement: {pos: [1042, 105, 1802], rot: [90, 0, 90]}
+
+- id: cleat-1355-r
+  name: "Cleat 1355 right"
+  element_type: panel
+  role: cleat
+  width: 775
+  height: 60
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  placement: {pos: [1042, 105, 1277], rot: [90, 0, 90]}
+
+- id: cleat-coats
+  name: "Cleat behind the coats"
+  element_type: panel
+  role: cleat
+  width: 280
+  height: 60
+  quantity: 3
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-1, glue_type: long}
+  placement: {pos: [0, 600, 822], rot: [90, 0, -90], step: [0, 0, 320]}
+
+# ---- doors: inset, 3 mm gaps (2 in the middle), 10 above the floor; cups on the back (inner) face -----
+
+- id: door-low-l
+  name: "Door lower left"
+  element_type: panel
+  role: front
+  width: 506
+  height: 1860
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 4, spacing: 553, direction: y, src: hg-low-l}
+  placement: {pos: [23, -18, 10]}
+
+- id: door-low-r
+  name: "Door lower right"
+  element_type: panel
+  role: front
+  width: 506
+  height: 1860
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 483.5, y: 100, dia: 35, depth: 12, type: multi, count: 4, spacing: 553, direction: y, src: hg-low-r}
+  placement: {pos: [531, -18, 10]}
+
+- id: door-up-l
+  name: "Door upper left"
+  element_type: panel
+  role: front
+  width: 506
+  height: 554
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 354, direction: y, src: hg-up-l}
+  placement: {pos: [23, -18, 1873]}
+
+- id: door-up-r
+  name: "Door upper right"
+  element_type: panel
+  role: front
+  width: 506
+  height: 554
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 483.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 354, direction: y, src: hg-up-r}
+  placement: {pos: [531, -18, 1873]}
+
+assembly:
+  fittings:
+  # rafix: `through` = the panel with the Ø20 housing, `into` = the panel with the Ø5 bolt
+  - {id: rf-l, hardware: rafix-20, drilling: manual, through: hinge-l, into: outer-l, at: [100, 657, 1214, 1771, 2328]}
+  - {id: rf-r, hardware: rafix-20, drilling: manual, through: hinge-r, into: outer-r, at: [100, 657, 1214, 1771, 2328]}
+  - {id: rf-1880, hardware: rafix-20, drilling: manual, through: partition, into: shelf-1880, at: [50, 440, 830]}
+  - {id: pins-1355, hardware: shelf-pin-5, drilling: manual, at: [1337], quantity: 3, shelves: [shelf-1355]}   # its partition end
+  - {id: rf-1355-short, hardware: rafix-20, drilling: manual, through: short-board, into: shelf-1355, at: [90, 440]}
+  - {id: rf-coats, hardware: rafix-20, drilling: manual, through: shelf-coats, into: partition, at: [50, 230], quantity: 6}
+  - {id: rf-vac-part, hardware: rafix-20, drilling: manual, through: shelf-vac, into: partition, at: [80, 470], quantity: 4}
+  - {id: rf-vac-short, hardware: rafix-20, drilling: manual, through: shelf-vac, into: short-board, at: [80, 470], quantity: 4}
+  # inset hinges, cup heights from the floor
+  - {id: hg-low-l, hardware: hinge-clip-110, variant: inset, drilling: manual, door: door-low-l, side: hinge-l, at: [110, 663, 1216, 1769]}
+  - {id: hg-low-r, hardware: hinge-clip-110, variant: inset, drilling: manual, door: door-low-r, side: hinge-r, at: [110, 663, 1216, 1769]}
+  - {id: hg-up-l, hardware: hinge-clip-110, variant: inset, drilling: manual, door: door-up-l, side: hinge-l, at: [1973, 2327]}
+  - {id: hg-up-r, hardware: hinge-clip-110, variant: inset, drilling: manual, door: door-up-r, side: hinge-r, at: [1973, 2327]}
+
+parts: []

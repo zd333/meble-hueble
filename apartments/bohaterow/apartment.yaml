@@ -1,4 +1,4 @@
 id: bohaterow
 name: "Bohaterów apartment"
-rooms: [kitchen, bathroom, living, bedroom1, bedroom2]
-sets: [kitchen, bathroom, living]
+rooms: [kitchen, bathroom, living, entryway, bedroom1, bedroom2]
+sets: [kitchen, bathroom, living, entryway]
