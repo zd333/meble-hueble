@@ -45,7 +45,7 @@ def test_pdf_page_count_matches_the_csv_row_count(proj, real_panels, tmp_path):
     """One page per ordered panel — the PDF and the CSV must describe the same order."""
     cabs = cabinets_for_scope(proj, apartment="bohaterow")
     text = pdf_text(export_pdf(proj, cabs, tmp_path / "b.pdf", title="t"))
-    assert text.count("panel sheet P") == len(real_panels) == 128
+    assert text.count("panel sheet P") == len(real_panels) == 151
 
 
 def test_pdf_handles_a_single_cabinet_scope(proj, tmp_path):

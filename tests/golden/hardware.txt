@@ -1,18 +1,23 @@
-confirmat-7x50   -       164 piece  lr-bench-1=18 lr-bench-2=12 lr-line=18 lr-tower=12 lr-vitrine=19 open-900=12 sink-vanity=24 wc-column=21 wm-wardrobe=28
+angle-bracket-40 -         6 piece  ew-base=2 ew-shelves=2 ew-upper=2
+confirmat-7x50   -       176 piece  ew-base=3 ew-shelves=3 ew-upper=6 lr-bench-1=18 lr-bench-2=12 lr-line=18 lr-tower=12 lr-vitrine=19 open-900=12 sink-vanity=24 wc-column=21 wm-wardrobe=28
+dowel-8x30       -         4 piece  ew-upper=4
 hinge-alu-frame  full     12 piece  lr-tower=4 lr-vitrine=8
-hinge-clip-110   full     27 piece  lr-bench-1=4 lr-bench-2=4 lr-line=8 lr-vitrine=4 wc-column=3 wm-wardrobe=4
-hinge-clip-110   half      7 piece  lr-line=4 wc-column=3
-hinge-clip-110   inset    12 piece  ew-wardrobe=12
+hinge-clip-110   full     29 piece  ew-base=2 lr-bench-1=4 lr-bench-2=4 lr-line=8 lr-vitrine=4 wc-column=3 wm-wardrobe=4
+hinge-clip-110   half      9 piece  ew-base=2 lr-line=4 wc-column=3
+hinge-clip-110   inset    18 piece  ew-upper=6 ew-wardrobe=12
+leveler-glide    -         6 piece  ew-base=6
 plinth-corner    -         3 piece  lr-plinth=3
 plinth-leg       -        28 piece  lr-plinth=28
-rafix-20         -       113 piece  ew-wardrobe=29 lr-bench-2=4 lr-line=28 lr-tower=12 lr-vitrine=22 sink-vanity=10 wc-column=8
-shelf-pin-5      -        27 piece  ew-wardrobe=3 lr-tower=4 wc-column=16 wm-wardrobe=4
+rafix-20         -       135 piece  ew-base=12 ew-shelves=4 ew-upper=6 ew-wardrobe=29 lr-bench-2=4 lr-line=28 lr-tower=12 lr-vitrine=22 sink-vanity=10 wc-column=8
+shelf-pin-5      -        43 piece  ew-base=16 ew-wardrobe=3 lr-tower=4 wc-column=16 wm-wardrobe=4
 slide-bb-350     -         2 pair   sink-vanity=2
 tip-on           -        17 piece  lr-line=9 lr-tower=2 lr-vitrine=6
-collared-pins    -         8
+collared-pins    -        16
 
 -- sourcing (centrum.meble.pl) --
+angle-bracket-40 -      NO SUPPLIER RECORDED
 confirmat-7x50   -      NO SUPPLIER RECORDED
+dowel-8x30       -      NO SUPPLIER RECORDED
 hinge-alu-frame  full   NO SUPPLIER RECORDED
 hinge-alu-frame  full   NO SUPPLIER RECORDED
 hinge-clip-110   full   hinge    71T3550       5.71 2026-08-18
@@ -21,6 +26,7 @@ hinge-clip-110   half   hinge    71T3650       7.37 2026-08-18
 hinge-clip-110   half   plate    173L6100      0.76 2026-08-18
 hinge-clip-110   inset  plate    173L6100      0.76 2026-08-18
 hinge-clip-110   inset  NO SUPPLIER RECORDED
+leveler-glide    -      NO SUPPLIER RECORDED
 plinth-corner    -      NO SUPPLIER RECORDED
 plinth-leg       -      NO SUPPLIER RECORDED
 plinth-leg       -      NO SUPPLIER RECORDED

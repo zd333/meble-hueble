@@ -1,0 +1,175 @@
+# ===================================================================================================
+# ew-upper — upper box on the corner base (niche, inner door, router)
+#
+# Entryway hall wall, concept 6c (plan page https://claude.ai/artifact/JzMjC12Y9eRcLFYZqE7ifN).
+# Board: Egger U750 ST9 Szary Taupe (u750-18), as the niche wardrobe. 2 mm band on what you see and touch.
+# Hall ceiling 2530 (measured). Two things are ASSUMED: the bedroom door trim is at most 70 wide (the base
+#     ends 70 before the opening), and nothing on the electric box door sticks out more than ~40 (the inner
+#     door stands 60 off the wall). Stamped confirmats follow a resize (`meble fit --cabinet <id>`); every
+#     other hole is hand-written and does NOT — re-derive them if a size moves.
+# Joints: confirmat where the head is hidden (wall, neighbouring cabinet); rafix-20 on show faces.
+# Set frame = ew-wardrobe's: x = 2550 − distance from the top wall, y = −(distance from the left wall).
+# Stands on ew-base's full-width top (z 950..2450), its sides right over ew-base's side-l and gable,
+# 2 dowels each (dw-base). Full 380 deep, flush with ew-base's top and doors. No bottom of its own: the stop
+# rail closes the frame at the back, and it is screwed to both walls on site.
+# 950..1942 open niche; its back wall = the INNER DOOR, 80 off the wall in front of the electric box: 4 INSET
+# hinges on side-l (plates 37 behind the door's back face = 40 from side-l's back edge — check the
+# chosen hinge's drawing, the wall is close), stop rail, barrel bolt at the free edge (on site). Keys at 1250,
+# bag + hat at 1700 (on site). 1942..1960 niche ceiling = router floor (32 over the box door top 1910);
+# 1960..2450 router bay behind the INSET router door (the ceiling and top front edges stop it).
+# side-r is a show face: rafix there; ew-shelves' rafix bolts come into its OUTER face at 1441 and 1951
+# (untagged holes, bought in ew-shelves).
+# ===================================================================================================
+
+id: ew-upper
+name: "Entryway — upper box (niche + router)"
+kind: custom
+category: wall
+construction: confirmat
+dimensions: {width: 560, height: 1500, depth: 380}
+position: {x: 2550, y: -1160, z: 950, rotation: 180}
+defaults: {material: u750-18, edgeband: eb-u750-1}
+back: {type: surface}
+plinth: {}
+
+panels:
+
+- id: side-l
+  name: "Left side (top-wall end)"
+  element_type: panel
+  role: side-left
+  width: 377
+  height: 1500
+  grain: any
+  edge_banding: {edges: {2: eb-u750-2}, glue_type: long}
+  holes:
+  - {face: outer, x: 50, y: 1001, dia: 8, depth: through, type: multi, count: 3, spacing: 129.5, direction: x, src: cf-ceil-l}
+  - {face: inner, x: 68.0, y: 25, dia: 5, depth: 12, type: single, src: rf-rail-l}
+  - {face: edge3, from: 80, dia: 8, depth: 15, type: multi, count: 2, spacing: 199, src: dw-base}
+  - {face: inner, x: 40, y: 87, dia: 5, depth: 13, type: multi, count: 4, spacing: 262, direction: y, src: hg-inner}
+  - {face: inner, x: 40, y: 119, dia: 5, depth: 13, type: multi, count: 4, spacing: 262, direction: y, src: hg-inner}
+  - face: outer
+    x: 50
+    y: 1491.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 129.5
+    direction: x
+    src: cf-top-l
+  placement: {pos: [0, 0, 0]}
+
+- id: side-r
+  name: "Right side"
+  element_type: panel
+  role: side-right
+  width: 377
+  height: 1500
+  grain: any
+  edge_banding: {edges: {4: eb-u750-2}, glue_type: long}
+  holes:
+  - {face: inner, x: 68, y: 1491, dia: 5, depth: 12, type: multi, count: 2, spacing: 259, direction: x, src: rf-top}
+  - {face: inner, x: 68, y: 1001, dia: 5, depth: 12, type: multi, count: 2, spacing: 200, direction: x, src: rf-ceil}
+  - {face: inner, x: 309.0, y: 25, dia: 5, depth: 12, type: single, src: rf-rail-r}
+  - {face: edge3, from: 98, dia: 8, depth: 15, type: multi, count: 2, spacing: 199, src: dw-base}
+  - {face: inner, x: 55, y: 1076, dia: 5, depth: 13, type: multi, count: 2, spacing: 308, direction: y, src: hg-door}
+  - {face: inner, x: 55, y: 1108, dia: 5, depth: 13, type: multi, count: 2, spacing: 308, direction: y, src: hg-door}
+  - {face: outer, x: 180, y: 491, dia: 5, depth: 12, type: multi, count: 2, spacing: 150, direction: x}   # ew-shelves rafix, shelf at 1432..1450
+  - {face: outer, x: 180, y: 1001, dia: 5, depth: 12, type: multi, count: 2, spacing: 150, direction: x}   # ew-shelves rafix, shelf at 1942..1960
+  placement: {pos: [542, 0, 0]}
+
+- id: ceiling
+  name: "Niche ceiling / router floor"
+  element_type: panel
+  role: divider   # underside 1942: 32 over the box door top (1910); its front edge stops the router door
+  width: 524
+  height: 359
+  grain: any
+  edge_banding: {edges: {1: eb-u750-2}, glue_type: long}
+  holes:
+  - {face: edge4, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 129.5, src: cf-ceil-l}
+  - {face: inner, x: 514.5, y: 109, dia: 20, depth: 14, type: multi, count: 2, spacing: 200, direction: y, src: rf-ceil}
+  - {face: outer, x: 450, y: 38.5, dia: 35, depth: through, type: single}   # router cable + air in, from behind the inner door
+  placement: {pos: [18, 18, 992]}
+
+- id: top
+  name: "Top"
+  element_type: panel
+  role: top   # between the sides, 18 behind their front: stops the router door
+  width: 524
+  height: 359
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 514.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 259, direction: y, src: rf-top}
+  - {face: outer, x: 150, y: 38.5, dia: 35, depth: through, type: multi, count: 2, spacing: 224, direction: x}
+  - face: edge4
+    from: 50
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 129.5
+    src: cf-top-l
+  placement: {pos: [18, 18, 1482]}
+
+- id: back
+  name: "Back over the router bay (HDF)"
+  element_type: panel
+  role: back   # the niche has no back: the inner door and the box are there
+  material: hdf-3
+  width: 560
+  height: 508
+  thickness: 3
+  grain: any
+  placement: {pos: [0, 377, 992]}
+
+- id: stop-rail
+  name: "Stop rail behind the inner door"
+  element_type: panel
+  role: rail   # stands on the base top; top 1000 < box door 1030; hidden, so unbanded; rafix both ends (too short for a confirmat)
+  width: 524
+  height: 50
+  grain: any
+  holes:
+  - {face: outer, x: 9.5, y: 25, dia: 20, depth: 14, type: single, src: rf-rail-l}
+  - {face: outer, x: 514.5, y: 25, dia: 20, depth: 14, type: single, src: rf-rail-r}
+  placement: {pos: [18, 300, 0], rot: [90, 0, 0]}
+
+- id: inner-door
+  name: "Inner door (hooks, box behind it)"
+  element_type: panel
+  role: front   # 953..1939, hinged on the corner side; keys at 1250, bag + hat at 1700
+  width: 520
+  height: 986
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 22.5, y: 100, dia: 35, depth: 12, type: multi, count: 4, spacing: 262, direction: y, src: hg-inner}
+  placement: {pos: [20, 282, 3]}
+
+- id: door
+  name: "Router bay door"
+  element_type: panel
+  role: front   # 1942..2450, INSET flush with the sides, hinged on the bedroom side
+  width: 520
+  height: 508
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 497.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 308, direction: y, src: hg-door}
+  placement: {pos: [20, 0, 992]}
+
+assembly:
+  fittings:
+  - {id: cf-top-l, hardware: confirmat-7x50, through: side-l, into: top, seam: {through_edge: 1, into_edge: 4}, at: [50, 179.5, 309]}
+  - {id: cf-ceil-l, hardware: confirmat-7x50, drilling: manual, through: side-l, into: ceiling, at: [50, 179.5, 309]}
+  - {id: rf-top, hardware: rafix-20, drilling: manual, through: top, into: side-r, at: [68, 327]}
+  - {id: rf-ceil, hardware: rafix-20, drilling: manual, through: ceiling, into: side-r, at: [68, 268]}
+  - {id: rf-rail-l, hardware: rafix-20, drilling: manual, through: stop-rail, into: side-l, at: [25]}
+  - {id: rf-rail-r, hardware: rafix-20, drilling: manual, through: stop-rail, into: side-r, at: [25]}
+  - {id: dw-base, hardware: dowel-8x30, drilling: manual, quantity: 4, through: side-l, into: side-r}   # into ew-base's top, over its side-l and gable
+  - {id: wall-br, hardware: angle-bracket-40, drilling: none, quantity: 2}   # router bay, to the right wall; + screws through side-l into the end wall (router bay, behind the inner door)
+  - {id: hg-inner, hardware: hinge-clip-110, variant: inset, drilling: manual, door: inner-door, side: side-l, at: [103, 365, 627, 889]}
+  - {id: hg-door, hardware: hinge-clip-110, variant: inset, drilling: manual, door: door, side: side-r, at: [1092, 1400]}

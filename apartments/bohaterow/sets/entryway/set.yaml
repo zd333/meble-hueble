@@ -1,5 +1,6 @@
 id: entryway
 name: "Entryway"
 room: entryway
-cabinets: [ew-wardrobe]
-layout: {}   # the wardrobe fills the niche; positions live on the cabinet, in the frame described in its header
+cabinets: [ew-wardrobe, ew-base, ew-upper, ew-shelves]
+layout: {}   # one frame for the whole set: ew-wardrobe's (origin = the niche's front-left floor corner; x along
+             # the niche = 2550 − distance from the hall's top wall, y = −distance from the hall's left wall)

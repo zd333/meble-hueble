@@ -1,0 +1,100 @@
+# ===================================================================================================
+# ew-shelves — open shelves over the low cabinet
+#
+# Entryway hall wall, concept 6c (plan page https://claude.ai/artifact/JzMjC12Y9eRcLFYZqE7ifN).
+# Board: Egger U750 ST9 Szary Taupe (u750-18), as the niche wardrobe. 2 mm band on what you see and touch.
+# Hall ceiling 2530 (measured). Two things are ASSUMED: the bedroom door trim is at most 70 wide (the base
+#     ends 70 before the opening), and nothing on the electric box door sticks out more than ~40 (the inner
+#     door stands 60 off the wall). Stamped confirmats follow a resize (`meble fit --cabinet <id>`); every
+#     other hole is hand-written and does NOT — re-derive them if a size moves.
+# Joints: confirmat where the head is hidden (wall, neighbouring cabinet); rafix-20 on show faces.
+# Set frame = ew-wardrobe's: x = 2550 − distance from the top wall, y = −(distance from the left wall).
+# Two open shelves over ew-base-low, 560..1080 along the right wall: 1432..1450 (daily hats, gloves) and
+# 1942..1960, in line with the router door's bottom edge (seasonal). Each: rafix-20 into ew-upper's side-r
+# at the column end (housings underneath, bolts in that side's outer face), and a wall cleat 520 × 60
+# under the back edge (screwed to the wall on site): the 1960 shelf by 3 confirmats near the wall (above eye
+# level), the 1450 one by 2 small angle brackets underneath, so no screw head shows on it.
+# ===================================================================================================
+
+id: ew-shelves
+name: "Entryway — open shelves 1450 + 1960"
+kind: custom
+category: wall
+construction: confirmat
+dimensions: {width: 520, height: 588, depth: 250}
+position: {x: 1990, y: -1290, z: 1372, rotation: 180}
+defaults: {material: u750-18, edgeband: eb-u750-1}
+back: {}
+plinth: {}
+
+panels:
+
+- id: cleat-1450
+  name: "Wall cleat under shelf 1450"
+  element_type: panel
+  role: cleat   # against the wall; wall screws on site (keep them off the shelf fixings); 4 banded only for the CSV
+  width: 520
+  height: 60
+  grain: any
+  edge_banding: {edges: {2: eb-u750-1, 3: eb-u750-1, 4: eb-u750-1}, glue_type: long}
+  placement: {pos: [0, 232, 0], rot: [90, 0, 0]}
+
+- id: shelf-1450
+  name: "Open shelf 1450"
+  element_type: panel
+  role: wall-shelf   # flat: edge 3 = front, 2 = free end, 4 = column end (banded: the CSV cannot band 2 alone)
+  width: 520
+  height: 250
+  grain: any
+  edge_banding: {edges: {3: eb-u750-2, 2: eb-u750-2, 4: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 150, direction: y, src: rf-1450}
+  placement: {pos: [0, 0, 60]}
+
+- id: cleat-1960
+  name: "Wall cleat under shelf 1960"
+  element_type: panel
+  role: cleat   # against the wall; wall screws on site (keep them off the shelf fixings); 4 banded only for the CSV
+  width: 520
+  height: 60
+  grain: any
+  edge_banding: {edges: {2: eb-u750-1, 3: eb-u750-1, 4: eb-u750-1}, glue_type: long}
+  placement: {pos: [0, 232, 510], rot: [90, 0, 0]}
+  holes:
+  - face: edge1
+    from: 60
+    dia: 4
+    depth: 35
+    type: multi
+    count: 3
+    spacing: 200
+    src: cf-cleat-1960
+
+- id: shelf-1960
+  name: "Open shelf 1960"
+  element_type: panel
+  role: wall-shelf   # flat: edge 3 = front, 2 = free end, 4 = column end (banded: the CSV cannot band 2 alone)
+  width: 520
+  height: 250
+  grain: any
+  edge_banding: {edges: {3: eb-u750-2, 2: eb-u750-2, 4: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: inner, x: 9.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 150, direction: y, src: rf-1960}
+  - face: outer
+    x: 60
+    y: 241.0
+    dia: 8
+    depth: through
+    type: multi
+    count: 3
+    spacing: 200
+    direction: x
+    src: cf-cleat-1960
+  placement: {pos: [0, 0, 570]}
+
+assembly:
+  fittings:
+  - {id: br-1450, hardware: angle-bracket-40, drilling: none, quantity: 2, through: cleat-1450, into: shelf-1450}   # under the shelf: no heads on its face
+  - {id: rf-1450, hardware: rafix-20, drilling: manual, through: shelf-1450, at: [50, 200]}   # bolts in ew-upper side-r
+  - {id: cf-cleat-1960, hardware: confirmat-7x50, through: shelf-1960, into: cleat-1960, seam: {through_edge: 1, into_edge: 1}, at: [60, 260, 460]}
+  - {id: rf-1960, hardware: rafix-20, drilling: manual, through: shelf-1960, at: [50, 200]}   # bolts in ew-upper side-r

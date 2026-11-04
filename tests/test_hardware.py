@@ -130,15 +130,18 @@ def test_a_through_hole_that_is_not_a_pin_is_not_counted(proj):
 # ------------------------------------------------------------------ against the real designs
 
 EXPECTED = {
-    ("confirmat-7x50", None): 164,
+    ("angle-bracket-40", None): 6,       # entryway: wall anchors (ew-base, ew-upper) + the 1450 shelf
+    ("confirmat-7x50", None): 176,
+    ("dowel-8x30", None): 4,             # entryway hall: ew-upper aligned on the corner base
     ("hinge-alu-frame", "full"): 12,     # living room: the Topal glass doors (plates only are ours)
-    ("hinge-clip-110", "full"): 27,
-    ("hinge-clip-110", "half"): 7,
-    ("hinge-clip-110", "inset"): 12,     # entryway: doors flush with the outer strips
+    ("hinge-clip-110", "full"): 29,
+    ("hinge-clip-110", "half"): 9,      # incl. ew-base: the corner door hangs on the shared gable
+    ("hinge-clip-110", "inset"): 18,     # entryway: wardrobe doors + the hall inner door and router door (ew-upper)
+    ("leveler-glide", None): 6,          # entryway: ew-base stands on glides, no bottom panel
     ("plinth-corner", None): 3,
     ("plinth-leg", None): 28,
-    ("rafix-20", None): 113,
-    ("shelf-pin-5", None): 27,
+    ("rafix-20", None): 135,
+    ("shelf-pin-5", None): 43,           # entryway hall: 2 shoe shelves × 4 pins in each base cabinet
     ("slide-bb-350", None): 2,
     ("tip-on", None): 17,
 }
@@ -157,12 +160,12 @@ def test_the_hinge_overlays_are_never_merged(proj):
     assert len(hinges) == 3, "the overlays collapsed into fewer lines"
     assert sorted(l.variant for l in hinges) == ["full", "half", "inset"]
     half = next(l for l in hinges if l.variant == "half")
-    assert sorted(half.per_cabinet) == ["lr-line", "wc-column"], \
-        "only wc-column and lr-line hang a door on a gable shared with the next bay"
+    assert sorted(half.per_cabinet) == ["ew-base", "lr-line", "wc-column"], \
+        "only wc-column, lr-line and ew-base hang a door on a gable shared with the next bay"
 
 
 def test_the_real_collared_pin_count(proj):
-    assert collared_pins(proj, cabinets_for_scope(proj, apartment="bohaterow")) == 8
+    assert collared_pins(proj, cabinets_for_scope(proj, apartment="bohaterow")) == 16   # + ew-base gable
 
 
 @pytest.mark.parametrize("cab_id,expected", [

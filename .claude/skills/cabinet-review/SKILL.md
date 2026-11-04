@@ -38,6 +38,8 @@ here.** If the user wants fixes applied, that's a separate `design-cabinet` step
   classic sheet-waster.
 - Back panel size matches the chosen method (surface = full W×H; grooved = internal + 2×groove depth).
 - Shelf width = internal − small clearance; shelf depth < carcass depth (finger gap, back clearance).
+  A LOOSE shelf on pins cut to exactly the bay width jams (sizes are finished sizes): bay − 2, i.e. 1 mm
+  per side. `meble review` does not check this (ew-base had 524 in a 524 bay).
 - Drawer box width = internal − 25.4 mm (ball-bearing); slide length ≤ internal depth.
 - Overall envelope sane vs the space it must fit; plinth/leg + carcass + worktop = intended height.
 
@@ -85,6 +87,11 @@ here.** If the user wants fixes applied, that's a separate `design-cabinet` step
   Both bathroom cabinets had this and both were rewritten to have zero up-face holes.
 - **Fit tolerance.** A carcass whose height equals the measured opening cannot be installed. Sides that
   run to the floor with no feet, plinth or scribe leave nothing to adjust on site.
+- **Floating floors** (laminate) leave an expansion gap at every wall: a glide or leg under a panel that
+  stands tight to a wall lands on it. Hold the carcass off that wall or support it further in.
+- **Hardware on a side-hinged door's FRONT face** (hooks, knobs) turns toward the hinge-side panel as the
+  door opens and stops it early — check the angle still clears whatever must open behind it (ew-upper's
+  inner door in front of the electric box: hooks near the hinge edge stop it at ~40°).
 - **Wet rooms:** standard MFC core is not moisture resistant (P3 is); band or seal edges that stand on
   the floor; keep a run of wall fixings low down when the bottom of the carcass is an open bay.
 
