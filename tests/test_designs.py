@@ -128,6 +128,17 @@ def test_hinge_overlay_matches_what_the_door_lands_on(proj):
                 continue
             mount = by_id.get(f.get("side"))
             want = expected.get(mount.role) if mount else None
+            door = by_id.get(f.get("door"))
+            dpos = door.placement.get("pos") if door else None
+            mpos = mount.placement.get("pos") if mount else None
+            if dpos and float(dpos[1]) > 0:
+                want = "inset"     # set back behind the carcass front (ew-upper's inner door): it sits INSIDE
+            elif dpos and mpos and mount.role in ("side-left", "side-right"):
+                # flush but BETWEEN the sides, leaving the side's front edge in view (ew-upper's router door)
+                t, lo = proj.panel_thickness(mount), float(dpos[0])
+                if (mount.role == "side-left" and lo >= float(mpos[0]) + t - 0.5) or \
+                   (mount.role == "side-right" and lo + door.width <= float(mpos[0]) + 0.5):
+                    want = "inset"
             if want:
                 assert f.get("variant") == want, \
                     f"{cab.id}/{f['id']} mounts on {mount.id} ({mount.role}) -> expected {want}"

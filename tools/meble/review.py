@@ -60,15 +60,21 @@ def _review_cabinet(proj: Project, cab: Cabinet, out: list) -> None:
     side_t = proj.panel_thickness(sides[0]) if sides else 18
     W = cab.dimensions.get("width")
 
-    # 1. carcass arithmetic — top/bottom sit between the sides
+    # 1. carcass arithmetic — top/bottom sit between the sides, or a full-width top lies ON them
     if W:
         expected = W - 2 * side_t
+        H = cab.dimensions.get("height")
+        # the other standard carcass: the top covers the sides (no side edge in the surface), which is only
+        # true if every side stops exactly one thickness under the cabinet height
+        on_sides = bool(sides) and bool(H) and all(abs(sd.height - (H - side_t)) <= 0.5 for sd in sides)
         for role in ("top", "bottom"):
             for p in by_role.get(role, []):
+                if role == "top" and on_sides and abs(p.width - W) <= 0.5:
+                    continue
                 if abs(p.width - expected) > 0.5:
                     add("error", "carcass-arithmetic",
                         f"{role} '{p.id}' width {p.width} ≠ width − 2×side ({W}−{2 * side_t}={expected}). "
-                        f"Top/bottom go between the sides.")
+                        f"Top/bottom go between the sides (or a full-width top lies on sides {side_t} short).")
 
     # 2. left/right mirror — front-edge banding must be mirrored (edge 2 left vs edge 4 right)
     L, R = by_role.get("side-left", []), by_role.get("side-right", [])
