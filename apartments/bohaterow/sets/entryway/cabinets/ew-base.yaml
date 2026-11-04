@@ -1,0 +1,199 @@
+# ===================================================================================================
+# ew-base — base unit under the column and the open surface
+#
+# Entryway hall wall, concept 6c (plan page https://claude.ai/artifact/JzMjC12Y9eRcLFYZqE7ifN).
+# Board: Egger U750 ST9 Szary Taupe (u750-18), as the niche wardrobe. 2 mm band on what you see and touch.
+# Hall ceiling 2530 (measured). Two things are ASSUMED: the bedroom door trim is at most 70 wide (the base
+#     ends 70 before the opening), and nothing on the electric box door sticks out more than ~40 (the inner
+#     door stands 60 off the wall). Stamped confirmats follow a resize (`meble fit --cabinet <id>`); every
+#     other hole is hand-written and does NOT — re-derive them if a size moves.
+# Joints: confirmat where the head is hidden (wall, neighbouring cabinet); rafix-20 on show faces.
+# Set frame = ew-wardrobe's: x = 2550 − distance from the top wall, y = −(distance from the left wall).
+# One carcass: side-l (top-wall end) | shared GABLE at 542..560 | side-r (bedroom end, visible).
+# The TOP (1080 × 380) lies ON the three uprights and reaches over the doors (flush with their faces), held
+# by rafix-20 from below (housings in the uprights, bolts in its underside): no panel edge, no screw head
+# and no door gap in the surface. Roofs: side-l
+# confirmats (hidden by the wall), rafix into the gable from both sides at offset x, rafix into side-r.
+# No bottom panel: the boot bays are open to the floor; the carcass stands on 6 levelling glides under
+# side-l, gable and side-r (on site, ~10 mm). Doors meet on the gable: left one HALF overlay on the gable,
+# right one FULL on side-r — both open toward the bedroom, opened by their bottom edges (no handles).
+# ew-upper stands on the top over side-l and over the gable, 2 dowels each (holes untagged here; the
+# dowels are bought in ew-upper as dw-base).
+# ===================================================================================================
+
+id: ew-base
+name: "Entryway — base (boots, shoes, niche floor, open surface)"
+kind: custom
+category: base
+construction: confirmat
+dimensions: {width: 1080, height: 950, depth: 380}
+position: {x: 2550, y: -1160, z: 0, rotation: 180}
+defaults: {material: u750-18, edgeband: eb-u750-1}
+back: {type: surface}
+plinth: {}
+
+panels:
+
+- id: side-l
+  name: "Left side (top-wall end)"
+  element_type: panel
+  role: side-left   # bottom edge 2 mm (floor); top edge under the top, banded only so the CSV can express it
+  width: 359
+  height: 932
+  grain: any
+  edge_banding: {edges: {2: eb-u750-2, 1: eb-u750-1, 3: eb-u750-2}, glue_type: long}
+  holes:
+  - {face: inner, x: 37, y: 525, dia: 5, depth: 13, type: multi, count: 2, spacing: 190, direction: y, src: pins}
+  - {face: inner, x: 322, y: 525, dia: 5, depth: 13, type: multi, count: 2, spacing: 190, direction: y, src: pins}
+  - {face: outer, x: 50, y: 351, dia: 8, depth: through, type: multi, count: 3, spacing: 129.5, direction: x, src: cf-roof-l}
+  - {face: inner, x: 50, y: 922.5, dia: 20, depth: 14, type: multi, count: 2, spacing: 259, direction: x, src: rf-top-l}
+  placement: {pos: [0, 18, 0]}
+
+- id: gable
+  name: "Middle gable (shared)"
+  element_type: panel
+  role: gable   # frame of a left side: x 0 = back, edge 2 = front; OUTER faces the corner compartment
+  width: 359
+  height: 932
+  grain: any
+  edge_banding: {edges: {2: eb-u750-2, 1: eb-u750-1, 3: eb-u750-2}, glue_type: long}
+  holes:
+  - {face: outer, x: 37, y: 525, dia: 5, depth: through, type: multi, count: 2, spacing: 190, direction: y, src: pins}
+  - {face: outer, x: 322, y: 525, dia: 5, depth: through, type: multi, count: 2, spacing: 190, direction: y, src: pins}
+  - {face: outer, x: 322, y: 426, dia: 5, depth: 13, type: multi, count: 2, spacing: 388, direction: y, src: hg-door-l}
+  - {face: outer, x: 322, y: 458, dia: 5, depth: 13, type: multi, count: 2, spacing: 388, direction: y, src: hg-door-l}
+  - {face: outer, x: 50, y: 351, dia: 5, depth: 12, type: multi, count: 2, spacing: 200, direction: x, src: rf-roof-l}
+  - {face: inner, x: 109, y: 351, dia: 5, depth: 12, type: multi, count: 2, spacing: 200, direction: x, src: rf-roof-r}
+  - {face: inner, x: 50, y: 922.5, dia: 20, depth: 14, type: multi, count: 2, spacing: 259, direction: x, src: rf-top-g}
+  placement: {pos: [542, 18, 0], rot: [90, 0, -90]}
+
+- id: side-r
+  name: "Right side (bedroom end)"
+  element_type: panel
+  role: side-right
+  width: 359
+  height: 932
+  grain: any
+  edge_banding: {edges: {4: eb-u750-2, 3: eb-u750-2}, glue_type: long}
+  holes:
+  - {face: inner, x: 37, y: 525, dia: 5, depth: 13, type: multi, count: 2, spacing: 190, direction: y, src: pins}
+  - {face: inner, x: 322, y: 525, dia: 5, depth: 13, type: multi, count: 2, spacing: 190, direction: y, src: pins}
+  - {face: inner, x: 37, y: 426, dia: 5, depth: 13, type: multi, count: 2, spacing: 388, direction: y, src: hg-door-r}
+  - {face: inner, x: 37, y: 458, dia: 5, depth: 13, type: multi, count: 2, spacing: 388, direction: y, src: hg-door-r}
+  - {face: inner, x: 50, y: 351, dia: 5, depth: 12, type: multi, count: 2, spacing: 259, direction: x, src: rf-roof-rr}
+  - {face: inner, x: 50, y: 922.5, dia: 20, depth: 14, type: multi, count: 2, spacing: 259, direction: x, src: rf-top-r}
+  placement: {pos: [1062, 18, 0]}
+
+- id: roof-l
+  name: "Boot bay roof, corner"
+  element_type: panel
+  role: divider
+  width: 524
+  height: 359
+  grain: any
+  edge_banding: {edges: {1: eb-u750-2}, glue_type: long}
+  holes:
+  - {face: edge4, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 129.5, src: cf-roof-l}
+  - {face: inner, x: 514.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 200, direction: y, src: rf-roof-l}
+  placement: {pos: [18, 18, 342]}
+
+- id: roof-r
+  name: "Boot bay roof, low"
+  element_type: panel
+  role: divider
+  width: 502
+  height: 359
+  grain: any
+  edge_banding: {edges: {1: eb-u750-2}, glue_type: long}
+  holes:
+  - {face: inner, x: 9.5, y: 109, dia: 20, depth: 14, type: multi, count: 2, spacing: 200, direction: y, src: rf-roof-r}
+  - {face: inner, x: 492.5, y: 50, dia: 20, depth: 14, type: multi, count: 2, spacing: 259, direction: y, src: rf-roof-rr}
+  placement: {pos: [560, 18, 342]}
+
+- id: shelf-l
+  name: "Shoe shelf, corner"
+  element_type: panel
+  role: shelf
+  width: 522
+  height: 339
+  quantity: 2
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  placement: {pos: [19, 38, 532], step: [0, 0, 190]}
+
+- id: shelf-r
+  name: "Shoe shelf, low"
+  element_type: panel
+  role: shelf
+  width: 500
+  height: 339
+  quantity: 2
+  grain: any
+  edge_banding: {edges: {1: eb-u750-1}, glue_type: long}
+  placement: {pos: [561, 38, 532], step: [0, 0, 190]}
+
+- id: top
+  name: "Top (niche floor + open surface)"
+  element_type: panel
+  role: top   # 1080 × 380: ON the uprights and over the doors; edge 2 = visible bedroom end, 4 = top wall
+  width: 1080
+  height: 380
+  grain: any
+  edge_banding: {edges: {1: eb-u750-2, 2: eb-u750-2, 4: eb-u750-1}, glue_type: long}
+  holes:
+  - {face: outer, x: 9.0, y: 53, dia: 5, depth: 12, type: multi, count: 2, spacing: 259, direction: y, src: rf-top-l}
+  - {face: outer, x: 551.0, y: 53, dia: 5, depth: 12, type: multi, count: 2, spacing: 259, direction: y, src: rf-top-g}
+  - {face: outer, x: 1071.0, y: 53, dia: 5, depth: 12, type: multi, count: 2, spacing: 259, direction: y, src: rf-top-r}
+  - {face: inner, x: 9.0, y: 83, dia: 8, depth: 15, type: multi, count: 2, spacing: 199, direction: y}   # dowels up into ew-upper side-l (dw-base)
+  - {face: inner, x: 551.0, y: 83, dia: 8, depth: 15, type: multi, count: 2, spacing: 199, direction: y}   # dowels up into ew-upper side-r (dw-base)
+  placement: {pos: [0, 0, 932]}
+
+- id: back
+  name: "Back (HDF)"
+  element_type: panel
+  role: back   # under the top; nailed/screwed on site
+  material: hdf-3
+  width: 1080
+  height: 932
+  thickness: 3
+  grain: any
+  placement: {pos: [0, 377, 0]}
+
+- id: door-l
+  name: "Door, corner"
+  element_type: panel
+  role: front   # hinged on the gable (half overlay)
+  width: 548
+  height: 588
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 525.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 388, direction: y, src: hg-door-l}
+  placement: {pos: [1.5, 0, 342]}
+
+- id: door-r
+  name: "Door, low"
+  element_type: panel
+  role: front   # hinged on side-r (full overlay)
+  width: 526
+  height: 588
+  grain: any
+  edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
+  holes:
+  - {face: inner, x: 503.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 388, direction: y, src: hg-door-r}
+  placement: {pos: [552.5, 0, 342]}
+
+assembly:
+  fittings:
+  - {id: cf-roof-l, hardware: confirmat-7x50, drilling: manual, through: side-l, into: roof-l, at: [50, 179.5, 309]}
+  - {id: rf-roof-l, hardware: rafix-20, drilling: manual, through: roof-l, into: gable, at: [50, 250]}
+  - {id: rf-roof-r, hardware: rafix-20, drilling: manual, through: roof-r, into: gable, at: [109, 309]}
+  - {id: rf-roof-rr, hardware: rafix-20, drilling: manual, through: roof-r, into: side-r, at: [50, 309]}
+  - {id: rf-top-l, hardware: rafix-20, drilling: manual, through: side-l, into: top, at: [50, 309]}
+  - {id: rf-top-g, hardware: rafix-20, drilling: manual, through: gable, into: top, at: [50, 309]}
+  - {id: rf-top-r, hardware: rafix-20, drilling: manual, through: side-r, into: top, at: [50, 309]}
+  - {id: pins, hardware: shelf-pin-5, drilling: manual, quantity: 16, shelves: [shelf-l, shelf-r], at: [532, 722]}
+  - {id: hg-door-l, hardware: hinge-clip-110, variant: half, drilling: manual, door: door-l, side: gable, at: [442, 830]}
+  - {id: hg-door-r, hardware: hinge-clip-110, variant: full, drilling: manual, door: door-r, side: side-r, at: [442, 830]}
+  - {id: glides, hardware: leveler-glide, drilling: none, quantity: 6}   # 2 under each of side-l, gable, side-r
+  - {id: wall-br, hardware: angle-bracket-40, drilling: none, quantity: 2}   # under the top at the back, to the right wall; + screws through side-l into the end wall (corner bay)

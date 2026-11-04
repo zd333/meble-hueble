@@ -33,6 +33,19 @@ def test_top_between_sides_must_be_width_minus_two_thicknesses(proj):
     assert "carcass-arithmetic" in rules(proj, [bad], dimensions={"width": 600})
 
 
+def test_a_full_width_top_may_lie_on_sides_that_stop_one_thickness_short(proj):
+    """The other standard carcass (ew-base): the top covers the sides, so no side edge shows in the
+    surface. Only valid when the sides really are one thickness shorter than the cabinet."""
+    top = mk_panel(600, 560, id="t", role="top", edges={1: "eb-u604-1"},
+                   holes=[mk_hole("outer", depth="through", x=10, y=10)])
+    dims = {"width": 600, "height": 720}
+    short = [mk_panel(560, 702, id="side-left", role="side-left", edges={2: "eb-u604-1"}),
+             mk_panel(560, 702, id="side-right", role="side-right", edges={4: "eb-u604-1"})]
+    tall = [side("side-left", 2), side("side-right", 4)]
+    assert "carcass-arithmetic" not in rules(proj, [top] + short, dimensions=dims)
+    assert "carcass-arithmetic" in rules(proj, [top] + tall, dimensions=dims)
+
+
 # ------------------------------------------------------------------ mirror pair
 
 def test_left_and_right_sides_banding_the_same_vertical_edge_warns(proj):

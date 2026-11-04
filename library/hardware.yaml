@@ -207,6 +207,27 @@ hardware:
       - { id: clip, name: "plinth clip" }
     sourcing: []                                 # TODO SKU
 
+  - id: leveler-glide
+    type: leg
+    name: "Screw-in levelling glide under a panel's bottom edge"
+    # Small adjustable foot screwed into the bottom EDGE of a side or gable (pilot hole by hand, on site),
+    # so `drilling: none`. Levels a carcass on an uneven floor and keeps the chipboard ~10 mm off a mopped
+    # floor. Used where the open boot bays leave no bottom panel for kitchen legs (entryway ew-base).
+    drill: {}
+    components:
+      - { id: glide, name: "adjustable glide" }
+    sourcing: []                                 # TODO SKU
+
+  - id: angle-bracket-40
+    type: bracket
+    name: "Steel angle bracket ~40×40 + short screws"
+    # Fixed on site, so `drilling: none`: holds a carcass to the wall from inside a bay (anti-tip), or a
+    # shelf down onto its wall cleat from underneath where a screw head on top would show (ew-shelves).
+    drill: {}
+    components:
+      - { id: bracket, name: "angle bracket + screws" }
+    sourcing: []                                 # TODO SKU
+
   - id: plinth-corner
     type: bracket
     name: "Plinth corner: steel angle bracket ~40×40 + 4 short screws"

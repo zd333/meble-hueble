@@ -61,83 +61,106 @@ P54. ew-wardrobe / Door lower left 506×1860 mm ×1                        →
 P55. ew-wardrobe / Door lower right 506×1860 mm ×1                       →
 P56. ew-wardrobe / Door upper left 506×554 mm ×1                         →
 P57. ew-wardrobe / Door upper right 506×554 mm ×1                        →
-P58. open-900 / Left side 600×400 mm ×1                                  →
-P59. open-900 / Right side 600×400 mm ×1                                 →
-P60. open-900 / Bottom panel 864×600 mm ×1                               →
-P61. open-900 / Top panel 864×600 mm ×1                                  →
-P62. open-900 / Back stretcher (horizontal) 864×150 mm ×1                →
-P63. open-900 / Back stretcher (vertical) 100×364 mm ×2                  →
-P64. mounting-panels / Mounting panel 87×1000 87×1000 mm ×3              →
-P65. lr-bench-1 / Left side 309×410 mm ×1                                →
-P66. lr-bench-1 / Right side 309×410 mm ×1                               →
-P67. lr-bench-1 / Bottom 1384×309 mm ×1                                  →
-P68. lr-bench-1 / Top 1384×309 mm ×1                                     →
-P69. lr-bench-1 / Back (HDF) 1420×410 mm ×1                              →
-P70. lr-bench-1 / Gable @710.0 309×374 mm ×1                             →
-P71. lr-bench-1 / Door left 706×406 mm ×1                                →
-P72. lr-bench-1 / Door right 706×406 mm ×1                               →
-P73. lr-bench-2 / Left side 309×410 mm ×1                                →
-P74. lr-bench-2 / Right side 309×410 mm ×1                               →
-P75. lr-bench-2 / Bottom 1384×309 mm ×1                                  →
-P76. lr-bench-2 / Top 1384×309 mm ×1                                     →
-P77. lr-bench-2 / Back (HDF) 1420×410 mm ×1                              →
-P78. lr-bench-2 / Gable @710.0 309×374 mm ×1                             →
-P79. lr-bench-2 / Door left 706×406 mm ×1                                →
-P80. lr-bench-2 / Door right 706×406 mm ×1                               →
+P58. ew-base / Left side (top-wall end) 359×932 mm ×1                    →
+P59. ew-base / Middle gable (shared) 359×932 mm ×1                       →
+P60. ew-base / Right side (bedroom end) 359×932 mm ×1                    →
+P61. ew-base / Boot bay roof, corner 524×359 mm ×1                       →
+P62. ew-base / Boot bay roof, low 502×359 mm ×1                          →
+P63. ew-base / Shoe shelf, corner 522×339 mm ×2                          →
+P64. ew-base / Shoe shelf, low 500×339 mm ×2                             →
+P65. ew-base / Top (niche floor + open surface) 1080×380 mm ×1           →
+P66. ew-base / Back (HDF) 1080×932 mm ×1                                 →
+P67. ew-base / Door, corner 548×588 mm ×1                                →
+P68. ew-base / Door, low 526×588 mm ×1                                   →
+P69. ew-upper / Left side (top-wall end) 377×1500 mm ×1                  →
+P70. ew-upper / Right side 377×1500 mm ×1                                →
+P71. ew-upper / Niche ceiling / router floor 524×359 mm ×1               →
+P72. ew-upper / Top 524×359 mm ×1                                        →
+P73. ew-upper / Back over the router bay (HDF) 560×508 mm ×1             →
+P74. ew-upper / Stop rail behind the inner door 524×50 mm ×1             →
+P75. ew-upper / Inner door (hooks, box behind it) 520×986 mm ×1          →
+P76. ew-upper / Router bay door 520×508 mm ×1                            →
+P77. ew-shelves / Wall cleat under shelf 1450 520×60 mm ×1               →
+P78. ew-shelves / Open shelf 1450 520×250 mm ×1                          →
+P79. ew-shelves / Wall cleat under shelf 1960 520×60 mm ×1               →
+P80. ew-shelves / Open shelf 1960 520×250 mm ×1                          →
 Panele — bohaterow
 Click a row to jump to its panel sheet.
 
-P81. lr-bench-top / Seat, left piece 190×350 mm ×1                          →
-P82. lr-bench-top / Seat, middle piece (over the sill) 2460×480 mm ×1       →
-P83. lr-bench-top / Seat, right piece 190×350 mm ×1                         →
-P84. lr-tower / Left side 297×2310 mm ×1                                    →
-P85. lr-tower / Right side 297×2310 mm ×1                                   →
-P86. lr-tower / Bottom 314×297 mm ×1                                        →
-P87. lr-tower / Top 314×297 mm ×1                                           →
-P88. lr-tower / Back (HDF) 350×2310 mm ×1                                   →
-P89. lr-tower / Hiding-place lid (lift-out shelf) 312×295 mm ×1             →
-P90. lr-tower / Seat-level insert (loose, lies on the lid) 312×295 mm ×1    →
-P91. lr-tower / Book shelf @870 314×297 mm ×1                               →
-P92. lr-tower / Shelf @1250 (glass floor) 314×297 mm ×1                     →
-P93. lr-tower / Shelf @2010 (behind the glass joint) 314×297 mm ×1          →
-P94. lr-vitrine / Left side 282×2310 mm ×1                                  →
-P95. lr-vitrine / Right side 282×2310 mm ×1                                 →
-P96. lr-vitrine / Bottom 864×282 mm ×1                                      →
-P97. lr-vitrine / Top 864×282 mm ×1                                         →
-P98. lr-vitrine / Back 18 mm (carries the mid-shelf rafix) 900×2310 mm ×1   →
-P99. lr-vitrine / Shelf @490 864×282 mm ×1                                  →
-P100. lr-vitrine / Book shelf @870 864×282 mm ×1                            →
-P101. lr-vitrine / Shelf @1250 (glass floor) 864×282 mm ×1                  →
-P102. lr-vitrine / Shelf @2010 864×282 mm ×1                                →
-P103. lr-vitrine / Door left 446×406 mm ×1                                  →
-P104. lr-vitrine / Door right 446×406 mm ×1                                 →
-P105. lr-line / Left side 297×1170 mm ×1                                    →
-P106. lr-line / Right side 297×1170 mm ×1                                   →
-P107. lr-line / Bottom 1764×297 mm ×1                                       →
-P108. lr-line / Top 1764×297 mm ×1                                          →
-P109. lr-line / Back (HDF) 1800×1170 mm ×1                                  →
-P110. lr-line / Gable @600 297×1134 mm ×1                                   →
-P111. lr-line / Gable @1200 297×1134 mm ×1                                  →
-P112. lr-line / Shelf bay 1 @490 573×297 mm ×1                              →
-P113. lr-line / Shelf bay 1 @870 573×297 mm ×1                              →
-P114. lr-line / Shelf bay 2 @490 582×297 mm ×1                              →
-P115. lr-line / Shelf bay 2 @870 582×297 mm ×1                              →
-P116. lr-line / Shelf bay 3 @490 573×297 mm ×1                              →
-P117. lr-line / Shelf bay 3 @870 573×297 mm ×1                              →
-P118. lr-line / Door bay 1 bottom 596×406 mm ×1                             →
-P119. lr-line / Door bay 1 middle 596×376 mm ×1                             →
-P120. lr-line / Door bay 2 bottom 596×406 mm ×1                             →
+P81. open-900 / Left side 600×400 mm ×1                                     →
+P82. open-900 / Right side 600×400 mm ×1                                    →
+P83. open-900 / Bottom panel 864×600 mm ×1                                  →
+P84. open-900 / Top panel 864×600 mm ×1                                     →
+P85. open-900 / Back stretcher (horizontal) 864×150 mm ×1                   →
+P86. open-900 / Back stretcher (vertical) 100×364 mm ×2                     →
+P87. mounting-panels / Mounting panel 87×1000 87×1000 mm ×3                 →
+P88. lr-bench-1 / Left side 309×410 mm ×1                                   →
+P89. lr-bench-1 / Right side 309×410 mm ×1                                  →
+P90. lr-bench-1 / Bottom 1384×309 mm ×1                                     →
+P91. lr-bench-1 / Top 1384×309 mm ×1                                        →
+P92. lr-bench-1 / Back (HDF) 1420×410 mm ×1                                 →
+P93. lr-bench-1 / Gable @710.0 309×374 mm ×1                                →
+P94. lr-bench-1 / Door left 706×406 mm ×1                                   →
+P95. lr-bench-1 / Door right 706×406 mm ×1                                  →
+P96. lr-bench-2 / Left side 309×410 mm ×1                                   →
+P97. lr-bench-2 / Right side 309×410 mm ×1                                  →
+P98. lr-bench-2 / Bottom 1384×309 mm ×1                                     →
+P99. lr-bench-2 / Top 1384×309 mm ×1                                        →
+P100. lr-bench-2 / Back (HDF) 1420×410 mm ×1                                →
+P101. lr-bench-2 / Gable @710.0 309×374 mm ×1                               →
+P102. lr-bench-2 / Door left 706×406 mm ×1                                  →
+P103. lr-bench-2 / Door right 706×406 mm ×1                                 →
+P104. lr-bench-top / Seat, left piece 190×350 mm ×1                         →
+P105. lr-bench-top / Seat, middle piece (over the sill) 2460×480 mm ×1      →
+P106. lr-bench-top / Seat, right piece 190×350 mm ×1                        →
+P107. lr-tower / Left side 297×2310 mm ×1                                   →
+P108. lr-tower / Right side 297×2310 mm ×1                                  →
+P109. lr-tower / Bottom 314×297 mm ×1                                       →
+P110. lr-tower / Top 314×297 mm ×1                                          →
+P111. lr-tower / Back (HDF) 350×2310 mm ×1                                  →
+P112. lr-tower / Hiding-place lid (lift-out shelf) 312×295 mm ×1            →
+P113. lr-tower / Seat-level insert (loose, lies on the lid) 312×295 mm ×1   →
+P114. lr-tower / Book shelf @870 314×297 mm ×1                              →
+P115. lr-tower / Shelf @1250 (glass floor) 314×297 mm ×1                    →
+P116. lr-tower / Shelf @2010 (behind the glass joint) 314×297 mm ×1         →
+P117. lr-vitrine / Left side 282×2310 mm ×1                                 →
+P118. lr-vitrine / Right side 282×2310 mm ×1                                →
+P119. lr-vitrine / Bottom 864×282 mm ×1                                     →
+P120. lr-vitrine / Top 864×282 mm ×1                                        →
 Panele — bohaterow
 Click a row to jump to its panel sheet.
 
-P121. lr-line / Door bay 2 middle 596×376 mm ×1                    →
-P122. lr-line / Door bay 3 bottom 596×406 mm ×1                    →
-P123. lr-line / Door bay 3 middle 596×376 mm ×1                    →
-P124. lr-plinth / Plinth, left wall 2700×80 mm ×1                  →
-P125. lr-plinth / Plinth return at the line end 242×80 mm ×1       →
-P126. lr-plinth / Plinth, bench 1 1438×80 mm ×1                    →
-P127. lr-plinth / Plinth, bench 2 1420×80 mm ×1                    →
-P128. lr-plinth / Plinth return at the radiator end 272×80 mm ×1   →
+P121. lr-vitrine / Back 18 mm (carries the mid-shelf rafix) 900×2310 mm ×1   →
+P122. lr-vitrine / Shelf @490 864×282 mm ×1                                  →
+P123. lr-vitrine / Book shelf @870 864×282 mm ×1                             →
+P124. lr-vitrine / Shelf @1250 (glass floor) 864×282 mm ×1                   →
+P125. lr-vitrine / Shelf @2010 864×282 mm ×1                                 →
+P126. lr-vitrine / Door left 446×406 mm ×1                                   →
+P127. lr-vitrine / Door right 446×406 mm ×1                                  →
+P128. lr-line / Left side 297×1170 mm ×1                                     →
+P129. lr-line / Right side 297×1170 mm ×1                                    →
+P130. lr-line / Bottom 1764×297 mm ×1                                        →
+P131. lr-line / Top 1764×297 mm ×1                                           →
+P132. lr-line / Back (HDF) 1800×1170 mm ×1                                   →
+P133. lr-line / Gable @600 297×1134 mm ×1                                    →
+P134. lr-line / Gable @1200 297×1134 mm ×1                                   →
+P135. lr-line / Shelf bay 1 @490 573×297 mm ×1                               →
+P136. lr-line / Shelf bay 1 @870 573×297 mm ×1                               →
+P137. lr-line / Shelf bay 2 @490 582×297 mm ×1                               →
+P138. lr-line / Shelf bay 2 @870 582×297 mm ×1                               →
+P139. lr-line / Shelf bay 3 @490 573×297 mm ×1                               →
+P140. lr-line / Shelf bay 3 @870 573×297 mm ×1                               →
+P141. lr-line / Door bay 1 bottom 596×406 mm ×1                              →
+P142. lr-line / Door bay 1 middle 596×376 mm ×1                              →
+P143. lr-line / Door bay 2 bottom 596×406 mm ×1                              →
+P144. lr-line / Door bay 2 middle 596×376 mm ×1                              →
+P145. lr-line / Door bay 3 bottom 596×406 mm ×1                              →
+P146. lr-line / Door bay 3 middle 596×376 mm ×1                              →
+P147. lr-plinth / Plinth, left wall 2700×80 mm ×1                            →
+P148. lr-plinth / Plinth return at the line end 242×80 mm ×1                 →
+P149. lr-plinth / Plinth, bench 1 1438×80 mm ×1                              →
+P150. lr-plinth / Plinth, bench 2 1420×80 mm ×1                              →
+P151. lr-plinth / Plinth return at the radiator end 272×80 mm ×1             →
 P1. Left side                                                                                                    Bathroom WC column · wc-column/side-l
 
 
@@ -2756,7 +2779,1079 @@ Drilling — surface
 
 
                                                                meble · ew-wardrobe · panel sheet P57
-P58. Left side                                                                                                     Kitchen open unit 900 · open-900/side-l
+P58. Left side (top-wall end)                                              Entryway — base (boots, shoes, niche floor, open surface) · ew-base/side-l
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                           OUTER · editor: przód (front)                                                                          INNER · editor: tył (back)
+
+                                                1                                                                                             1
+
+
+
+
+                           h 932                                                                                          h 932
+                                       4                    2                                                                        4                 2
+
+
+
+
+                                                3                                                                                             3
+
+                                            w 359                                                                                           w 359
+              Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+    width                              height                      thickness                qty                   grain
+    359 mm                             932 mm                      18 mm                    1                     0 — any
+    board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+    edge                           banded                 band model                                        thick.
+    1 top                          yes                    ABS Szary Taupe U750 ST9 2mm                      2 mm
+    2 right                        —
+    3 bottom                       yes                    ABS Szary Taupe U750 ST9 1mm                      1 mm
+    4 left                         yes                    ABS Szary Taupe U750 ST9 2mm                      2 mm
+
+
+Drilling — edge
+    — none —
+
+Drilling — surface
+    face              x                             y                  Ø            depth                  type
+    inner             322                           217                5            13 mm                  multi ×2 @ 190mm y
+    inner             37                            217                5            13 mm                  multi ×2 @ 190mm y
+    outer             50.0                          581                8            through                multi ×3 @ 129.5mm x
+    inner             50                            9.5                20           14 mm                  multi ×2 @ 259mm x
+
+
+
+
+                                                                       meble · ew-base · panel sheet P58
+P59. Middle gable (shared)                                               Entryway — base (boots, shoes, niche floor, open surface) · ew-base/gable
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                         OUTER · editor: przód (front)                                                                          INNER · editor: tył (back)
+
+                                              1                                                                                             1
+
+
+
+
+                         h 932                                                                                          h 932
+                                     4                    2                                                                        4                 2
+
+
+
+
+                                              3                                                                                             3
+
+                                            w 359                                                                                         w 359
+                                         Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+    width                            height                      thickness                qty                   grain
+    359 mm                           932 mm                      18 mm                    1                     0 — any
+    board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+    edge                         banded                 band model                                        thick.
+    1 top                        yes                    ABS Szary Taupe U750 ST9 2mm                      2 mm
+    2 right                      —
+    3 bottom                     yes                    ABS Szary Taupe U750 ST9 1mm                      1 mm
+    4 left                       yes                    ABS Szary Taupe U750 ST9 2mm                      2 mm
+
+
+Drilling — edge
+    — none —
+
+Drilling — surface
+    face            x                             y                  Ø            depth                  type
+    outer           322                           217                5            through                multi ×2 @ 190mm y
+    outer           37                            217                5            through                multi ×2 @ 190mm y
+    outer           37                            118                5            13 mm                  multi ×2 @ 388mm y
+    outer           37                            86                 5            13 mm                  multi ×2 @ 388mm y
+    outer           109                           581                5            12 mm                  multi ×2 @ 200mm x
+    inner           50                            581                5            12 mm                  multi ×2 @ 200mm x
+    inner           50                            9.5                20           14 mm                  multi ×2 @ 259mm x
+
+
+
+
+                                                                     meble · ew-base · panel sheet P59
+P60. Right side (bedroom end)Entryway — base (boots, shoes, niche floor, open surface) · ew-base/side-r
+
+                          OUTER · editor: przód (front)                                                                        INNER · editor: tył (back)
+
+                                               1                                                                                           1
+
+
+
+
+                          h 932                                                                                        h 932
+                                      4                    2                                                                      4                 2
+
+
+
+
+                                               3                                                                                           3
+
+                                           w 359                                                                                         w 359
+             Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                              height                    thickness                qty                   grain
+   359 mm                             932 mm                    18 mm                    1                     0 — any
+   board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                           banded               band model                                        thick.
+   1 top                          —
+   2 right                        —
+   3 bottom                       yes                  ABS Szary Taupe U750 ST9 2mm                      2 mm
+   4 left                         yes                  ABS Szary Taupe U750 ST9 2mm                      2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face              x                             y                Ø            depth                  type
+   inner             37                            525              5            13 mm                  multi ×2 @ 190mm y
+   inner             322                           525              5            13 mm                  multi ×2 @ 190mm y
+   inner             37                            426              5            13 mm                  multi ×2 @ 388mm y
+   inner             37                            458              5            13 mm                  multi ×2 @ 388mm y
+   inner             50                            351              5            12 mm                  multi ×2 @ 259mm x
+   inner             50                            922.5            20           14 mm                  multi ×2 @ 259mm x
+
+
+
+
+                                                                    meble · ew-base · panel sheet P60
+P61. Boot bay roof, corner                                      Entryway — base (boots, shoes, niche floor, open surface) · ew-base/roof-l
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
+
+                                       1                                                                                          1
+
+
+
+
+   h 359                                                                                 h 359
+           4                                                          2                          4                                                 2
+
+
+
+
+                                       3                                                                                          3
+
+                                    w 524                                                                                       w 524
+                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                    thickness                 qty                       grain
+     524 mm                   359 mm                    18 mm                     1                         0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded               band model                                             thick.
+     1 top                —
+     2 right              —
+     3 bottom             yes                  ABS Szary Taupe U750 ST9 2mm                           2 mm
+     4 left               —
+
+
+Drilling — edge
+     edge                 from                   Ø          depth                 type
+     2 right              50.0 mm                4          35 mm                 multi ×3 @ 129.5mm
+
+Drilling — surface
+     face           x                      y                Ø             depth                      type
+     inner          9.5                    109              20            14 mm                      multi ×2 @ 200mm y
+
+
+
+
+                                                             meble · ew-base · panel sheet P61
+P62. Boot bay roof, low                                          Entryway — base (boots, shoes, niche floor, open surface) · ew-base/roof-r
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                       1                                                                                         1
+
+
+
+
+   h 359                                                                                h 359
+           4                                                          2                         4                                                 2
+
+
+
+
+                                       3                                                                                         3
+
+                                    w 502                                                                                      w 502
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                     thickness                qty                      grain
+     502 mm                   359 mm                     18 mm                    1                        0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                           thick.
+     1 top                —
+     2 right              —
+     3 bottom             yes                   ABS Szary Taupe U750 ST9 2mm                         2 mm
+     4 left               —
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face           x                      y                 Ø            depth                     type
+     inner          492.5                  50                20           14 mm                     multi ×2 @ 200mm y
+     inner          9.5                    50                20           14 mm                     multi ×2 @ 259mm y
+
+
+
+
+                                                             meble · ew-base · panel sheet P62
+P63. Shoe shelf, corner                                        Entryway — base (boots, shoes, niche floor, open surface) · ew-base/shelf-l
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                            OUTER · editor: przód (front)                                                        INNER · editor: tył (back)
+
+                                           1                                                                                 1
+
+
+
+
+   h 339                                                                                h 339
+           4                                                            2                       4                                                  2
+
+
+
+
+                                           3                                                                                 3
+
+                                        w 522                                                                              w 522
+               Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                        height                    thickness             qty                  grain
+     522 mm                       339 mm                    18 mm                 2                    0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                     banded            band model                                          thick.
+     1 top                    —
+     2 right                  —
+     3 bottom                 yes               ABS Szary Taupe U750 ST9 1mm                        1 mm
+     4 left                   —
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                               meble · ew-base · panel sheet P63
+P64. Shoe shelf, low                                           Entryway — base (boots, shoes, niche floor, open surface) · ew-base/shelf-r
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                            OUTER · editor: przód (front)                                                        INNER · editor: tył (back)
+
+                                           1                                                                                 1
+
+
+
+
+   h 339                                                                                h 339
+           4                                                            2                       4                                                  2
+
+
+
+
+                                           3                                                                                 3
+
+                                        w 500                                                                              w 500
+               Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                        height                    thickness             qty                  grain
+     500 mm                       339 mm                    18 mm                 2                    0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                     banded            band model                                          thick.
+     1 top                    —
+     2 right                  —
+     3 bottom                 yes               ABS Szary Taupe U750 ST9 1mm                        1 mm
+     4 left                   —
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                               meble · ew-base · panel sheet P64
+P65. Top (niche floor + open surface)
+                               Entryway — base (boots, shoes, niche floor, open surface) · ew-base/top
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                             OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                            1                                                                                         1
+
+
+
+
+   h 380                                                                                     h 380
+           4                                                              2                          4                                                 2
+
+
+
+
+                                            3                                                                                         3
+
+                                        w 1080                                                                                     w 1080
+               Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                         height                     thickness                qty                      grain
+     1080 mm                       380 mm                     18 mm                    1                        0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                      banded                band model                                           thick.
+     1 top                     —
+     2 right                   yes                   ABS Szary Taupe U750 ST9 1mm                         1 mm
+     3 bottom                  yes                   ABS Szary Taupe U750 ST9 2mm                         2 mm
+     4 left                    yes                   ABS Szary Taupe U750 ST9 2mm                         2 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face                x                      y                 Ø            depth                     type
+     outer               1071.0                 68                5            12 mm                     multi ×2 @ 259mm y
+     outer               529.0                  68                5            12 mm                     multi ×2 @ 259mm y
+     outer               9.0                    68                5            12 mm                     multi ×2 @ 259mm y
+     inner               1071.0                 98                8            15 mm                     multi ×2 @ 199mm y
+     inner               529.0                  98                8            15 mm                     multi ×2 @ 199mm y
+
+
+
+
+                                                                  meble · ew-base · panel sheet P65
+P66. Back (HDF)                                             Entryway — base (boots, shoes, niche floor, open surface) · ew-base/back
+
+
+                     OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
+
+                                   1                                                                                       1
+
+
+
+
+   h 932                                                                            h 932
+            4                                                    2                          4                                             2
+
+
+
+
+                                   3                                                                                       3
+
+                                 w 1080                                                                               w 1080
+                             Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                  height                     thickness                qty                  grain
+   1080 mm                932 mm                     3 mm                     1                    0 — any
+   board: White HDF 3mm (back)
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge               banded              band model                                            thick.
+   1 top              —
+   2 right            —
+   3 bottom           —
+   4 left             —
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   — none —
+
+
+
+
+                                                         meble · ew-base · panel sheet P66
+P67. Door, corner                                                Entryway — base (boots, shoes, niche floor, open surface) · ew-base/door-l
+
+
+                            OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                          1                                                                                         1
+
+
+
+
+            h 588                                                                                h 588
+                    4                                              2                                      4                                          2
+
+
+
+
+                                          3                                                                                         3
+
+                                        w 548                                                                                     w 548
+                                    Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                         height                     thickness                qty                      grain
+   548 mm                        588 mm                     18 mm                    1                        0 — any
+   board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                      banded               band model                                             thick.
+   1 top                     yes                  ABS Szary Taupe U750 ST9 2mm                           2 mm
+   2 right                   yes                  ABS Szary Taupe U750 ST9 2mm                           2 mm
+   3 bottom                  yes                  ABS Szary Taupe U750 ST9 2mm                           2 mm
+   4 left                    yes                  ABS Szary Taupe U750 ST9 2mm                           2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face                 x                     y                Ø             depth                   type
+   inner                525.5                 100              35            12 mm                   multi ×2 @ 388mm y
+
+
+
+
+                                                                meble · ew-base · panel sheet P67
+P68. Door, low                                                    Entryway — base (boots, shoes, niche floor, open surface) · ew-base/door-r
+
+
+                             OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                           1                                                                                          1
+
+
+
+
+             h 588                                                                                   h 588
+                     4                                            2                                            4                                       2
+
+
+
+
+                                           3                                                                                          3
+
+                                         w 526                                                                                      w 526
+                                     Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                          height                     thickness                qty                       grain
+   526 mm                         588 mm                     18 mm                    1                         0 — any
+   board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                       banded               band model                                                thick.
+   1 top                      yes                  ABS Szary Taupe U750 ST9 2mm                              2 mm
+   2 right                    yes                  ABS Szary Taupe U750 ST9 2mm                              2 mm
+   3 bottom                   yes                  ABS Szary Taupe U750 ST9 2mm                              2 mm
+   4 left                     yes                  ABS Szary Taupe U750 ST9 2mm                              2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face                  x                     y                Ø             depth                    type
+   inner                 503.5                 100              35            12 mm                    multi ×2 @ 388mm y
+
+
+
+
+                                                                 meble · ew-base · panel sheet P68
+P69. Left side (top-wall end)                                                                     Entryway — upper box (niche + router) · ew-upper/side-l
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                          OUTER · editor: przód (front)                                                                      INNER · editor: tył (back)
+
+                                                1                                                                                           1
+
+
+
+
+                              h 1500                                                                                          h 1500
+                                         4                2                                                                            4           2
+
+
+
+
+                                                3                                                                                           3
+
+                                             w 377                                                                                         w 377
+              Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+    width                              height                      thickness                qty                    grain
+    377 mm                             1500 mm                     18 mm                    1                      0 — any
+    board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+    edge                     banded                       band model                                         thick.
+    1 top                    —
+    2 right                  —
+    3 bottom                 —
+    4 left                   yes                          ABS Szary Taupe U750 ST9 2mm                       2 mm
+
+
+Drilling — edge
+    edge                     from                             Ø        depth                type
+    1 top                    98 mm                            8        15 mm                multi ×2 @ 199mm
+
+Drilling — surface
+    face              x                             y                  Ø            depth                   type
+    outer             68.0                          499                8            through                 multi ×3 @ 129.5mm x
+    inner             309.0                         1475               5            12 mm                   single
+    inner             337                           627                5            13 mm                   multi ×4 @ 262mm y
+    inner             337                           595                5            13 mm                   multi ×4 @ 262mm y
+    outer             68.0                          9.0                8            through                 multi ×3 @ 129.5mm x (auto)
+
+
+
+
+                                                                       meble · ew-upper · panel sheet P69
+P70. Right side                                                                                 Entryway — upper box (niche + router) · ew-upper/side-r
+
+
+                          OUTER · editor: przód (front)                                                                    INNER · editor: tył (back)
+
+                                               1                                                                                          1
+
+
+
+
+                             h 1500                                                                                         h 1500
+                                        4               2                                                                            4           2
+
+
+
+
+                                               3                                                                                          3
+
+                                            w 377                                                                                        w 377
+             Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                              height                     thickness                qty                    grain
+   377 mm                             1500 mm                    18 mm                    1                      0 — any
+   board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                    banded                       band model                                         thick.
+   1 top                   —
+   2 right                 —
+   3 bottom                —
+   4 left                  yes                          ABS Szary Taupe U750 ST9 2mm                       2 mm
+
+
+Drilling — edge
+   edge                    from                             Ø        depth                type
+   3 bottom                98 mm                            8        15 mm                multi ×2 @ 199mm
+
+Drilling — surface
+   face              x                             y                 Ø            depth                   type
+   inner             68                            1491              5            12 mm                   multi ×2 @ 259mm x
+   inner             68                            1001              5            12 mm                   multi ×2 @ 200mm x
+   inner             309.0                         25                5            12 mm                   single
+   inner             55                            1076              5            13 mm                   multi ×2 @ 308mm y
+   inner             55                            1108              5            13 mm                   multi ×2 @ 308mm y
+   outer             180                           491               5            12 mm                   multi ×2 @ 150mm x
+   outer             180                           1001              5            12 mm                   multi ×2 @ 150mm x
+
+
+
+
+                                                                     meble · ew-upper · panel sheet P70
+P71. Niche ceiling / router floor                                                     Entryway — upper box (niche + router) · ew-upper/ceiling
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                         OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                       1                                                                                          1
+
+
+
+
+   h 359                                                                                 h 359
+           4                                                          2                          4                                                 2
+
+
+
+
+                                       3                                                                                          3
+
+                                     w 524                                                                                      w 524
+                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                     thickness                qty                       grain
+     524 mm                   359 mm                     18 mm                    1                         0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                            thick.
+     1 top                —
+     2 right              —
+     3 bottom             yes                   ABS Szary Taupe U750 ST9 2mm                          2 mm
+     4 left               —
+
+
+Drilling — edge
+     edge                 from                   Ø           depth                type
+     2 right              50.0 mm                4           35 mm                multi ×3 @ 129.5mm
+
+Drilling — surface
+     face           x                      y                 Ø            depth                      type
+     inner          9.5                    50                20           14 mm                      multi ×2 @ 200mm y
+     outer          74                     320.5             35           through                    single
+
+
+
+
+                                                             meble · ew-upper · panel sheet P71
+P72. Top                                                                                              Entryway — upper box (niche + router) · ew-upper/top
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                             OUTER · editor: przód (front)                                                                   INNER · editor: tył (back)
+
+                                            1                                                                                            1
+
+
+
+
+   h 359                                                                                      h 359
+           4                                                               2                            4                                                 2
+
+
+
+
+                                            3                                                                                            3
+
+                                         w 524                                                                                         w 524
+               Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                         height                     thickness                qty                         grain
+     524 mm                        359 mm                     18 mm                    1                           0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                      banded                band model                                              thick.
+     1 top                     —
+     2 right                   —
+     3 bottom                  yes                   ABS Szary Taupe U750 ST9 1mm                            1 mm
+     4 left                    —
+
+
+Drilling — edge
+     edge                      from                   Ø           depth                type
+     2 right                   50.0 mm                4           35 mm                multi ×3 @ 129.5mm (auto)
+
+Drilling — surface
+     face                x                      y                 Ø            depth                        type
+     outer               9.5                    50                20           14 mm                        multi ×2 @ 259mm y
+     outer               150                    320.5             35           through                      multi ×2 @ 224mm x
+
+
+
+
+                                                                  meble · ew-upper · panel sheet P72
+P73. Back over the router bay (HDF)                                                 Entryway — upper box (niche + router) · ew-upper/back
+
+
+                     OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
+
+                                   1                                                                                       1
+
+
+
+
+    h 508                                                                             h 508
+             4                                                 2                              4                                             2
+
+
+
+
+                                   3                                                                                       3
+
+                                 w 560                                                                                   w 560
+                             Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                  height                     thickness                qty                    grain
+   560 mm                 508 mm                     3 mm                     1                      0 — any
+   board: White HDF 3mm (back)
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge               banded             band model                                               thick.
+   1 top              —
+   2 right            —
+   3 bottom           —
+   4 left             —
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   — none —
+
+
+
+
+                                                        meble · ew-upper · panel sheet P73
+P74. Stop rail behind the inner door                                              Entryway — upper box (niche + router) · ew-upper/stop-rail
+
+
+                        OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+   h 50                                                                                 h 50
+          4                            1                              2                        4                                1                2
+                                       3                                                                                        3
+
+                                    w 524                                                                                     w 524
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                    thickness                 qty                     grain
+     524 mm                   50 mm                     18 mm                     1                       0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                          thick.
+     1 top                —
+     2 right              —
+     3 bottom             —
+     4 left               —
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face           x                      y                 Ø            depth                    type
+     outer          9.5                    25                20           14 mm                    single
+     outer          514.5                  25                20           14 mm                    single
+
+
+
+
+                                                             meble · ew-upper · panel sheet P74
+P75. Inner door (hooks, box behind it) Entryway — upper box (niche + router) · ew-upper/inner-door
+
+                          OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
+
+                                        1                                                                                       1
+
+
+
+
+                  h 986                                                                                     h 986
+                           4                         2                                                              4                        2
+
+
+
+
+                                        3                                                                                       3
+
+                                      w 520                                                                                   w 520
+                                  Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                       height                     thickness                qty                   grain
+   520 mm                      986 mm                     18 mm                    1                     0 — any
+   board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                    banded               band model                                         thick.
+   1 top                   yes                  ABS Szary Taupe U750 ST9 2mm                       2 mm
+   2 right                 yes                  ABS Szary Taupe U750 ST9 2mm                       2 mm
+   3 bottom                yes                  ABS Szary Taupe U750 ST9 2mm                       2 mm
+   4 left                  yes                  ABS Szary Taupe U750 ST9 2mm                       2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face            x                        y                Ø             depth                  type
+   inner           22.5                     100              35            12 mm                  multi ×4 @ 262mm y
+
+
+
+
+                                                             meble · ew-upper · panel sheet P75
+P76. Router bay door                                                                  Entryway — upper box (niche + router) · ew-upper/door
+
+
+                       OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                     1                                                                                         1
+
+
+
+
+       h 508                                                                              h 508
+               4                                               2                                  4                                             2
+
+
+
+
+                                     3                                                                                         3
+
+                                   w 520                                                                                     w 520
+                               Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                    height                     thickness                qty                      grain
+   520 mm                   508 mm                     18 mm                    1                        0 — any
+   board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                 banded               band model                                            thick.
+   1 top                yes                  ABS Szary Taupe U750 ST9 2mm                          2 mm
+   2 right              yes                  ABS Szary Taupe U750 ST9 2mm                          2 mm
+   3 bottom             yes                  ABS Szary Taupe U750 ST9 2mm                          2 mm
+   4 left               yes                  ABS Szary Taupe U750 ST9 2mm                          2 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   face            x                     y                Ø             depth                     type
+   inner           497.5                 100              35            12 mm                     multi ×2 @ 308mm y
+
+
+
+
+                                                          meble · ew-upper · panel sheet P76
+P77. Wall cleat under shelf 1450                                           Entryway — open shelves 1450 + 1960 · ew-shelves/cleat-1450
+
+
+                       OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
+
+                                     1                                                                                       1
+   h 60                                                                               h 60
+          4                                                         2                        4                                             2
+                                     3                                                                                       3
+
+                                   w 520                                                                                w 520
+                               Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                  height                     thickness                qty                 grain
+     520 mm                 60 mm                      18 mm                    1                   0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge               banded             band model                                            thick.
+     1 top              —
+     2 right            yes                ABS Szary Taupe U750 ST9 1mm                          1 mm
+     3 bottom           yes                ABS Szary Taupe U750 ST9 1mm                          1 mm
+     4 left             yes                ABS Szary Taupe U750 ST9 1mm                          1 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                         meble · ew-shelves · panel sheet P77
+P78. Open shelf 1450                                                         Entryway — open shelves 1450 + 1960 · ew-shelves/shelf-1450
+
+
+                        OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
+
+                                       1                                                                                          1
+
+
+
+
+   h 250                                                                                 h 250
+           4                                                           2                         4                                                 2
+
+
+
+
+                                       3                                                                                          3
+
+                                    w 520                                                                                       w 520
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                     thickness                 qty                      grain
+     520 mm                   250 mm                     18 mm                     1                        0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                            thick.
+     1 top                —
+     2 right              yes                   ABS Szary Taupe U750 ST9 2mm                          2 mm
+     3 bottom             yes                   ABS Szary Taupe U750 ST9 2mm                          2 mm
+     4 left               yes                   ABS Szary Taupe U750 ST9 1mm                          1 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face           x                      y                 Ø             depth                     type
+     inner          9.5                    50                20            14 mm                     multi ×2 @ 150mm y
+
+
+
+
+                                                             meble · ew-shelves · panel sheet P78
+P79. Wall cleat under shelf 1960                                           Entryway — open shelves 1450 + 1960 · ew-shelves/cleat-1960
+
+
+                       OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
+
+                                     1                                                                                       1
+   h 60                                                                                h 60
+          4                                                         2                         4                                             2
+                                     3                                                                                       3
+
+                                   w 520                                                                                 w 520
+                               Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                  height                     thickness                qty                  grain
+     520 mm                 60 mm                      18 mm                    1                    0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge               banded             band model                                             thick.
+     1 top              —
+     2 right            yes                ABS Szary Taupe U750 ST9 1mm                           1 mm
+     3 bottom           yes                ABS Szary Taupe U750 ST9 1mm                           1 mm
+     4 left             yes                ABS Szary Taupe U750 ST9 1mm                           1 mm
+
+
+Drilling — edge
+     edge               from                Ø             depth                 type
+     1 top              60 mm               4             35 mm                 multi ×3 @ 200mm (auto)
+
+Drilling — surface
+     — none —
+
+
+
+
+                                                         meble · ew-shelves · panel sheet P79
+P80. Open shelf 1960                                                         Entryway — open shelves 1450 + 1960 · ew-shelves/shelf-1960
+
+
+                         OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+
+                                       1                                                                                          1
+
+
+
+
+   h 250                                                                                 h 250
+           4                                                           2                         4                                                 2
+
+
+
+
+                                       3                                                                                          3
+
+                                     w 520                                                                                      w 520
+                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                     thickness                 qty                      grain
+     520 mm                   250 mm                     18 mm                     1                        0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                            thick.
+     1 top                —
+     2 right              yes                   ABS Szary Taupe U750 ST9 2mm                          2 mm
+     3 bottom             yes                   ABS Szary Taupe U750 ST9 2mm                          2 mm
+     4 left               yes                   ABS Szary Taupe U750 ST9 1mm                          1 mm
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face           x                      y                 Ø             depth                     type
+     inner          9.5                    50                20            14 mm                     multi ×2 @ 150mm y
+     outer          60                     241.0             8             through                   multi ×3 @ 200mm x (auto)
+
+
+
+
+                                                             meble · ew-shelves · panel sheet P80
+P81. Left side                                                                                                     Kitchen open unit 900 · open-900/side-l
 
 
                             OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
@@ -2801,8 +3896,8 @@ Drilling — surface
 
 
 
-                                                                 meble · open-900 · panel sheet P58
-P59. Right side                                                                                                    Kitchen open unit 900 · open-900/side-r
+                                                                 meble · open-900 · panel sheet P81
+P82. Right side                                                                                                    Kitchen open unit 900 · open-900/side-r
 
 
                             OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
@@ -2847,8 +3942,8 @@ Drilling — surface
 
 
 
-                                                                 meble · open-900 · panel sheet P59
-P60. Bottom panel                                                                                            Kitchen open unit 900 · open-900/bottom
+                                                                 meble · open-900 · panel sheet P82
+P83. Bottom panel                                                                                            Kitchen open unit 900 · open-900/bottom
 
 
                           OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
@@ -2893,8 +3988,8 @@ Drilling — surface
 
 
 
-                                                             meble · open-900 · panel sheet P60
-P61. Top panel                                                                                                 Kitchen open unit 900 · open-900/top
+                                                             meble · open-900 · panel sheet P83
+P84. Top panel                                                                                                 Kitchen open unit 900 · open-900/top
 
 
                           OUTER · editor: przód (front)                                                          INNER · editor: tył (back)
@@ -2939,8 +4034,8 @@ Drilling — surface
 
 
 
-                                                             meble · open-900 · panel sheet P61
-P62. Back stretcher (horizontal)                                                                    Kitchen open unit 900 · open-900/rail-back-h
+                                                             meble · open-900 · panel sheet P84
+P85. Back stretcher (horizontal)                                                                    Kitchen open unit 900 · open-900/rail-back-h
 
 
                        OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -2977,8 +4072,8 @@ Drilling — surface
 
 
 
-                                                          meble · open-900 · panel sheet P62
-P63. Back stretcher (vertical)                                                                       Kitchen open unit 900 · open-900/rail-back-v
+                                                          meble · open-900 · panel sheet P85
+P86. Back stretcher (vertical)                                                                       Kitchen open unit 900 · open-900/rail-back-v
 
 
                      OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
@@ -3021,8 +4116,8 @@ Drilling — surface
 
 
 
-                                                            meble · open-900 · panel sheet P63
-P64. Mounting panel 87×1000                                                         Kitchen mounting panels · mounting-panels/mount-panel
+                                                            meble · open-900 · panel sheet P86
+P87. Mounting panel 87×1000                                                         Kitchen mounting panels · mounting-panels/mount-panel
 
 
                      OUTER · editor: przód (front)                                                         INNER · editor: tył (back)
@@ -3065,8 +4160,8 @@ Drilling — surface
 
 
 
-                                                     meble · mounting-panels · panel sheet P64
-P65. Left side                                                                                               Living — window bench unit 1 · lr-bench-1/side-l
+                                                     meble · mounting-panels · panel sheet P87
+P88. Left side                                                                                               Living — window bench unit 1 · lr-bench-1/side-l
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -3116,8 +4211,8 @@ Drilling — surface
 
 
 
-                                                                      meble · lr-bench-1 · panel sheet P65
-P66. Right side                                                                                            Living — window bench unit 1 · lr-bench-1/side-r
+                                                                      meble · lr-bench-1 · panel sheet P88
+P89. Right side                                                                                            Living — window bench unit 1 · lr-bench-1/side-r
 
 
                                OUTER · editor: przód (front)                                                                   INNER · editor: tył (back)
@@ -3164,8 +4259,8 @@ Drilling — surface
 
 
 
-                                                                    meble · lr-bench-1 · panel sheet P66
-P67. Bottom                                                                                               Living — window bench unit 1 · lr-bench-1/bottom
+                                                                    meble · lr-bench-1 · panel sheet P89
+P90. Bottom                                                                                               Living — window bench unit 1 · lr-bench-1/bottom
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -3208,8 +4303,8 @@ Drilling — surface
 
 
 
-                                                                 meble · lr-bench-1 · panel sheet P67
-P68. Top                                                                                                    Living — window bench unit 1 · lr-bench-1/top
+                                                                 meble · lr-bench-1 · panel sheet P90
+P91. Top                                                                                                    Living — window bench unit 1 · lr-bench-1/top
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -3252,8 +4347,8 @@ Drilling — surface
 
 
 
-                                                                 meble · lr-bench-1 · panel sheet P68
-P69. Back (HDF)                                                                                  Living — window bench unit 1 · lr-bench-1/back
+                                                                 meble · lr-bench-1 · panel sheet P91
+P92. Back (HDF)                                                                                  Living — window bench unit 1 · lr-bench-1/back
 
 
                       OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -3294,8 +4389,8 @@ Drilling — surface
 
 
 
-                                                         meble · lr-bench-1 · panel sheet P69
-P70. Gable @710.0                                                                                  Living — window bench unit 1 · lr-bench-1/gable
+                                                         meble · lr-bench-1 · panel sheet P92
+P93. Gable @710.0                                                                                  Living — window bench unit 1 · lr-bench-1/gable
 
 
                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -3340,8 +4435,8 @@ Drilling — surface
 
 
 
-                                                            meble · lr-bench-1 · panel sheet P70
-P71. Door left                                                                                      Living — window bench unit 1 · lr-bench-1/door-l
+                                                            meble · lr-bench-1 · panel sheet P93
+P94. Door left                                                                                      Living — window bench unit 1 · lr-bench-1/door-l
 
 
                         OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
@@ -3385,8 +4480,8 @@ Drilling — surface
 
 
 
-                                                            meble · lr-bench-1 · panel sheet P71
-P72. Door right                                                                                    Living — window bench unit 1 · lr-bench-1/door-r
+                                                            meble · lr-bench-1 · panel sheet P94
+P95. Door right                                                                                    Living — window bench unit 1 · lr-bench-1/door-r
 
 
                         OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -3430,8 +4525,8 @@ Drilling — surface
 
 
 
-                                                           meble · lr-bench-1 · panel sheet P72
-P73. Left side                                                                                               Living — window bench unit 2 · lr-bench-2/side-l
+                                                           meble · lr-bench-1 · panel sheet P95
+P96. Left side                                                                                               Living — window bench unit 2 · lr-bench-2/side-l
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -3481,8 +4576,8 @@ Drilling — surface
 
 
 
-                                                                      meble · lr-bench-2 · panel sheet P73
-P74. Right side                                                                                           Living — window bench unit 2 · lr-bench-2/side-r
+                                                                      meble · lr-bench-2 · panel sheet P96
+P97. Right side                                                                                           Living — window bench unit 2 · lr-bench-2/side-r
 
 
                                OUTER · editor: przód (front)                                                                  INNER · editor: tył (back)
@@ -3529,8 +4624,8 @@ Drilling — surface
 
 
 
-                                                                   meble · lr-bench-2 · panel sheet P74
-P75. Bottom                                                                                                Living — window bench unit 2 · lr-bench-2/bottom
+                                                                   meble · lr-bench-2 · panel sheet P97
+P98. Bottom                                                                                                Living — window bench unit 2 · lr-bench-2/bottom
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -3573,8 +4668,8 @@ Drilling — surface
 
 
 
-                                                                  meble · lr-bench-2 · panel sheet P75
-P76. Top                                                                                                     Living — window bench unit 2 · lr-bench-2/top
+                                                                  meble · lr-bench-2 · panel sheet P98
+P99. Top                                                                                                     Living — window bench unit 2 · lr-bench-2/top
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -3617,8 +4712,8 @@ Drilling — surface
 
 
 
-                                                                  meble · lr-bench-2 · panel sheet P76
-P77. Back (HDF)                                                                                  Living — window bench unit 2 · lr-bench-2/back
+                                                                  meble · lr-bench-2 · panel sheet P99
+P100. Back (HDF)                                                                                 Living — window bench unit 2 · lr-bench-2/back
 
 
                       OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -3659,8 +4754,8 @@ Drilling — surface
 
 
 
-                                                         meble · lr-bench-2 · panel sheet P77
-P78. Gable @710.0                                                                                  Living — window bench unit 2 · lr-bench-2/gable
+                                                         meble · lr-bench-2 · panel sheet P100
+P101. Gable @710.0                                                                              Living — window bench unit 2 · lr-bench-2/gable
 
 
                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -3705,8 +4800,8 @@ Drilling — surface
 
 
 
-                                                            meble · lr-bench-2 · panel sheet P78
-P79. Door left                                                                                      Living — window bench unit 2 · lr-bench-2/door-l
+                                                           meble · lr-bench-2 · panel sheet P101
+P102. Door left                                                                                     Living — window bench unit 2 · lr-bench-2/door-l
 
 
                         OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
@@ -3750,8 +4845,8 @@ Drilling — surface
 
 
 
-                                                            meble · lr-bench-2 · panel sheet P79
-P80. Door right                                                                                    Living — window bench unit 2 · lr-bench-2/door-r
+                                                           meble · lr-bench-2 · panel sheet P102
+P103. Door right                                                                                   Living — window bench unit 2 · lr-bench-2/door-r
 
 
                         OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -3795,39 +4890,39 @@ Drilling — surface
 
 
 
-                                                           meble · lr-bench-2 · panel sheet P80
-P81. Seat, left piece                                                                          Living — bench top (3 pieces) · lr-bench-top/seat-l
+                                                           meble · lr-bench-2 · panel sheet P103
+P104. Seat, left piece                                                                         Living — bench top (3 pieces) · lr-bench-top/seat-l
 
 
-                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+                          OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
 
-                                        1                                                                                         1
-
-
-
-
-                  h 350                                                                                       h 350
-                          4                          2                                                                4                        2
+                                        1                                                                                          1
 
 
 
 
-                                        3                                                                                         3
+                  h 350                                                                                        h 350
+                          4                          2                                                                 4                        2
 
-                                      w 190                                                                                     w 190
+
+
+
+                                        3                                                                                          3
+
+                                      w 190                                                                                      w 190
                                   Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                       height                     thickness                qty                  grain
-   190 mm                      350 mm                     18 mm                    1                    0 — any
+   width                       height                     thickness                qty                   grain
+   190 mm                      350 mm                     18 mm                    1                     0 — any
    board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-   edge                    banded             band model                                             thick.
+   edge                    banded             band model                                              thick.
    1 top                   —
-   2 right                 yes                ABS Szary Taupe U750 ST9 2mm                           2 mm
-   3 bottom                yes                ABS Szary Taupe U750 ST9 2mm                           2 mm
-   4 left                  yes                ABS Szary Taupe U750 ST9 2mm                           2 mm
+   2 right                 yes                ABS Szary Taupe U750 ST9 2mm                            2 mm
+   3 bottom                yes                ABS Szary Taupe U750 ST9 2mm                            2 mm
+   4 left                  yes                ABS Szary Taupe U750 ST9 2mm                            2 mm
 
 
 Drilling — edge
@@ -3839,8 +4934,8 @@ Drilling — surface
 
 
 
-                                                            meble · lr-bench-top · panel sheet P81
-P82. Seat, middle piece (over the sill)                                                       Living — bench top (3 pieces) · lr-bench-top/seat-mid
+                                                            meble · lr-bench-top · panel sheet P104
+P105. Seat, middle piece (over the sill)                                                      Living — bench top (3 pieces) · lr-bench-top/seat-mid
 
 
                        OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
@@ -3877,39 +4972,39 @@ Drilling — surface
 
 
 
-                                                         meble · lr-bench-top · panel sheet P82
-P83. Seat, right piece                                                                         Living — bench top (3 pieces) · lr-bench-top/seat-r
+                                                         meble · lr-bench-top · panel sheet P105
+P106. Seat, right piece                                                                        Living — bench top (3 pieces) · lr-bench-top/seat-r
 
 
-                          OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+                          OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
 
-                                        1                                                                                         1
-
-
-
-
-                  h 350                                                                                       h 350
-                          4                          2                                                                4                        2
+                                        1                                                                                          1
 
 
 
 
-                                        3                                                                                         3
+                  h 350                                                                                        h 350
+                          4                          2                                                                 4                        2
 
-                                      w 190                                                                                     w 190
+
+
+
+                                        3                                                                                          3
+
+                                      w 190                                                                                      w 190
                                   Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                       height                     thickness                qty                  grain
-   190 mm                      350 mm                     18 mm                    1                    0 — any
+   width                       height                     thickness                qty                   grain
+   190 mm                      350 mm                     18 mm                    1                     0 — any
    board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-   edge                    banded             band model                                             thick.
+   edge                    banded             band model                                              thick.
    1 top                   —
-   2 right                 yes                ABS Szary Taupe U750 ST9 2mm                           2 mm
-   3 bottom                yes                ABS Szary Taupe U750 ST9 2mm                           2 mm
-   4 left                  yes                ABS Szary Taupe U750 ST9 2mm                           2 mm
+   2 right                 yes                ABS Szary Taupe U750 ST9 2mm                            2 mm
+   3 bottom                yes                ABS Szary Taupe U750 ST9 2mm                            2 mm
+   4 left                  yes                ABS Szary Taupe U750 ST9 2mm                            2 mm
 
 
 Drilling — edge
@@ -3921,155 +5016,155 @@ Drilling — surface
 
 
 
-                                                            meble · lr-bench-top · panel sheet P83
-P84. Left side                                                                  Living — corner column (books + glass, hiding place) · lr-tower/side-l
+                                                            meble · lr-bench-top · panel sheet P106
+P107. Left side                                                                  Living — corner column (books + glass, hiding place) · lr-tower/side-l
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                           OUTER · editor: przód (front)                                                                     INNER · editor: tył (back)
+                           OUTER · editor: przód (front)                                                                      INNER · editor: tył (back)
 
-                                                1                                                                                             1
-
-
-
-
-                                   h 2310                                                                                        h 2310
-                                            4       2                                                                                     4       2
+                                                1                                                                                              1
 
 
 
 
-                                                3                                                                                             3
+                                   h 2310                                                                                         h 2310
+                                            4       2                                                                                      4       2
 
-                                            w 297                                                                                         w 297
+
+
+
+                                                3                                                                                              3
+
+                                            w 297                                                                                          w 297
               Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-    width                        height                            thickness                qty                    grain
-    297 mm                       2310 mm                           18 mm                    1                      0 — any
+    width                        height                            thickness                qty                     grain
+    297 mm                       2310 mm                           18 mm                    1                       0 — any
     board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-    edge                     banded                       band model                                         thick.
-    1 top                    yes                          ABS Szary Taupe U750 ST9 1mm                       1 mm
+    edge                     banded                       band model                                          thick.
+    1 top                    yes                          ABS Szary Taupe U750 ST9 1mm                        1 mm
     2 right                  —
-    3 bottom                 yes                          ABS Szary Taupe U750 ST9 1mm                       1 mm
-    4 left                   yes                          ABS Szary Taupe U750 ST9 1mm                       1 mm
+    3 bottom                 yes                          ABS Szary Taupe U750 ST9 1mm                        1 mm
+    4 left                   yes                          ABS Szary Taupe U750 ST9 1mm                        1 mm
 
 
 Drilling — edge
     — none —
 
 Drilling — surface
-    face              x                             y                  Ø            depth                   type
-    inner             37                            1843               5            13 mm                   multi ×2 @ 223mm x
-    inner             50                            1529               5            12 mm                   multi ×2 @ 197mm x
-    inner             50                            1149               5            12 mm                   multi ×2 @ 197mm x
-    inner             50                            389                5            12 mm                   multi ×2 @ 197mm x
-    inner             37                            1022               5            13 mm                   multi ×2 @ 32mm y
-    inner             37                            466                5            13 mm                   multi ×2 @ 32mm y
-    inner             37                            262                5            13 mm                   multi ×2 @ 32mm y
-    inner             37                            86                 5            13 mm                   multi ×2 @ 32mm y
-    outer             50.0                          9.0                8            through                 multi ×3 @ 98.5mm x (auto)
-    outer             50.0                          2301.0             8            through                 multi ×3 @ 98.5mm x (auto)
+    face              x                             y                  Ø            depth                    type
+    inner             37                            1843               5            13 mm                    multi ×2 @ 223mm x
+    inner             50                            1529               5            12 mm                    multi ×2 @ 197mm x
+    inner             50                            1149               5            12 mm                    multi ×2 @ 197mm x
+    inner             50                            389                5            12 mm                    multi ×2 @ 197mm x
+    inner             37                            1022               5            13 mm                    multi ×2 @ 32mm y
+    inner             37                            466                5            13 mm                    multi ×2 @ 32mm y
+    inner             37                            262                5            13 mm                    multi ×2 @ 32mm y
+    inner             37                            86                 5            13 mm                    multi ×2 @ 32mm y
+    outer             50.0                          9.0                8            through                  multi ×3 @ 98.5mm x (auto)
+    outer             50.0                          2301.0             8            through                  multi ×3 @ 98.5mm x (auto)
 
 
 
 
-                                                                       meble · lr-tower · panel sheet P84
-P85. Right side                                                               Living — corner column (books + glass, hiding place) · lr-tower/side-r
+                                                                       meble · lr-tower · panel sheet P107
+P108. Right side                                                              Living — corner column (books + glass, hiding place) · lr-tower/side-r
 
 
-                          OUTER · editor: przód (front)                                                                    INNER · editor: tył (back)
+                          OUTER · editor: przód (front)                                                                     INNER · editor: tył (back)
 
-                                              1                                                                                             1
-
-
-
-
-                                 h 2310                                                                                        h 2310
-                                          4       2                                                                                     4       2
+                                              1                                                                                              1
 
 
 
 
-                                              3                                                                                             3
+                                 h 2310                                                                                         h 2310
+                                          4       2                                                                                      4       2
 
-                                          w 297                                                                                         w 297
+
+
+
+                                              3                                                                                              3
+
+                                          w 297                                                                                          w 297
              Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                       height                            thickness                qty                    grain
-   297 mm                      2310 mm                           18 mm                    1                      0 — any
+   width                       height                            thickness                qty                     grain
+   297 mm                      2310 mm                           18 mm                    1                       0 — any
    board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-   edge                    banded                       band model                                         thick.
-   1 top                   yes                          ABS Szary Taupe U750 ST9 1mm                       1 mm
+   edge                    banded                       band model                                          thick.
+   1 top                   yes                          ABS Szary Taupe U750 ST9 1mm                        1 mm
    2 right                 —
-   3 bottom                yes                          ABS Szary Taupe U750 ST9 1mm                       1 mm
-   4 left                  yes                          ABS Szary Taupe U750 ST9 1mm                       1 mm
+   3 bottom                yes                          ABS Szary Taupe U750 ST9 1mm                        1 mm
+   4 left                  yes                          ABS Szary Taupe U750 ST9 1mm                        1 mm
 
 
 Drilling — edge
    — none —
 
 Drilling — surface
-   face              x                            y                  Ø            depth                   type
-   inner             37                           467                5            13 mm                   multi ×2 @ 223mm x
-   inner             50                           781                5            12 mm                   multi ×2 @ 197mm x
-   inner             50                           1161               5            12 mm                   multi ×2 @ 197mm x
-   inner             50                           1921               5            12 mm                   multi ×2 @ 197mm x
-   outer             50                           2301.0             8            through                 multi ×3 @ 98.5mm x (auto)
-   outer             50                           9.0                8            through                 multi ×3 @ 98.5mm x (auto)
+   face              x                            y                  Ø            depth                    type
+   inner             37                           467                5            13 mm                    multi ×2 @ 223mm x
+   inner             50                           781                5            12 mm                    multi ×2 @ 197mm x
+   inner             50                           1161               5            12 mm                    multi ×2 @ 197mm x
+   inner             50                           1921               5            12 mm                    multi ×2 @ 197mm x
+   outer             50                           2301.0             8            through                  multi ×3 @ 98.5mm x (auto)
+   outer             50                           9.0                8            through                  multi ×3 @ 98.5mm x (auto)
 
 
 
 
-                                                                     meble · lr-tower · panel sheet P85
-P86. Bottom                                                             Living — corner column (books + glass, hiding place) · lr-tower/bottom
+                                                                     meble · lr-tower · panel sheet P108
+P109. Bottom                                                            Living — corner column (books + glass, hiding place) · lr-tower/bottom
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                            OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
+                            OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
 
-                                           1                                                                                     1
-
-
-
-
-       h 297                                                                                h 297
-               4                                                    2                               4                                              2
+                                           1                                                                                      1
 
 
 
 
-                                           3                                                                                     3
+       h 297                                                                                 h 297
+               4                                                    2                                4                                             2
 
-                                        w 314                                                                                  w 314
+
+
+
+                                           3                                                                                      3
+
+                                        w 314                                                                                   w 314
                Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-    width                         height                    thickness              qty                     grain
-    314 mm                        297 mm                    18 mm                  1                       0 — any
+    width                         height                    thickness               qty                     grain
+    314 mm                        297 mm                    18 mm                   1                       0 — any
     board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-    edge                      banded            band model                                              thick.
+    edge                      banded            band model                                               thick.
     1 top                     —
     2 right                   —
-    3 bottom                  yes               ABS Szary Taupe U750 ST9 1mm                            1 mm
+    3 bottom                  yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
     4 left                    —
 
 
 Drilling — edge
-    edge                      from               Ø            depth                type
-    2 right                   50.0 mm            4            35 mm                multi ×3 @ 98.5mm (auto)
-    4 left                    50.0 mm            4            35 mm                multi ×3 @ 98.5mm (auto)
+    edge                      from               Ø            depth                 type
+    2 right                   50.0 mm            4            35 mm                 multi ×3 @ 98.5mm (auto)
+    4 left                    50.0 mm            4            35 mm                 multi ×3 @ 98.5mm (auto)
 
 Drilling — surface
     — none —
@@ -4077,48 +5172,48 @@ Drilling — surface
 
 
 
-                                                               meble · lr-tower · panel sheet P86
-P87. Top                                                                   Living — corner column (books + glass, hiding place) · lr-tower/top
+                                                               meble · lr-tower · panel sheet P109
+P110. Top                                                                  Living — corner column (books + glass, hiding place) · lr-tower/top
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                            OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
+                            OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
 
-                                           1                                                                                     1
-
-
-
-
-       h 297                                                                                h 297
-               4                                                    2                               4                                              2
+                                           1                                                                                      1
 
 
 
 
-                                           3                                                                                     3
+       h 297                                                                                 h 297
+               4                                                    2                                4                                             2
 
-                                        w 314                                                                                  w 314
+
+
+
+                                           3                                                                                      3
+
+                                        w 314                                                                                   w 314
                Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-    width                         height                    thickness              qty                     grain
-    314 mm                        297 mm                    18 mm                  1                       0 — any
+    width                         height                    thickness               qty                     grain
+    314 mm                        297 mm                    18 mm                   1                       0 — any
     board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-    edge                      banded            band model                                              thick.
+    edge                      banded            band model                                               thick.
     1 top                     —
     2 right                   —
-    3 bottom                  yes               ABS Szary Taupe U750 ST9 1mm                            1 mm
+    3 bottom                  yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
     4 left                    —
 
 
 Drilling — edge
-    edge                      from               Ø            depth                type
-    2 right                   50.0 mm            4            35 mm                multi ×3 @ 98.5mm (auto)
-    4 left                    50.0 mm            4            35 mm                multi ×3 @ 98.5mm (auto)
+    edge                      from               Ø            depth                 type
+    2 right                   50.0 mm            4            35 mm                 multi ×3 @ 98.5mm (auto)
+    4 left                    50.0 mm            4            35 mm                 multi ×3 @ 98.5mm (auto)
 
 Drilling — surface
     — none —
@@ -4126,35 +5221,35 @@ Drilling — surface
 
 
 
-                                                               meble · lr-tower · panel sheet P87
-P88. Back (HDF)                                                           Living — corner column (books + glass, hiding place) · lr-tower/back
+                                                               meble · lr-tower · panel sheet P110
+P111. Back (HDF)                                                          Living — corner column (books + glass, hiding place) · lr-tower/back
 
 
-                     OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
+                     OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
 
-                                           1                                                                                       1
-
-
-
-
-                           h 2310                                                                                     h 2310
-                                       4       2                                                                               4       2
+                                           1                                                                                        1
 
 
 
 
-                                           3                                                                                       3
+                           h 2310                                                                                      h 2310
+                                       4       2                                                                                4       2
 
-                                       w 350                                                                                   w 350
+
+
+
+                                           3                                                                                        3
+
+                                       w 350                                                                                    w 350
                                     Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                  height                           thickness                 qty                grain
-   350 mm                 2310 mm                          3 mm                      1                  0 — any
+   width                  height                           thickness                 qty                 grain
+   350 mm                 2310 mm                          3 mm                      1                   0 — any
    board: White HDF 3mm (back)
 
 Edge banding · covering: long edges (editor: kryjące długie)
-   edge               banded                       band model                                        thick.
+   edge               banded                       band model                                         thick.
    1 top              —
    2 right            —
    3 bottom           —
@@ -4170,55 +5265,8 @@ Drilling — surface
 
 
 
-                                                                meble · lr-tower · panel sheet P88
-P89. Hiding-place lid (lift-out shelf)                                    Living — corner column (books + glass, hiding place) · lr-tower/lid
-
-
-                         OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
-
-                                       1                                                                                       1
-
-
-
-
-      h 295                                                                               h 295
-              4                                                  2                                4                                             2
-
-
-
-
-                                       3                                                                                       3
-
-                                     w 312                                                                                   w 312
-              Cabinet FRONT edge = top edge (1). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
-
-Size & material
-   width                      height                     thickness               qty                     grain
-   312 mm                     295 mm                     18 mm                   1                       0 — any
-   board: Egger Szary Taupe U750 ST9
-
-Edge banding · covering: long edges (editor: kryjące długie)
-   edge                    banded            band model                                               thick.
-   1 top                   yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
-   2 right                 yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
-   3 bottom                yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
-   4 left                  yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
-
-
-Drilling — edge
-   — none —
-
-Drilling — surface
-   — none —
-
-
-
-
-                                                             meble · lr-tower · panel sheet P89
-P90. Seat-level insert (loose, lies on   the
-                                     Living — lid)
-                                              corner column (books + glass, hiding place) · lr-tower/insert
-
+                                                                meble · lr-tower · panel sheet P111
+P112. Hiding-place lid (lift-out shelf) Living — corner column (books + glass, hiding place) · lr-tower/lid
 
                          OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
 
@@ -4260,41 +5308,85 @@ Drilling — surface
 
 
 
-                                                             meble · lr-tower · panel sheet P90
-P91. Book shelf @870                                                  Living — corner column (books + glass, hiding place) · lr-tower/sh-870
+                                                            meble · lr-tower · panel sheet P112
+P113. Seat-level insert (loose, lies on    thecorner
+                                     Living —   lid)column (books + glass, hiding place) · lr-tower/insert
 
-/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
-The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
-described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
-it the other way up; that is expected, and the finished panel is identical either way.
-                        OUTER · editor: przód (front)                                                              INNER · editor: tył (back)
+                         OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
 
                                        1                                                                                       1
 
 
 
 
-       h 297                                                                              h 297
-               4                                                  2                               4                                             2
+      h 295                                                                               h 295
+              4                                                  2                                4                                             2
 
 
 
 
                                        3                                                                                       3
 
-                                    w 314                                                                                    w 314
+                                     w 312                                                                                   w 312
+              Cabinet FRONT edge = top edge (1). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+   width                      height                     thickness               qty                     grain
+   312 mm                     295 mm                     18 mm                   1                       0 — any
+   board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+   edge                    banded            band model                                               thick.
+   1 top                   yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
+   2 right                 yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
+   3 bottom                yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
+   4 left                  yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
+
+
+Drilling — edge
+   — none —
+
+Drilling — surface
+   — none —
+
+
+
+
+                                                            meble · lr-tower · panel sheet P113
+P114. Book shelf @870                                                 Living — corner column (books + glass, hiding place) · lr-tower/sh-870
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
+
+                                       1                                                                                        1
+
+
+
+
+       h 297                                                                               h 297
+               4                                                  2                                4                                             2
+
+
+
+
+                                       3                                                                                        3
+
+                                    w 314                                                                                     w 314
                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-    width                     height                     thickness                qty                    grain
-    314 mm                    297 mm                     18 mm                    1                      0 — any
+    width                     height                     thickness                qty                     grain
+    314 mm                    297 mm                     18 mm                    1                       0 — any
     board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-    edge                  banded                band model                                            thick.
+    edge                  banded                band model                                             thick.
     1 top                 —
     2 right               —
-    3 bottom              yes                   ABS Szary Taupe U750 ST9 1mm                          1 mm
+    3 bottom              yes                   ABS Szary Taupe U750 ST9 1mm                           1 mm
     4 left                —
 
 
@@ -4302,48 +5394,47 @@ Drilling — edge
     — none —
 
 Drilling — surface
-    face            x                      y                 Ø            depth                   type
-    outer           304.5                  50                20           14 mm                   multi ×2 @ 197mm y
-    outer           9.5                    50                20           14 mm                   multi ×2 @ 197mm y
+    face            x                      y                 Ø            depth                    type
+    outer           304.5                  50                20           14 mm                    multi ×2 @ 197mm y
+    outer           9.5                    50                20           14 mm                    multi ×2 @ 197mm y
 
 
 
 
-                                                             meble · lr-tower · panel sheet P91
-P92. Shelf @1250 (glass floor)                                        Living — corner column (books + glass, hiding place) · lr-tower/sh-1250
-
+                                                             meble · lr-tower · panel sheet P114
+P115. Shelf @1250 (glass floor) Living — corner column (books + glass, hiding place) · lr-tower/sh-1250
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                        OUTER · editor: przód (front)                                                              INNER · editor: tył (back)
+                        OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
 
-                                       1                                                                                       1
-
-
-
-
-       h 297                                                                              h 297
-               4                                                  2                               4                                             2
+                                       1                                                                                        1
 
 
 
 
-                                       3                                                                                       3
+       h 297                                                                               h 297
+               4                                                  2                                4                                             2
 
-                                    w 314                                                                                    w 314
+
+
+
+                                       3                                                                                        3
+
+                                    w 314                                                                                     w 314
                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-    width                     height                     thickness                 qty                   grain
-    314 mm                    297 mm                     18 mm                     1                     0 — any
+    width                     height                     thickness                qty                     grain
+    314 mm                    297 mm                     18 mm                    1                       0 — any
     board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-    edge                  banded                band model                                            thick.
+    edge                  banded                band model                                             thick.
     1 top                 —
     2 right               —
-    3 bottom              yes                   ABS Szary Taupe U750 ST9 1mm                          1 mm
+    3 bottom              yes                   ABS Szary Taupe U750 ST9 1mm                           1 mm
     4 left                —
 
 
@@ -4351,49 +5442,49 @@ Drilling — edge
     — none —
 
 Drilling — surface
-    face            x                      y                 Ø             depth                  type
-    outer           304.5                  50                20            14 mm                  multi ×2 @ 197mm y
-    outer           9.5                    50                20            14 mm                  multi ×2 @ 197mm y
+    face            x                      y                 Ø            depth                    type
+    outer           304.5                  50                20           14 mm                    multi ×2 @ 197mm y
+    outer           9.5                    50                20           14 mm                    multi ×2 @ 197mm y
 
 
 
 
-                                                             meble · lr-tower · panel sheet P92
-P93. Shelf @2010 (behind the glass    joint)
-                                Living — corner column (books + glass, hiding place) · lr-tower/sh-2010
+                                                             meble · lr-tower · panel sheet P115
+P116. Shelf @2010 (behind the glass   joint)
+                               Living — corner column (books + glass, hiding place) · lr-tower/sh-2010
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                        OUTER · editor: przód (front)                                                              INNER · editor: tył (back)
+                        OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
 
-                                       1                                                                                       1
-
-
-
-
-       h 297                                                                              h 297
-               4                                                  2                               4                                             2
+                                       1                                                                                        1
 
 
 
 
-                                       3                                                                                       3
+       h 297                                                                               h 297
+               4                                                  2                                4                                             2
 
-                                    w 314                                                                                    w 314
+
+
+
+                                       3                                                                                        3
+
+                                    w 314                                                                                     w 314
                                 Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-    width                     height                     thickness                qty                    grain
-    314 mm                    297 mm                     18 mm                    1                      0 — any
+    width                     height                     thickness                qty                     grain
+    314 mm                    297 mm                     18 mm                    1                       0 — any
     board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-    edge                  banded                band model                                            thick.
+    edge                  banded                band model                                             thick.
     1 top                 —
     2 right               —
-    3 bottom              yes                   ABS Szary Taupe U750 ST9 1mm                          1 mm
+    3 bottom              yes                   ABS Szary Taupe U750 ST9 1mm                           1 mm
     4 left                —
 
 
@@ -4401,49 +5492,49 @@ Drilling — edge
     — none —
 
 Drilling — surface
-    face            x                      y                 Ø            depth                   type
-    outer           304.5                  50                20           14 mm                   multi ×2 @ 197mm y
-    outer           9.5                    50                20           14 mm                   multi ×2 @ 197mm y
+    face            x                      y                 Ø            depth                    type
+    outer           304.5                  50                20           14 mm                    multi ×2 @ 197mm y
+    outer           9.5                    50                20           14 mm                    multi ×2 @ 197mm y
 
 
 
 
-                                                             meble · lr-tower · panel sheet P93
-P94. Left side                                                                                               Living — vitrine (books + glass) · lr-vitrine/side-l
+                                                             meble · lr-tower · panel sheet P116
+P117. Left side                                                                                               Living — vitrine (books + glass) · lr-vitrine/side-l
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                           OUTER · editor: przód (front)                                                                     INNER · editor: tył (back)
+                           OUTER · editor: przód (front)                                                                      INNER · editor: tył (back)
 
-                                               1                                                                                               1
-
-
-
-
-                                  h 2310                                                                                          h 2310
-                                           4       2                                                                                       4       2
+                                               1                                                                                                1
 
 
 
 
-                                               3                                                                                               3
+                                  h 2310                                                                                           h 2310
+                                           4       2                                                                                        4       2
 
-                                           w 282                                                                                           w 282
+
+
+
+                                               3                                                                                                3
+
+                                           w 282                                                                                            w 282
               Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-    width                       height                           thickness                 qty                     grain
-    282 mm                      2310 mm                          18 mm                     1                       0 — any
+    width                       height                           thickness                 qty                      grain
+    282 mm                      2310 mm                          18 mm                     1                        0 — any
     board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-    edge                    banded                      band model                                           thick.
-    1 top                   yes                         ABS Szary Taupe U750 ST9 1mm                         1 mm
+    edge                    banded                      band model                                            thick.
+    1 top                   yes                         ABS Szary Taupe U750 ST9 1mm                          1 mm
     2 right                 —
-    3 bottom                yes                         ABS Szary Taupe U750 ST9 1mm                         1 mm
-    4 left                  yes                         ABS Szary Taupe U750 ST9 1mm                         1 mm
+    3 bottom                yes                         ABS Szary Taupe U750 ST9 1mm                          1 mm
+    4 left                  yes                         ABS Szary Taupe U750 ST9 1mm                          1 mm
 
 
 Drilling — edge
@@ -4451,56 +5542,56 @@ Drilling — edge
     2 right                 105 mm                       4           35 mm                 multi ×5 @ 525mm (auto)
 
 Drilling — surface
-    face              x                            y                 Ø             depth                    type
-    inner             50                           9                 5             12 mm                    multi ×2 @ 182mm x
-    inner             50                           1909              5             12 mm                    multi ×2 @ 182mm x
-    inner             50                           1529              5             12 mm                    multi ×2 @ 182mm x
-    inner             50                           1149              5             12 mm                    multi ×2 @ 182mm x
-    inner             50                           389               5             12 mm                    multi ×2 @ 182mm x
-    inner             37                           2192              5             13 mm                    multi ×2 @ 32mm y
-    inner             37                           1986              5             13 mm                    multi ×2 @ 32mm y
-    inner             37                           1022              5             13 mm                    multi ×2 @ 32mm y
-    inner             37                           466               5             13 mm                    multi ×2 @ 32mm y
-    inner             37                           262               5             13 mm                    multi ×2 @ 32mm y
-    inner             37                           86                5             13 mm                    multi ×2 @ 32mm y
-    outer             50                           2301.0            8             through                  multi ×3 @ 91mm x (auto)
+    face              x                            y                 Ø             depth                     type
+    inner             50                           9                 5             12 mm                     multi ×2 @ 182mm x
+    inner             50                           1909              5             12 mm                     multi ×2 @ 182mm x
+    inner             50                           1529              5             12 mm                     multi ×2 @ 182mm x
+    inner             50                           1149              5             12 mm                     multi ×2 @ 182mm x
+    inner             50                           389               5             12 mm                     multi ×2 @ 182mm x
+    inner             37                           2192              5             13 mm                     multi ×2 @ 32mm y
+    inner             37                           1986              5             13 mm                     multi ×2 @ 32mm y
+    inner             37                           1022              5             13 mm                     multi ×2 @ 32mm y
+    inner             37                           466               5             13 mm                     multi ×2 @ 32mm y
+    inner             37                           262               5             13 mm                     multi ×2 @ 32mm y
+    inner             37                           86                5             13 mm                     multi ×2 @ 32mm y
+    outer             50                           2301.0            8             through                   multi ×3 @ 91mm x (auto)
 
 
 
 
-                                                                     meble · lr-vitrine · panel sheet P94
-P95. Right side                                                                                             Living — vitrine (books + glass) · lr-vitrine/side-r
+                                                                     meble · lr-vitrine · panel sheet P117
+P118. Right side                                                                                             Living — vitrine (books + glass) · lr-vitrine/side-r
 
 
-                          OUTER · editor: przód (front)                                                                      INNER · editor: tył (back)
+                          OUTER · editor: przód (front)                                                                       INNER · editor: tył (back)
 
-                                              1                                                                                                1
-
-
-
-
-                                 h 2310                                                                                           h 2310
-                                          4       2                                                                                        4       2
+                                              1                                                                                                 1
 
 
 
 
-                                              3                                                                                                3
+                                 h 2310                                                                                            h 2310
+                                          4       2                                                                                         4       2
 
-                                          w 282                                                                                            w 282
+
+
+
+                                              3                                                                                                 3
+
+                                          w 282                                                                                             w 282
              Cabinet FRONT edge = left edge (4). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                       height                            thickness                 qty                     grain
-   282 mm                      2310 mm                           18 mm                     1                       0 — any
+   width                       height                            thickness                 qty                      grain
+   282 mm                      2310 mm                           18 mm                     1                        0 — any
    board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-   edge                    banded                       band model                                           thick.
-   1 top                   yes                          ABS Szary Taupe U750 ST9 1mm                         1 mm
+   edge                    banded                       band model                                            thick.
+   1 top                   yes                          ABS Szary Taupe U750 ST9 1mm                          1 mm
    2 right                 —
-   3 bottom                yes                          ABS Szary Taupe U750 ST9 1mm                         1 mm
-   4 left                  yes                          ABS Szary Taupe U750 ST9 1mm                         1 mm
+   3 bottom                yes                          ABS Szary Taupe U750 ST9 1mm                          1 mm
+   4 left                  yes                          ABS Szary Taupe U750 ST9 1mm                          1 mm
 
 
 Drilling — edge
@@ -4508,63 +5599,63 @@ Drilling — edge
    2 right                 105 mm                        4           35 mm                 multi ×5 @ 525mm (auto)
 
 Drilling — surface
-   face              x                            y                  Ø             depth                    type
-   inner             50                           401                5             12 mm                    multi ×2 @ 182mm x
-   inner             50                           781                5             12 mm                    multi ×2 @ 182mm x
-   inner             50                           1161               5             12 mm                    multi ×2 @ 182mm x
-   inner             50                           1921               5             12 mm                    multi ×2 @ 182mm x
-   inner             37                           86                 5             13 mm                    multi ×2 @ 32mm y
-   inner             37                           292                5             13 mm                    multi ×2 @ 32mm y
-   inner             37                           1256               5             13 mm                    multi ×2 @ 32mm y
-   inner             37                           1812               5             13 mm                    multi ×2 @ 32mm y
-   inner             37                           2016               5             13 mm                    multi ×2 @ 32mm y
-   inner             37                           2192               5             13 mm                    multi ×2 @ 32mm y
-   outer             50                           2301.0             8             through                  multi ×3 @ 91mm x (auto)
-   outer             50                           9.0                8             through                  multi ×3 @ 91mm x (auto)
+   face              x                            y                  Ø             depth                     type
+   inner             50                           401                5             12 mm                     multi ×2 @ 182mm x
+   inner             50                           781                5             12 mm                     multi ×2 @ 182mm x
+   inner             50                           1161               5             12 mm                     multi ×2 @ 182mm x
+   inner             50                           1921               5             12 mm                     multi ×2 @ 182mm x
+   inner             37                           86                 5             13 mm                     multi ×2 @ 32mm y
+   inner             37                           292                5             13 mm                     multi ×2 @ 32mm y
+   inner             37                           1256               5             13 mm                     multi ×2 @ 32mm y
+   inner             37                           1812               5             13 mm                     multi ×2 @ 32mm y
+   inner             37                           2016               5             13 mm                     multi ×2 @ 32mm y
+   inner             37                           2192               5             13 mm                     multi ×2 @ 32mm y
+   outer             50                           2301.0             8             through                   multi ×3 @ 91mm x (auto)
+   outer             50                           9.0                8             through                   multi ×3 @ 91mm x (auto)
 
 
 
 
-                                                                     meble · lr-vitrine · panel sheet P95
-P96. Bottom                                                                                            Living — vitrine (books + glass) · lr-vitrine/bottom
+                                                                     meble · lr-vitrine · panel sheet P118
+P119. Bottom                                                                                            Living — vitrine (books + glass) · lr-vitrine/bottom
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
 described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
 it the other way up; that is expected, and the finished panel is identical either way.
-                            OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
+                            OUTER · editor: przód (front)                                                             INNER · editor: tył (back)
 
-                                           1                                                                                     1
-
-
-
-   h 282                                                                                   h 282
-           4                                                            2                          4                                                   2
+                                           1                                                                                      1
 
 
 
-                                           3                                                                                     3
+   h 282                                                                                    h 282
+           4                                                            2                           4                                                   2
 
-                                        w 864                                                                                  w 864
+
+
+                                           3                                                                                      3
+
+                                        w 864                                                                                   w 864
                Cabinet FRONT edge = bottom edge (3). Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-     width                        height                    thickness               qty                    grain
-     864 mm                       282 mm                    18 mm                   1                      0 — any
+     width                        height                    thickness                qty                    grain
+     864 mm                       282 mm                    18 mm                    1                      0 — any
      board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
-     edge                     banded            band model                                              thick.
+     edge                     banded            band model                                               thick.
      1 top                    —
      2 right                  —
-     3 bottom                 yes               ABS Szary Taupe U750 ST9 1mm                            1 mm
+     3 bottom                 yes               ABS Szary Taupe U750 ST9 1mm                             1 mm
      4 left                   —
 
 
 Drilling — edge
-     edge                     from               Ø            depth                 type
-     2 right                  50 mm              4            35 mm                 multi ×3 @ 91mm (auto)
-     4 left                   50 mm              4            35 mm                 multi ×3 @ 91mm (auto)
+     edge                     from               Ø            depth                  type
+     2 right                  50 mm              4            35 mm                  multi ×3 @ 91mm (auto)
+     4 left                   50 mm              4            35 mm                  multi ×3 @ 91mm (auto)
 
 Drilling — surface
      — none —
@@ -4572,8 +5663,8 @@ Drilling — surface
 
 
 
-                                                               meble · lr-vitrine · panel sheet P96
-P97. Top                                                                                                     Living — vitrine (books + glass) · lr-vitrine/top
+                                                               meble · lr-vitrine · panel sheet P119
+P120. Top                                                                                                    Living — vitrine (books + glass) · lr-vitrine/top
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -4619,9 +5710,8 @@ Drilling — surface
 
 
 
-                                                                 meble · lr-vitrine · panel sheet P97
-P98. Back 18 mm (carries the mid-shelf rafix)                                                              Living — vitrine (books + glass) · lr-vitrine/back
-
+                                                                 meble · lr-vitrine · panel sheet P120
+P121. Back 18 mm (carries the mid-shelf rafix) Living — vitrine (books + glass) · lr-vitrine/back
 
                       OUTER · editor: przód (front)                                                                               INNER · editor: tył (back)
 
@@ -4642,8 +5732,8 @@ Drilling — surface
                                        Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
 
 Size & material
-   width                           height                     thickness                  qty                     grain
-   900 mm                          2310 mm                    18 mm                      1                       0 — any
+   width                           height                     thickness                 qty                      grain
+   900 mm                          2310 mm                    18 mm                     1                        0 — any
    board: Egger Szary Taupe U750 ST9
 
 Edge banding · covering: long edges (editor: kryjące długie)
@@ -4658,67 +5748,19 @@ Drilling — edge
    — none —
 
 Drilling — surface
-   face           x                             y                 Ø              depth                    type
-   inner          450                           401               5              12 mm                    single
-   inner          450                           781               5              12 mm                    single
-   inner          450                           1161              5              12 mm                    single
-   inner          450                           1921              5              12 mm                    single
-   outer          891.0                         105               8              through                  multi ×5 @ 525mm y (auto)
-   outer          9.0                           105               8              through                  multi ×5 @ 525mm y (auto)
+   face           x                             y                 Ø             depth                     type
+   inner          450                           401               5             12 mm                     single
+   inner          450                           781               5             12 mm                     single
+   inner          450                           1161              5             12 mm                     single
+   inner          450                           1921              5             12 mm                     single
+   outer          891.0                         105               8             through                   multi ×5 @ 525mm y (auto)
+   outer          9.0                           105               8             through                   multi ×5 @ 525mm y (auto)
 
 
 
 
-                                                                   meble · lr-vitrine · panel sheet P98
-P99. Shelf @490                                                                                      Living — vitrine (books + glass) · lr-vitrine/sh-490
-
-/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
-The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
-described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
-it the other way up; that is expected, and the finished panel is identical either way.
-                        OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
-
-                                       1                                                                                          1
-
-
-
-   h 282                                                                                 h 282
-           4                                                          2                          4                                                   2
-
-
-
-                                       3                                                                                          3
-
-                                    w 864                                                                                       w 864
-                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
-
-Size & material
-     width                    height                     thickness                 qty                      grain
-     864 mm                   282 mm                     18 mm                     1                        0 — any
-     board: Egger Szary Taupe U750 ST9
-
-Edge banding · covering: long edges (editor: kryjące długie)
-     edge                 banded                band model                                            thick.
-     1 top                —
-     2 right              —
-     3 bottom             yes                   ABS Szary Taupe U750 ST9 1mm                          1 mm
-     4 left               —
-
-
-Drilling — edge
-     — none —
-
-Drilling — surface
-     face           x                      y                 Ø             depth                     type
-     outer          854.5                  50                20            14 mm                     multi ×2 @ 182mm y
-     outer          9.5                    50                20            14 mm                     multi ×2 @ 182mm y
-     outer          432                    272.5             20            14 mm                     single
-
-
-
-
-                                                             meble · lr-vitrine · panel sheet P99
-P100. Book shelf @870                                                                                Living — vitrine (books + glass) · lr-vitrine/sh-870
+                                                                  meble · lr-vitrine · panel sheet P121
+P122. Shelf @490                                                                                     Living — vitrine (books + glass) · lr-vitrine/sh-490
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -4765,8 +5807,56 @@ Drilling — surface
 
 
 
-                                                             meble · lr-vitrine · panel sheet P100
-P101. Shelf @1250 (glass floor)                                                                      Living — vitrine (books + glass) · lr-vitrine/sh-1250
+                                                             meble · lr-vitrine · panel sheet P122
+P123. Book shelf @870                                                                                Living — vitrine (books + glass) · lr-vitrine/sh-870
+
+/!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
+The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
+described from the opposite corner to make its banding expressible. The YAML and the 3D viewer show
+it the other way up; that is expected, and the finished panel is identical either way.
+                        OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
+
+                                       1                                                                                          1
+
+
+
+   h 282                                                                                 h 282
+           4                                                          2                          4                                                   2
+
+
+
+                                       3                                                                                          3
+
+                                    w 864                                                                                       w 864
+                                Faces: outer = visible outside · inner = toward cavity (same x,y frame; face = drill side).
+
+Size & material
+     width                    height                     thickness                 qty                      grain
+     864 mm                   282 mm                     18 mm                     1                        0 — any
+     board: Egger Szary Taupe U750 ST9
+
+Edge banding · covering: long edges (editor: kryjące długie)
+     edge                 banded                band model                                            thick.
+     1 top                —
+     2 right              —
+     3 bottom             yes                   ABS Szary Taupe U750 ST9 1mm                          1 mm
+     4 left               —
+
+
+Drilling — edge
+     — none —
+
+Drilling — surface
+     face           x                      y                 Ø             depth                     type
+     outer          854.5                  50                20            14 mm                     multi ×2 @ 182mm y
+     outer          9.5                    50                20            14 mm                     multi ×2 @ 182mm y
+     outer          432                    272.5             20            14 mm                     single
+
+
+
+
+                                                             meble · lr-vitrine · panel sheet P123
+P124. Shelf @1250 (glass floor)                                                                      Living — vitrine (books + glass) · lr-vitrine/sh-1250
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -4813,8 +5903,8 @@ Drilling — surface
 
 
 
-                                                             meble · lr-vitrine · panel sheet P101
-P102. Shelf @2010                                                                                    Living — vitrine (books + glass) · lr-vitrine/sh-2010
+                                                             meble · lr-vitrine · panel sheet P124
+P125. Shelf @2010                                                                                    Living — vitrine (books + glass) · lr-vitrine/sh-2010
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -4861,8 +5951,8 @@ Drilling — surface
 
 
 
-                                                             meble · lr-vitrine · panel sheet P102
-P103. Door left                                                                                     Living — vitrine (books + glass) · lr-vitrine/door-l
+                                                             meble · lr-vitrine · panel sheet P125
+P126. Door left                                                                                     Living — vitrine (books + glass) · lr-vitrine/door-l
 
 
                       OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
@@ -4906,8 +5996,8 @@ Drilling — surface
 
 
 
-                                                          meble · lr-vitrine · panel sheet P103
-P104. Door right                                                                                   Living — vitrine (books + glass) · lr-vitrine/door-r
+                                                          meble · lr-vitrine · panel sheet P126
+P127. Door right                                                                                   Living — vitrine (books + glass) · lr-vitrine/door-r
 
 
                       OUTER · editor: przód (front)                                                               INNER · editor: tył (back)
@@ -4951,8 +6041,8 @@ Drilling — surface
 
 
 
-                                                         meble · lr-vitrine · panel sheet P104
-P105. Left side                                                                                                              Living — low line 3 × 600 · lr-line/side-l
+                                                         meble · lr-vitrine · panel sheet P127
+P128. Left side                                                                                                              Living — low line 3 × 600 · lr-line/side-l
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -5006,8 +6096,8 @@ Drilling — surface
 
 
 
-                                                                         meble · lr-line · panel sheet P105
-P106. Right side                                                                                                              Living — low line 3 × 600 · lr-line/side-r
+                                                                         meble · lr-line · panel sheet P128
+P129. Right side                                                                                                              Living — low line 3 × 600 · lr-line/side-r
 
 
                           OUTER · editor: przód (front)                                                                         INNER · editor: tył (back)
@@ -5058,8 +6148,8 @@ Drilling — surface
 
 
 
-                                                                          meble · lr-line · panel sheet P106
-P107. Bottom                                                                                                             Living — low line 3 × 600 · lr-line/bottom
+                                                                          meble · lr-line · panel sheet P129
+P130. Bottom                                                                                                             Living — low line 3 × 600 · lr-line/bottom
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -5102,8 +6192,8 @@ Drilling — surface
 
 
 
-                                                                      meble · lr-line · panel sheet P107
-P108. Top                                                                                                                      Living — low line 3 × 600 · lr-line/top
+                                                                      meble · lr-line · panel sheet P130
+P131. Top                                                                                                                      Living — low line 3 × 600 · lr-line/top
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -5146,8 +6236,8 @@ Drilling — surface
 
 
 
-                                                                      meble · lr-line · panel sheet P108
-P109. Back (HDF)                                                                                              Living — low line 3 × 600 · lr-line/back
+                                                                      meble · lr-line · panel sheet P131
+P132. Back (HDF)                                                                                              Living — low line 3 × 600 · lr-line/back
 
 
                        OUTER · editor: przód (front)                                                            INNER · editor: tył (back)
@@ -5190,8 +6280,8 @@ Drilling — surface
 
 
 
-                                                            meble · lr-line · panel sheet P109
-P110. Gable @600                                                                                                     Living — low line 3 × 600 · lr-line/gable-1
+                                                            meble · lr-line · panel sheet P132
+P133. Gable @600                                                                                                     Living — low line 3 × 600 · lr-line/gable-1
 
 
                        OUTER · editor: przód (front)                                                                        INNER · editor: tył (back)
@@ -5244,8 +6334,8 @@ Drilling — surface
 
 
 
-                                                                      meble · lr-line · panel sheet P110
-P111. Gable @1200                                                                                                   Living — low line 3 × 600 · lr-line/gable-2
+                                                                      meble · lr-line · panel sheet P133
+P134. Gable @1200                                                                                                   Living — low line 3 × 600 · lr-line/gable-2
 
 
                        OUTER · editor: przód (front)                                                                       INNER · editor: tył (back)
@@ -5294,8 +6384,8 @@ Drilling — surface
 
 
 
-                                                                     meble · lr-line · panel sheet P111
-P112. Shelf bay 1 @490                                                                                      Living — low line 3 × 600 · lr-line/sh-b1-490
+                                                                     meble · lr-line · panel sheet P134
+P135. Shelf bay 1 @490                                                                                      Living — low line 3 × 600 · lr-line/sh-b1-490
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -5343,8 +6433,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P112
-P113. Shelf bay 1 @870                                                                                      Living — low line 3 × 600 · lr-line/sh-b1-870
+                                                              meble · lr-line · panel sheet P135
+P136. Shelf bay 1 @870                                                                                      Living — low line 3 × 600 · lr-line/sh-b1-870
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -5392,8 +6482,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P113
-P114. Shelf bay 2 @490                                                                                      Living — low line 3 × 600 · lr-line/sh-b2-490
+                                                              meble · lr-line · panel sheet P136
+P137. Shelf bay 2 @490                                                                                      Living — low line 3 × 600 · lr-line/sh-b2-490
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -5441,8 +6531,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P114
-P115. Shelf bay 2 @870                                                                                      Living — low line 3 × 600 · lr-line/sh-b2-870
+                                                              meble · lr-line · panel sheet P137
+P138. Shelf bay 2 @870                                                                                      Living — low line 3 × 600 · lr-line/sh-b2-870
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -5490,8 +6580,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P115
-P116. Shelf bay 3 @490                                                                                      Living — low line 3 × 600 · lr-line/sh-b3-490
+                                                              meble · lr-line · panel sheet P138
+P139. Shelf bay 3 @490                                                                                      Living — low line 3 × 600 · lr-line/sh-b3-490
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -5539,8 +6629,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P116
-P117. Shelf bay 3 @870                                                                                      Living — low line 3 × 600 · lr-line/sh-b3-870
+                                                              meble · lr-line · panel sheet P139
+P140. Shelf bay 3 @870                                                                                      Living — low line 3 × 600 · lr-line/sh-b3-870
 
 /!\ SHOWN ROTATED 180° FROM THE DESIGN FRAME — TYPE IT EXACTLY AS DRAWN BELOW.
 The meble.pl CSV import can only ever put a single edge band on edge 3 or edge 4, so this panel is
@@ -5588,8 +6678,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P117
-P118. Door bay 1 bottom                                                                                      Living — low line 3 × 600 · lr-line/door-b1-1
+                                                              meble · lr-line · panel sheet P140
+P141. Door bay 1 bottom                                                                                      Living — low line 3 × 600 · lr-line/door-b1-1
 
 
                         OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
@@ -5633,8 +6723,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P118
-P119. Door bay 1 middle                                                                                      Living — low line 3 × 600 · lr-line/door-b1-2
+                                                              meble · lr-line · panel sheet P141
+P142. Door bay 1 middle                                                                                      Living — low line 3 × 600 · lr-line/door-b1-2
 
 
                         OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
@@ -5678,8 +6768,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P119
-P120. Door bay 2 bottom                                                                                      Living — low line 3 × 600 · lr-line/door-b2-1
+                                                              meble · lr-line · panel sheet P142
+P143. Door bay 2 bottom                                                                                      Living — low line 3 × 600 · lr-line/door-b2-1
 
 
                         OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
@@ -5723,8 +6813,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P120
-P121. Door bay 2 middle                                                                                      Living — low line 3 × 600 · lr-line/door-b2-2
+                                                              meble · lr-line · panel sheet P143
+P144. Door bay 2 middle                                                                                      Living — low line 3 × 600 · lr-line/door-b2-2
 
 
                         OUTER · editor: przód (front)                                                                 INNER · editor: tył (back)
@@ -5768,8 +6858,8 @@ Drilling — surface
 
 
 
-                                                              meble · lr-line · panel sheet P121
-P122. Door bay 3 bottom                                                                                     Living — low line 3 × 600 · lr-line/door-b3-1
+                                                              meble · lr-line · panel sheet P144
+P145. Door bay 3 bottom                                                                                     Living — low line 3 × 600 · lr-line/door-b3-1
 
 
                         OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
@@ -5813,8 +6903,8 @@ Drilling — surface
 
 
 
-                                                             meble · lr-line · panel sheet P122
-P123. Door bay 3 middle                                                                                     Living — low line 3 × 600 · lr-line/door-b3-2
+                                                             meble · lr-line · panel sheet P145
+P146. Door bay 3 middle                                                                                     Living — low line 3 × 600 · lr-line/door-b3-2
 
 
                         OUTER · editor: przód (front)                                                                INNER · editor: tył (back)
@@ -5858,8 +6948,8 @@ Drilling — surface
 
 
 
-                                                             meble · lr-line · panel sheet P123
-P124. Plinth, left wall                                                      Living — plinth boards (80, on adjustable legs) · lr-plinth/pl-left
+                                                             meble · lr-line · panel sheet P146
+P147. Plinth, left wall                                                      Living — plinth boards (80, on adjustable legs) · lr-plinth/pl-left
 
 
                        OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -5892,8 +6982,8 @@ Drilling — surface
 
 
 
-                                                           meble · lr-plinth · panel sheet P124
-P125. Plinth return at the line end                                         Living — plinth boards (80, on adjustable legs) · lr-plinth/pl-end
+                                                           meble · lr-plinth · panel sheet P147
+P148. Plinth return at the line end                                         Living — plinth boards (80, on adjustable legs) · lr-plinth/pl-end
 
 
                        OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -5934,8 +7024,8 @@ Drilling — surface
 
 
 
-                                                           meble · lr-plinth · panel sheet P125
-P126. Plinth, bench 1                                                   Living — plinth boards (80, on adjustable legs) · lr-plinth/pl-bench-1
+                                                           meble · lr-plinth · panel sheet P148
+P149. Plinth, bench 1                                                   Living — plinth boards (80, on adjustable legs) · lr-plinth/pl-bench-1
 
 
                        OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -5969,8 +7059,8 @@ Drilling — surface
 
 
 
-                                                           meble · lr-plinth · panel sheet P126
-P127. Plinth, bench 2                                                   Living — plinth boards (80, on adjustable legs) · lr-plinth/pl-bench-2
+                                                           meble · lr-plinth · panel sheet P149
+P150. Plinth, bench 2                                                   Living — plinth boards (80, on adjustable legs) · lr-plinth/pl-bench-2
 
 
                        OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -6004,8 +7094,8 @@ Drilling — surface
 
 
 
-                                                           meble · lr-plinth · panel sheet P127
-P128. Plinth return at the radiator Living
+                                                           meble · lr-plinth · panel sheet P150
+P151. Plinth return at the radiator Living
                                     end— plinth boards (80, on adjustable legs) · lr-plinth/pl-bench-end
 
                        OUTER · editor: przód (front)                                                           INNER · editor: tył (back)
@@ -6046,5 +7136,5 @@ Drilling — surface
 
 
 
-                                                           meble · lr-plinth · panel sheet P128
+                                                           meble · lr-plinth · panel sheet P151
 
