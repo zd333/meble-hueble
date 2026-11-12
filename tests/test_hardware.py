@@ -134,9 +134,9 @@ EXPECTED = {
     ("confirmat-7x50", None): 170,
     ("dowel-8x30", None): 4,             # entryway hall: ew-upper aligned on the corner base
     ("hinge-alu-frame", "full"): 12,     # living room: the Topal glass doors (plates only are ours)
-    ("hinge-clip-110", "full"): 29,
+    ("hinge-clip-110", "full"): 31,
     ("hinge-clip-110", "half"): 9,      # incl. ew-base: the corner door hangs on the shared gable
-    ("hinge-clip-110", "inset"): 18,     # entryway: wardrobe doors + the hall inner door and router door (ew-upper)
+    ("hinge-clip-110", "inset"): 16,     # entryway: wardrobe doors + the hall inner door (ew-upper)
     ("leveler-glide", None): 6,          # entryway: ew-base stands on glides, no bottom panel
     ("plinth-corner", None): 3,
     ("plinth-leg", None): 28,
