@@ -222,7 +222,7 @@ hardware:
     type: bracket
     name: "Steel angle bracket ~40×40 + short screws"
     # Fixed on site, so `drilling: none`: holds a carcass to the wall from inside a bay (anti-tip), or a
-    # shelf down onto its wall cleat from underneath where a screw head on top would show (ew-shelves).
+    # shelf's back edge to the wall from underneath, so no screw head shows on top (ew-shelves).
     drill: {}
     components:
       - { id: bracket, name: "angle bracket + screws" }
