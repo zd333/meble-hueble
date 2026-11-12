@@ -18,12 +18,12 @@
 # NOTHING in the box door's swing below 970: its bottom edge is not measured (1000 if the box is 880 tall),
 # 30 margin kept. Base top 950 (+ glides ~10). Keys at 1250,
 # bag + hat at 1700 (on site). 1885..1903 niche ceiling = floor of the TECH BAY, 5 over the box
-# door's top edge (1880, measured). It stops 20 short of the wall: cables come up from the box (its door left
-# a bit open) behind the inner door and through that gap; a 60 × 25 notch at the side-r end widens it
-# to 45 so a power plug passes. Tech bay 1903..2450 (router, mini server, home-automation
+# door's top edge (1880, measured). It stops 45 short of the wall: cables come up from the box (its door left
+# a bit open) behind the inner door and through that gap, wide enough for a power plug. Tech bay 1903..2450 (router, mini server, home-automation
 # hub, micro UPS; internals made on site): NO back
-# and NO top — only an 80 top rail at the front, which keeps the sides square. The inset door 1885..2450 covers
-# the ceiling's front edge; the rail and the ceiling stop it. Air: in around the inner door, up the 20 cable gap,
+# and NO top — only an 80 top rail at the front, which keeps the sides square. The door 1885..2450 is FULL
+# overlay over both sides: their front corners are notched 18 × 565 behind it, so in the niche the sides
+# stay flush with the base top. It stops on the sides, the ceiling and the rail. Air: in around the inner door, up the 45 cable gap,
 # out of the open top (80 to the ceiling, ~70 on the glides).
 # All heights here are from the carcass bottom: the ~10 glides lift everything (box gap ~15 for real). 2 angle brackets to the wall.
 # side-r is a show face: rafix there; ew-shelves' rafix bolts come into its OUTER face at 1441 and 1894
@@ -51,8 +51,9 @@ panels:
   height: 1500
   grain: any
   edge_banding: {edges: {2: eb-u750-2}, glue_type: long}
+  notches: [{corner: top-right, width: 18, height: 565}]   # front-top corner, behind the tech bay door
   holes:
-  - {face: outer, x: 67, y: 944, dia: 8, depth: through, type: multi, count: 3, spacing: 121, direction: x, src: cf-ceil-l}
+  - {face: outer, x: 92, y: 944, dia: 8, depth: through, type: multi, count: 3, spacing: 108.5, direction: x, src: cf-ceil-l}
   - {face: inner, x: 319.0, y: 1491, dia: 5, depth: 12, type: single, src: rf-trail-l}
   - {face: edge3, from: 80, dia: 8, depth: 15, type: multi, count: 2, spacing: 199, src: dw-base}
   - {face: inner, x: 40, y: 87.0, dia: 5, depth: 13, type: multi, count: 4, spacing: 243.0, direction: y, src: hg-inner}
@@ -67,6 +68,7 @@ panels:
   height: 1500
   grain: any
   edge_banding: {edges: {4: eb-u750-2}, glue_type: long}
+  notches: [{corner: top-left, width: 18, height: 565}]   # front-top corner, behind the tech bay door
   holes:
   - {face: inner, x: 58.0, y: 1491, dia: 5, depth: 12, type: single, src: rf-trail-r}
   - {face: inner, x: 68, y: 944, dia: 5, depth: 12, type: multi, count: 2, spacing: 200, direction: x, src: rf-ceil}
@@ -80,14 +82,13 @@ panels:
 - id: ceiling
   name: "Niche ceiling / tech bay floor"
   element_type: panel
-  role: divider   # underside 1885: 5 over the box door top (1880); back edge 20 off the wall = cable gap; front edge hidden behind the tech bay door (stops it), so unbanded
+  role: divider   # underside 1885: 5 over the box door top (1880); back edge 45 off the wall = cable gap (a power plug passes); front edge hidden behind the tech bay door (stops it), so unbanded
   width: 524
-  height: 342
+  height: 317
   grain: any
-  notches: [{corner: bottom-right, width: 60, height: 25}]   # back corner at side-r: + the 20 gap = 45 × 60 for a power plug
   holes:
-  - {face: edge4, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 121, src: cf-ceil-l}
-  - {face: inner, x: 514.5, y: 92, dia: 20, depth: 14, type: multi, count: 2, spacing: 200, direction: y, src: rf-ceil}
+  - {face: edge4, from: 50, dia: 4, depth: 35, type: multi, count: 3, spacing: 108.5, src: cf-ceil-l}
+  - {face: inner, x: 514.5, y: 67, dia: 20, depth: 14, type: multi, count: 2, spacing: 200, direction: y, src: rf-ceil}
   placement: {pos: [18, 18, 935]}
 
 - id: top-rail
@@ -117,22 +118,22 @@ panels:
 - id: door
   name: "Tech bay door"
   element_type: panel
-  role: front   # 1885..2450, INSET flush with the sides, hinged on the bedroom side; bottom edge level with the ceiling's underside and the open shelf
-  width: 520
+  role: front   # 1885..2450, FULL overlay over both (notched) sides, hinged on the bedroom side; bottom edge level with the ceiling's underside and the open shelf
+  width: 557
   height: 565
   grain: any
   edge_banding: {all_edges: true, band: eb-u750-2, glue_type: long}
   holes:
-  - {face: inner, x: 497.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 365, direction: y, src: hg-door}
-  placement: {pos: [20, 0, 935]}
+  - {face: inner, x: 534.5, y: 100, dia: 35, depth: 12, type: multi, count: 2, spacing: 365, direction: y, src: hg-door}
+  placement: {pos: [1.5, 0, 935]}
 
 assembly:
   fittings:
-  - {id: cf-ceil-l, hardware: confirmat-7x50, drilling: manual, through: side-l, into: ceiling, at: [50, 171, 292]}
+  - {id: cf-ceil-l, hardware: confirmat-7x50, drilling: manual, through: side-l, into: ceiling, at: [50, 158.5, 267]}
   - {id: rf-trail-l, hardware: rafix-20, drilling: manual, through: top-rail, into: side-l, at: [40]}
   - {id: rf-trail-r, hardware: rafix-20, drilling: manual, through: top-rail, into: side-r, at: [40]}
   - {id: rf-ceil, hardware: rafix-20, drilling: manual, through: ceiling, into: side-r, at: [68, 268]}
   - {id: dw-base, hardware: dowel-8x30, drilling: manual, quantity: 4, through: side-l, into: side-r}   # into ew-base's top, over its side-l and gable
   - {id: wall-br, hardware: angle-bracket-40, drilling: none, quantity: 2}   # router bay, to the right wall; + screws through side-l into the end wall (router bay, behind the inner door)
   - {id: hg-inner, hardware: hinge-clip-110, variant: inset, drilling: manual, door: inner-door, side: side-l, at: [103, 346, 589, 832]}
-  - {id: hg-door, hardware: hinge-clip-110, variant: inset, drilling: manual, door: door, side: side-r, at: [1035, 1400]}
+  - {id: hg-door, hardware: hinge-clip-110, variant: full, drilling: manual, door: door, side: side-r, at: [1035, 1400]}

@@ -2,9 +2,9 @@ angle-bracket-40 -         8 piece  ew-base=2 ew-shelves=4 ew-upper=2
 confirmat-7x50   -       170 piece  ew-base=3 ew-upper=3 lr-bench-1=18 lr-bench-2=12 lr-line=18 lr-tower=12 lr-vitrine=19 open-900=12 sink-vanity=24 wc-column=21 wm-wardrobe=28
 dowel-8x30       -         4 piece  ew-upper=4
 hinge-alu-frame  full     12 piece  lr-tower=4 lr-vitrine=8
-hinge-clip-110   full     29 piece  ew-base=2 lr-bench-1=4 lr-bench-2=4 lr-line=8 lr-vitrine=4 wc-column=3 wm-wardrobe=4
+hinge-clip-110   full     31 piece  ew-base=2 ew-upper=2 lr-bench-1=4 lr-bench-2=4 lr-line=8 lr-vitrine=4 wc-column=3 wm-wardrobe=4
 hinge-clip-110   half      9 piece  ew-base=2 lr-line=4 wc-column=3
-hinge-clip-110   inset    18 piece  ew-upper=6 ew-wardrobe=12
+hinge-clip-110   inset    16 piece  ew-upper=4 ew-wardrobe=12
 leveler-glide    -         6 piece  ew-base=6
 plinth-corner    -         3 piece  lr-plinth=3
 plinth-leg       -        28 piece  lr-plinth=28
