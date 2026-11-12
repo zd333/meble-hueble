@@ -5,7 +5,7 @@
 # Board: Egger U750 ST9 Szary Taupe (u750-18), as the niche wardrobe. 2 mm band on what you see and touch.
 # Hall ceiling 2530 (measured). Two things are ASSUMED: the bedroom door trim is at most 70 wide (the base
 #     ends 70 before the opening), and nothing on the electric box door sticks out more than ~40 (the inner
-#     door stands 60 off the wall). Stamped confirmats follow a resize (`meble fit --cabinet <id>`); every
+#     door stands 80 off the wall). Stamped confirmats follow a resize (`meble fit --cabinet <id>`); every
 #     other hole is hand-written and does NOT — re-derive them if a size moves.
 # Joints: confirmat where the head is hidden (wall, neighbouring cabinet); rafix-20 on show faces.
 # Set frame = ew-wardrobe's: x = 2550 − distance from the top wall, y = −(distance from the left wall).

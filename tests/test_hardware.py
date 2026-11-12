@@ -130,8 +130,8 @@ def test_a_through_hole_that_is_not_a_pin_is_not_counted(proj):
 # ------------------------------------------------------------------ against the real designs
 
 EXPECTED = {
-    ("angle-bracket-40", None): 6,       # entryway: wall anchors (ew-base, ew-upper) + the 1450 shelf
-    ("confirmat-7x50", None): 176,
+    ("angle-bracket-40", None): 8,       # entryway: wall anchors (ew-base, ew-upper) + the two open shelves
+    ("confirmat-7x50", None): 170,
     ("dowel-8x30", None): 4,             # entryway hall: ew-upper aligned on the corner base
     ("hinge-alu-frame", "full"): 12,     # living room: the Topal glass doors (plates only are ours)
     ("hinge-clip-110", "full"): 29,
@@ -140,7 +140,7 @@ EXPECTED = {
     ("leveler-glide", None): 6,          # entryway: ew-base stands on glides, no bottom panel
     ("plinth-corner", None): 3,
     ("plinth-leg", None): 28,
-    ("rafix-20", None): 135,
+    ("rafix-20", None): 133,
     ("shelf-pin-5", None): 43,           # entryway hall: 2 shoe shelves × 4 pins in each base cabinet
     ("slide-bb-350", None): 2,
     ("tip-on", None): 17,
